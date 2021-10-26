@@ -1,6 +1,7 @@
 #push-button{
 margin-left: 130px;
 margin-top: 30px;
+margin-bottom: 20px;
 width:100px;
 height:40px;
 text-align: center;
@@ -63,4 +64,40 @@ ons-list-item{
 #test_page{
   display: none;
 }
+.none{
+  display: none;
+}
+.tab-buttons{
+  display:inline-block;
+  width:100%;
+  border-bottom:2px solid #666;
+}
+.tab-buttons>span{
+  display:block;
+  float:left;
+  cursor:pointer;
+  color:#666;
+  font:400 15px 'pt sans',sans-serif;
+  background:#ddd;
+  padding:0 15px;
+  line-height:40px !important;
+  width: 85px;
+}
+.tab-buttons>span.active{
+  background:#666;
+  color:#ddd;
+  position:relative;
+  box-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+.display_1{
+  display: block;
+}
+.display_2{
+  display: none;
+}
+header{
+  text-align: center;
+  font-size: 20px;
+}
+ 
 /*ここまで検索画面のCSS*/
