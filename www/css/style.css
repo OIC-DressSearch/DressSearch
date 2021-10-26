@@ -1,36 +1,43 @@
-#push-button{
-margin-left: 130px;
+
+/*検索画面のCSS*/
+p.hed{ /*ヘッダー*/
+  border-bottom: 0.5px solid #ddd;
+  margin-bottom: 20px;
+}
+
+#push-button{ /*「検索」ボタン*/
+margin-left: 20px;
+margin-right: 30px;
 margin-top: 30px;
-width:100px;
+margin-bottom: 20px;
+width:300px;
 height:40px;
 text-align: center;
-background-color: rgba(163, 163, 23, 0.63);
+background-color: #68c3c5;
+border-radius:5px;
+font-size: 17px;
 }
-#details{
-  border: solid grey;
-  margin-left: 10px;
-  margin-right: 10px;
-  border-radius:5px;
-  box-shadow: none;
-  padding: 2px 8px;
-}
+
 .search{
-  font-size:30px;
+  font-size:17px;
   border-radius:5px;
   box-shadow: none;
-  padding: 2px 8px;
+  padding: 2px px;
 }
 .element_1{
+  font-size:10px;
   margin-left: 10px;
 }
 .element_1 input{
-background-color:#cccccc; 
+  font-size:17px;
+background-color:#ddd; 
 width:90%;
 height:30px;
 }
 .detiles_2{
+  font-size:17px;
   margin-top: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   margin-left: 10px;
 }
 .d_1{
@@ -39,10 +46,10 @@ height:30px;
 #search:focus{
 	border: 1px solid #da3c41;
 	outline: none;
-	box-shadow: 0 0 5px 1px rgba(218,60,65, .5);
+	box-shadow: 0 0 5px 1px #f50810e8;
 }
 .back_ground{
-background-color: #eacdc7;
+background-color: none;
 height: 100%;
 }
 
@@ -52,10 +59,10 @@ ons-list-item{
   height: 80px;
 }
 .mypage_list{
-  font-size: 25px;
-  border-bottom: solid 2px rgb(53, 53, 53);
+  font-size: 20px;
+  border-bottom: solid 0.8px #ddd;
   margin-left: 5px;
- width: 95%; 
+  width: 130%; 
 }
 .display{
   display: block;
@@ -136,3 +143,38 @@ ul.bottom-menu li {
 #footer{margin-bottom:48px;}
 }
 /*ここまでフッターのCSS*/
+.none{
+  display: none;
+}
+.tab-buttons{
+  display:inline-block;
+  width:100%;
+  border-bottom:2px solid #666;
+}
+.tab-buttons>span{
+  display:block;
+  float:left;
+  cursor:pointer;
+  color:#666;
+  font:400 15px 'pt sans',sans-serif;
+  background:#ddd;
+  padding:0 15px;
+  line-height:40px !important;
+  width: 85px;
+}
+.tab-buttons>span.active{
+  background:#666;
+  color:#ddd;
+  position:relative;
+  box-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+.display_1{
+  display: block;
+}
+.display_2{
+  display: none;
+}
+header{
+  text-align: center;
+  font-size: 20px;
+}
