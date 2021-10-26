@@ -1,2 +1,138 @@
-/**/
+#push-button{
+margin-left: 130px;
+margin-top: 30px;
+width:100px;
+height:40px;
+text-align: center;
+background-color: rgba(163, 163, 23, 0.63);
+}
+#details{
+  border: solid grey;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius:5px;
+  box-shadow: none;
+  padding: 2px 8px;
+}
+.search{
+  font-size:30px;
+  border-radius:5px;
+  box-shadow: none;
+  padding: 2px 8px;
+}
+.element_1{
+  margin-left: 10px;
+}
+.element_1 input{
+background-color:#cccccc; 
+width:90%;
+height:30px;
+}
+.detiles_2{
+  margin-top: 10px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+}
+.d_1{
+  display: inline-block;
+}
+#search:focus{
+	border: 1px solid #da3c41;
+	outline: none;
+	box-shadow: 0 0 5px 1px rgba(218,60,65, .5);
+}
+.back_ground{
+background-color: #eacdc7;
+height: 100%;
+}
 
+ons-list-item{
+  
+  width:80%;
+  height: 80px;
+}
+.mypage_list{
+  font-size: 25px;
+  border-bottom: solid 2px rgb(53, 53, 53);
+  margin-left: 5px;
+ width: 95%; 
+}
+.display{
+  display: block;
+}
+#test_page{
+  display: none;
+}
+/*ここまで検索画面のCSS*/
+
+  .header {
+    height: 8vh;
+    width: 100%;
+    background-color: #fdfdfd;
+    color: rgb(75, 75, 75);
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom:2px solid #808080;/*バーの下の線*/
+  }
+/*ここまでヘッダーのCSS*/
+
+/*メニューをページ下部に固定*/
+#sp-fixed-menu{
+   position: fixed;
+   width: 100%;
+   bottom: 0px;
+   font-size: 0;
+   opacity: 0.9;
+   z-index: 99;
+}
+
+/*メニューを横並びにする*/
+
+.mini-text{font-size:10px;}/*文字大きさ*/
+
+ul.bottom-menu {
+    position: fixed;
+    left:0;
+    bottom:0;
+    width: 100%;
+    height:65px;/*高さ*/
+    margin:0;
+    display: flex;
+    justify-content: center;
+    padding:0;
+    background-color:#fdfdfd;/*背景色*/
+    border-top:2px solid #808080;/*バーの上の線*/
+    border-bottom:2px solid #808080;/*バーの下の線*/
+    z-index:30;}
+
+ul.bottom-menu li {
+    float:left;
+    width:35%;
+    background-color:#fdfdfd;/*背景色*/
+    list-style-type:none;
+    text-align:center;
+    font-size:25px;/*アイコンのサイズ*/}
+
+.bottom-menu li a {
+    display: block;
+    color:#808080;/*アイコン＆文字の色*/
+    padding-top:20px;
+    padding-bottom:5px;
+    line-height:10px;
+    text-decoration:none;}
+
+.bottom-menu li a:hover {
+    color:#a9a9a9;/*マウスオーバー時の色*/}
+
+/*スマホの時だけ*/
+@media(max-width: 767px){ 
+
+/*ボトムメニュー付けたのでフッタを底上げする*/
+#footer{margin-bottom:48px;}
+}
+/*ここまでフッターのCSS*/
