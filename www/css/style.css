@@ -1,2 +1,66 @@
-/**/
+#push-button{
+margin-left: 130px;
+margin-top: 30px;
+width:100px;
+height:40px;
+text-align: center;
+background-color: rgba(163, 163, 23, 0.63);
+}
+#details{
+  border: solid grey;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius:5px;
+  box-shadow: none;
+  padding: 2px 8px;
+}
+.search{
+  font-size:30px;
+  border-radius:5px;
+  box-shadow: none;
+  padding: 2px 8px;
+}
+.element_1{
+  margin-left: 10px;
+}
+.element_1 input{
+background-color:#cccccc; 
+width:90%;
+height:30px;
+}
+.detiles_2{
+  margin-top: 10px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+}
+.d_1{
+  display: inline-block;
+}
+#search:focus{
+	border: 1px solid #da3c41;
+	outline: none;
+	box-shadow: 0 0 5px 1px rgba(218,60,65, .5);
+}
+.back_ground{
+background-color: #eacdc7;
+height: 100%;
+}
 
+ons-list-item{
+  
+  width:80%;
+  height: 80px;
+}
+.mypage_list{
+  font-size: 25px;
+  border-bottom: solid 2px rgb(53, 53, 53);
+  margin-left: 5px;
+ width: 95%; 
+}
+.display{
+  display: block;
+}
+#test_page{
+  display: none;
+}
+/*ここまで検索画面のCSS*/
