@@ -19,7 +19,7 @@
 </head>
 <body>
 
-<header><p class="hed">検索画面</p></header>
+<header><p class="hed" style="font-size:15px;">検索画面</p></header>
 
 <div class="display_1">
   <div class="back_ground">
@@ -63,8 +63,9 @@
           <p style="font-size:15px;">イメージ</p>
 
 
-            <p>スタイル</p>
-             <select name= "style"style="width:250px;height:40px;">
+            <p style="font-size:15px;">スタイル</p>
+            <select id="search_box">
+
               <option>Aライン</option>
             </select>
 
@@ -110,8 +111,8 @@
               <option value="others">その他</option>
             </select> 
 
-          <p>サイズ</p>
-             <select name= "size"style="width:250px;height:40px;">
+          <p style="font-size:15px;">サイズ</p>
+             <select id="search_box">
 
               <option value="five">5</option>
               <option value="seven">7</option>
@@ -127,15 +128,28 @@
   </div>
 </div>
 
-<div class="display_2">
+<!-- マイページ -->
+<div class="display_2">  <!--マイページ用のファイルを作りたい、、-->
   <div class="back_ground">
     <div class="display">
-      <ons-list-item tappable class="mypage_list" id="list_1">会員情報<p style="margin-left:211px;">≫</p></ons-list-item>
-      <ons-list-item tappable class="mypage_list">メールアドレス<p style="margin-left:135px;">≫</p></ons-list-item>
-      <ons-list-item modifier="chevron" tappable class="mypage_list">パスワード<p class="modifier" style="margin-left:183px;">≫</p></ons-list-item>
-      <ons-list-item tappable class="mypage_list">身長・BWH<p style="margin-left:175px;">≫</p></ons-list-item>
-      <ons-list-item tappable class="mypage_list">ログアウト<p style="margin-left:181px;">≫</p></ons-list-item>
-      <ons-list-item tappable class="mypage_list">退会希望の方<p style="margin-left:153px;">≫</p></ons-list-item>
+        <ons-list-item tappable class="mypage_list" id="list_1">
+          <nobr>会員情報<p id="next">≫</p></nobr><br>
+        </ons-list-item>
+        <ons-list-item tappable class="mypage_list">
+          メールアドレス　　≫<br>
+        </ons-list-item>
+        <ons-list-item modifier="chevron" tappable class="mypage_list">
+          パスワード　　≫<br>
+        </ons-list-item>
+        <ons-list-item tappable class="mypage_list">
+          身長・BWH　　≫<br>
+        </ons-list-item>
+        <ons-list-item tappable class="mypage_list">
+          ログアウト　　≫<br>
+        </ons-list-item>
+        <ons-list-item tappable class="mypage_list">
+          退会希望の方　　≫<br>
+        </ons-list-item>
       </div>
   </div>
 </div>
@@ -144,7 +158,7 @@
     <span id='content1'>検索画面</span>
     <span id='content2'>いいね画面</span>
     <span id='content3'>マイページ</span>
-    <!--add more button right after it with same id attribute of that container. Make sure to use span tag.-->
+  
   </div></footer>
 <script src="js/app.js"></script>
 
