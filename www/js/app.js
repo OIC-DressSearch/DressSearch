@@ -8,4 +8,8 @@ $("#content2").click(function(){
       $('.display_1').css('display','none'); 
       $('.display_2').css('display','block');
     });
+$("#content3").click(function(){
+      $('.display_1').css('display','none'); 
+      $('.display_3').css('display','block');
+    });
 /*ここまで検索画面のjs*/
