@@ -92,6 +92,8 @@ ons-list-item{
 /*ここまで検索画面のCSS*/
 
   .header {
+    text-align: center;
+    font-size: 20px;
     height: 8vh;
     width: 100%;
     background-color: #fdfdfd;
@@ -101,6 +103,7 @@ ons-list-item{
     left: 0;
     z-index: 100;
     display: flex;
+    position: sticky;
     align-items: center;
     justify-content: space-around;
     border-bottom:2px solid #808080;/*バーの下の線*/
@@ -193,7 +196,22 @@ ul.bottom-menu li {
 .display_2{
   display: none;
 }
-header{
-  text-align: center;
-  font-size: 20px;
+
+/*ここまでフッターのCSS*/
+
+.list {
+  display:flex;
+  flex-flow:wrap;
+  list-style-type: none;
 }
+
+.item {
+  width:50%;
+  box-sizing:border-box;
+}
+
+.item img{
+  width:150px;
+  height:200px;
+}
+/*画像表示*/
