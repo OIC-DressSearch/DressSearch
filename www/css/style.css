@@ -1,6 +1,6 @@
 
 /*検索画面のCSS*/
-p.hed{ /*ヘッダー*/
+p.hed{ /*ヘッダーのライン*/
   border-bottom: 0.5px solid #ddd;
   margin-bottom: 20px;
 }
@@ -18,7 +18,7 @@ border-radius:5px;
 font-size: 17px;
 }
 
-.search{
+#search{ /*テキストボックス*/
   font-size:17px;
   border-radius:5px;
   box-shadow: none;
