@@ -171,10 +171,13 @@ ul.bottom-menu li {
 .display_1{
   display: block;
 }
-.display_2{
-  display: none;
-}
+
 header{
   text-align: center;
   font-size: 20px;
+}
+span img{
+  width: 40px;
+  margin-top:10px; 
+  margin-left:20px; 
 }
