@@ -147,16 +147,24 @@ ul.bottom-menu li {
     text-align:center;
     font-size:25px;/*アイコンのサイズ*/}
 
-.bottom-menu li a {
-    display: block;
-    color:#808080;/*アイコン＆文字の色*/
-    padding-top:20px;
-    padding-bottom:5px;
-    line-height:10px;
-    text-decoration:none;}
+.bottom-menu li a{
+  display: block;
+  color:#808080;/*アイコン＆文字の色*/
+  padding-top:10px;
+  padding-bottom:5px;
+  line-height:10px;
+  text-decoration:none;
+}
 
-.bottom-menu li a:hover {
-    color:#a9a9a9;/*マウスオーバー時の色*/}
+.bottom-menu li img{
+  width: 30px;
+  margin-top:1px; 
+  margin-left:15px; 
+}
+
+.bottom-menu li:hover {
+    background-color:#abd8e0;/*マウスオーバー時の色*/
+}
 
 /*スマホの時だけ*/
 @media(max-width: 767px){ 
@@ -164,7 +172,7 @@ ul.bottom-menu li {
 /*ボトムメニュー付けたのでフッタを底上げする*/
 #footer{margin-bottom:48px;}
 }
-/*ここまでフッターのCSS*/
+
 .none{
   display: none;
 }
