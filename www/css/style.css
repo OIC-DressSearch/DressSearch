@@ -123,16 +123,24 @@ ul.bottom-menu li {
     text-align:center;
     font-size:25px;/*アイコンのサイズ*/}
 
-.bottom-menu li a {
-    display: block;
-    color:#808080;/*アイコン＆文字の色*/
-    padding-top:20px;
-    padding-bottom:5px;
-    line-height:10px;
-    text-decoration:none;}
+.bottom-menu li a{
+  display: block;
+  color:#808080;/*アイコン＆文字の色*/
+  padding-top:10px;
+  padding-bottom:5px;
+  line-height:10px;
+  text-decoration:none;
+}
 
-.bottom-menu li a:hover {
-    color:#a9a9a9;/*マウスオーバー時の色*/}
+.bottom-menu li img{
+  width: 30px;
+  margin-top:1px; 
+  margin-left:15px; 
+}
+
+.bottom-menu li:hover {
+    background-color:#abd8e0;/*マウスオーバー時の色*/
+}
 
 /*スマホの時だけ*/
 @media(max-width: 767px){ 
@@ -199,7 +207,40 @@ span img{
 }
 /*画像表示*/
 
+/*list.html*/
 
+.list-header{
+  display: table;
+  margin: 0 auto;
+  padding: 0 ;
+  width: 80%;
+  text-align: center;
+}
+li.home{
+border-bottom: 3px solid #92D050;
+}
+.list-header li{
+      display: inline-block;
+margin-left: 30px;
+  min-width: 20px;
+  font-size: 10px;
+}
+.list-header li:hover{
+  color: #E7DA66;
+  border-bottom: 3px solid #F0E475;
+}
+.header{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    overflow: auto;
+}
+.header_2{
+    width: 1000px;
+    margin: 0 auto;
+}
 
 /***********マイページのCSS************/
 
@@ -212,3 +253,4 @@ span img{
   }
 
 /***********ここまでマイページのCSS************/
+
