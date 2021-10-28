@@ -1,60 +1,71 @@
-/*検索画面のCSS*/
-p.hed{ /*ヘッダーのライン*/
-  border-bottom: 0.5px solid #ddd;
-  margin-top: 10%;
-  margin-bottom: 10%;
-  color: #68c3c5;
-}
+/**************共通部分のcss****************/
 
-#push-button{ /*「検索」ボタン*/
-margin-left: 3%;
-margin-right: 30px;
-margin-top: 30px;
-margin-bottom: 40px;
-width:95%;
-height:40px;
-text-align: center;
-background-color: #68c3c5;
-border-radius:5px;
-font-size: 17px;
-border: 1px solid #68c3c5;
-color: rgb(253, 250, 250);
-}
+  /*ヘッダー*/
+    p.hed{ 
+      border-bottom: 0.5px solid #ddd;
+      margin-top: 10%;
+      margin-bottom: 10%;
+      color: #68c3c5;
+    }
 
-#search{ /*テキストボックス*/
-  font-size:17px;
-  border-radius:5px;
-  box-shadow: none;
-  padding: 1px px;
-  background-color:rgb(238, 238, 238);
-}
-
-#search_box{ /*プルダウン*/
-  margin-left: 3%;
-  margin-top: -3%;
-  margin-bottom: -3%;
-  width:95%;
-  height:30px;
-  font-size:17px;
-  border-radius:5px;
-  box-shadow: none;
-  padding: 1px px;
-  background-color:rgb(238, 238, 238);
-  border: 1px solid rgb(238, 238, 238);
-  color: #68c3c5;
-}
-
-#search_title{
-  font-size: 13px;
-}
-
-#search_option{/*プルダウン中身*/
-  font-size:15px;
-  color: rgb(5, 5, 5)
-}
+/**************ここまで共通部分のcss****************/
 
 
-/*ここまで検索画面のCSS*/
+/**************検索画面のCSS****************/
+
+  /*「検索」ボタン*/  
+    #push-button{ 
+    margin-left: 3%;
+    margin-right: 30px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    width:95%;
+    height:40px;
+    text-align: center;
+    background-color: #68c3c5;
+    border-radius:5px;
+    font-size: 17px;
+    border: 1px solid #68c3c5;
+    color: rgb(253, 250, 250);
+    }
+
+  /*テキストボックス*/
+    #search{ 
+      font-size:17px;
+      border-radius:5px;
+      box-shadow: none;
+      padding: 1px px;
+      background-color:rgb(238, 238, 238);
+    }
+
+  /*プルダウン*/
+    #search_box{ 
+      margin-left: 3%;
+      margin-top: -3%;
+      margin-bottom: -3%;
+      width:95%;
+      height:30px;
+      font-size:17px;
+      border-radius:5px;
+      box-shadow: none;
+      padding: 1px px;
+      background-color:rgb(238, 238, 238);
+      border: 1px solid rgb(238, 238, 238);
+      color: #68c3c5;
+    }
+
+  /*プルダウンタイトル*/
+    #search_title{
+      font-size: 13px;
+    }
+
+  /*プルダウン中身*/
+    #search_option{
+      font-size:15px;
+      color: rgb(5, 5, 5)
+    }
+
+/***********ここまで検索画面のCSS************/
 
   .header {
     text-align: center;
@@ -187,3 +198,17 @@ span img{
   height:200px;
 }
 /*画像表示*/
+
+
+
+/***********マイページのCSS************/
+
+  #mypage_list{
+    font-size: 19px;
+    margin-left: 10%;
+    margin-right: 5%;
+    margin-top: 50px;
+    margin-bottom: 40px;
+  }
+
+/***********ここまでマイページのCSS************/
