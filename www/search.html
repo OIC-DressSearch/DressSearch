@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
     <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <script src="/js/jquery-3.5.1.min.js"></script>
+
     <script src="components/loader.js"></script>
     <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
     <script src="js/app.js"></script>
@@ -22,7 +23,12 @@
 
     <div class="display_search">
           <p id="search_title">レンタルショップ</p>
-            <input type="text" id="search_box"><br>
+            <select name= "body"style="width:250px;height:40px;">
+              <option value="Mimatsu">ブライダル三松岡山店</option>
+              <option value="NISHIKIYA">ブライダルサロンNISHIKIYA</option>
+              <option value="Tutu">チュチュ岡山</option>
+            </select>
+
           <p id="search_title">式場</p>
             <select name="dress" id="search_box"">
               <option id="search_option" value="1">ーーー</option>
@@ -31,6 +37,7 @@
               <option id="search_option" value="4">ANAクラウンプラザホテル岡山</option>
               <option id="search_option" value="5">	THE MAGRITTE</option>
               <option id="search_option" value="6">THE STYLE</option>
+
             </select>
               <p style="font-size:15px;">ドレス</p>
                 <select name="dress" id="search_box"">
@@ -50,8 +57,10 @@
                 </select>
               <p id="search_title">イメージ</p>              
                 <select id="search_box">
-                  <option id="search_option">Aライン</option>
-                </select>
+              <option value="cool">クール</option>
+              <option value="cute">キュート</option>
+              <option value="elegant">エレガント</option>
+              </select>
               <p id="search_title">ライン</p>
                 <select name= "Rhine" id="search_box"">
                   <option id="search_option" value="none">ーーー</option>
@@ -83,6 +92,83 @@
                   <option id="search_option" value="Strapless">ストラップレスネックライン</option>
                   <option id="search_option" value="others">その他</option>
                 </select>
+
+               <p>スリーブ</p>
+              <select name= "body"style="width:250px;height:40px;">
+                <option value="Less">スリーブレス</option>
+                <option value="Cap">キャップスリーブ</option>
+                <option value="French">フレンチスリーブ</option>
+                <option value="Petal">ペタルスリーブ</option>
+                <option value="Puff">パフスリーブ</option>
+                <option value="Juliet">ジュリエットスリーブ</option>
+                <option value="Bell">ベルスリーブ</option>
+                <option value="Bishop">ビショップスリーブ</option>
+                <option value="Mutton">レッグオブマトンスリーブ</option>
+                <option value="Raglan">ラグランスリーブ</option>
+                <option value="Dolman">ドルマンスリーブ</option>
+                <option value="American">アメリカンスリーブ</option>
+                <option value="Tight">タイトスリーブ</option>
+                <option value="Pagoda">パゴダスリーブ</option>
+                <option value="Pointed">ポインテッドスリーブ</option>
+              </select>
+
+               <p>ウエストライン</p>
+           <select name= "body"style="width:250px;height:40px;">
+                <option value="Natural">ナチュラルウエスト</option>
+                <option value="Dropped">ドロップドウエスト</option>
+                <option value="High">ハイウエスト</option>
+                <option value="Ashime">アシメトリカルウエスト</option>
+                <option value="Blouson">ブルゾン</option>
+                <option value="Basque">バスク</option>
+                <option value="Curve">カーブドバスク</option>
+                <option value="Dbasque">ドロップドバスク</option>
+                <option value="Inverted">インバーテッドバスク</option>
+              </select>
+
+          <p>スカート</p>
+          <select name= "body"style="width:250px;height:40px;">
+                <option value="Gather">ギャザーフレア</option>
+                <option value="Accordion">アコーディオンブリーツ</option>
+                <option value="Flounce">フラウンス</option>
+                <option value="petal">ペタル</option>
+                <option value="Tiered">ティアード</option>
+                <option value="Ruffle">ラッフル</option>
+                <option value="Streamers">ストリーマーズ</option>
+                <option value="Bias">バイアス</option>
+                <option value="bubble">バブルスカート</option>
+                <option value="Mermaid">マーメイド</option>
+                <option value="Trumpet">トランペット</option>
+                <option value="Fish">フィッシュテイル</option>
+                <option value="Fan">ファンバック</option>
+                <option value="Over">オーバースカート</option>
+                <option value="Bustle">バッスル</option>
+          </select>
+
+          <p>スカートレングス</p>
+          <select name= "body"style="width:250px;height:40px;">
+                <option value="Floor">フロアレングス</option>
+                <option value="Ankle">アンクルレングス</option>
+                <option value="Ballerina">バレリーナレングス</option>
+                <option value="Tea">ティーレングス</option>
+                <option value="Midi">ミディレングス</option>
+                <option value="Chanel">シャネルレングス</option>
+                <option value="Knee">ニーレングス</option>
+                <option value="Mini">ミニレングス</option>
+                <option value="Hi-Lo">ハイロー</option>
+          </select>
+
+          <p>トレーン</p>
+          <select name= "body"style="width:250px;height:40px;">
+                <option value="Gather">ギャザーフレア</option>
+                <option value="Accordion">アコーディオンブリーツ</option>
+                <option value="Flounce">フラウンス</option>
+                <option value="petal">ペタル</option>
+                <option value="Tiered">ティアード</option>
+                <option value="Ruffle">ラッフル</option>
+                <option value="Streamers">ストリーマーズ</option>
+                <option value="Bias">バイアス</option>   
+          </select>
+
               <p id="search_title">ボディス</p>
                 <select name= "body" id="search_box">
                   <option id="search_option" value="none">ーーー</option>
@@ -111,10 +197,8 @@
 <footer><div class='tab-buttons'>
     
     <span id='content1'><img src="image/search.png"></span>
-    <span id='content2'><a href="list.html"><img src="image/heart.png"></a></span>
+    <span id='content2'><img src="image/heart.png"></span>
     <span id='content3'><a href="my-page.html"><img src="image/my-page.png"></a></span>
-  </div>
-</footer>
 
 <script src="js/app.js"></script>
 
