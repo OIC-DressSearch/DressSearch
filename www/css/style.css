@@ -224,3 +224,38 @@ span img{
   height:200px;
 }
 /*画像表示*/
+
+/*list.html*/
+
+.list-header{
+  display: table;
+  margin: 0 auto;
+  padding: 0 ;
+  width: 80%;
+  text-align: center;
+}
+li.home{
+border-bottom: 3px solid #92D050;
+}
+.list-header li{
+      display: inline-block;
+margin-left: 30px;
+  min-width: 20px;
+  font-size: 10px;
+}
+.list-header li:hover{
+  color: #E7DA66;
+  border-bottom: 3px solid #F0E475;
+}
+.header{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    overflow: auto;
+}
+.te{
+    width: 1000px;
+    margin: 0 auto;
+}
