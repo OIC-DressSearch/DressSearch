@@ -224,11 +224,13 @@
 /***********マイページのCSS************/
 
   #mypage_list{
-    font-size: 19px;
-    margin-left: 10%;
+    font-size: 20px;
+    margin-left: 5%;
     margin-right: 5%;
-    margin-top: 50px;
+    margin-top: 15%;
     margin-bottom: 10%;
+    list-style-type:none;
+    border-bottom: 1px solid #ddd;
   }
 
   .display{
