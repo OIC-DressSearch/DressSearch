@@ -20,7 +20,7 @@
   }
 
   /*フッター*/
-
+    
     ul.bottom-menu {
     position: fixed;
     left:0;
@@ -36,6 +36,7 @@
     border-bottom:2px solid #808080;/*バーの下の線*/
     z-index:30;}
 
+    /*フッターのリスト*/
     ul.bottom-menu li {
         float:left;
         width:35%;
@@ -44,57 +45,28 @@
         text-align:center;
         font-size:25px;/*アイコンのサイズ*/}
 
+    /*アイコン位置*/
     .bottom-menu li a{
       display: block;
-      color:#808080;/*アイコン＆文字の色*/
       padding-top:10px;
       padding-bottom:5px;
       line-height:10px;
-      text-decoration:none;
     }
 
+    /*アイコン位置と大きさ*/
     .bottom-menu li img{
       width: 30px;
       margin-top:1px; 
-      margin-left:15px; 
+      margin-left:5%; 
     }
 
     .bottom-menu li:hover {
-        background-color:#abd8e0;/*マウスオーバー時の色*/
+      background-color:#abd8e0;/*マウスオーバー時の色*/
     }
 
     /*ボトムメニュー付けたのでフッタを底上げする*/
     #footer{
       margin-bottom:48px;
-    }
-
-    .none{
-      display: none;
-    }
-    .tab-buttons{
-      display:inline-block;
-      width:200%;
-      border-bottom:2px solid #666;
-    }
-    .tab-buttons>span{
-      display:block;
-      float:left;
-      cursor:pointer;
-      color:#666;
-      font:400 15px 'pt sans',sans-serif;
-      background:#ddd;
-      padding:0 15px;
-      line-height:40px !important;
-      width: 85px;
-    }
-    .tab-buttons>span.active{
-      background:#666;
-      color:#ddd;
-      position:relative;
-      box-shadow:0 0 10px rgba(0,0,0,0.5);
-    }
-    .display_1{
-      display: block;
     }
 
     header{
