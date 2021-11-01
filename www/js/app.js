@@ -9,10 +9,10 @@ $("#content2").click(function(){
       $('.display_2').css('display','block');
 <<<<<<< HEAD
     });*/
-$("#content3").click(function(){
+/*$("#content3").click(function(){
       $('.display_1').css('display','none'); 
       $('.display_3').css('display','block');
-    });
+    });*/
 /*ここまで検索画面のjs*/
 
 var apikey    = "7672355577f11839b1a72bce66af03d2a68e6f119b00178a4ecc8bc08daaaf68";
@@ -33,4 +33,18 @@ $(".test").click(function(){
           path='<img src="image/'+path+'">';
           $('.te').append(path);
        });
+});
+
+//いいね
+$("body").on('click','.heart_enp',function(){
+  var element_id=$(this).attr('id');
+  $("#"+element_id).removeClass('heart_enp');
+  $("#"+element_id).addClass('heart');
+});
+
+//いいね取消し
+$("body").on('click','.heart',function(){
+  var element_id=$(this).attr('id');
+  $("#"+element_id).removeClass('heart');
+  $("#"+element_id).addClass('heart_enp');
 });
