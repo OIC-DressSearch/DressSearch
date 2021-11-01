@@ -148,49 +148,83 @@
     }
     /*画像表示*/
 
-    /*list.html*/
-
-    .list-header{
-      display: table;
-      margin: 0 auto;
-      padding: 0 ;
-      width: 80%;
-      text-align: center;
-    }
-    li.home{
-    border-bottom: 3px solid #92D050;
-    }
-    .list-header li{
-          display: inline-block;
-    margin-left: 30px;
-      min-width: 20px;
-      font-size: 10px;
-    }
-    .list-header li:hover{
-      color: #E7DA66;
-      border-bottom: 3px solid #F0E475;
-    }
-    .header{
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 999;
-        overflow: auto;
-    }
-    .header_2{
-        width: 1000px;
-        margin: 0 auto;
-    }
-
-
-
 /***********いいね画面のCSS************/
 
+.list-header{
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0 ;
+  width: 100%;
+  text-align: left;
+  margin-bottom:10px; 
+}
+li.home{
+border-bottom: 3px solid #92D050;
+}
+.list-header li{
+  display: inline-block;
+  margin-left: 30px;
+  min-width: 20px;
+  font-size: 10px;
+}
+.list-header li:hover{
+  color: #E7DA66;
+  border-bottom: 3px solid #F0E475;
+}
+.nice_header{
+    overflow: auto;
+}
+.nice_header_2{
+    width: 2000px;
+    margin: 0 auto;
+}
+.nice_header_3{
+  margin-top: 5px;
+  height: 50px;
+  border: ridge 1px;
+}
+
+.btn,
+a.btn,
+button.btn {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 1rem 4rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #212529;
+  border-radius: 0.5rem;
+}
+
+.btn--orange,
+a.btn--orange {
+  color: #fff;
+  background-color: #eb6100;
+}
+
+.btn--orange:hover,
+a.btn--orange:hover {
+  color: #fff;
+  background: #f56500;
+}
 
 
 
 /***********ここまでいいね画面のCSS************/
+
+
 
 /***********マイページのCSS************/
 
