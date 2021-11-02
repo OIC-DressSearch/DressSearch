@@ -68,7 +68,23 @@ $("body").on('click','.heart',function(){
 
 /* メールアドレス画面JS */
 $("#mail_update").click(function(){
-  
+  $("#mail_update_2").css("display","block");
+});
+$("#mail-button").click(function(){
+  var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
+   var address = $("#new_address").val();
+   var address_check= $("#check_address").val();
+   if(address!=address_check){
+     alert("再入力されたアドレスが違います");
+   }
+   else{
+    if(reg.test(address)){
+    window.location.href = "my-page.html"; 
+    }
+    else{
+      alert("入力されたメールアドレスが正しくないです");
+    }
+  }
 });
 
 /* ニフクラメモ
@@ -88,30 +104,6 @@ var test = new Test();
         Test.fetchAll() // データベース内を全て検索
        .then(function(objects){
           var object = objects[0]; //データベース内のN番目のレコードを指定          
-<<<<<<< HEAD
-          var path= object.get("path"); //pathフィールドからデータを取得
-          path='<img src="image/'+path+'">';
-          $('.te').append(path);
-       });
-});
-
-<<<<<<< HEAD
-=======
-//いいね
-$("body").on('click','.heart_enp',function(){
-  var element_id=$(this).attr('id');
-  $("#"+element_id).removeClass('heart_enp');
-  $("#"+element_id).addClass('heart');
-});
-
-//いいね取消し
-$("body").on('click','.heart',function(){
-  var element_id=$(this).attr('id');
-  $("#"+element_id).removeClass('heart');
-  $("#"+element_id).addClass('heart_enp');
-});*/
-
-/*
           var path= object.get("フィールド名"); //フィールド名のフィールドからデータを取得
        });*/
 

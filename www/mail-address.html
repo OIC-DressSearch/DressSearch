@@ -14,15 +14,33 @@
     <p>メールアドレス設定</p>
   </header>
     
-  <div>設定中のメールアドレス</div>
-  <div>*****@*****.***</div>
-  <div class="mail_update">メールアドレスの変更</div>
-  <div class="mail_update_2">
-    <div>新規メールアドレス</div>
-    <input type="text"></input><br>
-    <div>メールアドレス再入力</div>
-    <input type="text"></input>
+  <div style="margin:10px 0px 0px 90px;">設定中のメールアドレス</div>
+  <div style="margin:20px 0px 0px 100px;">*****@*****.***</div>
+  <div id="mail_update" style="margin:20px 0px 0px 90px;">メールアドレスの変更</div>
+  <div id="mail_update_2">
+    <div style="margin-top:40px;margin-left:100px;">新規メールアドレス</div>
+    <input type="text" id="new_address"style="margin-top:20px;margin-left:35px; width:80%;height:30px;"></input>
+    <div style="margin-top:30px;margin-left:100px;">メールアドレス再入力</div>
+    <input type="text" id="check_address" style="margin-top:20px;margin-left:35px; width:80%;height:30px;"></input>
+    <button id="mail-button" class="push-button" style="margin-top:90px;">保存</button>
   </div>
 
+       <footer>
+      <ul class="bottom-menu">
+        <li>
+          <a href="search.html">
+          <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/search.png"</span></a>
+        </li>
+        <li>
+          <a href="favorite.html">
+          <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/heart.png"></span></a>
+        </li>
+        <li>
+          <a href="my-page.html">
+          <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/my-page.png"></span></a>
+        </li>
+      </ul>
+    </footer>
+    <script src="js/app.js"></script>
 </body>
 </html>
