@@ -18,29 +18,39 @@
 
 </head>
 <body>
-  <header><!--ヘッター-->
-      <p class="hed" style="font-size:17px;">マイページ</p>
+  <!--ヘッター-->
+  <header class="hed">
+      <p>マイページ</p>
   </header>
 
-<div class="display_2">
-  <div class="back_ground">
-    <div class="display">
-      <a  id="mypage_list"">会員情報　　　　　　　　　　≫</a><br>
-      <a  id="mypage_list">メールアドレス　　　　　　　≫</a><br>
-      <a  id="mypage_list" >パスワード　　　　　　　　　≫</a><br>
-      <a  id="mypage_list">身長/BWH　　　　　　　　　≫</a><br>
-      <a  id="mypage_list">ログアウト　　　　　　　　　≫</a><br>
-      <a  id="mypage_list">退会希望の方　　　　　　　　≫</a><br>
-    </div>
-  </div>
+<div class="display_my-page">
+  <ul>
+      <li  id="mypage_list"">　会員情報　　　　　　　≫</li>
+      <li  id="mypage_list">　メールアドレス　　　　≫</li>
+      <li  id="mypage_list" >　パスワード　　　　　　≫</li>
+      <li  id="mypage_list">　身長/BWH　　　　　　≫</li>
+      <li  id="mypage_list">　ログアウト　　　　　　≫</li>
+      <li  id="mypage_list">　退会をご希望の方　　　≫</li>
+ 
 </div>
-<footer><div class='tab-buttons'>
-    
-    <span id='content1'><a href="search.html"><img src="image/search.png"></a></span>
-    <span id='content2'><img src="image/heart.png"></span>
-    <span id='content3'><a href="my-page.html"><img src="image/my-page.png"></a></span>
-    <!--add more button right after it with same id attribute of that container. Make sure to use span tag.-->
-  </div></footer>
+
+<!--フッター-->
+    <footer>
+      <ul class="bottom-menu">
+        <li>
+          <a href="search.html">
+          <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/search.png"</span></a>
+        </li>
+        <li>
+          <a href="favorite.html">
+          <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/heart.png"></span></a>
+        </li>
+        <li>
+          <a href="my-page.html">
+          <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/my-page.png"></span></a>
+        </li>
+      </ul>
+    </footer>
 <script src="js/app.js"></script>
 
 </body>

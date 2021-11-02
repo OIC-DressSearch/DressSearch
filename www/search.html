@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
     <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <script src="/js/jquery-3.5.1.min.js"></script>
+
     <script src="components/loader.js"></script>
     <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
     <script src="js/app.js"></script>
@@ -16,177 +17,214 @@
   </head>
 
   <body>
-    <header><!--ヘッター-->
-      <p class="hed" style="font-size:17px;">検索</p>
+    <!--ヘッター-->
+    <header class="hed">
+      <p>検索</p>
     </header>
 
+    <!--メイン-->
     <div class="display_search">
-          <p id="search_title">レンタルショップ</p>
-            <input type="text" id="search_box"><br>
-          <p id="search_title">式場</p>
-            <select name="dress" id="search_box"">
-              <option id="search_option" value="1">ーーー</option>
-              <option id="search_option" value="2">ラヴィール岡山</option>
-              <option id="search_option" value="3">クラブハウスセフィロト</option>
-              <option id="search_option" value="4">ANAクラウンプラザホテル岡山</option>
-              <option id="search_option" value="5">	THE MAGRITTE</option>
-              <option id="search_option" value="6">THE STYLE</option>
-            </select>
-              <p style="font-size:15px;">ドレス</p>
-                <select name="dress" id="search_box"">
-                
-                </select>
-              <p id="search_title"> カラー</p>
-                <select name="collar" id="search_box"">
-                  <option id="search_option" value="none">ーーー</option>
-                  <option id="search_option" value="white">ホワイト</option>
-                  <option id="search_option" value="red">レッド</option>
-                  <option id="search_option" value="blue">ブルー</option>
-                  <option id="search_option" value="yellow">イエロー</option>
-                  <option id="search_option" value="pink">ピンク</option>
-                  <option id="search_option" value="orange">オレンジ</option>
-                  <option id="search_option" value="purple">パープル</option>
-                  <option id="search_option" value="green">グリーン</option>
-                </select>
-              <p id="search_title">イメージ</p>              
-                <select id="search_box">
-                  <option id="search_option">Aライン</option>
-                </select>
-              <p id="search_title">ライン</p>
-                <select name= "Rhine" id="search_box"">
-                  <option id="search_option" value="none">ーーー</option>
-                  <option id="search_option" value="ARhine">Aライン</option>
-                  <option id="search_option" value="Empire">エンパイアライン</option>
-                  <option id="search_option" value="Mermaid">マーメイドライン</option>
-                  <option id="search_option" value="dome">ドームライン</option>
-                  <option id="search_option" value="slender">スレンダーライン</option>
-                  <option id="search_option" value="Princess">プリンセスライン</option>
-                  <option id="search_option" value="others">その他</option>
-                </select>
-              <p id="search_title">ネックライン</p>
-                <select name= "neck" id="search_box"">
-                  <option id="search_option" value="none">ーーー</option>
-                  <option id="search_option" value="Vneck">Vネックライン</option>
-                  <option id="search_option" value="offneck">オフネックライン</option>
-                  <option id="search_option" value="jewel">ジュエルネックライン</option>
-                  <option id="search_option" value="Scooped">スクープドネックライン</option>
-                  <option id="search_option" value="Square">スクエアネックライン</option>
-                  <option id="search_option" value="Stand">スタンドカラー</option>
-                  <option id="search_option" value="Batou">バトーネックライン</option>
-                  <option id="search_option" value="Portrait">ポートレートネックライン</option>
-                  <option id="search_option" value="halter">ホルターネックライン</option>
-                  <option id="search_option" value="Sweet">スウィートハートネックライン</option>
-                  <option id="search_option" value="Uneck">Uネックライン</option>
-                  <option id="search_option" value="Camisole">キャミソールネックライン</option>
-                  <option id="search_option" value="Oneshoulder">ワンショルダー</option>
-                  <option id="search_option" value="Offshoulder">オフショルダーネックライン</option>
-                  <option id="search_option" value="Strapless">ストラップレスネックライン</option>
-                  <option id="search_option" value="others">その他</option>
-                </select>
-              <p id="search_title">ボディス</p>
-                <select name= "body" id="search_box">
-                  <option id="search_option" value="none">ーーー</option>
-                  <option id="search_option" value="Bourne">ボーン</option>
-                  <option id="search_option" value="corset">コルセット</option>
-                  <option id="search_option" value="Shirring">シャーリング</option>
-                  <option id="search_option" value="Circular">サーキュラーヨーク</option>
-                  <option id="search_option" value="Modesty">モデスティ</option>
-                  <option id="search_option" value="overlay">オーバーレイ</option>
-                  <option id="search_option" value="others">その他</option>
-                </select> 
-              <p id="search_title">サイズ</p>
-                <select id="search_box">
-                  <option id="search_option" value="none">ーーー</option>element_1
-                  <option id="search_option" value="five">5</option>
-                  <option id="search_option" value="seven">7</option>
-                  <option id="search_option" value="nine">9</option>
-                  <option id="search_option" value="eleven">11</option>
-                  <option id="search_option" value="thirteen">13</option>
-                  <option id="search_option" value="fifteen">15</option>
-                </select>          
-          <button id="push-button">検索</button>
+      <p id="search_title">レンタルショップ</p>
+        <select name= "body" id="search_box">
+          <option id="search_option" value="1">ーーー</option>
+          <option id="search_option"value="Mimatsu">ブライダル三松岡山店</option>
+          <option id="search_option" value="NISHIKIYA">ブライダルサロンNISHIKIYA</option>
+          <option id="search_option" value="Tutu">チュチュ岡山</option>
+        </select>
+
+      <p id="search_title">式場</p>
+        <select name="dress" id="search_box">
+          <option id="search_option" value="1">ーーー</option>
+          <option id="search_option" value="2">ラヴィール岡山</option>
+          <option id="search_option" value="3">クラブハウスセフィロト</option>
+          <option id="search_option" value="4">ANAクラウンプラザホテル岡山</option>
+          <option id="search_option" value="5">	THE MAGRITTE</option>
+          <option id="search_option" value="6">THE STYLE</option>
+        </select>
+
+      <p id="search_title">ドレス</p>
+        <select name="dress" id="search_box"">
+          <option id="search_option" value="1">ーーー</option>              
+        </select>
+          
+      <p id="search_title"> カラー</p>
+        <select name="collar" id="search_box"">
+          <option id="search_option" value="none">ーーー</option>
+          <option id="search_option" value="white">ホワイト</option>
+          <option id="search_option" value="red">レッド</option>
+          <option id="search_option" value="blue">ブルー</option>
+          <option id="search_option" value="yellow">イエロー</option>
+          <option id="search_option" value="pink">ピンク</option>
+          <option id="search_option" value="orange">オレンジ</option>
+          <option id="search_option" value="purple">パープル</option>
+          <option id="search_option" value="green">グリーン</option>
+        </select>
+    
+      <p id="search_title">イメージ</p>              
+        <select id="search_box">
+          <option id="search_option" value="1">ーーー</option>
+          <option id="search_option" value="cool">クール</option>
+          <option id="search_option" value="cute">キュート</option>
+          <option id="search_option" value="elegant">エレガント</option>
+        </select>
+
+      <p id="search_title">ライン</p>
+        <select name= "Rhine" id="search_box"">
+          <option id="search_option" value="none">ーーー</option>
+          <option id="search_option" value="ARhine">Aライン</option>
+          <option id="search_option" value="Empire">エンパイアライン</option>
+          <option id="search_option" value="Mermaid">マーメイドライン</option>
+          <option id="search_option" value="dome">ドームライン</option>
+          <option id="search_option" value="slender">スレンダーライン</option>               <option id="search_option" value="Princess">プリンセスライン</option>
+          <option id="search_option" value="others">その他</option>
+        </select>
+  
+      <p id="search_title">ネックライン</p>
+        <select name= "neck" id="search_box"">
+          <option id="search_option" value="none">ーーー</option>
+          <option id="search_option" value="Vneck">Vネックライン</option>
+          <option id="search_option" value="offneck">オフネックライン</option>
+          <option id="search_option" value="jewel">ジュエルネックライン</option>
+          <option id="search_option" value="Scooped">スクープドネックライン</option>
+          <option id="search_option" value="Square">スクエアネックライン</option>
+          <option id="search_option" value="Stand">スタンドカラー</option>
+          <option id="search_option" value="Batou">バトーネックライン</option>
+          <option id="search_option" value="Portrait">ポートレートネックライン</option>
+          <option id="search_option" value="halter">ホルターネックライン</option>
+          <option id="search_option" value="Sweet">スウィートハートネックライン</option>
+          <option id="search_option" value="Uneck">Uネックライン</option>
+          <option id="search_option" value="Camisole">キャミソールネックライン</option>
+          <option id="search_option" value="Oneshoulder">ワンショルダー</option>
+          <option id="search_option" value="Offshoulder">オフショルダーネックライン</option>
+          <option id="search_option" value="Strapless">ストラップレスネックライン</option>
+          <option id="search_option" value="others">その他</option>
+        </select>
+
+      <p id="search_title">スリーブ</p>
+        <select name= "body" id="search_box">
+          <option id="search_option" value="1">ーーー</option>
+          <option id="search_option" value="Less">スリーブレス</option>
+          <option id="search_option" value="Cap">キャップスリーブ</option>
+          <option id="search_option" value="French">フレンチスリーブ</option>
+          <option id="search_option" value="Petal">ペタルスリーブ</option>
+          <option id="search_option" value="Puff">パフスリーブ</option>
+          <option id="search_option" value="Juliet">ジュリエットスリーブ</option>
+          <option id="search_option" value="Bell">ベルスリーブ</option>
+          <option id="search_option" value="Bishop">ビショップスリーブ</option>
+          <option id="search_option" value="Mutton">レッグオブマトンスリーブ</option>
+          <option id="search_option" value="Raglan">ラグランスリーブ</option>
+          <option id="search_option" value="Dolman">ドルマンスリーブ</option>
+          <option id="search_option" value="American">アメリカンスリーブ</option>
+          <option id="search_option" value="Tight">タイトスリーブ</option>
+          <option id="search_option" value="Pagoda">パゴダスリーブ</option>
+          <option id="search_option" value="Pointed">ポインテッドスリーブ</option>
+        </select>
+
+      <p id="search_title">ウエストライン</p>
+        <select name= "body" id="search_box">
+          <option id="search_option" value="1">ーーー</option>
+          <option id="search_option" value="Natural">ナチュラルウエスト</option>
+          <option id="search_option" value="Dropped">ドロップドウエスト</option>
+          <option id="search_option" value="High">ハイウエスト</option>
+          <option id="search_option" value="Ashime">アシメトリカルウエスト</option>
+          <option id="search_option" value="Blouson">ブルゾン</option>
+          <option value="Basque">バスク</option>
+          <option id="search_option" value="Curve">カーブドバスク</option>
+          <option id="search_option" value="Dbasque">ドロップドバスク</option>
+          <option id="search_option" value="Inverted">インバーテッドバスク</option>
+        </select>
+
+      <p id="search_title">スカート</p>
+        <select name= "body" id="search_box">
+          <option id="search_option" value="1">ーーー</option>
+          <option id="search_option" value="Gather">ギャザーフレア</option>
+          <option id="search_option" value="Accordion">アコーディオンブリーツ</option>
+          <option id="search_option" value="Flounce">フラウンス</option>
+          <option id="search_option" value="petal">ペタル</option>
+          <option id="search_option" value="Tiered">ティアード</option>
+          <option id="search_option" value="Ruffle">ラッフル</option>
+          <option id="search_option" value="Streamers">ストリーマーズ</option>
+          <option id="search_option" value="Bias">バイアス</option>
+          <option id="search_option" value="bubble">バブルスカート</option>
+          <option id="search_option" value="Mermaid">マーメイド</option>
+          <option id="search_option" value="Trumpet">トランペット</option>
+          <option id="search_option" value="Fish">フィッシュテイル</option>
+          <option id="search_option" value="Fan">ファンバック</option>
+          <option id="search_option" value="Over">オーバースカート</option>
+          <option id="search_option" value="Bustle">バッスル</option>
+        </select>
+
+      <p id="search_title">スカートレングス</p>
+        <select name= "body" id="search_box">
+          <option id="search_option" value="1">ーーー</option>
+          <option id="search_option" value="Floor">フロアレングス</option>
+          <option id="search_option" value="Ankle">アンクルレングス</option>
+          <option id="search_option" value="Ballerina">バレリーナレングス</option>
+          <option id="search_option" value="Tea">ティーレングス</option>
+          <option id="search_option" value="Midi">ミディレングス</option>
+          <option id="search_option" value="Chanel">シャネルレングス</option>
+          <option id="search_option" value="Knee">ニーレングス</option>
+          <option id="search_option" value="Mini">ミニレングス</option>
+          <option id="search_option" value="Hi-Lo">ハイロー</option>
+        </select>
+
+      <p id="search_title">トレーン</p>
+        <select name= "body" id="search_box">
+          <option id="search_option" value="1">ーーー</option>
+          <option id="search_option" value="Gather">ギャザーフレア</option>
+          <option id="search_option" value="Accordion">アコーディオンブリーツ</option>
+          <option id="search_option" value="Flounce">フラウンス</option>
+          <option id="search_option" value="petal">ペタル</option>
+          <option id="search_option" value="Tiered">ティアード</option>
+          <option id="search_option" value="Ruffle">ラッフル</option>
+          <option id="search_option" value="Streamers">ストリーマーズ</option>
+          <option id="search_option" value="Bias">バイアス</option>   
+        </select>
+
+      <p id="search_title">ボディス</p>
+        <select name= "body" id="search_box">
+          <option id="search_option" value="none">ーーー</option>
+          <option id="search_option" value="Bourne">ボーン</option>
+          <option id="search_option" value="corset">コルセット</option>                  <option id="search_option" value="Shirring">シャーリング</option>
+          <option id="search_option" value="Circular">サーキュラーヨーク</option>
+          <option id="search_option" value="Modesty">モデスティ</option>
+          <option id="search_option" value="overlay">オーバーレイ</option>
+          <option id="search_option" value="others">その他</option>
+        </select> 
+          
+      <p id="search_title">サイズ</p>
+        <select id="search_box">
+          <option id="search_option" value="none">ーーー</option>element_1
+          <option id="search_option" value="five">5</option>
+          <option id="search_option" value="seven">7</option>
+          <option id="search_option" value="nine">9</option>
+          <option id="search_option" value="eleven">11</option>
+          <option id="search_option" value="thirteen">13</option>
+          <option id="search_option" value="fifteen">15</option>
+        </select>       
+            
+      <button id="push-button">検索</button>
     </div>
 
-<<<<<<< HEAD
-
-          <p style="font-size:15px;">イメージ</p>
-
-
-            <p style="font-size:15px;">スタイル</p>
-            <select id="search_box">
-
-              <option>Aライン</option>
-            </select>
-
-          <p>ライン</p>
-           <select name= "Rhine"style="width:250px;height:40px;">
-              <option value="ARhine">Aライン</option>
-              <option value="Empire">エンパイアライン</option>
-              <option value="Mermaid">マーメイドライン</option>
-              <option value="dome">ドームライン</option>
-              <option value="slender">スレンダーライン</option>
-              <option value="Princess">プリンセスライン</option>
-              <option value="others">その他</option>
-            </select>
-
-          <p>ネックライン</p>
-            <select name= "neck"style="width:250px;height:40px;">
-              <option value="Vneck">Vネックライン</option>
-              <option value="offneck">オフネックライン</option>
-              <option value="jewel">ジュエルネックライン</option>
-              <option value="Scooped">スクープドネックライン</option>
-              <option value="Square">スクエアネックライン</option>
-              <option value="Stand">スタンドカラー</option>
-              <option value="Batou">バトーネックライン</option>
-              <option value="Portrait">ポートレートネックライン</option>
-              <option value="halter">ホルターネックライン</option>
-              <option value="Sweet">スウィートハートネックライン</option>
-              <option value="Uneck">Uネックライン</option>
-              <option value="Camisole">キャミソールネックライン</option>
-              <option value="Oneshoulder">ワンショルダー</option>
-              <option value="Offshoulder">オフショルダーネックライン</option>
-              <option value="Strapless">ストラップレスネックライン</option>
-              <option value="others">その他</option>
-            </select>
-
-          <p>ボディス</p>
-          <select name= "body"style="width:250px;height:40px;">
-              <option value="Bourne">ボーン</option>
-              <option value="corset">コルセット</option>
-              <option value="Shirring">シャーリング</option>
-              <option value="Circular">サーキュラーヨーク</option>
-              <option value="Modesty">モデスティ</option>
-              <option value="overlay">オーバーレイ</option>
-              <option value="others">その他</option>
-            </select> 
-
-          <p style="font-size:15px;">サイズ</p>
-             <select id="search_box">
-
-              <option value="five">5</option>
-              <option value="seven">7</option>
-              <option value="nine">9</option>
-              <option value="eleven">11</option>
-              <option value="thirteen">13</option>
-              <option value="fifteen">15</option>
-            </select>          
-          </div>
-        </div>
-      </div>
-      <button id="push-button">検索</button>
-  </div>
-</div>
-<footer><div class='tab-buttons'>
-    
-    <span id='content1'><img src="image/search.png"></span>
-    <span id='content2'><a href="list.html"><img src="image/heart.png"></a></span>
-    <span id='content3'><a href="my-page.html"><img src="image/my-page.png"></a></span>
-  </div>
-</footer>
-
-<script src="js/app.js"></script>
-
-</body>
+    <!--フッター-->
+    <footer>
+      <ul class="bottom-menu">
+        <li>
+          <a href="search.html">
+          <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/search.png"</span></a>
+        </li>
+        <li>
+          <a href="favorite.html">
+          <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/heart.png"></span></a>
+        </li>
+        <li>
+          <a href="my-page.html">
+          <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/my-page.png"></span></a>
+        </li>
+      </ul>
+    </footer>
+    <script src="js/app.js"></script>
+  </body>
 </html>
 
 
