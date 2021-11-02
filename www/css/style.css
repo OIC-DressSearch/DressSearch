@@ -336,9 +336,26 @@ border-bottom: 3px solid #92D050;
 /***********ここまでマイページのCSS************/
 
 /***********ここからメールアドレス画面のCSS****/
-#mail_update_2{
+
+  #mail_update_2{
   display: none;
 }
+
 #new_address:focus{
   outline: solid 3px red;
 }
+
+
+
+/***********ここからパスワード画面のCSS****/
+    a {
+      display: block;
+      text-align: center;
+    }
+
+    section {
+      text-align: center;
+    }
+
+/***********ここまでパスワード画面のCSS****/
+
