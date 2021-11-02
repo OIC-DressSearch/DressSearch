@@ -36,7 +36,6 @@
       $("#"+element_id).addClass('heart_enp');
     });
 
-
 /***ここまでいいね画面*****************************************************/
 
 /***マイページ*****************************************************/
@@ -47,24 +46,6 @@
 
 /***ここまでマイページ*****************************************************/
 
-
-
-
-/* ここからいいね画面のJS */
-
-//いいね
-$("body").on('click','.heart_enp',function(){
-  var element_id=$(this).attr('id');
-  $("#"+element_id).removeClass('heart_enp');
-  $("#"+element_id).addClass('heart');
-});
-
-//いいね取消し
-$("body").on('click','.heart',function(){
-  var element_id=$(this).attr('id');
-  $("#"+element_id).removeClass('heart');
-  $("#"+element_id).addClass('heart_enp');
-});
 
 /* メールアドレス画面JS */
 $("#mail_update").click(function(){

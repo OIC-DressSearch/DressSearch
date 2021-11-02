@@ -339,3 +339,6 @@ border-bottom: 3px solid #92D050;
 #mail_update_2{
   display: none;
 }
+#new_address:focus{
+  outline: solid 3px red;
+}
