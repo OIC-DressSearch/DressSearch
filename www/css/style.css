@@ -127,7 +127,7 @@
   /*プルダウン中身*/
     #search_option{
       font-size:15px;
-      color: rgb(5, 5, 5)
+      color: rgb(5, 5, 5);
     }
 
     .display_search{
@@ -312,5 +312,15 @@ border-bottom: 3px solid #92D050;
     margin-bottom: 80px;
   }
 
+  /* リンクの下線を消す */
+    .link{
+      text-decoration: none;
+      color: rgb(5, 5, 5);
+    }
+  
 /***********ここまでマイページのCSS************/
 
+/***********ここからメールアドレス画面のCSS****/
+#mail_update{
+  
+}
