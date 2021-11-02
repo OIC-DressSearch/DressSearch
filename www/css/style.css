@@ -349,7 +349,27 @@ border-bottom: 3px solid #92D050;
 
 
 /***********ここからメールアドレス画面のCSS****/
+
+#mail_update{
+  
+}
+
+
+/***********ここからパスワード画面のCSS****/
+    a {
+      display: block;
+      text-align: center;
+    }
+
+    section {
+      text-align: center;
+    }
+
+/***********ここまでパスワード画面のCSS****/
+
 #mail_update_2{
   display: none;
 
 }
+
+
