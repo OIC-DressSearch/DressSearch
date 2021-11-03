@@ -92,7 +92,7 @@
     #push-button{ 
     margin-left: 3%;
     margin-right: 30px;
-    margin-top: 15%;
+    margin-top: 12%;
     margin-bottom: 30%;
     width:95%;
     height:40px;
@@ -122,20 +122,27 @@
 
   /*プルダウンタイトル*/
     #search_title{
+      margin-left: 3%;
+      margin-top: 5%;
+      margin-bottom: 3%;
       font-size: 13px;
     }
 
   /*プルダウン中身*/
     #search_option{
       font-size:15px;
-      color: rgb(5, 5, 5)
+      color: rgb(5, 5, 5);
+    }
+
+    .display_search{
+      margin-top: 10%;
     }
 
 /***********ここまで検索画面のCSS************/
 
 /**************一覧画面のCSS****************/
 
-      .list {
+    .list {
       display:flex;
       flex-flow:wrap;
       list-style-type: none;
@@ -152,49 +159,146 @@
     }
     /*画像表示*/
 
-    /*list.html*/
-
-    .list-header{
-      display: table;
-      margin: 0 auto;
-      padding: 0 ;
-      width: 80%;
-      text-align: center;
-    }
-    li.home{
-    border-bottom: 3px solid #92D050;
-    }
-    .list-header li{
-          display: inline-block;
-    margin-left: 30px;
-      min-width: 20px;
-      font-size: 10px;
-    }
-    .list-header li:hover{
-      color: #E7DA66;
-      border-bottom: 3px solid #F0E475;
-    }
-    .header{
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 999;
-        overflow: auto;
-    }
-    .header_2{
-        width: 1000px;
-        margin: 0 auto;
-    }
-
-
-
 /***********いいね画面のCSS************/
 
-
-
-
+.list-header{ 
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0 ;
+  width: 100%;
+  text-align: left;
+  margin-bottom:10px; 
+}
+li.home{
+border-bottom: 3px solid #92D050;
+}
+.list-header li{
+  display: inline-block;
+  margin-left: 30px;
+  min-width: 20px;
+  font-size: 10px;
+}
+.list-header li:hover{
+  color: #E7DA66;
+  border-bottom: 3px solid #F0E475;
+}
+.nice_header{
+    overflow: auto;
+}
+.nice_header_2{
+    width: 2000px;
+    margin: 0 auto;
+}
+.nice_header_3{
+  margin-top: 5px;
+  height: 50px;
+  border: ridge 1px;
+}
+.menu{
+  display: inline-block;
+  margin-top:10px; 
+}
+#push {
+  display: inline-block;
+  text-decoration: none;
+  background: #abd8e0;/*ボタン色*/
+  border-bottom: solid 1px #627295;
+  color: #FFF;
+  border-radius: 3px;
+  margin-left: 140px;
+  margin-right:20px; 
+  height: 20px;
+  width: 70px;
+  text-align: center;
+  font-size: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#push:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
+#reserve{
+  display: inline-block;
+  text-decoration: none;
+  background: #abd8e0;/*ボタン色*/
+  border-bottom: solid 1px #627295;
+  color: #FFF;
+  border-radius: 3px;
+  height: 20px;
+  width: 70px;
+  text-align: center;
+  font-size: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#reserve:active{
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
+#result{
+  font-size: 3px;
+}
+.heart {
+  width: 40px;  /* 正方形を作る */
+  height: 40px; /* 正方形を作る */
+  position: relative;/* 基準位置とする */
+  top: -45px;
+  left: 110px;
+}
+.heart::before,
+.heart::after {
+  content: "";  /* 疑似要素に必須 */
+  width: 50%;   /* ハートの丸い部分の大きさにかかわる */
+  height: 80%;  /* ハートの高さにかかわる */
+  background: #E0548E; /* ハートの色 */
+  border-radius: 25px 25px 0 0; /* ハートの半円を生成 */
+  display: block; /* ブロック要素にする */
+  position: absolute; /* 相対位置に指定 */
+}
+.heart::before {
+  transform: rotate(-45deg); /* 左に回転 */
+  left: 14%;                 /* 左からの位置を指定 */
+}
+.heart::after {
+  transform: rotate(45deg);  /* 右に回転 */
+  right: 14%;                /* 右からの位置を指定 */
+}
+.heart_enp {
+  width: 40px;  /* 正方形を作る */
+  height: 40px; /* 正方形を作る */
+  position: relative;/* 基準位置とする */
+  top: -45px;
+  left: 110px;
+}
+.heart_enp::before,
+.heart_enp::after {
+  content: "";  /* 疑似要素に必須 */
+  width: 50%;   /* ハートの丸い部分の大きさにかかわる */
+  height: 80%;  /* ハートの高さにかかわる */
+  background: rgba(255,255,255,0.6);; /* ハートの色 */
+  border-radius: 25px 25px 0 0; /* ハートの半円を生成 */
+  display: block; /* ブロック要素にする */
+  position: absolute; /* 相対位置に指定 */
+}
+.heart_enp::before {
+  transform: rotate(-45deg); /* 左に回転 */
+  left: 14%;                 /* 左からの位置を指定 */
+}
+.heart_enp::after {
+  transform: rotate(45deg);  /* 右に回転 */
+  right: 14%;                /* 右からの位置を指定 */
+}
 /***********ここまでいいね画面のCSS************/
+
+
 
 /***********マイページのCSS************/
 
@@ -212,5 +316,15 @@
     margin-bottom: 80px;
   }
 
+  /* リンクの下線を消す */
+    .link{
+      text-decoration: none;
+      color: rgb(5, 5, 5);
+    }
+  
 /***********ここまでマイページのCSS************/
 
+/***********ここからメールアドレス画面のCSS****/
+#mail_update{
+  
+}
