@@ -1,23 +1,43 @@
 /**************共通部分のcss****************************************************************/
 
-  /*ヘッダー***************************************************************/
+  /*基本のヘッダー***************************************************************/
     .hed{
-    text-align: center;
-    font-size: 17px;
-    height: 8%;
-    width: 100%;
-    background-color: rgb(255, 255, 255);
-    color: #68c3c5;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 100;
-    display: flex;
-    position: sticky;
-    align-items: center;
-    justify-content: space-around;
-    border-bottom: 0.5px solid #808080;/*バーの下の線*/
-  }
+      text-align: center;
+      font-size: 17px;
+      height: 8%;
+      width: 100%;
+      background-color: rgb(255, 255, 255);
+      color: #68c3c5;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 100;
+      display: flex;
+      position: sticky;
+      align-items: center;
+      justify-content: space-around;
+      border-bottom: 0.5px solid #808080;/*バーの下の線*/
+    }
+
+  /*戻るボタンが必要な場合のヘッダー**********************************/
+    .hed_re{
+      height: 8%;
+      width: 100%;
+      background-color: rgb(255, 255, 255);
+      color: #68c3c5;
+      display: flex; /*要素の横並び*/
+      position: sticky;
+      border-bottom: 0.5px solid #808080;/*バーの下の線*/
+    }
+    /* ≪ */
+      #return{
+        font-size: 19px;
+        color: #68c3c5;
+        margin-top: 3.5%; 
+        margin-left: 5%;
+        margin-right: 5%;
+      }
+    
 
   /*フッター************************************************************/
 
@@ -160,6 +180,19 @@
 
 /**************一覧画面のCSS*************************************/
 
+  /*戻るボタンありヘッダー***/
+    #return{
+      font-size: 19px;
+      color: #68c3c5;
+      margin-top: 3.5%; 
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+    #title{
+      font-size: 17px;
+    }
+
+
     .list {
       display:flex;
       flex-flow:wrap;
@@ -176,17 +209,29 @@
       height:200px;
     }
 
-    #kensaku_kensu{
-      margin-left: 3%;
-    }
-    #kensaku_joken{
-      margin-left: 5%;
-    }
-    #joken_henkou{
-      margin-left: 140px;
-      margin-right:5%; 
-      color: #E0548E;
-    }
+    /*ヘッダー下*/
+      #itiran_header{
+        border-bottom:0.2px solid #cccbcb;
+      }
+      .menu{
+        margin-top: 1%;
+        margin-bottom: 1%;
+      }
+      #kensaku_kensu{
+        margin-left: 3%;
+        color: #68c3c5;
+        font-size: 16px;
+      }
+      #kensaku_joken{
+        margin-left: 5%;
+        font-size: 15px;
+      }
+      #joken_henkou{
+        margin-left: 140px;
+        margin-right:5%; 
+        color: #202f55;
+        font-size: 16px;
+      }
 
 /***********いいね画面のCSS********************************************/
 
@@ -327,8 +372,6 @@ border-bottom: 3px solid #92D050;
 }
 /***********ここまでいいね画面のCSS************************************/
 
-
-
 /***********マイページのCSS*********************************************/
 
   #mypage_list{
@@ -347,8 +390,24 @@ border-bottom: 3px solid #92D050;
   
 /***********ここまでマイページのCSS*****************************************/
 
+/***********ここから会員情報画面のCSS**********************************/
 
-/***********ここからメールアドレス画面のCSS****/
+  /*戻るボタンありヘッダー***/
+    #title_1{
+      font-size: 17px;
+      margin-left: 23%;
+    }
+
+
+/***********ここまで会員情報のCSS*****************************************/
+
+/***********ここからメールアドレス画面のCSS**********************************/
+
+  /*戻るボタンありヘッダー***/
+    #title_2{
+      font-size: 17px;
+      margin-left: 18%;
+    }
 
   #mail_update_2{
   display: none;
@@ -366,8 +425,21 @@ border-bottom: 3px solid #92D050;
   left: 0px;
 }
 
+#mail_update_2{
+  display: none;
 
-/***********ここからパスワード画面のCSS****/
+}
+/***********ここまでメールアドレスのCSS*****************************************/
+
+/***********ここからパスワード画面のCSS********************************/
+
+  /*戻るボタンありヘッダー***/
+    #title_3{
+      font-size: 17px;
+      margin-left: 25%;
+    }
+
+
     a {
       display: block;
       text-align: center;
@@ -377,11 +449,40 @@ border-bottom: 3px solid #92D050;
       text-align: center;
     }
 
-/***********ここまでパスワード画面のCSS****/
+/***********ここまでパスワードのCSS***********************************/
 
-/***********ここから退会画面のCSS**********/
+/***********ここから身長/BWHのCSS********************************/
+
+  /*戻るボタンありヘッダー***/
+    #title_4{
+      font-size: 17px;
+      margin-left: 23%;
+    }
+
+
+/***********ここまで身長/BWHのCSS********************************/
+
+/***********ここからログアウトのCSS********************************/
+
+  /*戻るボタンありヘッダー***/
+    #title_5{
+      font-size: 17px;
+      margin-left: 28%;
+    }
+
+
+/***********ここまでログアウトのCSS********************************/
+
+/***********ここから退会のCSS********************************/
+
+  /*戻るボタンありヘッダー***/
+    #title_6{
+      font-size: 17px;
+      margin-left: 22%;
+    }
 .withdrawal{
   display: none;
 }
 
-/***********ここまで退会画面のCSS**********/
+/***********ここまで退会のCSS********************************/
+
