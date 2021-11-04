@@ -355,9 +355,16 @@ border-bottom: 3px solid #92D050;
 }
 
 #new_address:focus{
-  outline: solid 3px red;
+  outline: solid 3px rgb(255, 164, 78);
 }
-
+#check_address:focus{
+  outline: solid 3px rgb(255, 164, 78);
+}
+.back{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
 
 
 /***********ここからパスワード画面のCSS****/
