@@ -181,15 +181,9 @@
 /**************一覧画面のCSS*************************************/
 
   /*戻るボタンありヘッダー***/
-    #return{
-      font-size: 19px;
-      color: #68c3c5;
-      margin-top: 3.5%; 
-      margin-left: 5%;
-      margin-right: 5%;
-    }
-    #title{
+    #title_0{
       font-size: 17px;
+      margin-left: 27%;
     }
 
 
