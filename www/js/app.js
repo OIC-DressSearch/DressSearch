@@ -1,5 +1,7 @@
 /***共通部分*****************************************************/
-
+$(".back").click(function(){
+  window.location.href = "my-page.html"; 
+});
 
 
   
