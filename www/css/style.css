@@ -379,8 +379,9 @@ border-bottom: 3px solid #92D050;
 
 /***********ここまでパスワード画面のCSS****/
 
-#mail_update_2{
+/***********ここから退会画面のCSS**********/
+.withdrawal{
   display: none;
-
 }
 
+/***********ここまで退会画面のCSS**********/
