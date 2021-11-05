@@ -100,7 +100,12 @@
       margin-top:10px; 
       margin-left:20px; 
     }
-
+    .ok{
+      display: none;
+    }
+    .change{
+      display: block;
+    }
   /*その他************************************************************/
   
     /* リンクの下線を消す */
