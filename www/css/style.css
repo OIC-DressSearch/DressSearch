@@ -193,23 +193,22 @@
       margin-left: 25%;
     }
 
-
-    .list {
+.list {
       display:flex;
       flex-flow:wrap;
       list-style-type: none;
+      padding: 10px;
+      text-align: center;
     }
 
     .item {
       width:50%;
-      box-sizing:border-box;
     }
 
     .item img{
       width:150px;
       height:200px;
     }
-
     /*ヘッダー下*/
       #itiran_header{
         border-bottom:0.2px solid #cccbcb;
