@@ -1,7 +1,10 @@
 /***共通部分*****************************************************/
-
-
-
+$(".back").click(function(){
+  window.location.href = "my-page.html"; 
+});
+$("#ok-button").click(function(){
+  window.location.href = "my-page.html"; 
+})
   
 
 /***ここまで共通部分*****************************************************/
@@ -36,7 +39,6 @@
       $("#"+element_id).addClass('heart_enp');
     });
 
-
 /***ここまでいいね画面*****************************************************/
 
 /***マイページ*****************************************************/
@@ -47,29 +49,80 @@
 
 /***ここまでマイページ*****************************************************/
 
+/***会員情報変更画面*****************************************************/
 
-
-
-/* ここからいいね画面のJS */
-
-//いいね
-$("body").on('click','.heart_enp',function(){
-  var element_id=$(this).attr('id');
-  $("#"+element_id).removeClass('heart_enp');
-  $("#"+element_id).addClass('heart');
+  $("#info_button").click(function(){
+    $(".change").css("display","none");
+  $(".ok").css("display","block");
 });
 
-//いいね取消し
-$("body").on('click','.heart',function(){
-  var element_id=$(this).attr('id');
-  $("#"+element_id).removeClass('heart');
-  $("#"+element_id).addClass('heart_enp');
+/***ここまで会員情報変更画面*****************************************************/
+
+/***パスワード変更画面*****************************************************/
+
+  $("#pass_button").click(function(){
+    $(".change").css("display","none");
+  $(".ok").css("display","block");
 });
 
-/* メールアドレス画面JS */
+/***ここまでパスワード変更画面*****************************************************/
+
+/***身長/BWH変更画面*****************************************************/
+
+  $("#higth_button").click(function(){
+    $(".change").css("display","none");
+  $(".ok").css("display","block");
+});
+
+/***ここまで身長/BWH変更画面*****************************************************/
+
+
+/***メールアドレス画面*****************************************************/
 $("#mail_update").click(function(){
-  
+  $("#mail_update_2").css("display","block");
 });
+$("#mail-button").click(function(){
+  var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
+   var address = $("#new_address").val();
+   var address_check= $("#check_address").val();
+   if(address!=address_check){
+     alert("再入力されたアドレスが違います");
+   }
+   else{
+    if(reg.test(address)){
+      $("#mail-button").click(function(){
+    $(".change").css("display","none");
+  $(".ok").css("display","block");
+});
+    }
+    else{
+      alert("入力されたメールアドレスが正しくないです");
+    }
+  }
+});
+/***ここまでメールアドレス画面*****************************************************/
+
+/***logout画面*****************************************************/
+$("#logout-button").click(function(){
+    $(".change").css("display","none");
+  $(".ok").css("display","block");
+});
+
+
+/***ここまでlogput画面*****************************************************/
+
+
+/***退会画面*****************************************************/
+$("#login-button").click(function(){
+  $(".check_login").css("display","none");
+  $(".withdrawal").css("display","block");
+});
+
+
+/***ここまで退会画面*****************************************************/
+
+
+
 
 /* ニフクラメモ
 
@@ -88,30 +141,6 @@ var test = new Test();
         Test.fetchAll() // データベース内を全て検索
        .then(function(objects){
           var object = objects[0]; //データベース内のN番目のレコードを指定          
-<<<<<<< HEAD
-          var path= object.get("path"); //pathフィールドからデータを取得
-          path='<img src="image/'+path+'">';
-          $('.te').append(path);
-       });
-});
-
-<<<<<<< HEAD
-=======
-//いいね
-$("body").on('click','.heart_enp',function(){
-  var element_id=$(this).attr('id');
-  $("#"+element_id).removeClass('heart_enp');
-  $("#"+element_id).addClass('heart');
-});
-
-//いいね取消し
-$("body").on('click','.heart',function(){
-  var element_id=$(this).attr('id');
-  $("#"+element_id).removeClass('heart');
-  $("#"+element_id).addClass('heart_enp');
-});*/
-
-/*
           var path= object.get("フィールド名"); //フィールド名のフィールドからデータを取得
        });*/
 

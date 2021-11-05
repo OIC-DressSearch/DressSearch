@@ -8,7 +8,6 @@
 
     <script src="components/loader.js"></script>
     <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
-    <script src="js/app.js"></script>
 
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
@@ -16,11 +15,30 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
 <body>
-    <!--ヘッター-->
-    <header class="hed">
-      <p>検索</p>
+    <!-- ヘッダー -->
+    <header class="hed_re">
+      <a href="my-page.html" class="link" id="return">≪</a>
+      <p id="title_3">パスワード変更</p>      
     </header>
 
+    <!-- メイン -->
+    <div class="now">
+      <p id="my_title">◉現在のパスワード</p>
+      <p id="my_text">***************</p>
+    </div>
+
+    <div class="new">   
+      <p id="my_title">◉新しいパスワード</p>
+      <input type="password" name="pass" id="my_textbox">
+    </div>
+
+    <button class="push-button" id="pass_button">変更</button>
+</div>
+
+  <div class="ok">
+       <div>変更しました</div>
+       <button id="ok-button" class="push-button" style="margin-top:60px;">OK</button>
+  </div>
 
     <!--フッター-->
     <footer>
@@ -39,6 +57,6 @@
         </li>
       </ul>
     </footer>
-
+  <script src="js/app.js"></script>
 </body>
 </html>
