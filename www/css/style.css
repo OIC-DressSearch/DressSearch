@@ -1,7 +1,8 @@
-/**************共通部分のcss****************************************************************/
+/***********共通部分のcss***************************************************/
 
-  /*基本のヘッダー***************************************************************/
+  /*基本のヘッダー***********************************************************/
     .hed{
+      margin-top: 5%;
       text-align: center;
       font-size: 17px;
       height: 8%;
@@ -21,6 +22,7 @@
 
   /*戻るボタンが必要な場合のヘッダー**********************************/
     .hed_re{
+      margin-top: 5%;
       height: 8%;
       width: 100%;
       background-color: rgb(255, 255, 255);
@@ -33,7 +35,7 @@
       #return{
         font-size: 19px;
         color: #68c3c5;
-        margin-top: 3.5%; 
+        margin-top: 5%; 
         margin-left: 5%;
         margin-right: 5%;
       }
@@ -183,7 +185,7 @@
   /*戻るボタンありヘッダー***/
     #title_0{
       font-size: 17px;
-      margin-left: 27%;
+      margin-left: 25%;
     }
 
 
@@ -381,6 +383,37 @@ border-bottom: 3px solid #92D050;
   .display{
     margin-bottom: 80px;
   }
+
+  /***共通部分*********************************/
+
+  .now{
+    margin-top: 10%;
+    margin-bottom: 15%;
+  }
+    #my_title{
+      margin-left: 5%;
+      font-size: 15px;
+    }
+    #my_subtitle{
+      margin-left: 4%;
+      font-size: 15px;
+    }
+    #my_text{
+      margin-left: 8%;
+      font-size: 17px;
+    }
+    #my_text1{
+      margin-left: 8%;
+      font-size: 17px;
+    }
+    #my_textbox{
+      margin-left: 8%;
+      font-size: 17px;
+      border-radius:5px;
+      width: 60%;
+      height: 25px;
+    }
+  /***ここまで共通部分************************/
   
 /***********ここまでマイページのCSS*****************************************/
 
@@ -389,7 +422,7 @@ border-bottom: 3px solid #92D050;
   /*戻るボタンありヘッダー***/
     #title_1{
       font-size: 17px;
-      margin-left: 23%;
+      margin-left: 21%;
     }
 
 

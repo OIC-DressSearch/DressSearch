@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
+  
 <body>
     <!-- ヘッダー -->
     <header class="hed_re">
@@ -22,23 +23,29 @@
       <p id="title_4">身長/BWH変更</p>      
     </header>
 
-    <div>
-      <p style="text-align:center">身長</p>
-      <div style="text-align:center">156cm</div><br>
-
-      <p style="text-align:center">BWH</p>
-      <div style="text-align:center"></div><br>
-
-      <p style="text-align:center">身長/BWHの変更</p>
-      <p style="text-align:center">身長</p>
-      <input type="text" style="margin-top:20px;margin-left:35px; width:50%;height:30px;"><br>
-
-      <p style="text-align:center">BWH</p>
-      <p style="text-align:center">B：<input type="text" style="margin-top:20px;margin-left:35px; width:30%;height:30px; text-align:center;"></p>
-      <p style="text-align:center">W：<input type="text" style="margin-top:20px;margin-left:35px; width:30%;height:30px; text-align:center;"></p>
-      <p style="text-align:center">H：<input type="text" style="margin-top:20px;margin-left:35px; width:30%;height:30px; text-align:center;"></p>
-      <button id="push-button">保存</button>
+  <!-- メイン -->
+    <div class="now">
+      <p id="my_title">◉登録済した身長</p>
+      <p id="my_text">156cm</p>
+      <p id="my_title">◉登録済みのBWH</p>
+      <div id="bwh">
+        <p id="my_text1">85</p>
+        <p id="my_text1">:　60</p>
+        <p id="my_text1">:　80</p>
+      </div>
     </div>
+
+    <div class="new"> 
+      <p id="my_title">◉身長の変更</p>
+      <input type="text" id="my_textbox">
+      <p id="my_title">◉BWHの変更</p>
+      <p id="my_text1">B：</p> <input type="text" id="my_textbox">
+      <p id="my_text1">W：</p> <input type="text" id="my_textbox">
+      <p id="my_text1">H：</p> <input type="text" id="my_textbox">
+    </div>
+
+      <button id="push-button">保存</button>
+   
 
     <!--フッター-->
     <footer>
