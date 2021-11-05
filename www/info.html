@@ -8,7 +8,7 @@
 
     <script src="components/loader.js"></script>
     <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
-    <script src="js/app.js"></script>
+
 
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
@@ -24,16 +24,23 @@
     </header>
 
   <!--メイン-->
-  <div class="display_info">
-    <p>氏名</p>
-    <div>加藤</div><br>
+  <div class="change">
+    <div class="display_info">
+      <p>氏名</p>
+      <div>加藤</div><br>
 
-    <p>氏名の変更</p>
-    <input type="text">
-    
-    <p>氏名の再入力</p>
-    <input type="text">
-    <button id="push-button">保存</button>
+      <p>氏名の変更</p>
+      <input type="text">
+      
+      <p>氏名の再入力</p>
+      <input type="text">
+         <button id="info-button" class="push-button" >保存</button>
+    </div>
+  </div>
+
+  <div class="ok">
+       <div>変更しました</div>
+       <button id="ok-button" class="push-button" style="margin-top:60px;">OK</button>
   </div>
 
   <footer>
@@ -52,5 +59,6 @@
         </li>
       </ul>
     </footer>
+      <script src="js/app.js"></script>
 </body>
 </html>

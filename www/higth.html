@@ -8,7 +8,6 @@
 
     <script src="components/loader.js"></script>
     <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
-    <script src="js/app.js"></script>
 
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
@@ -21,7 +20,7 @@
       <a href="my-page.html" class="link" id="return">≪</a>
       <p id="title_4">身長/BWH変更</p>      
     </header>
-
+  <div class="change">
     <div>
       <p>身長</p>
       <div>156cm</div><br>
@@ -37,8 +36,14 @@
       <p>B：<input type="text"></p>
       <p>W：<input type="text"></p>
       <p>H：<input type="text"></p>
-      <button id="push-button">保存</button>
+      <button id="higth_button" class="push-button">保存</button>
     </div>
+ </div>
+  <div class="ok">
+       <div>変更しました</div>
+       <button id="ok-button" class="push-button" style="margin-top:60px;">OK</button>
+  </div>
+
 
     <!--フッター-->
     <footer>
@@ -56,6 +61,8 @@
           <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/my-page.png"></span></a>
         </li>
       </ul>
+
     </footer>
+        <script src="js/app.js"></script>
 </body>
 </html>
