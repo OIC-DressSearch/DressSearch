@@ -51,7 +51,7 @@ $("#ok-button").click(function(){
 
 /***会員情報変更画面*****************************************************/
 
-  $("#info-button").click(function(){
+  $("#info_button").click(function(){
     $(".change").css("display","none");
   $(".ok").css("display","block");
 });
