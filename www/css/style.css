@@ -23,10 +23,6 @@
     text-decoration:none; 
   }
 
-  a:link, a:visited, a:hover, a:active {
-    color:#68c3c5; /*ハイパーリンクの色*/
-  }
-
   /*フッター**************************************************/
 
     ul.bottom-menu {
