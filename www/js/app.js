@@ -2,8 +2,9 @@
 $(".back").click(function(){
   window.location.href = "my-page.html"; 
 });
-
-
+$("#ok-button").click(function(){
+  window.location.href = "my-page.html"; 
+})
   
 
 /***ここまで共通部分*****************************************************/
@@ -48,6 +49,33 @@ $(".back").click(function(){
 
 /***ここまでマイページ*****************************************************/
 
+/***会員情報変更画面*****************************************************/
+
+  $("#info_button").click(function(){
+    $(".change").css("display","none");
+  $(".ok").css("display","block");
+});
+
+/***ここまで会員情報変更画面*****************************************************/
+
+/***パスワード変更画面*****************************************************/
+
+  $("#pass_button").click(function(){
+    $(".change").css("display","none");
+  $(".ok").css("display","block");
+});
+
+/***ここまでパスワード変更画面*****************************************************/
+
+/***身長/BWH変更画面*****************************************************/
+
+  $("#higth_button").click(function(){
+    $(".change").css("display","none");
+  $(".ok").css("display","block");
+});
+
+/***ここまで身長/BWH変更画面*****************************************************/
+
 
 /***メールアドレス画面*****************************************************/
 $("#mail_update").click(function(){
@@ -62,7 +90,10 @@ $("#mail-button").click(function(){
    }
    else{
     if(reg.test(address)){
-    window.location.href = "my-page.html"; 
+      $("#mail-button").click(function(){
+    $(".change").css("display","none");
+  $(".ok").css("display","block");
+});
     }
     else{
       alert("入力されたメールアドレスが正しくないです");
@@ -70,6 +101,16 @@ $("#mail-button").click(function(){
   }
 });
 /***ここまでメールアドレス画面*****************************************************/
+
+/***logout画面*****************************************************/
+$("#logout-button").click(function(){
+    $(".change").css("display","none");
+  $(".ok").css("display","block");
+});
+
+
+/***ここまでlogput画面*****************************************************/
+
 
 /***退会画面*****************************************************/
 $("#login-button").click(function(){
