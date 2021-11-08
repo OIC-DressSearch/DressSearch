@@ -144,3 +144,30 @@ var test = new Test();
           var path= object.get("フィールド名"); //フィールド名のフィールドからデータを取得
        });*/
 
+
+/*************ファイル読み込み処理テスト*********/
+
+
+  var ncmb = new NCMB("7672355577f11839b1a72bce66af03d2a68e6f119b00178a4ecc8bc08daaaf68","a35cc47c9dc52261c4590dae8f7d466eb3cdf83aa729c0443933ae8cb1d95b13");
+
+    var reader = new FileReader(); //リーダークラス作成
+    reader.onload = function(e) { //リーダーが読み込んだ時のイベント
+      var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
+      document.getElementById("tes").src = dataUrl;
+    }
+
+        $("#test").click(function(){
+      // ファイル名からファイルを取得
+      var fileName = "icon.png";
+
+      // ダウンロード（データ形式をblobを指定）
+      ncmb.File.download(fileName, "blob")
+           .then(function(blob) {
+           // ファイルリーダーにデータを渡す
+           reader.readAsDataURL(blob);
+           })
+           .catch(function(err) {
+              console.error(err);
+           })
+    
+    });
