@@ -4,7 +4,7 @@
     .hed{
       margin-top: 5%;
       text-align: center;
-      font-size: 17px;
+      font-size: 19px;
       height: 8%;
       width: 100%;
       background-color: rgb(255, 255, 255);
@@ -121,10 +121,10 @@
   /*「検索」ボタン*/  
     #push-button{ 
     margin-left: 3%;
-    margin-right: 30px;
+    margin-right: 4%;
     margin-top: 12%;
     margin-bottom: 30%;
-    width:95%;
+    width:93%;
     height:40px;
     text-align: center;
     background-color: #68c3c5;
@@ -136,10 +136,10 @@
 
   .push-button{ 
     margin-left: 3%;
-    margin-right: 30px;
+    margin-right: 4%;
     margin-top: 12%;
     margin-bottom: 30%;
-    width:95%;
+    width:93%;
     height:40px;
     text-align: center;
     background-color: #68c3c5;
@@ -236,33 +236,40 @@
 /***********いいね画面のCSS********************************************/
 
 .list-header{ 
-  display: inline-block;
+  display: inline-table;
   margin: 0 auto;
   padding: 0 ;
-  width: 100%;
+  max-width: 100%;
   text-align: left;
   margin-bottom:10px; 
+  margin-top: 5%;
 }
-li.home{
-border-bottom: 3px solid #92D050;
-}
+
 .list-header li{
   display: inline-block;
-  margin-left: 30px;
+  margin-left: 10%;
+  margin-right: 15%;
   min-width: 20px;
-  font-size: 10px;
+  font-size: 12px;
 }
 .list-header li:hover{
-  color: #E7DA66;
-  border-bottom: 3px solid #F0E475;
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
 }
 .nice_header{
-    overflow: auto;
+  overflow: auto;
 }
-.nice_header_2{
-    width: 2000px;
-    margin: 0 auto;
+.nice_header_2{ /*ul全体*/
+  max-width: 100%;
+  overflow-x: auto;
 }
+
+#nice_list{ /*liの中身*/
+  margin-right: 12%;
+  word-wrap: normal;
+  word-break:break-word;
+}
+
 .nice_header_3{
   margin-top: 5px;
   height: 50px;
