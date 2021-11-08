@@ -185,7 +185,7 @@
 
 /***********ここまで検索画面のCSS*******************************/
 
-/**************一覧画面のCSS*************************************/
+/**************一覧画面のCSS**********************************/
 
   /*戻るボタンありヘッダー***/
     #title_0{
@@ -227,156 +227,158 @@
         font-size: 15px;
       }
       #joken_henkou{
-        margin-left: 140px;
+        margin-left: 120px;
         margin-right:5%; 
         color: #202f55;
         font-size: 16px;
       }
 
-/***********いいね画面のCSS********************************************/
+/***********いいね画面のCSS*************************************/
 
-.list-header{ 
-  display: inline-table;
-  margin: 0 auto;
-  padding: 0 ;
-  max-width: 100%;
-  text-align: left;
-  margin-bottom:10px; 
-  margin-top: 5%;
-}
+/*  2段目 */
+  .nice_header_2{ /*２段目全体*/
+    max-width: 100%;
+    overflow-x: auto;
+    border-bottom: 1px solid #cccbcb;
+  }
+  .list-header{ /*ul全体*/
+    display: inline-table;
+    margin: 0 auto;
+    padding: 0 ;
+    max-width: 100%;
+    text-align: left;
+    margin-bottom:5%; 
+    margin-top: 5%;
+  }
+   .list-header li{
+    display: inline-block;
+    margin-left: 10%;
+    margin-right: 15%;
+    min-width: 20px;
+    font-size: 15px;
+  }
+  .list-header li:hover{
+    color: #68c3c5;
+    border-bottom: 3px solid #68c3c5;
+  }
+  #nice_list{ /*liの中身*/
+    margin-right: 12%;
+    max-width: 100%;
+    word-wrap: normal;
+    word-break:break-word;
+  }
 
-.list-header li{
-  display: inline-block;
-  margin-left: 10%;
-  margin-right: 15%;
-  min-width: 20px;
-  font-size: 12px;
-}
-.list-header li:hover{
-  color: #68c3c5;
-  border-bottom: 3px solid #68c3c5;
-}
-.nice_header{
-  overflow: auto;
-}
-.nice_header_2{ /*ul全体*/
-  max-width: 100%;
-  overflow-x: auto;
-}
+/*  3段目 */
+  .nice_header_3{/*3段目全体*/
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border-bottom: 1px solid #cccbcb;
+  } 
+  .menu{ /*3段目全部*/
+    display: inline-block;
+    margin-top:1%; 
+    margin-bottom: 1%;
+    margin-left: 5%;
+    max-width: 95%;
+  }
+  #result{ /*件数*/
+    font-size: 10px;
+  }
+  #push {  /*編集*/
+    display: inline-block;
+    text-decoration: none;
+    background: #abd8e0;/*ボタン色*/
+    color: #FFF;
+    border-radius: 3px;
+    margin-left: 28%;
+    height: 38%;
+    width: 20%;
+    text-align: center;
+    font-size: 15px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  #push:active {
+    /*ボタンを押したとき*/
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+  }
+  #reserve{ /*試着予約*/
+    display: inline-block;
+    text-decoration: none;
+    background: #abd8e0;/*ボタン色*/
+    color: #FFF;
+    border-radius: 3px;
+    height: 38%;
+    width: 20%;
+    text-align: center;
+    font-size: 15px;
+    margin-left: 5%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  #reserve:active{
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+  }
 
-#nice_list{ /*liの中身*/
-  margin-right: 12%;
-  word-wrap: normal;
-  word-break:break-word;
-}
-
-.nice_header_3{
-  margin-top: 5px;
-  height: 50px;
-  border: ridge 1px;
-}
-.menu{
-  display: inline-block;
-  margin-top:10px; 
-}
-#push {
-  display: inline-block;
-  text-decoration: none;
-  background: #abd8e0;/*ボタン色*/
-  border-bottom: solid 1px #627295;
-  color: #FFF;
-  border-radius: 3px;
-  margin-left: 140px;
-  margin-right:20px; 
-  height: 20px;
-  width: 70px;
-  text-align: center;
-  font-size: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-#push:active {
-  /*ボタンを押したとき*/
-  -webkit-transform: translateY(4px);
-  transform: translateY(4px);/*下に動く*/
-  border-bottom: none;/*線を消す*/
-}
-#reserve{
-  display: inline-block;
-  text-decoration: none;
-  background: #abd8e0;/*ボタン色*/
-  border-bottom: solid 1px #627295;
-  color: #FFF;
-  border-radius: 3px;
-  height: 20px;
-  width: 70px;
-  text-align: center;
-  font-size: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-#reserve:active{
-  -webkit-transform: translateY(4px);
-  transform: translateY(4px);/*下に動く*/
-  border-bottom: none;/*線を消す*/
-}
-#result{
-  font-size: 3px;
-}
-.heart {
-  width: 40px;  /* 正方形を作る */
-  height: 40px; /* 正方形を作る */
-  position: relative;/* 基準位置とする */
-  top: -45px;
-  left: 110px;
-}
-.heart::before,
-.heart::after {
-  content: "";  /* 疑似要素に必須 */
-  width: 50%;   /* ハートの丸い部分の大きさにかかわる */
-  height: 80%;  /* ハートの高さにかかわる */
-  background: #E0548E; /* ハートの色 */
-  border-radius: 25px 25px 0 0; /* ハートの半円を生成 */
-  display: block; /* ブロック要素にする */
-  position: absolute; /* 相対位置に指定 */
-}
-.heart::before {
-  transform: rotate(-45deg); /* 左に回転 */
-  left: 14%;                 /* 左からの位置を指定 */
-}
-.heart::after {
-  transform: rotate(45deg);  /* 右に回転 */
-  right: 14%;                /* 右からの位置を指定 */
-}
-.heart_enp {
-  width: 40px;  /* 正方形を作る */
-  height: 40px; /* 正方形を作る */
-  position: relative;/* 基準位置とする */
-  top: -45px;
-  left: 110px;
-}
-.heart_enp::before,
-.heart_enp::after {
-  content: "";  /* 疑似要素に必須 */
-  width: 50%;   /* ハートの丸い部分の大きさにかかわる */
-  height: 80%;  /* ハートの高さにかかわる */
-  background: rgba(255,255,255,0.6);; /* ハートの色 */
-  border-radius: 25px 25px 0 0; /* ハートの半円を生成 */
-  display: block; /* ブロック要素にする */
-  position: absolute; /* 相対位置に指定 */
-}
-.heart_enp::before {
-  transform: rotate(-45deg); /* 左に回転 */
-  left: 14%;                 /* 左からの位置を指定 */
-}
-.heart_enp::after {
-  transform: rotate(45deg);  /* 右に回転 */
-  right: 14%;                /* 右からの位置を指定 */
-}
+  /*画像*/
+  .heart {/*ハート*/
+    width: 40px;  /* 正方形を作る */
+    height: 40px; /* 正方形を作る */
+    position: relative;/* 基準位置とする */
+    top: -45px;
+    left: 110px;
+  }
+  .heart::before,
+  .heart::after {
+    content: "";  /* 疑似要素に必須 */
+    width: 50%;   /* ハートの丸い部分の大きさにかかわる */
+    height: 80%;  /* ハートの高さにかかわる */
+    background: #E0548E; /* ハートの色 */
+    border-radius: 25px 25px 0 0; /* ハートの半円を生成 */
+    display: block; /* ブロック要素にする */
+    position: absolute; /* 相対位置に指定 */
+  }
+  .heart::before {
+    transform: rotate(-45deg); /* 左に回転 */
+    left: 14%;                 /* 左からの位置を指定 */
+  }
+  .heart::after {
+    transform: rotate(45deg);  /* 右に回転 */
+    right: 14%;                /* 右からの位置を指定 */
+  }
+  .heart_enp {
+    width: 40px;  /* 正方形を作る */
+    height: 40px; /* 正方形を作る */
+    position: relative;/* 基準位置とする */
+    top: -45px;
+    left: 110px;
+  }
+  .heart_enp::before,
+  .heart_enp::after {
+    content: "";  /* 疑似要素に必須 */
+    width: 50%;   /* ハートの丸い部分の大きさにかかわる */
+    height: 80%;  /* ハートの高さにかかわる */
+    background: rgba(255,255,255,0.6);; /* ハートの色 */
+    border-radius: 25px 25px 0 0; /* ハートの半円を生成 */
+    display: block; /* ブロック要素にする */
+    position: absolute; /* 相対位置に指定 */
+  }
+  .heart_enp::before {
+    transform: rotate(-45deg); /* 左に回転 */
+    left: 14%;                 /* 左からの位置を指定 */
+  }
+  .heart_enp::after {
+    transform: rotate(45deg);  /* 右に回転 */
+    right: 14%;                /* 右からの位置を指定 */
+  }
 /***********ここまでいいね画面のCSS************************************/
 
 /***********マイページのCSS*********************************************/
@@ -414,6 +416,7 @@
       font-size: 17px;
     }
     #my_text1{
+      display: inline-block;
       margin-left: 8%;
       font-size: 17px;
     }
@@ -432,7 +435,7 @@
 
   /*戻るボタンありヘッダー***/
     #title_1{
-      font-size: 17px;
+      font-size: 19px;
       margin-left: 21%;
     }
 
@@ -443,7 +446,7 @@
 
   /*戻るボタンありヘッダー***/
     #title_2{
-      font-size: 17px;
+      font-size: 19px;
       margin-left: 18%;
     }
 
@@ -473,7 +476,7 @@
 
   /*戻るボタンありヘッダー***/
     #title_3{
-      font-size: 17px;
+      font-size: 19px;
       margin-left: 25%;
     }
 
@@ -493,10 +496,9 @@
 
   /*戻るボタンありヘッダー***/
     #title_4{
-      font-size: 17px;
+      font-size: 19px;
       margin-left: 23%;
     }
-
 
 /***********ここまで身長/BWHのCSS********************************/
 
@@ -504,7 +506,7 @@
 
   /*戻るボタンありヘッダー***/
     #title_5{
-      font-size: 17px;
+      font-size: 19px;
       margin-left: 28%;
     }
 
@@ -515,7 +517,7 @@
 
   /*戻るボタンありヘッダー***/
     #title_6{
-      font-size: 17px;
+      font-size: 19px;
       margin-left: 22%;
     }
 .withdrawal{
