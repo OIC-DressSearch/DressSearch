@@ -106,6 +106,7 @@
     .change{
       display: block;
     }
+
   /*その他***********************************************/
   
     /* リンクの下線を消す */
@@ -193,7 +194,7 @@
       margin-left: 25%;
     }
 
-.list {
+    .list {
       display:flex;
       flex-flow:wrap;
       list-style-type: none;
@@ -218,7 +219,7 @@
         margin-bottom: 1%;
       }
       #kensaku_kensu{
-        margin-left: 3%;
+        margin-left: 5%;
         color: #68c3c5;
         font-size: 16px;
       }
@@ -226,13 +227,7 @@
         margin-left: 5%;
         font-size: 15px;
       }
-      #joken_henkou{
-        margin-left: 120px;
-        margin-right:5%; 
-        color: #202f55;
-        font-size: 16px;
-      }
-
+      
 /***********いいね画面のCSS******************************/
 
 /*  2段目 */
@@ -437,9 +432,8 @@
   /*戻るボタンありヘッダー***/
     #title_1{
       font-size: 19px;
-      margin-left: 21%;
+      margin-left: 20%;
     }
-
 
 /***********ここまで会員情報のCSS***************************/
 
@@ -448,29 +442,28 @@
   /*戻るボタンありヘッダー***/
     #title_2{
       font-size: 19px;
-      margin-left: 18%;
+      margin-left: 13%;
     }
 
   #mail_update_2{
-  display: none;
-}
+    display: none;
+  }
 
-#new_address:focus{
-  outline: solid 3px rgb(255, 164, 78);
-}
-#check_address:focus{
-  outline: solid 3px rgb(255, 164, 78);
-}
-.back{
-  position: absolute;
-  top: 0px;
-  left: 0px;
-}
+  #new_address:focus{
+    outline: solid 3px rgb(255, 164, 78);
+  }
+  #check_address:focus{
+    outline: solid 3px rgb(255, 164, 78);
+  }
+  .back{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+  #mail_update_2{
+    display: none;
+  }
 
-#mail_update_2{
-  display: none;
-
-}
 /***********ここまでメールアドレスのCSS*********************/
 
 /***********ここからパスワード画面のCSS*********************/
@@ -478,9 +471,8 @@
   /*戻るボタンありヘッダー***/
     #title_3{
       font-size: 19px;
-      margin-left: 25%;
+      margin-left: 19%;
     }
-
 
     a {
       display: block;
@@ -498,7 +490,7 @@
   /*戻るボタンありヘッダー***/
     #title_4{
       font-size: 19px;
-      margin-left: 23%;
+      margin-left: 20%;
     }
 
 /***********ここまで身長/BWHのCSS***************************/
@@ -508,9 +500,19 @@
   /*戻るボタンありヘッダー***/
     #title_5{
       font-size: 19px;
-      margin-left: 28%;
+      margin-left: 23%;
     }
 
+    #log_text{
+      margin-top: 20%;
+      margin-bottom: 10%;
+      text-align: center;
+      font-size: 19px;
+    }
+
+  .display_logout2{
+    display: none;
+  }
 
 /***********ここまでログアウトのCSS*************************/
 
@@ -519,11 +521,20 @@
   /*戻るボタンありヘッダー***/
     #title_6{
       font-size: 19px;
-      margin-left: 22%;
+      margin-left: 16%;
     }
-.withdrawal{
-  display: none;
-}
+  /*メール*/
+    #my_mail{
+      margin-top: 10%;
+      margin-bottom: 10%;
+    }
+  /*メール～パス全体*/
+  .check_login{
+    margin-bottom: 10%;
+  }
+
+  .withdrawal{
+    display: none;
+  }
 
 /***********ここまで退会のCSS********************************/
-

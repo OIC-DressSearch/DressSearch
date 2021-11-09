@@ -23,19 +23,22 @@
 
     <!-- メイン -->
     <div class="check_login">
-      <div style="margin-top:40px;margin-left:120px;">メールアドレス</div>
-      <input type="text" style="margin-top:20px;margin-left:35px; width:80%;height:30px;"></input>
-      <div id="my_title">パスワード</div>
-      <input type="text" style="margin-top:22px;margin-left:35px; width:80%;height:30px;"></input>
-      <button id="login-button" class="push-button" style="margin-top:70px;">ログイン</button>
+      <div id="my_mail">
+        <div id="my_title">メールアドレス</div>
+        <input type="text" id="my_textbox"></input>
+      </div>
+      <div class="my_pass">
+        <div id="my_title">パスワード</div>
+        <input type="text" id="my_textbox"></input>
+      </div>
+      <button id="login-button" class="push-button">ログイン</button>  
     </div>
 
     <div class="withdrawal">
       <div style="margin: 20px 0px 0px 100px;">退会を希望しますか？</div>
-      <button id="withdrawal-button" class="push-button" style="margin-top:70px;">退会する</button>
-      <button id="withdrawal-button" class="push-button" >退会をやめる</button>
+      <a href="login.html"><button id="withdrawal-button" class="push-button" style="margin-top:70px;">退会する</button></a>
+      <a href="my-page.html"><button id="withdrawal-button" class="push-button" >退会をやめる</button></a>
     </div>
-
 
     <!--フッター-->
     <footer>
