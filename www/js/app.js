@@ -41,7 +41,7 @@ $("#ok-button").click(function(){
     $("#deteil_1").click(function(){ //詳しく一行目
       if(img_f[0]!=1){ //一行目の開閉判判定
         $("#image_1").slideDown("slow", function() { // 画像を開くアニメーション."slow"部分はスピード
-          $("#deteil_1").text(deteil[1]);  // 画像を開いているとき詳しくを閉じるに変更
+          $("#deteil_1").text(deteil[1]);  // 画像を開いているとき「詳しく」を「閉じる」に変更
         });
         img_f[0]=1;
       }
