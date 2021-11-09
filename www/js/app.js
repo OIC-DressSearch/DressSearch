@@ -1,3 +1,11 @@
+/**********変数 ************/
+
+var text="";
+var img_f=[0,0,0];
+var deteil=["詳しく","閉じる"]
+
+/********ここまで変数部 *****/
+
 /***共通部分*****************************************************/
 $(".back").click(function(){
   window.location.href = "my-page.html"; 
@@ -10,6 +18,55 @@ $("#ok-button").click(function(){
 /***ここまで共通部分*****************************************************/
 
 /***検索画面*****************************************************/
+
+    $('#dress').click(function() {
+        $('.popup').addClass('js_active'); //popupクラスにjs_activeクラスを追加する
+    });
+     $(".back_search").click(function(){
+      text="";
+      var i=0;
+            $('input:checked').each(function() { //チェックされているチェックボックスを全て探索
+          if(i===0){ //一番初めの時はコンマを付けない
+            text += $(this).val();      
+          }
+          else{ 
+            text += ","+$(this).val();
+          }
+          i++;
+    })
+            $("#dress").text(text); // ボックスの中にテキストを格納
+           $('.popup').removeClass('js_active'); // ポップアップを閉じる(js_activeクラスを削除)
+    });
+
+    $("#deteil_1").click(function(){ //詳しく一行目
+      if(img_f[0]!=1){ //一行目の開閉判判定
+        $("#image_1").slideDown("slow", function() { // 画像を開くアニメーション."slow"部分はスピード
+          $("#deteil_1").text(deteil[1]);  // 画像を開いているとき「詳しく」を「閉じる」に変更
+        });
+        img_f[0]=1;
+      }
+      else{
+        $("#image_1").slideUp("slow", function() {
+          $("#deteil_1").text(deteil[0]);
+            img_f[0]=0;
+        });
+      }
+    });
+
+    $("#deteil_2").click(function(){
+      if(img_f[1]!=1){
+        $("#image_2").slideDown("slow", function() {
+        $("#deteil_2").text(deteil[1]);
+       });
+      img_f[1]=1;
+      }
+      else{
+         $("#image_2").slideUp("slow", function() {
+           $("#deteil_2").text(deteil[0]);
+          img_f[1]=0;
+         });
+      }
+    });
 
 /***ここまで検索画面*****************************************************/
 
