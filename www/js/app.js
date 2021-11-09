@@ -20,37 +20,36 @@ $("#ok-button").click(function(){
 /***検索画面*****************************************************/
 
     $('#dress').click(function() {
-        $('.popup').addClass('js_active');
-//        $('.popup').removeClass('js_active');
+        $('.popup').addClass('js_active'); //popupクラスにjs_activeクラスを追加する
     });
      $(".back_search").click(function(){
       text="";
       var i=0;
-            $('input:checked').each(function() {
-          if(i===0){
+            $('input:checked').each(function() { //チェックされているチェックボックスを全て探索
+          if(i===0){ //一番初めの時はコンマを付けない
             text += $(this).val();      
           }
-          else{
+          else{ 
             text += ","+$(this).val();
           }
           i++;
     })
-            $("#dress").text(text);
-           $('.popup').removeClass('js_active');
+            $("#dress").text(text); // ボックスの中にテキストを格納
+           $('.popup').removeClass('js_active'); // ポップアップを閉じる(js_activeクラスを削除)
     });
 
-        $("#deteil_1").click(function(){
-      if(img_f[0]!=1){
-        $("#image_1").slideDown("slow", function() {
-        $("#deteil_1").text(deteil[1]);
-       });
-      img_f[0]=1;
+    $("#deteil_1").click(function(){ //詳しく一行目
+      if(img_f[0]!=1){ //一行目の開閉判判定
+        $("#image_1").slideDown("slow", function() { // 画像を開くアニメーション."slow"部分はスピード
+          $("#deteil_1").text(deteil[1]);  // 画像を開いているとき詳しくを閉じるに変更
+        });
+        img_f[0]=1;
       }
       else{
-         $("#image_1").slideUp("slow", function() {
-           $("#deteil_1").text(deteil[0]);
-          img_f[0]=0;
-         });
+        $("#image_1").slideUp("slow", function() {
+          $("#deteil_1").text(deteil[0]);
+            img_f[0]=0;
+        });
       }
     });
 
