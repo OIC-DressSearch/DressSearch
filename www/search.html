@@ -43,12 +43,31 @@
         </select>
 
       <p id="search_title">ドレス</p>
-        <select name="dress" id="search_box"">
-           <option id="search_option" value="1">ーーー</option>
-          <option id="search_option"value="wed_dress">ウェディングドレス</option>
-          <option id="search_option" value="cak_dress">カクテルドレス</option>
-          <option id="search_option" value=""></option>              
-        </select>
+          <div name="dress" id="dress" class="search_box">
+          </div>
+
+      <div class="popup">
+        <div class="back_search">＜</div>
+        <div style="text-align: center; border-bottom: solid 2px rgb(233, 233, 233);padding-bottom:10px;">ドレス</div>
+        <div class="search_popup" style="margin-top:20px;">
+          <div class="search_element">
+            <div class="search_item"><input type="checkbox" id="check_1" value="ウェディングドレス"></input></div>
+            <div class="search_item">ウェディングドレス</div>
+            <div  class="search_item" >
+              <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく</div>
+            </div></br>
+            <div class="im"><img src="image/heart.png" id="image_1" class="dress_img" style="display:none;"></div>
+            </div>
+          <div class="search_element">
+            <div class="search_item"><input type="checkbox" id="check_2" value="カクテルドレス"></input></div>
+            <div class="search_item">カクテルドレス</div>
+            <div  class="search_item" >
+              <div id="deteil_2" class="deteil" style="  margin-left:155px; ">詳しく</div>
+            </div></br>
+            <div class="im"><img src="image/my-page.png" id="image_2" class="dress_img" style="display:none;"></div>
+            </div>
+      </div>
+     </div>
           
       <p id="search_title"> カラー</p>
         <select name="collar" id="search_box"">

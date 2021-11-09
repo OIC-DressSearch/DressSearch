@@ -1,3 +1,11 @@
+/**********変数 ************/
+
+var text="";
+var img_f=[0,0,0];
+var deteil=["詳しく","閉じる"]
+
+/********ここまで変数部 *****/
+
 /***共通部分*****************************************************/
 $(".back").click(function(){
   window.location.href = "my-page.html"; 
@@ -10,6 +18,56 @@ $("#ok-button").click(function(){
 /***ここまで共通部分*****************************************************/
 
 /***検索画面*****************************************************/
+
+    $('#dress').click(function() {
+        $('.popup').addClass('js_active');
+//        $('.popup').removeClass('js_active');
+    });
+     $(".back_search").click(function(){
+      text="";
+      var i=0;
+            $('input:checked').each(function() {
+          if(i===0){
+            text += $(this).val();      
+          }
+          else{
+            text += ","+$(this).val();
+          }
+          i++;
+    })
+            $("#dress").text(text);
+           $('.popup').removeClass('js_active');
+    });
+
+        $("#deteil_1").click(function(){
+      if(img_f[0]!=1){
+        $("#image_1").slideDown("slow", function() {
+        $("#deteil_1").text(deteil[1]);
+       });
+      img_f[0]=1;
+      }
+      else{
+         $("#image_1").slideUp("slow", function() {
+           $("#deteil_1").text(deteil[0]);
+          img_f[0]=0;
+         });
+      }
+    });
+
+    $("#deteil_2").click(function(){
+      if(img_f[1]!=1){
+        $("#image_2").slideDown("slow", function() {
+        $("#deteil_2").text(deteil[1]);
+       });
+      img_f[1]=1;
+      }
+      else{
+         $("#image_2").slideUp("slow", function() {
+           $("#deteil_2").text(deteil[0]);
+          img_f[1]=0;
+         });
+      }
+    });
 
 /***ここまで検索画面*****************************************************/
 
