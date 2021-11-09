@@ -66,11 +66,12 @@ $("#ok-button").click(function(){
 
 /***身長/BWH変更画面*****************************************************/
 
+  /*保存ボタン遷移*/
   $("#higth_button").click(function(){
-    $(".change").css("display","none");
-  $(".ok").css("display","block");
-});
-
+    $(".display_higth1").css("display","none");
+    $(".display_higth2").css("display","block");
+  });
+  
 /***ここまで身長/BWH変更画面*****************************************************/
 
 
