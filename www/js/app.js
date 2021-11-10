@@ -150,24 +150,36 @@ $("#ok-button").click(function(){
 
 /***会員情報変更画面*****************************************************/
 
+  $("#login_info").click(function(){
+    $(".display_login").css("display","none");
+    $(".display_info1").css("display","block");
+  });
   $("#info_button").click(function(){
-    $(".change").css("display","none");
-  $(".ok").css("display","block");
-});
+    $(".display_info1").css("display","none");
+    $(".display_info2").css("display","block");
+  });
+
 
 /***ここまで会員情報変更画面*****************************************************/
 
 /***パスワード変更画面*****************************************************/
-
+  $("#login_pass").click(function(){
+    $(".display_login").css("display","none");
+    $(".display_pass1").css("display","block");
+  });
   $("#pass_button").click(function(){
-    $(".change").css("display","none");
-  $(".ok").css("display","block");
-});
+    $(".display_pass1").css("display","none");
+    $(".display_pass2").css("display","block");
+  });
 
 /***ここまでパスワード変更画面*****************************************************/
 
 /***身長/BWH変更画面*****************************************************/
 
+  $("#login_higth").click(function(){
+    $(".display_login").css("display","none");
+    $(".display_higth1").css("display","block");
+  });
   /*保存ボタン遷移*/
   $("#higth_button").click(function(){
     $(".display_higth1").css("display","none");
@@ -178,9 +190,16 @@ $("#ok-button").click(function(){
 
 
 /***メールアドレス画面*****************************************************/
-$("#mail_update").click(function(){
-  $("#mail_update_2").css("display","block");
+$("#login_mail").click(function(){
+  $(".display_login").css("display","none");
+  $(".display_mail1").css("display","block");
 });
+$("#mail_update").click(function(){
+  $(".display_mail1").css("display","none");
+  $(".display_mail2").css("display","block");
+});
+
+/*パスワード認証*/
 $("#mail-button").click(function(){
   var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
    var address = $("#new_address").val();
@@ -203,7 +222,7 @@ $("#mail-button").click(function(){
 /***ここまでメールアドレス画面*************************************/
 
 /***logout画面*****************************************************/
-$("#logout-button").click(function(){
+$("#logout-button1").click(function(){
   $(".display_logout1").css("display","none");
   $(".display_logout2").css("display","block");
 });
@@ -213,11 +232,14 @@ $("#logout-button").click(function(){
 
 
 /***退会画面*****************************************************/
-$("#login-button").click(function(){
-  $(".check_login").css("display","none");
-  $(".withdrawal").css("display","block");
+$("#withdrawal-button1").click(function(){
+  $(".display_withdrawal1").css("display","none");
+  $(".display_withlogin").css("display","block");
 });
-
+$("#login_with").click(function(){
+  $(".display_withlogin").css("display","none");
+  $(".display_withdrawal2").css("display","block");
+});
 
 /***ここまで退会画面*****************************************************/
 

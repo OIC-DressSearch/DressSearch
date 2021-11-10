@@ -22,7 +22,15 @@
     </header>
 
     <!-- メイン -->
-    <div class="check_login">
+    <div class="display_withdrawal1">
+      <div id="my_henko">本当に退会を希望しますか？</div>
+      <button id="withdrawal-button1" class="push-button">退会する</button>
+      <a href="my-page.html">
+        <button id="withdrawal-button2" class="push-button">退会をやめる</button>
+      </a>
+    </div>
+
+    <div class="display_withlogin" id="with_login">
       <div id="my_mail">
         <div id="my_title">メールアドレス</div>
         <input type="text" id="my_textbox"></input>
@@ -31,13 +39,17 @@
         <div id="my_title">パスワード</div>
         <input type="text" id="my_textbox"></input>
       </div>
-      <button id="login-button" class="push-button">ログイン</button>  
+      <button id="login_with" class="push-button">ログイン</button> 
     </div>
 
-    <div class="withdrawal">
-      <div style="margin: 20px 0px 0px 100px;">退会を希望しますか？</div>
-      <a href="login.html"><button id="withdrawal-button" class="push-button" style="margin-top:70px;">退会する</button></a>
-      <a href="my-page.html"><button id="withdrawal-button" class="push-button" >退会をやめる</button></a>
+    <div class="display_withdrawal2">
+      <div id="my_henko">退会処理を行います</div>
+      <a href="login.html">
+        <button id="withdrawal-button1" class="push-button">OK</button>
+      </a>
+      <a href="my-page.html">
+        <button id="withdrawal-button2" class="push-button">キャンセル</button>
+      </a>
     </div>
 
     <!--フッター-->
