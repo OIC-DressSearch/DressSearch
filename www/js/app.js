@@ -3,6 +3,9 @@
 var text="";
 var img_f=[0,0,0];
 var deteil=["詳しく","閉じる"]
+var index=999;
+var search_box=["#dress","#line","#neck_line","#sleeve","#waist_line","#skirt","#skirt_length","#trane","#bodice"];
+var check_box=[".check_1:checked",".check_2:checked",".check_3:checked",".check_4:checked",".check_5:checked",".check_6:checked",".check_7:checked",".check_8:checked",".check_9:checked"];
 
 /********ここまで変数部 *****/
 
@@ -19,13 +22,50 @@ $("#ok-button").click(function(){
 
 /***検索画面*****************************************************/
 
-    $('#dress').click(function() {
+    /*$('#dress').click(function() {
         $('.popup').addClass('js_active'); //popupクラスにjs_activeクラスを追加する
+    });*/
+    $('#dress').click(function() {
+     $('#popup_1').addClass('js_active');
+     index=0;
     });
+    $('#line').click(function() {
+     $('#popup_2').addClass('js_active');
+     index=1;
+    });
+    $('#neck_line').click(function() {
+     $('#popup_3').addClass('js_active');
+     index=2;
+    });
+    $('#sleeve').click(function() {
+     $('#popup_4').addClass('js_active');
+     index=3;
+    });
+    $('#waist_line').click(function() {
+     $('#popup_5').addClass('js_active');
+     index=4;
+    });
+    $('#skirt').click(function() {
+     $('#popup_6').addClass('js_active');
+     index=5;
+    });
+    $('#skirt_length').click(function() {
+     $('#popup_7').addClass('js_active');
+     index=6;
+    });
+    $('#trane').click(function() {
+     $('#popup_8').addClass('js_active');
+     index=7;
+    });
+    $('#bodice').click(function() {
+     $('#popup_9').addClass('js_active');
+     index=8;
+    });
+    
      $(".back_search").click(function(){
       text="";
       var i=0;
-            $('input:checked').each(function() { //チェックされているチェックボックスを全て探索
+      $(check_box[index]).each(function() { //チェックされているチェックボックスを全て探索
           if(i===0){ //一番初めの時はコンマを付けない
             text += $(this).val();      
           }
@@ -33,8 +73,13 @@ $("#ok-button").click(function(){
             text += ","+$(this).val();
           }
           i++;
-    })
-            $("#dress").text(text); // ボックスの中にテキストを格納
+      });
+      if(i===0){
+        $(search_box[index]).text("ーーー"); 
+      }
+      else{
+        $(search_box[index]).text(text); // ボックスの中にテキストを格納
+      }     
            $('.popup').removeClass('js_active'); // ポップアップを閉じる(js_activeクラスを削除)
     });
 
@@ -105,24 +150,36 @@ $("#ok-button").click(function(){
 
 /***会員情報変更画面*****************************************************/
 
+  $("#login_info").click(function(){
+    $(".display_login").css("display","none");
+    $(".display_info1").css("display","block");
+  });
   $("#info_button").click(function(){
-    $(".change").css("display","none");
-  $(".ok").css("display","block");
-});
+    $(".display_info1").css("display","none");
+    $(".display_info2").css("display","block");
+  });
+
 
 /***ここまで会員情報変更画面*****************************************************/
 
 /***パスワード変更画面*****************************************************/
-
+  $("#login_pass").click(function(){
+    $(".display_login").css("display","none");
+    $(".display_pass1").css("display","block");
+  });
   $("#pass_button").click(function(){
-    $(".change").css("display","none");
-  $(".ok").css("display","block");
-});
+    $(".display_pass1").css("display","none");
+    $(".display_pass2").css("display","block");
+  });
 
 /***ここまでパスワード変更画面*****************************************************/
 
 /***身長/BWH変更画面*****************************************************/
 
+  $("#login_higth").click(function(){
+    $(".display_login").css("display","none");
+    $(".display_higth1").css("display","block");
+  });
   /*保存ボタン遷移*/
   $("#higth_button").click(function(){
     $(".display_higth1").css("display","none");
@@ -133,9 +190,16 @@ $("#ok-button").click(function(){
 
 
 /***メールアドレス画面*****************************************************/
-$("#mail_update").click(function(){
-  $("#mail_update_2").css("display","block");
+$("#login_mail").click(function(){
+  $(".display_login").css("display","none");
+  $(".display_mail1").css("display","block");
 });
+$("#mail_update").click(function(){
+  $(".display_mail1").css("display","none");
+  $(".display_mail2").css("display","block");
+});
+
+/*パスワード認証*/
 $("#mail-button").click(function(){
   var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
    var address = $("#new_address").val();
@@ -159,7 +223,7 @@ $("#mail-button").click(function(){
 /***ここまでメールアドレス画面*************************************/
 
 /***logout画面*****************************************************/
-$("#logout-button").click(function(){
+$("#logout-button1").click(function(){
   $(".display_logout1").css("display","none");
   $(".display_logout2").css("display","block");
 });
@@ -169,11 +233,14 @@ $("#logout-button").click(function(){
 
 
 /***退会画面*****************************************************/
-$("#login-button").click(function(){
-  $(".check_login").css("display","none");
-  $(".withdrawal").css("display","block");
+$("#withdrawal-button1").click(function(){
+  $(".display_withdrawal1").css("display","none");
+  $(".display_withlogin").css("display","block");
 });
-
+$("#login_with").click(function(){
+  $(".display_withlogin").css("display","none");
+  $(".display_withdrawal2").css("display","block");
+});
 
 /***ここまで退会画面*****************************************************/
 
