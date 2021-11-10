@@ -3,6 +3,9 @@
 var text="";
 var img_f=[0,0,0];
 var deteil=["詳しく","閉じる"]
+var index=999;
+var search_box=["#dress","#line","#neck_line","#sleeve","#waist_line","#skirt","#skirt_length","#trane","#bodice"];
+var check_box=[".check_1:checked",".check_2:checked",".check_3:checked",".check_4:checked",".check_5:checked",".check_6:checked",".check_7:checked",".check_8:checked",".check_9:checked"];
 
 /********ここまで変数部 *****/
 
@@ -19,13 +22,50 @@ $("#ok-button").click(function(){
 
 /***検索画面*****************************************************/
 
-    $('#dress').click(function() {
+    /*$('#dress').click(function() {
         $('.popup').addClass('js_active'); //popupクラスにjs_activeクラスを追加する
+    });*/
+    $('#dress').click(function() {
+     $('#popup_1').addClass('js_active');
+     index=0;
     });
+    $('#line').click(function() {
+     $('#popup_2').addClass('js_active');
+     index=1;
+    });
+    $('#neck_line').click(function() {
+     $('#popup_3').addClass('js_active');
+     index=2;
+    });
+    $('#sleeve').click(function() {
+     $('#popup_4').addClass('js_active');
+     index=3;
+    });
+    $('#waist_line').click(function() {
+     $('#popup_5').addClass('js_active');
+     index=4;
+    });
+    $('#skirt').click(function() {
+     $('#popup_6').addClass('js_active');
+     index=5;
+    });
+    $('#skirt_length').click(function() {
+     $('#popup_7').addClass('js_active');
+     index=6;
+    });
+    $('#trane').click(function() {
+     $('#popup_8').addClass('js_active');
+     index=7;
+    });
+    $('#bodice').click(function() {
+     $('#popup_9').addClass('js_active');
+     index=8;
+    });
+    
      $(".back_search").click(function(){
       text="";
       var i=0;
-            $('input:checked').each(function() { //チェックされているチェックボックスを全て探索
+      $(check_box[index]).each(function() { //チェックされているチェックボックスを全て探索
           if(i===0){ //一番初めの時はコンマを付けない
             text += $(this).val();      
           }
@@ -33,8 +73,13 @@ $("#ok-button").click(function(){
             text += ","+$(this).val();
           }
           i++;
-    })
-            $("#dress").text(text); // ボックスの中にテキストを格納
+      });
+      if(i===0){
+        $(search_box[index]).text("ーーー"); 
+      }
+      else{
+        $(search_box[index]).text(text); // ボックスの中にテキストを格納
+      }     
            $('.popup').removeClass('js_active'); // ポップアップを閉じる(js_activeクラスを削除)
     });
 
