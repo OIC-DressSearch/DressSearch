@@ -674,3 +674,35 @@ overflow:auto;
   }
 
 /***********ここまで退会のCSS********************************/
+
+/***********ここから新規登録のCSS********************************/
+
+/*.head_tab{
+  display: inline;
+  padding-left: 20px;
+  padding-right: 24px;
+}*/
+#head_tabbox{
+  margin-top: 20px;
+}
+table th{
+  text-align: center;
+  width: 100px;
+}
+table{
+  margin-left: 19px;
+}
+.current{
+  background-color: rgb(143, 206, 235)
+}
+#page_1{
+  display: block;
+}
+#page_2{
+  display: none;
+}
+#page_3{
+  display: none;
+}
+
+/***********ここまで新規登録のCSS********************************/
