@@ -118,14 +118,12 @@ $("#ok-button").click(function(){
 /***一覧画面*****************************************************/
 
 //件数表示
-$(function(){
-  //listの子要素のカウント
-  var scnt = document.getElementsByClassName("list").childElementCount;
-  /*var scnt=0;
-    $("#list li").each(function() {
-        ++scnt;
-    });*/
-  document.getElementById("earch_sum").textContent = scnt;
+$(function($){
+  //listの子要素のカウントしたかったやつ
+  /*var scnt = document.getElementsByClassName("list").childElementCount;*/
+  var ssum = $(".item").length;//liの数をカウント
+    alert(ssum);
+  document.getElementById("search_sum").textContent = scnt;//ここで指定したIDに数字を入れて出力したい
 });
 
 
