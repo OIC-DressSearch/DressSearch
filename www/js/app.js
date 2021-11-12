@@ -20,6 +20,27 @@ $("#ok-button").click(function(){
 
 /***ここまで共通部分*****************************************************/
 
+/***新規作成画面*****************************************************/
+
+$("#next_page_1").click(function(){
+  $("#page_1").css("display","none");
+  $("#page_2").css("display","block");
+});
+$("#next_page_2").click(function(){
+  $("#page_2").css("display","none");
+  $("#page_3").css("display","block");
+});
+$("#back_page_2").click(function(){
+  $("#page_2").css("display","none");
+  $("#page_1").css("display","block");
+});
+$("#back_page_3").click(function(){
+  $("#page_3").css("display","none");
+  $("#page_2").css("display","block");
+});
+
+/***ここまで新規作成画面*****************************************************/
+
 /***検索画面*****************************************************/
 
     /*$('#dress').click(function() {
@@ -252,19 +273,6 @@ $("#login_with").click(function(){
 });
 
 /***ここまで退会画面*****************************************************/
-
-/***新規作成画面*****************************************************/
-
-$("#next_page_1").click(function(){
-  $("#page_1").css("display","none");
-  $("#page_2").css("display","block");
-});
-$("#next_page_2").click(function(){
-  $("#page_2").css("display","none");
-  $("#page_3").css("display","block");
-});
-
-/***ここまで新規作成画面*****************************************************/
 
 
 /* ニフクラメモ
