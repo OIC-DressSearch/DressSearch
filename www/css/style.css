@@ -139,6 +139,8 @@
   /*第二ヘッダー*/
   #head_tabbox{
     margin-top: 5%;
+    font-size: 15px;
+    color: #000000;
   }
   table th{
     text-align: center;
@@ -148,7 +150,7 @@
     margin-left: 5%;
   }
   .current{
-    background-color: rgb(143, 206, 235)
+    background-color: #68c3c5;
   }
 
   /*遷移*/
