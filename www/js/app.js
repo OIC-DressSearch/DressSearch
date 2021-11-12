@@ -139,14 +139,12 @@ $("#back_page_3").click(function(){
 /***一覧画面*****************************************************/
 
 //件数表示
-$(function(){
-  //listの子要素のカウント
-  var scnt = document.getElementsByClassName("list").childElementCount;
-  /*var scnt=0;
-    $("#list li").each(function() {
-        ++scnt;
-    });*/
-  document.getElementById("earch_sum").textContent = scnt;
+$(function($){
+  //listの子要素のカウントしたかったやつ
+  /*var scnt = document.getElementsByClassName("list").childElementCount;*/
+  var ssum = $(".item").length;//liの数をカウント
+    alert(ssum);
+  document.getElementById("search_sum").textContent = scnt;//ここで指定したIDに数字を入れて出力したい
 });
 
 
@@ -167,6 +165,13 @@ $(function(){
       $("#"+element_id).removeClass('heart');
       $("#"+element_id).addClass('heart_enp');
     });
+
+  
+  //ショップリストの折り返し　配列にショップの名前を入れてから正規表現する
+    var count_6 = $("#nice_list").match(/.{1,6}/g);
+    for( let n = 0; n <= count_6.length; n++ ) {
+    console.log( count_6[n] );
+    }
 
 /***ここまでいいね画面*****************************************************/
 
