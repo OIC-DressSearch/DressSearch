@@ -25,6 +25,27 @@ $("#ok-button").click(function(){
 
 /***ここまで共通部分*****************************************************/
 
+/***新規作成画面*****************************************************/
+
+$("#next_page_1").click(function(){
+  $("#page_1").css("display","none");
+  $("#page_2").css("display","block");
+});
+$("#next_page_2").click(function(){
+  $("#page_2").css("display","none");
+  $("#page_3").css("display","block");
+});
+$("#back_page_2").click(function(){
+  $("#page_2").css("display","none");
+  $("#page_1").css("display","block");
+});
+$("#back_page_3").click(function(){
+  $("#page_3").css("display","none");
+  $("#page_2").css("display","block");
+});
+
+/***ここまで新規作成画面*****************************************************/
+
 /***検索画面*****************************************************/
 
     /*$('#dress').click(function() {
@@ -151,6 +172,13 @@ $(function($){
       $("#"+element_id).addClass('heart_enp');
     });
 
+  
+  //ショップリストの折り返し　配列にショップの名前を入れてから正規表現する
+    var count_6 = $("#nice_list").match(/.{1,6}/g);
+    for( let n = 0; n <= count_6.length; n++ ) {
+    console.log( count_6[n] );
+    }
+
 /***ここまでいいね画面*****************************************************/
 
 /***マイページ*****************************************************/
@@ -256,19 +284,6 @@ $("#login_with").click(function(){
 });
 
 /***ここまで退会画面*****************************************************/
-
-/***新規作成画面*****************************************************/
-
-$("#next_page_1").click(function(){
-  $("#page_1").css("display","none");
-  $("#page_2").css("display","block");
-});
-$("#next_page_2").click(function(){
-  $("#page_2").css("display","none");
-  $("#page_3").css("display","block");
-});
-
-/***ここまで新規作成画面*****************************************************/
 
 
 /* ニフクラメモ
