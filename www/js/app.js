@@ -1,5 +1,4 @@
 /**********変数 ************/
-
 var text="";
 var img_f=[0,0,0];
 var deteil=["詳しく","閉じる"]
@@ -10,6 +9,12 @@ var check_box=[".check_1:checked",".check_2:checked",".check_3:checked",".check_
 /********ここまで変数部 *****/
 
 /***共通部分*****************************************************/
+    window.onload = function () {
+      var current_fail=location.pathname;
+      if(current_fail==="/list.html"){
+        fail_search();
+      }
+    };
 $(".back").click(function(){
   window.location.href = "my-page.html"; 
 });
@@ -139,6 +144,7 @@ $("#back_page_3").click(function(){
 /***一覧画面*****************************************************/
 
 //件数表示
+
 $(function($){
   //listの子要素のカウントしたかったやつ
   /*var scnt = document.getElementsByClassName("list").childElementCount;*/
@@ -327,4 +333,51 @@ var test = new Test();
            })
     
     });
+
+
+
+
+    /*************ここまでテスト**********/
+
+    /*************画像読み込みテスト*********/
+    var reader = new FileReader(); //リーダークラス作成
+    reader.onload = function(e) { //リーダーが読み込んだ時のイベント
+      var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
+      var add_text='<li class="item"><img src="'+dataUrl+'"></li>';
+      $("#result_list").append(add_text);
+    }  
+
+    function fail_search(){
+  // ファイル名からファイルを取得
+       get_path();
+    }
+
+function get_path(){
+      var path;
+      var test_data = ncmb.DataStore("test");
+      // データの条件検索取得（完全一致）
+      test_data.equalTo("name", "test_data") // 一行名に検索するフィールド名、二行目にそのフィールド内で検索する具体的なデータ
+            .fetchAll() // データベース内の条件に合うデータを全て検索
+            .then(function(results){
+                // 検索成功
+                var a=results[0]; // 検索結果の配列指定
+                path=a.get("path"); // どのテーブル内からどのフィールドのデータを取得するか指定
+
+        // ダウンロード（データ形式をblobを指定）
+        ncmb.File.download(path, "blob")
+            .then(function(blob) {
+            // ファイルリーダーにデータを渡す
+            reader.readAsDataURL(blob);
+            })
+            .catch(function(err) {
+                console.error(err);
+            })
+            })
+            .catch(function(error){
+              alert(error);
+            });
+            //alert(path);
+            //return path;
+}
+
     /*************ここまでテスト**********/
