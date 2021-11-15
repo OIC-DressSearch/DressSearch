@@ -1,18 +1,23 @@
 /**********変数 ************/
+var apikey="7672355577f11839b1a72bce66af03d2a68e6f119b00178a4ecc8bc08daaaf68";var clientkey="a35cc47c9dc52261c4590dae8f7d466eb3cdf83aa729c0443933ae8cb1d95b13";
 var text="";
 var img_f=[0,0,0];
 var deteil=["詳しく","閉じる"]
 var index=999;
+var item_count=1;
 var search_box=["#dress","#line","#neck_line","#sleeve","#waist_line","#skirt","#skirt_length","#trane","#bodice"];
 var check_box=[".check_1:checked",".check_2:checked",".check_3:checked",".check_4:checked",".check_5:checked",".check_6:checked",".check_7:checked",".check_8:checked",".check_9:checked"];
+
+var te="a";
 
 /********ここまで変数部 *****/
 
 /***共通部分*****************************************************/
     window.onload = function () {
-      var current_fail=location.pathname;
-      if(current_fail==="/list.html"){
-        fail_search();
+      var current_file=location.pathname;
+      if(current_file==="/list.html"){
+        file_search();
+        search_sum();
       }
     };
 $(".back").click(function(){
@@ -139,12 +144,24 @@ $("#back_page_3").click(function(){
       }
     });
 
+    $("#search_button").click(function(){
+        te=$("#dress").text();
+        var ncmb = new NCMB(apikey, clientkey);
+        var Test = ncmb.DataStore("test_table"); // データベース指定
+
+        //データの挿入
+        var test = new Test();
+        test.set("dress",te).save(); 
+          window.location.href = "list.html"; 
+        
+    });
+
 /***ここまで検索画面*****************************************************/
 
 /***一覧画面*****************************************************/
 
 //件数表示
-
+function search_sum(){
 $(function($){
   //listの子要素のカウントしたかったやつ
   /*var scnt = document.getElementsByClassName("list").childElementCount;*/
@@ -152,6 +169,7 @@ $(function($){
     alert(ssum);
   document.getElementById("search_sum").textContent = scnt;//ここで指定したIDに数字を入れて出力したい
 });
+}
 
 
 /***ここまで一覧画面*****************************************************/
@@ -174,10 +192,10 @@ $(function($){
 
   
   //ショップリストの折り返し　配列にショップの名前を入れてから正規表現する
-    var count_6 = $("#nice_list").match(/.{1,6}/g);
+ /*   var count_6 = $("#nice_list").match(/.{1,6}/g);
     for( let n = 0; n <= count_6.length; n++ ) {
     console.log( count_6[n] );
-    }
+    }*/
 
 /***ここまでいいね画面*****************************************************/
 
@@ -310,7 +328,7 @@ var test = new Test();
 /*************ファイル読み込み処理テスト*********/
 
 
-  var ncmb = new NCMB("7672355577f11839b1a72bce66af03d2a68e6f119b00178a4ecc8bc08daaaf68","a35cc47c9dc52261c4590dae8f7d466eb3cdf83aa729c0443933ae8cb1d95b13");
+
 
     var reader = new FileReader(); //リーダークラス作成
     reader.onload = function(e) { //リーダーが読み込んだ時のイベント
@@ -342,36 +360,39 @@ var test = new Test();
     /*************画像読み込みテスト*********/
     var reader = new FileReader(); //リーダークラス作成
     reader.onload = function(e) { //リーダーが読み込んだ時のイベント
+      item_count++;
       var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
-      var add_text='<li class="item"><img src="'+dataUrl+'"></li>';
+      var add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart_enp" id="heart_'+item_count+'"></div></li>';
       $("#result_list").append(add_text);
     }  
 
-    function fail_search(){
+    function file_search(){
   // ファイル名からファイルを取得
        get_path();
     }
 
 function get_path(){
-      var path;
+      var path=[];
+      var ncmb = new NCMB(apikey, clientkey);
       var test_data = ncmb.DataStore("test");
       // データの条件検索取得（完全一致）
-      test_data.equalTo("name", "test_data") // 一行名に検索するフィールド名、二行目にそのフィールド内で検索する具体的なデータ
+      test_data.equalTo("test_id", "1") // 一行名に検索するフィールド名、二行目にそのフィールド内で検索する具体的なデータ
             .fetchAll() // データベース内の条件に合うデータを全て検索
             .then(function(results){
+              for(var i=0;i<2;i++){
                 // 検索成功
-                var a=results[0]; // 検索結果の配列指定
-                path=a.get("path"); // どのテーブル内からどのフィールドのデータを取得するか指定
-
-        // ダウンロード（データ形式をblobを指定）
-        ncmb.File.download(path, "blob")
-            .then(function(blob) {
-            // ファイルリーダーにデータを渡す
-            reader.readAsDataURL(blob);
-            })
-            .catch(function(err) {
-                console.error(err);
-            })
+                var a=results[i]; // 検索結果の配列指定
+                path[i]=a.get("path"); // どのテーブル内からどのフィールドのデータを取得するか指定               
+                // ダウンロード（データ形式をblobを指定）
+                ncmb.File.download(path[i], "blob")
+                    .then(function(blob) {
+                    // ファイルリーダーにデータを渡す
+                    reader.readAsDataURL(blob);
+                    })
+                    .catch(function(err) {
+                        console.error(err);
+                    })
+              }
             })
             .catch(function(error){
               alert(error);
