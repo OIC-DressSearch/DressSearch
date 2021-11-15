@@ -166,7 +166,6 @@ function search_sum(){
 
   var sumresult = String(item_count);
   $("#search_sum").text(sumresult + "件");
-
 }
 
 
