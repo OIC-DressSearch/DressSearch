@@ -150,7 +150,8 @@ function search_sum(){
   //listの子要素のカウントしたかったやつ
   /*var scnt = document.getElementsByClassName("list").childElementCount;*/
   var ssum = $(".item").length;//liの数をカウント
-  alert(ssum);
+  var sumresult = String(ssum);
+  $("#search_sum").text(ssum + "件");
 }
 
 
