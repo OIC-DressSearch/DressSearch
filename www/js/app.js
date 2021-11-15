@@ -152,6 +152,8 @@ function search_sum(){
   var ssum = $(".item").length;//liの数をカウント
     //alert(ssum);
   document.getElementById("search_sum").textContent = scnt;//ここで指定したIDに数字を入れて出力したい
+  var sumresult = String(ssum);
+  $("#search_sum").text(ssum + "件");
 }
   alert(ssum);
 
