@@ -13,6 +13,7 @@ var check_box=[".check_1:checked",".check_2:checked",".check_3:checked",".check_
       var current_fail=location.pathname;
       if(current_fail==="/list.html"){
         fail_search();
+        search_sum();
       }
     };
 $(".back").click(function(){
@@ -145,13 +146,15 @@ $("#back_page_3").click(function(){
 
 //件数表示
 
-$(function($){
+function search_sum(){
   //listの子要素のカウントしたかったやつ
   /*var scnt = document.getElementsByClassName("list").childElementCount;*/
   var ssum = $(".item").length;//liの数をカウント
     //alert(ssum);
   document.getElementById("search_sum").textContent = scnt;//ここで指定したIDに数字を入れて出力したい
-});
+}
+  alert(ssum);
+
 
 
 /***ここまで一覧画面*****************************************************/
