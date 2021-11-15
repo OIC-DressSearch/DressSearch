@@ -162,16 +162,10 @@ $("#back_page_3").click(function(){
 
 //件数表示
 
-
-
-
 function search_sum(){
-  //listの子要素のカウントしたかったやつ
-  /*var scnt = document.getElementsByClassName("list").childElementCount;*/
-  var ssum = $(".item").length;//liの数をカウント
 
-  var sumresult = String(ssum);
-  $("#search_sum").text(ssum + "件");
+  var sumresult = String(item_count);
+  $("#search_sum").text(sumresult + "件");
 
 }
 
@@ -365,6 +359,7 @@ var test = new Test();
     var reader = new FileReader(); //リーダークラス作成
     reader.onload = function(e) { //リーダーが読み込んだ時のイベント
       item_count++;
+      alert(item_count);
       var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
       var add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart_enp" id="heart_'+item_count+'"></div></li>';
       $("#result_list").append(add_text);
