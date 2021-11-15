@@ -475,8 +475,7 @@
     border-bottom: none;/*線を消す*/
   }
   #reserve{ /*試着予約*/
-    display: inline-block;
-    text-decoration: none;
+    display: right;    text-decoration: none;
     background: #abd8e0;/*ボタン色*/
     color: #FFF;
     border-radius: 3px;
