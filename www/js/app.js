@@ -14,8 +14,8 @@ var te="a";
 
 /***共通部分*****************************************************/
     window.onload = function () {
-      var current_file=location.pathname;
-      if(current_file==="/list.html"){
+      var current_fail=location.pathname;
+      if(current_fail==="/list.html"){
         file_search();
         search_sum();
       }
@@ -161,14 +161,16 @@ $("#back_page_3").click(function(){
 /***一覧画面*****************************************************/
 
 //件数表示
+
+
+
+
 function search_sum(){
-$(function($){
   //listの子要素のカウントしたかったやつ
   /*var scnt = document.getElementsByClassName("list").childElementCount;*/
   var ssum = $(".item").length;//liの数をカウント
-    alert(ssum);
-  document.getElementById("search_sum").textContent = scnt;//ここで指定したIDに数字を入れて出力したい
-});
+  alert(ssum);
+
 }
 
 
