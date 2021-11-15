@@ -149,7 +149,7 @@ $(function($){
   //listの子要素のカウントしたかったやつ
   /*var scnt = document.getElementsByClassName("list").childElementCount;*/
   var ssum = $(".item").length;//liの数をカウント
-    alert(ssum);
+    
   document.getElementById("search_sum").textContent = scnt;//ここで指定したIDに数字を入れて出力したい
 });
 
