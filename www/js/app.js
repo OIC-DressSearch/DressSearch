@@ -160,27 +160,12 @@ $("#back_page_3").click(function(){
 /***一覧画面*****************************************************/
  
 //件数表示
-<<<<<<< HEAD
-
-$(function($){
-  //listの子要素のカウントしたかったやつ
-  /*var scnt = document.getElementsByClassName("list").childElementCount;*/
-  var ssum = $(".item").length;//liの数をカウント
-    
-  document.getElementById("search_sum").textContent = scnt;//ここで指定したIDに数字を入れて出力したい
-});
-
-
-=======
  
 function search_sum(){
  
  var sumresult = String(item_count);
  $("#search_sum").text(sumresult + "件");
 }
- 
- 
->>>>>>> c124614227027c0a986005a70b5233998206435b
 /***ここまで一覧画面*****************************************************/
  
 /***いいね画面*****************************************************/
