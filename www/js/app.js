@@ -8,7 +8,7 @@ var item_count=1;
 var search_box=["#dress","#line","#neck_line","#sleeve","#waist_line","#skirt","#skirt_length","#trane","#bodice"];
 var check_box=[".check_1:checked",".check_2:checked",".check_3:checked",".check_4:checked",".check_5:checked",".check_6:checked",".check_7:checked",".check_8:checked",".check_9:checked"];
 
-var te="a";
+var te;
 
 /********ここまで変数部 *****/
 
@@ -16,6 +16,7 @@ var te="a";
     window.onload = function () {
       var current_fail=location.pathname;
       if(current_fail==="/list.html"){
+        
         file_search();
         search_sum();
       }
@@ -147,11 +148,20 @@ $("#back_page_3").click(function(){
     $("#search_button").click(function(){
         te=$("#dress").text();
         var ncmb = new NCMB(apikey, clientkey);
-        var Test = ncmb.DataStore("test_table"); // データベース指定
+        var Test = ncmb.DataStore("test_table");
 
-        //データの挿入
-        var test = new Test();
-        test.set("dress",te).save(); 
+        Test .equalTo("id", "1").fetchAll().then(function(objects){
+          var object = objects[0];
+          alert(object); 
+          object.set("dress",te).set("line","test");
+           object.update();
+       }).catch(function(err) {
+                        console.error(err);
+                    })
+
+
+       
+
           window.location.href = "list.html"; 
         
     });
@@ -171,7 +181,7 @@ function search_sum(){
   var ssum = $(".item").length;//liの数をカウント
 
   var sumresult = String(ssum);
-  $("#search_sum").text(ssum + "件");
+  $("#search_sum").text(item_count + "件");
 
 }
 
@@ -368,19 +378,32 @@ var test = new Test();
       var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
       var add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart_enp" id="heart_'+item_count+'"></div></li>';
       $("#result_list").append(add_text);
+      $("#search_sum").text(item_count + "件");
     }  
 
     function file_search(){
   // ファイル名からファイルを取得
-       get_path();
+    get_path()
+
     }
 
 function get_path(){
       var path=[];
       var ncmb = new NCMB(apikey, clientkey);
+
+     var saveData = ncmb.DataStore("test_table");
+      saveData.fetchAll() .then(function(objects){
+                var object=objects[0]; 
+                te=object.get("dress");
+                
+            })
+            .catch(function(error){
+              alert(error);
+            }); 
+
       var test_data = ncmb.DataStore("test");
       // データの条件検索取得（完全一致）
-      test_data.equalTo("test_id", "1") // 一行名に検索するフィールド名、二行目にそのフィールド内で検索する具体的なデータ
+      test_data.equalTo("dress", te) // 一行名に検索するフィールド名、二行目にそのフィールド内で検索する具体的なデータ
             .fetchAll() // データベース内の条件に合うデータを全て検索
             .then(function(results){
               for(var i=0;i<2;i++){
@@ -397,6 +420,7 @@ function get_path(){
                         console.error(err);
                     })
               }
+              
             })
             .catch(function(error){
               alert(error);
