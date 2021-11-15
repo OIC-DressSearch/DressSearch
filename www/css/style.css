@@ -476,6 +476,7 @@ overflow:auto;
   }
   #reserve{ /*試着予約*/
     display: inline-block;    text-decoration: none;
+    float:right;
     background: #abd8e0;/*ボタン色*/
     color: #FFF;
     border-radius: 3px;
