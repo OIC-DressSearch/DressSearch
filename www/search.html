@@ -25,6 +25,8 @@
 
     <!--メイン-->
     <div class="display_search">
+
+      <!--レンタルショップ---------------------->
       <p id="search_title">レンタルショップ</p>
         <select name= "body" id="search_box">
           <option id="search_option" value="1">ーーー</option>
@@ -33,6 +35,7 @@
           <option id="search_option" value="Tutu">チュチュ岡山</option>
         </select>
 
+      <!--式場---------------------->
       <p id="search_title">式場</p>
         <select name="dress" id="search_box">
           <option id="search_option" value="1">ーーー</option>
@@ -43,36 +46,59 @@
           <option id="search_option" value="6">THE STYLE</option>
         </select>
 
+      <!--ドレス---------------------->
       <p id="search_title">ドレス</p>
-          <div name="dress" id="dress" class="search_box">
-         ーーー </div>
-      <div class="popup" id="popup_1">
-        <div class="back_search">＜</div>
-        <div style="text-align: center; border-bottom: solid 2px rgb(233, 233, 233);padding-bottom:10px;">ドレス</div>
-        <div class="search_popup" style="margin-top:20px;">
-          <div class="search_element">
-            <div class="search_item">
-              <input type="checkbox" class="check_1" value="ウェディングドレス"></input>
-            </div>
-            <div class="search_item">ウェディングドレス</div>
-            <div  class="search_item" >
-              <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
+        <!--初期表示-->
+        <div name="dress" id="dress" class="search_box">
+          ーーー
+        </div>
+        <!--ポップアップ-->
+        <div class="popup" id="popup_1">
+          <!--ポップアップタイトル-->
+          <div class="back_search">≪</div>
+          <div id="pop_title">ドレス</div>
+          <!--ポップアップ中身-->
+          <div class="search_popup">
+            <!--０--> 
+            <div class="search_element">
+              <div class="search_item">
+                <input type="checkbox" class="check_1" value="ー">
+                </input>
               </div>
-            </div></br>
-            <div class="im"><img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
+              <div class="search_item">ーーー</div>
+            </div><br>
+            <!--１--> 
+            <div class="search_element">
+              <div class="search_item">
+              <input type="checkbox" class="check_1" value="ウェディングドレス"></input>
+              </div>
+              <div class="search_item">ウェディングドレス</div>
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
+                </div>
+              </div>
+              <div class="im">
+                <img src="image/heart.png" id="image_1" class="dress_img">
+              </div>
+            </div><br>
+            <!--２-->
+            <div class="search_element">
+              <div class="search_item">
+                <input type="checkbox" class="check_1" value="カクテルドレス">
+                </input>
+              </div>
+              <div class="search_item">カクテルドレス</div>
+              <div  class="search_item2" >
+                <div id="deteil_2" class="search_item" style="font-size:15px;">詳しく</div>
+              </div>
+              <div class="im">
+                <img src="image/my-page.png" id="image_2" class="dress_img">
+              </div>
             </div>
-          </div>
-          <div class="search_element">
-            <div class="search_item"><input type="checkbox" class="check_1" value="カクテルドレス"></input></div>
-            <div class="search_item">カクテルドレス</div>
-            <div  class="search_item" >
-              <div id="deteil_2" class="deteil" style="  margin-left:155px; ">詳しく</div>
-            </div></br>
-            <div class="im"><img src="image/my-page.png" id="image_2" class="dress_img" style="display:none;"></div>
-            </div>
+        </div>
       </div>
-     </div>
-          
+
+      <!--カラー---------------------->  
       <p id="search_title"> カラー</p>
         <select name="collar" id="search_box"">
           <option id="search_option" value="none">ーーー</option>
@@ -86,6 +112,7 @@
           <option id="search_option" value="green">グリーン</option>
         </select>
     
+      <!--イメージ---------------------->
       <p id="search_title">イメージ</p>              
         <select id="search_box">
           <option id="search_option" value="1">ーーー</option>
@@ -94,360 +121,415 @@
           <option id="search_option" value="elegant">エレガント</option>
         </select>
 
+      <!--ライン---------------------->
       <p id="search_title">ライン</p>
-        <div name="line" id="line" class="search_box">
-        ーーー </div>
-
-      <div class="popup" id="popup_2">
-        <div class="back_search">＜</div>
-        <div style="text-align: center; border-bottom: solid 2px rgb(233, 233, 233);padding-bottom:10px;">ライン
+        <!--初期表示-->
+        <div name="dress" id="line" class="search_box">
+          ーーー
         </div>
-        <div class="search_popup" style="margin-top:20px;">
-          <div class="search_element">
-            <div class="search_item">
-              <input type="checkbox" class="check_2" value="Aライン"></input>
-            </div>
-            <div class="search_item">Aライン</div>
-            <div  class="search_item" >
-              <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
-              </div>
-            </div></br>
-            <div class="im">
-              <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
-            </div>
-          </div>
-          <div class="search_element">
-            <div class="search_item">
-              <input type="checkbox" class="check_2" value="エンパイアライン"></input>
-            </div>
-            <div class="search_item">エンパイアライン</div>
-            <div  class="search_item" >
-              <div id="deteil_2" class="deteil" style="  margin-left:155px; ">詳しく
-              </div>
-            </div></br>
-            <div class="im"><img src="image/my-page.png" id="image_2" class="dress_img" style="display:none;">
-            </div>
-          </div>
-          <div class="search_element">
+        <!--ポップアップ-->
+        <div class="popup" id="popup_2">
+          <!--ポップアップタイトル-->
+          <div class="back_search">≪</div>
+          <div id="pop_title">ライン</div>
+          <!--ポップアップ中身-->
+          <div class="search_popup">
+            <!--０--> 
+            <div class="search_element">
               <div class="search_item">
-                <input type="checkbox" class="check_2" value="マーメイドライン"></input>
+                <input type="checkbox" class="check_2" value="ー">
+                </input>
+              </div>
+              <div class="search_item">ーーー</div>
+            </div><br>
+            <!--１--> 
+            <div class="search_element">
+              <div class="search_item">
+              <input type="checkbox" class="2" value="Aライン"></input>
+              </div>
+              <div class="search_item">Aライン</div>
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
+                </div>
+              </div>
+              <div class="im">
+                <img src="image/heart.png" id="image_1" class="dress_img">
+              </div>
+            </div><br>
+            <!--２--> 
+            <div class="search_element">
+              <div class="search_item">
+              <input type="checkbox" class="check_2" value="エンパイアライン"></input>
+              </div>
+              <div class="search_item">エンパイアライン</div>
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
+                </div>
+              </div>
+              <div class="im">
+                <img src="image/my-page.png" id="image_2" class="dress_img" style="display:none;">
+              </div>
+            </div><br>
+            <!--３--> 
+            <div class="search_element">
+              <div class="search_item">
+              <input type="checkbox" class="check_2" value="マーメイドライン"></input>
               </div>
               <div class="search_item">マーメイドライン</div>
-              <div  class="search_item" >
-                <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
                 </div>
-              </div></br>
+              </div>
               <div class="im">
                 <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
               </div>
-            </div>
+            </div><br>
+            <!--４--> 
             <div class="search_element">
               <div class="search_item">
-                <input type="checkbox" class="check_2" value="ドームライン"></input>
+              <input type="checkbox" class="check_2" value="ドームライン"></input>
               </div>
               <div class="search_item">ドームライン</div>
-              <div  class="search_item" >
-                <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
                 </div>
-              </div></br>
+              </div>
               <div class="im">
                 <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
               </div>
-            </div>
+            </div><br>
+            <!--５--> 
             <div class="search_element">
               <div class="search_item">
-                <input type="checkbox" class="check_2" value="スレンダーライン"></input>
+              <input type="checkbox" class="check_2" value="スレンダーライン"></input>
               </div>
               <div class="search_item">スレンダーライン</div>
-              <div  class="search_item" >
-                <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
                 </div>
-              </div></br>
+              </div>
               <div class="im">
                 <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
               </div>
-            </div>
-          <div class="search_element">
+            </div><br>
+            <!--６--> 
+            <div class="search_element">
               <div class="search_item">
-                <input type="checkbox" class="check_2" value="プリンセスライン"></input>
+              <input type="checkbox" class="check_2" value="プリンセスライン"></input>
               </div>
               <div class="search_item">プリンセスライン</div>
-              <div  class="search_item" >
-                <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
                 </div>
-              </div></br>
+              </div>
               <div class="im">
                 <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
               </div>
-            </div>
-          <div class="search_element">
-              <div class="search_item">
-                <input type="checkbox" class="check_2" value="その他"></input>
-              </div>
-              <div class="search_item">その他</div>
-              <div  class="search_item" >
-                <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
-                </div>
-              </div></br>
-              <div class="im">
-                <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
-              </div>
-            </div>
+            </div><br>
           </div>
         </div>
-  
+            
+      <!--ネックライン---------------------->
       <p id="search_title">ネックライン</p>
-        <div name="neck_line" id="neck_line" class="search_box"> ーーー
+        <!--初期表示-->
+        <div name="dress" id="neck_line" class="search_box">
+          ーーー
         </div>
-      <div class="popup" id="popup_3">
-        <div class="back_search">＜</div>
-        <div style="text-align: center; border-bottom: solid 2px rgb(233, 233, 233);padding-bottom:10px;">ネックライン
-        </div>
-        <div class="search_popup" style="margin-top:20px;">
-          <div class="search_element">
-            <div class="search_item">
-              <input type="checkbox" class="check_3" value="Vネックライン"></input>
-            </div>
-            <div class="search_item">Vネックライン</div>
-            <div  class="search_item" >
-              <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
-              </div>
-            </div></br>
-            <div class="im">
-              <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
-            </div>
-          </div>
-          <div class="search_element">
-            <div class="search_item">
-              <input type="checkbox" class="check_3" value="オフネックライン"></input>
-            </div>
-            <div class="search_item">オフネックライン</div>
-            <div  class="search_item" >
-              <div id="deteil_2" class="deteil" style="  margin-left:155px; ">詳しく
-              </div>
-            </div></br>
-            <div class="im"><img src="image/my-page.png" id="image_2" class="dress_img" style="display:none;">
-            </div>
-          </div>
-          <div class="search_element">
-              <div class="search_item">
-                <input type="checkbox" class="check_3" value="ジュエルネックライン"></input>
-              </div>
-              <div class="search_item">ジュエルネックライン</div>
-              <div  class="search_item" >
-                <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
-                </div>
-              </div></br>
-              <div class="im">
-                <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
-              </div>
-            </div>
+        <!--ポップアップ-->
+        <div class="popup" id="popup_3">
+          <!--ポップアップタイトル-->
+          <div class="back_search">≪</div>
+          <div id="pop_title">ネックライン</div>
+          <!--ポップアップ中身-->
+          <div class="search_popup">
+            <!--０--> 
             <div class="search_element">
               <div class="search_item">
-                <input type="checkbox" class="check_3" value="スクープドネックライン"></input>
+                <input type="checkbox" class="check_3" value="ー">
+                </input>
               </div>
-              <div class="search_item">スクープドネックライン</div>
-              <div  class="search_item" >
-                <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
-                </div>
-              </div></br>
-              <div class="im">
-                <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
-              </div>
-            </div>
+              <div class="search_item">ーーー</div>
+            </div><br>
+            <!--１--> 
             <div class="search_element">
               <div class="search_item">
-                <input type="checkbox" class="check_3" value="スクエアネックライン"></input>
+              <input type="checkbox" class="check_3" value="Vネック"></input>
               </div>
-              <div class="search_item">スクエアネックライン</div>
-              <div  class="search_item" >
-                <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
+              <div class="search_item">Vネック</div>
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
                 </div>
-              </div></br>
-              <div class="im">
-                <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
               </div>
-            </div>
-          <div class="search_element">
+              <div class="im">
+                <img src="image/heart.png" id="image_1" class="dress_img">
+              </div>
+            </div><br>
+            <!--２--> 
+            <div class="search_element">
               <div class="search_item">
-                <input type="checkbox" class="check_3" value="スタンドカラー"></input>
+              <input type="checkbox" class="check_3" value="オフネック"></input>
+              </div>
+              <div class="search_item">オフネック</div>
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
+                </div>
+              </div>
+              <div class="im">
+                <img src="image/heart.png" id="image_1" class="dress_img">
+              </div>
+            </div><br>
+            <!--３--> 
+            <div class="search_element">
+              <div class="search_item">
+              <input type="checkbox" class="check_3" value="ジュエルネック"></input>
+              </div>
+              <div class="search_item">ジュエルネック</div>
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
+                </div>
+              </div>
+              <div class="im">
+                <img src="image/heart.png" id="image_1" class="dress_img">
+              </div>
+            </div><br>
+            <!--４--> 
+            <div class="search_element">
+              <div class="search_item">
+              <input type="checkbox" class="check_3" value="スクープド"></input>
+              </div>
+              <div class="search_item">スクープド</div>
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
+                </div>
+              </div>
+              <div class="im">
+                <img src="image/heart.png" id="image_1" class="dress_img">
+              </div>
+            </div><br>
+            <!--５--> 
+            <div class="search_element">
+              <div class="search_item">
+              <input type="checkbox" class="check_3" value="スクエア"></input>
+              </div>
+              <div class="search_item">スクエア</div>
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
+                </div>
+              </div>
+              <div class="im">
+                <img src="image/heart.png" id="image_1" class="dress_img">
+              </div>
+            </div><br>
+            <!--６--> 
+            <div class="search_element">
+              <div class="search_item">
+              <input type="checkbox" class="check_3" value="スタンドカラー"></input>
               </div>
               <div class="search_item">スタンドカラー</div>
-              <div  class="search_item" >
-                <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
                 </div>
-              </div></br>
+              </div>
               <div class="im">
-                <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
+                <img src="image/heart.png" id="image_1" class="dress_img">
               </div>
-            </div>
-          <div class="search_element">
-              <div class="search_item">
-                <input type="checkbox" class="check_3" value="バトーネックライン"></input>
-              </div>
-              <div class="search_item">バトーネックライン</div>
-              <div  class="search_item" >
-                <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
-                </div>
-              </div></br>
-              <div class="im">
-                <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
-              </div>
-            </div>
+            </div><br>
+            <!--７--> 
             <div class="search_element">
               <div class="search_item">
-                <input type="checkbox" class="check_3" value="ポートレートネックライン"></input>
+              <input type="checkbox" class="check_3" value="バトーネック"></input>
               </div>
-              <div class="search_item">ポートレートネックライン</div>
-              <div  class="search_item" >
-                <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
+              <div class="search_item">バトーネック</div>
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
                 </div>
-              </div></br>
-              <div class="im">
-                <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
               </div>
-            </div>
+              <div class="im">
+                <img src="image/heart.png" id="image_1" class="dress_img">
+              </div>
+            </div><br>
+            <!--８--> 
             <div class="search_element">
               <div class="search_item">
-                <input type="checkbox" class="check_3" value="ホルターネックライン"></input>
+              <input type="checkbox" class="check_3" value="ポートレート"></input>
               </div>
-              <div class="search_item">ホルターネックライン</div>
-              <div  class="search_item" >
-                <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
+              <div class="search_item">ポートレート</div>
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
                 </div>
-              </div></br>
-              <div class="im">
-                <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
               </div>
-            </div>
+              <div class="im">
+                <img src="image/heart.png" id="image_1" class="dress_img">
+              </div>
+            </div><br>
+            <!--９--> 
             <div class="search_element">
               <div class="search_item">
-                <input type="checkbox" class="check_3" value="スウィートハートネックライン"></input>
+              <input type="checkbox" class="check_3" value="ホルターネック"></input>
               </div>
-              <div class="search_item">スウィートハートネックライン</div>
-              <div  class="search_item" >
-                <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
+              <div class="search_item">ホルターネック</div>
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
                 </div>
-              </div></br>
-              <div class="im">
-                <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
               </div>
-            </div>
+              <div class="im">
+                <img src="image/heart.png" id="image_1" class="dress_img">
+              </div>
+            </div><br>
+            <!--１０--> 
             <div class="search_element">
               <div class="search_item">
-                <input type="checkbox" class="check_3" value="Uネックライン"></input>
+              <input type="checkbox" class="check_3" value="スウィートハート"></input>
               </div>
-              <div class="search_item">Uネックライン</div>
-              <div  class="search_item" >
-                <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
+              <div class="search_item">スウィートハート</div>
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
                 </div>
-              </div></br>
-              <div class="im">
-                <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
               </div>
-            </div>
+              <div class="im">
+                <img src="image/heart.png" id="image_1" class="dress_img">
+              </div>
+            </div><br>
+            <!--１１--> 
             <div class="search_element">
               <div class="search_item">
-                <input type="checkbox" class="check_3" value="キャミソールネックライン"></input>
+              <input type="checkbox" class="check_3" value="Uネック"></input>
               </div>
-              <div class="search_item">キャミソールネックライン</div>
-              <div  class="search_item" >
-                <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
+              <div class="search_item">Uネック</div>
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
                 </div>
-              </div></br>
-              <div class="im">
-                <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
               </div>
-            </div>
+              <div class="im">
+                <img src="image/heart.png" id="image_1" class="dress_img">
+              </div>
+            </div><br>
+            <!--１２--> 
             <div class="search_element">
               <div class="search_item">
-                <input type="checkbox" class="check_3" value="ワンショルダー"></input>
+              <input type="checkbox" class="check_3" value="キャミソール"></input>
+              </div>
+              <div class="search_item">キャミソール</div>
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
+                </div>
+              </div>
+              <div class="im">
+                <img src="image/heart.png" id="image_1" class="dress_img">
+              </div>
+            </div><br>
+            <!--１３--> 
+            <div class="search_element">
+              <div class="search_item">
+              <input type="checkbox" class="check_3" value="ワンショルダー"></input>
               </div>
               <div class="search_item">ワンショルダー</div>
-              <div  class="search_item" >
-                <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
                 </div>
-              </div></br>
-              <div class="im">
-                <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
               </div>
-            </div>
+              <div class="im">
+                <img src="image/heart.png" id="image_1" class="dress_img">
+              </div>
+            </div><br>
+            <!--１４--> 
             <div class="search_element">
               <div class="search_item">
-                <input type="checkbox" class="check_3" value="オフショルダーネックライン"></input>
+              <input type="checkbox" class="check_3" value="オフショルダー"></input>
               </div>
-              <div class="search_item">オフショルダーネックライン</div>
-              <div  class="search_item" >
-                <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
+              <div class="search_item">オフショルダー</div>
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
                 </div>
-              </div></br>
-              <div class="im">
-                <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
               </div>
-            </div>
+              <div class="im">
+                <img src="image/heart.png" id="image_1" class="dress_img">
+              </div>
+            </div><br>
+            <!--１５--> 
             <div class="search_element">
               <div class="search_item">
-                <input type="checkbox" class="check_3" value="ストラップレスネックライン"></input>
+              <input type="checkbox" class="check_3" value="ストラップレス"></input>
               </div>
-              <div class="search_item">ストラップレスネックライン</div>
-              <div  class="search_item" >
-                <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
+              <div class="search_item">ストラップレス</div>
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
                 </div>
-              </div></br>
+              </div>
               <div class="im">
-                <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
+                <img src="image/heart.png" id="image_1" class="dress_img">
               </div>
-            </div>
-          <div class="search_element">
-              <div class="search_item">
-                <input type="checkbox" class="check_2" value="その他"></input>
-              </div>
-              <div class="search_item">その他</div>
-              <div  class="search_item" >
-                <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
-                </div>
-              </div></br>
-              <div class="im">
-                <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
-              </div>
-            </div>
+            </div><br>
           </div>
         </div>
-
+      </div>
       
-      
+      <!--スリーブ---------------------->
       <p id="search_title">スリーブ</p>
-      <div name="sleeve" id="sleeve" class="search_box">ーーー</div>
-      <div class="popup" id="popup_4">
-        <div class="back_search">＜</div>
-        <div style="text-align: center; border-bottom: solid 2px rgb(233, 233, 233);padding-bottom:10px;">スリーブ
+        <!--初期表示-->
+        <div name="dress" id="sleeve" class="search_box">
+          ーーー
         </div>
-        <div class="search_popup" style="margin-top:20px;">
-          <div class="search_element">
-            <div class="search_item">
+        <!--ポップアップ-->
+        <div class="popup" id="popup_4">
+          <!--ポップアップタイトル-->
+          <div class="back_search">≪</div>
+          <div id="pop_title">スリーブ</div>
+          <!--ポップアップ中身-->
+          <div class="search_popup">
+            <!--０--> 
+            <div class="search_element">
+              <div class="search_item">
+                <input type="checkbox" class="check_4" value="ー">
+                </input>
+              </div>
+              <div class="search_item">ーーー</div>
+            </div><br>
+            <!--１--> 
+            <div class="search_element">
+              <div class="search_item">
               <input type="checkbox" class="check_4" value="スリーブレス"></input>
-            </div>
-            <div class="search_item">スリーブレス</div>
-            <div  class="search_item" >
-              <div id="deteil_1" class="deteil" style="  margin-left:125px; ">詳しく
               </div>
-            </div></br>
-            <div class="im">
-              <img src="image/heart.png" id="image_1" class="dress_img" style="display:none;">
-            </div>
-          </div>
-          <div class="search_element">
-            <div class="search_item">
+              <div class="search_item">スリーブレス</div>
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
+                </div>
+              </div>
+              <div class="im">
+                <img src="image/heart.png" id="image_1" class="dress_img">
+              </div>
+            </div><br>
+            <!--２--> 
+            <div class="search_element">
+              <div class="search_item">
               <input type="checkbox" class="check_4" value="キャップスリーブ"></input>
-            </div>
-            <div class="search_item">キャップスリーブ</div>
-            <div  class="search_item" >
-              <div id="deteil_2" class="deteil" style="  margin-left:155px; ">詳しく
               </div>
-            </div></br>
-            <div class="im"><img src="image/my-page.png" id="image_2" class="dress_img" style="display:none;">
-            </div>
-          </div>
+              <div class="search_item">キャップスリーブ</div>
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
+                </div>
+              </div>
+              <div class="im">
+                <img src="image/heart.png" id="image_1" class="dress_img">
+              </div>
+            </div><br>
+            <!--３--> 
+            <div class="search_element">
+              <div class="search_item">
+              <input type="checkbox" class="check_4" value="フレンチスリーブ"></input>
+              </div>
+              <div class="search_item">フレンチスリーブ</div>
+              <div  class="search_item2" >
+                <div id="deteil_1" class="search_item" style="font-size:15px;">詳しく
+                </div>
+              </div>
+              <div class="im">
+                <img src="image/heart.png" id="image_1" class="dress_img">
+              </div>
+            </div><br>
+
+
+        
           <div class="search_element">
               <div class="search_item">
                 <input type="checkbox" class="check_4" value="フレンチスリーブ"></input>
