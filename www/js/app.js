@@ -114,9 +114,9 @@ $("#back_page_3").click(function(){
           $('.popup').removeClass('js_active'); // ポップアップを閉じる(js_activeクラスを削除)
    });
  
-  /*詳しく・画像表示****************************************************/
+  /*詳しく・画像表示****************************/
     /*ドレス*/
-    $("#deteil_1").click(function(){ //詳しく一行目
+    $(".deteil_text").click(function(){ //詳しく一行目
       if(img_f[0]!=1){ //一行目の開閉判判定
         $("#image_1").slideDown("slow", function() { // 画像を開くアニメーション."slow"部分はスピード
           $("#deteil_1").text(deteil[1]);  // 画像を開いているとき「詳しく」を「閉じる」に変更
