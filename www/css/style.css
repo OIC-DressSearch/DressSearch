@@ -385,18 +385,22 @@
     }
     /*ヘッダー下*/
       #itiran_header{
+        text-align: right;
+        height: 44px;
         border-bottom:0.2px solid #cccbcb;
       }
       .menu{
-        margin-top: 1%;
+        margin-top: 2%;
         margin-bottom: 1%;
       }
       #kensaku_kensu{
+        float: left;
         margin-left: 5%;
         color: #68c3c5;
         font-size: 16px;
       }
       #kensaku_joken{
+        float: left;
         margin-left: 5%;
         font-size: 15px;
       }
@@ -464,20 +468,22 @@
   }
 
 /*  3段目 */
-  .nice_header_3{/*3段目全体*/
+  #nice_header_3{/*3段目全体*/
+    text-align: right;
     margin-top: 1%;
     margin-bottom: 1%;
     border-bottom: 1px solid #cccbcb;
   } 
   .menu{ /*3段目全部*/
     display: inline-block;
-    margin-top:1%; 
     margin-bottom: 1%;
-    margin-left: 5%;
     max-width: 95%;
   }
   #result{ /*件数*/
-    font-size: 10px;
+    float: left;
+    margin-left: 5%;
+    color: #68c3c5;
+    font-size: 16px;
   }
   #push {  /*編集*/
     display: inline-block;
@@ -485,7 +491,7 @@
     background: #abd8e0;/*ボタン色*/
     color: #FFF;
     border-radius: 3px;
-    margin-left: 28%;
+    margin-left: 20px;
     height: 38%;
     width: 20%;
     text-align: center;
@@ -502,15 +508,12 @@
     border-bottom: none;/*線を消す*/
   }
   #reserve{ /*試着予約*/
-    display: right;    text-decoration: none;
     background: #abd8e0;/*ボタン色*/
     color: #FFF;
     border-radius: 3px;
-    height: 38%;
     width: 20%;
     text-align: center;
     font-size: 15px;
-    margin-left: 5%;
     padding-top: 3px;
     padding-bottom: 3px;
     padding-left: 5px;
