@@ -1,11 +1,14 @@
 /**********変数 ************/
 var apikey="7672355577f11839b1a72bce66af03d2a68e6f119b00178a4ecc8bc08daaaf68";
 var clientkey="a35cc47c9dc52261c4590dae8f7d466eb3cdf83aa729c0443933ae8cb1d95b13";
+var ncmb = new NCMB(apikey, clientkey);
+var path=[];
+var dress_id=[];
 var text="";
 var img_f=[0,0,0];
-var deteil=["詳しく","閉じる"]
+var deteil=["詳しく","閉じる"];
 var index=999;
-var item_count=1;
+var item_count=0;
 var search_box=["#dress","#line","#neck_line","#sleeve","#waist_line","#skirt","#skirt_length","#trane","#bodice"];
 var check_box=[".check_1:checked",".check_2:checked",".check_3:checked",".check_4:checked",".check_5:checked",".check_6:checked",".check_7:checked",".check_8:checked",".check_9:checked"];
 
@@ -179,7 +182,7 @@ $("#back_page_3").click(function(){
     setTimeout(function(){
 window.location.href = "list.html"; 
 
-    },1000);
+    },500);
         
     });
  
@@ -199,6 +202,8 @@ function search_sum(){
  var sumresult = String(item_count);
  $("#search_sum").text(sumresult + "件");
 }
+
+
 /***ここまで一覧画面*****************************************************/
  
 /***いいね画面*****************************************************/
@@ -208,6 +213,12 @@ function search_sum(){
      var element_id=$(this).attr('id');
      $("#"+element_id).removeClass('heart_enp');
      $("#"+element_id).addClass('heart');
+     var item_name=$(this).attr('name');
+     var item_name_sprite = item_name.split(',');
+     var Favorite = ncmb.DataStore("favorite");
+     var favorite = new Favorite();
+    favorite.set("user_id","test").set("path",item_name_sprite[0]).set("dress_id",item_name_sprite[1]).save();
+
    });
  
  //いいね取消し
@@ -215,6 +226,20 @@ function search_sum(){
      var element_id=$(this).attr('id');
      $("#"+element_id).removeClass('heart');
      $("#"+element_id).addClass('heart_enp');
+    var item_name=$(this).attr('name');
+    var item_name_sprite = item_name.split(',');
+     var Favorite = ncmb.DataStore("favorite");
+            Favorite.equalTo("dress_id", item_name_sprite[1]) 
+            .fetchAll() 
+            .then(function(results){
+              var object=results[0];
+              object.delete()             
+            })
+            .catch(function(error){
+              alert(error);
+            });
+  
+     
    });
  
   //ショップリストの折り返し　配列にショップの名前を入れてから正規表現する
@@ -388,7 +413,7 @@ var test = new Test();
     reader.onload = function(e) { //リーダーが読み込んだ時のイベント
       item_count++;
       var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
-      var add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart_enp" id="heart_'+item_count+'"></div></li>';
+      var add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
       $("#result_list").append(add_text);
       $("#search_sum").text(item_count + "件");
     }  
@@ -400,27 +425,23 @@ var test = new Test();
     }
 
 function get_path(){
-      var path=[];
       var ncmb = new NCMB(apikey, clientkey);
 
-var Test = ncmb.DataStore("test_table"); // データベース内指定
-        Test.fetchAll() // データベース内を全て検索
+var Test = ncmb.DataStore("test_table"); 
+        Test.fetchAll() 
        .then(function(objects){
-          var object = objects[0]; //データベース内のN番目のレコードを指定          
-           te= object.get("dress"); //フィールド名のフィールドからデータを取得
+          var object = objects[0];         
+           te= object.get("dress"); 
           var test_data = ncmb.DataStore("test");
-      // データの条件検索取得（完全一致）
-      test_data.equalTo("dress", te) // 一行名に検索するフィールド名、二行目にそのフィールド内で検索する具体的なデータ
-            .fetchAll() // データベース内の条件に合うデータを全て検索
+   
+      test_data.equalTo("dress", te)
+            .fetchAll() 
             .then(function(results){
               for(var i=0;i<results.length;i++){
-                // 検索成功
-                var a=results[i]; // 検索結果の配列指定
-                path[i]=a.get("path"); // どのテーブル内からどのフィールドのデータを取得するか指定               
-                // ダウンロード（データ形式をblobを指定）
+                var a=results[i]; 
+                path[i]=a.get("path");     dress_id[i]=a.get("dress_id");       
                 ncmb.File.download(path[i], "blob")
                     .then(function(blob) {
-                    // ファイルリーダーにデータを渡す
                     reader.readAsDataURL(blob);
                     })
                     .catch(function(err) {

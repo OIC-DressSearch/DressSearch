@@ -416,10 +416,14 @@
   padding: 0px 0px 0px 0px;
   /* width: 18em; */
 }
+.L1 li:hover{
+    color: #68c3c5;
+    border-bottom: 3px solid #68c3c5;
+  }
 .test1 li {
   display: inline-block;
-  height: 3em;
-  line-height: 25px;
+  height: 3em;           /*ここのCSSで２行に*/
+  line-height: 25px;     /*縦３文字横６文字*/
   width: 6em;
   
 }
@@ -427,6 +431,7 @@
     width: 100px;
     text-align: center;
     float: left;
+    margin-right: 10px;
     /* flex-wrap:wrap; */
 }
 
@@ -462,6 +467,26 @@
     word-wrap: normal;
     word-break:break-word;
   }
+
+  /* ************　　　変更　　　*************** */
+  .table-scroll {
+    overflow: auto;
+  }
+
+  .table-scroll table {
+    table-layout: fixed;
+  }
+  .list-header li:hover{
+    color: #68c3c5;
+    border-bottom: 3px solid #68c3c5;
+  }
+  #nice_list {
+    width:110px;
+    /* background-color:#99cc00; */
+    margin-right: 5%; 
+  }
+
+/* ****************　　変更　　　*************** */
 
 /*  3段目 */
   .nice_header_3{/*3段目全体*/
