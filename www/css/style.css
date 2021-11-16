@@ -402,38 +402,38 @@
       }
       
 /***********いいね画面のCSS******************************/
-.test1 {
+/* .test1 {
     padding-left: 3px;
     height: 100px;
-    width: 18em;
-    user-select: none; /*文字選択されないようにしている*/
-    -ms-user-select: none;
+    width: 18em; */
+    /* user-select: none; /*文字選択されないようにしている*/
+    /* -ms-user-select: none;
     -webkit-user-select: none;
     -moz-user-select: -moz-none;
-}
-.test1 ul {      /*ulはリストマーカー部分の設定*/
+} */ 
+/* //.test1 ul {      ulはリストマーカー部分の設定
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
-  /* width: 18em; */
-}
-.L1 li:hover{
+  
+} */
+/* .L1 li:hover{
     color: #68c3c5;
     border-bottom: 3px solid #68c3c5;
-  }
-.test1 li {
+  } */
+/* .test1 li {
   display: inline-block;
   height: 3em;           /*ここのCSSで２行に*/
-  line-height: 25px;     /*縦３文字横６文字*/
-  width: 6em;
+  /* line-height: 25px;     /*縦３文字横６文字*/
+  /* width: 6em;
   
-}
-.t1 {
+} */ 
+/* .t1 {
     width: 100px;
     text-align: center;
     float: left;
-    margin-right: 10px;
+    margin-right: 10px; */
     /* flex-wrap:wrap; */
-}
+/* } */
 
 /*  2段目 */
   .nice_header_2{ /*２段目全体*/
@@ -472,16 +472,22 @@
   /* ************　　　変更　　　*************** */
   .table-scroll {
     overflow: auto;
+    width:100%;
   }
-
+  .table-1{
+    width:20%;
+  }
+  .table-2{
+    width: 20%;
+  }
   .table-scroll table {
     table-layout: fixed;
   }
-  .list-header li:hover{
+  .table-header #list:hover{      
     color: #68c3c5;
     border-bottom: 3px solid #68c3c5;
   }
-  #nice_list {
+  #list {
     width:110px;
     /* background-color:#99cc00; */
     margin-right: 5%; 

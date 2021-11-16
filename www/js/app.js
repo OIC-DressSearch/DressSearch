@@ -61,9 +61,6 @@ $("#back_page_3").click(function(){
  
 /***検索画面*****************************************************/
  
-   /*$('#dress').click(function() {
-       $('.popup').addClass('js_active'); //popupクラスにjs_activeクラスを追加する
-   });*/
    $('#dress').click(function() {
     $('#popup_1').addClass('js_active');
     index=0;
