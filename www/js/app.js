@@ -123,6 +123,7 @@ $("#back_page_3").click(function(){
           $('.popup').removeClass('js_active'); // ポップアップを閉じる(js_activeクラスを削除)
    });
  
+
  /**ここから調整中(未完成) ****/
    $(".deteil_text").click(function(){ //詳しく一行目
    img_index++;
