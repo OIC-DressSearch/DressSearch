@@ -18,10 +18,13 @@ var te;
  
 /***共通部分*****************************************************/
    window.onload = function () {
-     var current_fail=location.pathname;
-     if(current_fail==="/list.html"){
+     var current_file=location.pathname;
+     if(current_file==="/list.html"){
        file_search();
        search_sum();
+     }
+     else if(current_file==="/favorite.html"){
+       favorite_search();
      }
    };
 $(".back").click(function(){
@@ -241,7 +244,43 @@ function search_sum(){
   
      
    });
- 
+function favorite_search(){
+  var favorite_path=[];
+
+var reader = new FileReader(); //リーダークラス作成
+    reader.onload = function(e) { //リーダーが読み込んだ時のイベント
+      item_count++;
+      var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
+      var add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+      $("#result_list").append(add_text);
+      $("#search_sum").text(item_count + "件");
+    }  
+
+
+         var favorite_test = ncmb.DataStore("favorite");
+      favorite_test
+            .equalTo("user_id", "test")
+            .fetchAll() 
+            .then(function(results){
+                for(var i=0;i<results.length;i++){
+                var a=results[i];
+                favorite_path[i]=a.path;
+
+                var fileName=favorite_path[i];
+                ncmb.File.download(fileName, "blob")
+                .then(function(blob) {
+                  // ファイルリーダーにデータを渡す
+                  reader.readAsDataURL(blob);
+                })
+                .catch(function(err) {
+                    console.error(err);
+                })
+                }
+            })
+            .catch(function(error){
+              alert(error);
+            });
+}
   //ショップリストの折り返し　配列にショップの名前を入れてから正規表現する
 /*   var count_6 = $("#nice_list").match(/.{1,6}/g);
    for( let n = 0; n <= count_6.length; n++ ) {
@@ -439,7 +478,8 @@ var Test = ncmb.DataStore("test_table");
             .then(function(results){
               for(var i=0;i<results.length;i++){
                 var a=results[i]; 
-                path[i]=a.get("path");     dress_id[i]=a.get("dress_id");       
+                path[i]=a.get("path");     dress_id[i]=a.get("dress_id");
+                check_id(dress_id[i]);       
                 ncmb.File.download(path[i], "blob")
                     .then(function(blob) {
                     reader.readAsDataURL(blob);
@@ -465,3 +505,15 @@ var Test = ncmb.DataStore("test_table");
  
    /*************ここまでテスト**********/
 
+function check_id(check_img){
+ var saveData = ncmb.DataStore("favorite");
+      saveData
+            .equalTo("user_id", check_img)
+            .fetchAll() 
+            .then(function(results){
+              
+            })
+            .catch(function(error){
+              alert(error);
+            });
+}
