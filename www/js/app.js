@@ -114,51 +114,54 @@ $("#back_page_3").click(function(){
           $('.popup').removeClass('js_active'); // ポップアップを閉じる(js_activeクラスを削除)
    });
  
-   $("#deteil_1").click(function(){ //詳しく一行目
-     if(img_f[0]!=1){ //一行目の開閉判判定
-       $("#image_1").slideDown("slow", function() { // 画像を開くアニメーション."slow"部分はスピード
-         $("#deteil_1").text(deteil[1]);  // 画像を開いているとき「詳しく」を「閉じる」に変更
-       });
-       img_f[0]=1;
-     }
-     else{
-       $("#image_1").slideUp("slow", function() {
-         $("#deteil_1").text(deteil[0]);
-           img_f[0]=0;
-       });
-     }
-   });
- 
-   $("#deteil_2").click(function(){
-     if(img_f[1]!=1){
-       $("#image_2").slideDown("slow", function() {
-       $("#deteil_2").text(deteil[1]);
-      });
-     img_f[1]=1;
-     }
-     else{
-        $("#image_2").slideUp("slow", function() {
-          $("#deteil_2").text(deteil[0]);
-         img_f[1]=0;
+  /*詳しく・画像表示****************************************************/
+    /*ドレス*/
+    $("#deteil_1").click(function(){ //詳しく一行目
+      if(img_f[0]!=1){ //一行目の開閉判判定
+        $("#image_1").slideDown("slow", function() { // 画像を開くアニメーション."slow"部分はスピード
+          $("#deteil_1").text(deteil[1]);  // 画像を開いているとき「詳しく」を「閉じる」に変更
         });
-
+        img_f[0]=1;
+      }
+      else{
+        $("#image_1").slideUp("slow", function() {
+          $("#deteil_1").text(deteil[0]);
+            img_f[0]=0;
+        });
       }
     });
-
     $("#deteil_2").click(function(){
       if(img_f[1]!=1){
         $("#image_2").slideDown("slow", function() {
         $("#deteil_2").text(deteil[1]);
-       });
+        });
       img_f[1]=1;
       }
       else{
-         $("#image_2").slideUp("slow", function() {
-           $("#deteil_2").text(deteil[0]);
+          $("#image_2").slideUp("slow", function() {
+            $("#deteil_2").text(deteil[0]);
           img_f[1]=0;
-         });
+          });
+        }
+      });
+      $("#deteil_3").click(function(){
+      if(img_f[1]!=1){
+        $("#image_3").slideDown("slow", function() {
+        $("#deteil_3").text(deteil[1]);
+        });
+      img_f[1]=1;
       }
-    });
+      else{
+          $("#image_3").slideUp("slow", function() {
+            $("#deteil_3").text(deteil[0]);
+          img_f[1]=0;
+          });
+        }
+      });
+
+      /*ライン*/
+
+   
 
     $("#search_button").click(function(){
         te=$("#dress").text();
