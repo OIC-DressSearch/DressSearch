@@ -130,13 +130,13 @@ $("#back_page_3").click(function(){
 
      if(img_f[te]!=1){ //一行目の開閉判判定
        $("#image_"+te).slideDown("slow", function() { // 画像を開くアニメーション."slow"部分はスピード
-         $("#deteil_text").text(deteil[1]);  // 画像を開いているとき「詳しく」を「閉じる」に変更
+         $("#deteil_text"+te).text(deteil[1]);  // 画像を開いているとき「詳しく」を「閉じる」に変更
        });
        img_f[te]=1;
      }
      else{
        $("#image_"+te).slideUp("slow", function() {
-         $("#deteil_text").text(deteil[0]);
+         $("#deteil_text"+te).text(deteil[0]);
            img_f[te]=0;
        });
      }
