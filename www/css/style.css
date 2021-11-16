@@ -461,7 +461,8 @@
     color: #68c3c5;
     border-bottom: 3px solid #68c3c5;
   }
-  #nice_list{ /*liの中身*/
+
+  #nice_list{ /*liの中身*/ 
     margin-right: 12%;
     max-width: 100%;
     word-wrap: normal;

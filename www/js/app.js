@@ -11,8 +11,10 @@ var index=999;
 var item_count=0;
 var search_box=["#dress","#line","#neck_line","#sleeve","#waist_line","#skirt","#skirt_length","#trane","#bodice"];
 var check_box=[".check_1:checked",".check_2:checked",".check_3:checked",".check_4:checked",".check_5:checked",".check_6:checked",".check_7:checked",".check_8:checked",".check_9:checked"];
-
+var flag=[];
 var te;
+var j=0;
+var where_text="";
 
 /********ここまで変数部 *****/
  
@@ -204,6 +206,81 @@ function search_sum(){
  
  var sumresult = String(item_count);
  $("#search_sum").text(sumresult + "件");
+}
+
+  var reader = new FileReader(); //リーダークラス作成
+  reader.onload = function(e) { //リーダーが読み込んだ時のイベント
+  var add_text="";
+  item_count++;
+  var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
+    if(flag[item_count-1]){
+      add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+    }else{
+      add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+    }
+    $("#result_list").append(add_text);
+    $("#search_sum").text(item_count + "件");
+    }  
+
+  function file_search(){
+    for(var i=0;i<100;i++){ //いいねフラグ初期化
+      flag[i]=false;
+    }
+    j=0; // いいねフラグindex
+    get_path();
+  }
+
+  function get_path(){
+    var get_where = ncmb.DataStore("test_table"); 
+    get_where.fetchAll() 
+    .then(function(objects){
+      var object = objects[0];         
+      where_text=object.get("dress"); 
+
+      var get_data = ncmb.DataStore("test");
+      test_data.equalTo("dress", where_text)
+      .fetchAll() 
+      .then(function(results){
+        for(var i=0;i<results.length;i++){
+          var a=results[i]; 
+          path[i]=a.get("path");    
+          dress_id[i]=a.get("dress_id");
+          var saveData_2 = ncmb.DataStore("favorite");
+          saveData_2
+          .equalTo("dress_id", dress_id[i])
+          .fetchAll() 
+          .then(function(results){
+            var res=results[0];
+            if(res.dress_id!=" "){
+              flag[j]=true;
+              j++;
+            }
+          })
+          .catch(function(error){
+            //alert(error);
+            j++;
+          });
+          
+          ncmb.File.download(path[i], "blob")
+          .then(function(blob) {
+            reader.readAsDataURL(blob);
+          })
+          .catch(function(err) {
+            alert(err);
+          })
+        }              
+      })
+      .catch(function(error){
+        alert(error);
+      });
+    })
+    .catch(function(error){
+      alert(error);
+    }); 
+
+      
+            //alert(path);
+            //return path;
 }
 
 
@@ -448,72 +525,7 @@ var test = new Test();
     /*************ここまでテスト**********/
 
     /*************画像読み込みテスト*********/
-    var reader = new FileReader(); //リーダークラス作成
-    reader.onload = function(e) { //リーダーが読み込んだ時のイベント
-      item_count++;
-      var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
-      var add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
-      $("#result_list").append(add_text);
-      $("#search_sum").text(item_count + "件");
-    }  
 
-    function file_search(){
-  // ファイル名からファイルを取得
-    get_path()
-
-    }
-
-function get_path(){
-      var ncmb = new NCMB(apikey, clientkey);
-
-var Test = ncmb.DataStore("test_table"); 
-        Test.fetchAll() 
-       .then(function(objects){
-          var object = objects[0];         
-           te= object.get("dress"); 
-          var test_data = ncmb.DataStore("test");
-   
-      test_data.equalTo("dress", te)
-            .fetchAll() 
-            .then(function(results){
-              for(var i=0;i<results.length;i++){
-                var a=results[i]; 
-                path[i]=a.get("path");     dress_id[i]=a.get("dress_id");
-                check_id(dress_id[i]);       
-                ncmb.File.download(path[i], "blob")
-                    .then(function(blob) {
-                    reader.readAsDataURL(blob);
-                    })
-                    .catch(function(err) {
-                        console.error(err);
-                    })
-              }
-              
-            })
-            .catch(function(error){
-              alert(error);
-            });
-       })
-        .catch(function(error){
-              alert(error);
-            }); 
-
-      
-            //alert(path);
-            //return path;
-}
  
    /*************ここまでテスト**********/
 
-function check_id(check_img){
- var saveData = ncmb.DataStore("favorite");
-      saveData
-            .equalTo("user_id", check_img)
-            .fetchAll() 
-            .then(function(results){
-              
-            })
-            .catch(function(error){
-              alert(error);
-            });
-}
