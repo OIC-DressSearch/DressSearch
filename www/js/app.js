@@ -1,5 +1,6 @@
 /**********変数 ************/
-var apikey="7672355577f11839b1a72bce66af03d2a68e6f119b00178a4ecc8bc08daaaf68";var clientkey="a35cc47c9dc52261c4590dae8f7d466eb3cdf83aa729c0443933ae8cb1d95b13";
+var apikey="7672355577f11839b1a72bce66af03d2a68e6f119b00178a4ecc8bc08daaaf68";
+var clientkey="a35cc47c9dc52261c4590dae8f7d466eb3cdf83aa729c0443933ae8cb1d95b13";
 var text="";
 var img_f=[0,0,0];
 var deteil=["詳しく","閉じる"]
@@ -166,7 +167,6 @@ $("#back_page_3").click(function(){
 
         Test .equalTo("id", "1").fetchAll().then(function(objects){
           var object = objects[0];
-          alert(object); 
           object.set("dress",te).set("line","test");
            object.update();
        }).catch(function(err) {
@@ -176,7 +176,10 @@ $("#back_page_3").click(function(){
 
        
 
-          window.location.href = "list.html"; 
+    setTimeout(function(){
+window.location.href = "list.html"; 
+
+    },1000);
         
     });
  
@@ -353,7 +356,7 @@ var test = new Test();
 
 
 
-    var reader = new FileReader(); //リーダークラス作成
+   /* var reader = new FileReader(); //リーダークラス作成
     reader.onload = function(e) { //リーダーが読み込んだ時のイベント
       var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
       document.getElementById("tes").src = dataUrl;
@@ -374,7 +377,7 @@ var test = new Test();
            })
     
     });
-
+*/
 
 
 
@@ -400,22 +403,17 @@ function get_path(){
       var path=[];
       var ncmb = new NCMB(apikey, clientkey);
 
-     var saveData = ncmb.DataStore("test_table");
-      saveData.fetchAll() .then(function(objects){
-                var object=objects[0]; 
-                te=object.get("dress");
-                
-            })
-            .catch(function(error){
-              alert(error);
-            }); 
-
-      var test_data = ncmb.DataStore("test");
+var Test = ncmb.DataStore("test_table"); // データベース内指定
+        Test.fetchAll() // データベース内を全て検索
+       .then(function(objects){
+          var object = objects[0]; //データベース内のN番目のレコードを指定          
+           te= object.get("dress"); //フィールド名のフィールドからデータを取得
+          var test_data = ncmb.DataStore("test");
       // データの条件検索取得（完全一致）
       test_data.equalTo("dress", te) // 一行名に検索するフィールド名、二行目にそのフィールド内で検索する具体的なデータ
             .fetchAll() // データベース内の条件に合うデータを全て検索
             .then(function(results){
-              for(var i=0;i<2;i++){
+              for(var i=0;i<results.length;i++){
                 // 検索成功
                 var a=results[i]; // 検索結果の配列指定
                 path[i]=a.get("path"); // どのテーブル内からどのフィールドのデータを取得するか指定               
@@ -434,6 +432,12 @@ function get_path(){
             .catch(function(error){
               alert(error);
             });
+       })
+        .catch(function(error){
+              alert(error);
+            }); 
+
+      
             //alert(path);
             //return path;
 }
