@@ -472,7 +472,7 @@
   /* ************　　　変更　　　*************** */
   .table-scroll {
     overflow: auto;
-    width:100%;
+    width:90%;
   }
   .table-1{
     width:20%;
@@ -481,8 +481,10 @@
     width: 20%;
   }
   .table-scroll table {
+    width:500px;
     table-layout: fixed;
   }
+
   .table-header #list:hover{      
     color: #68c3c5;
     border-bottom: 3px solid #68c3c5;
