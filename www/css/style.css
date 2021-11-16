@@ -385,55 +385,59 @@
     }
     /*ヘッダー下*/
       #itiran_header{
+        text-align: right;
+        height: 44px;
         border-bottom:0.2px solid #cccbcb;
       }
       .menu{
-        margin-top: 1%;
+        margin-top: 2%;
         margin-bottom: 1%;
       }
       #kensaku_kensu{
+        float: left;
         margin-left: 5%;
         color: #68c3c5;
         font-size: 16px;
       }
       #kensaku_joken{
+        float: left;
         margin-left: 5%;
         font-size: 15px;
       }
       
 /***********いいね画面のCSS******************************/
-.test1 {
+ .test1 {
     padding-left: 3px;
     height: 100px;
-    width: 18em;
-    user-select: none; /*文字選択されないようにしている*/
-    -ms-user-select: none;
+    /* width: 18em;  */
+     user-select: none; /*文字選択されないようにしている*/
+     -ms-user-select: none;
     -webkit-user-select: none;
     -moz-user-select: -moz-none;
-}
-.test1 ul {      /*ulはリストマーカー部分の設定*/
+} 
+ .test1 ul {      /*ulはリストマーカー部分の設定*/
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
-  /* width: 18em; */
-}
-.L1 li:hover{
+  
+} 
+ .L1 li:hover{
     color: #68c3c5;
     border-bottom: 3px solid #68c3c5;
-  }
-.test1 li {
+  } 
+ .test1 li {
   display: inline-block;
   height: 3em;           /*ここのCSSで２行に*/
-  line-height: 25px;     /*縦３文字横６文字*/
-  width: 6em;
+   line-height: 25px;     /*縦３文字横６文字*/
+   width: 6em;
   
-}
+} 
 .t1 {
     width: 100px;
     text-align: center;
     float: left;
     margin-right: 10px;
     /* flex-wrap:wrap; */
-}
+ } 
 
 /*  2段目 */
   .nice_header_2{ /*２段目全体*/
@@ -471,38 +475,45 @@
   /* ************　　　変更　　　*************** */
   .table-scroll {
     overflow: auto;
+    width:100%;
   }
-
   .table-scroll table {
     table-layout: fixed;
   }
-  .list-header li:hover{
+  .table-header #list:hover{
     color: #68c3c5;
     border-bottom: 3px solid #68c3c5;
   }
-  #nice_list {
+  #list {
     width:110px;
     /* background-color:#99cc00; */
     margin-right: 5%; 
+    text-align: center;
+  }
+  .table-scroll table {
+    width:500px;   
+    table-layout: fixed;
   }
 
 /* ****************　　変更　　　*************** */
 
 /*  3段目 */
-  .nice_header_3{/*3段目全体*/
+  #nice_header_3{/*3段目全体*/
+    text-align: right;
     margin-top: 1%;
     margin-bottom: 1%;
     border-bottom: 1px solid #cccbcb;
   } 
   .menu{ /*3段目全部*/
     display: inline-block;
-    margin-top:1%; 
     margin-bottom: 1%;
-    margin-left: 5%;
     max-width: 95%;
   }
   #result{ /*件数*/
-    font-size: 10px;
+    float: left;
+    margin-left: 5%;
+    color: #68c3c5;
+    font-size: 16px;
   }
   #push {  /*編集*/
     display: inline-block;
@@ -510,7 +521,7 @@
     background: #abd8e0;/*ボタン色*/
     color: #FFF;
     border-radius: 3px;
-    margin-left: 28%;
+    margin-left: 20px;
     height: 38%;
     width: 20%;
     text-align: center;
@@ -527,15 +538,12 @@
     border-bottom: none;/*線を消す*/
   }
   #reserve{ /*試着予約*/
-    display: right;    text-decoration: none;
     background: #abd8e0;/*ボタン色*/
     color: #FFF;
     border-radius: 3px;
-    height: 38%;
     width: 20%;
     text-align: center;
     font-size: 15px;
-    margin-left: 5%;
     padding-top: 3px;
     padding-bottom: 3px;
     padding-left: 5px;
@@ -835,4 +843,3 @@
   }
 
 /***********ここまで退会のCSS********************************/
-
