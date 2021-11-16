@@ -2,26 +2,35 @@
 var apikey="7672355577f11839b1a72bce66af03d2a68e6f119b00178a4ecc8bc08daaaf68";
 var clientkey="a35cc47c9dc52261c4590dae8f7d466eb3cdf83aa729c0443933ae8cb1d95b13";
 var ncmb = new NCMB(apikey, clientkey);
-var path=[];
-var dress_id=[];
-var text="";
-var img_f=[0,0,0];
-var deteil=["詳しく","閉じる"];
-var index=999;
-var item_count=0;
-var search_box=["#dress","#line","#neck_line","#sleeve","#waist_line","#skirt","#skirt_length","#trane","#bodice"];
+var path=[];  //画像ファイルを取得するファイル名を入れる配列
+var dress_id=[]; // ドレスIDを格納する配列
+var text=""; // 検索画面で選択した項目を反映させる変数
+var img_f=[]; // 検索画面のポップアップ画面の画像が閉じているか開いているか 
+var deteil=["詳しく","閉じる"]; 
+var index=999; // 検索画面のポップアップ画面のインデックス
+var item_count=0; // 一覧画面、いいね画面の画像を表示するためのインデックス。また、二つの画面における件数をカウントするための変数
+var search_box=["#dress","#line","#neck_line","#sleeve","#waist_line","#skirt","#skirt_length","#trane","#bodice"]; 
 var check_box=[".check_1:checked",".check_2:checked",".check_3:checked",".check_4:checked",".check_5:checked",".check_6:checked",".check_7:checked",".check_8:checked",".check_9:checked"];
-
-var te;
+var flag=[]; // いいね判定フラグ
+var where_texts=[];  // テスト中
+var j=0; // いいねフラグ格納インデックス
+var where_text=""; // データを取得する際の条件を格納するテキスト
+var img_index=0;
 
 /********ここまで変数部 *****/
  
 /***共通部分*****************************************************/
-   window.onload = function () {
-     var current_fail=location.pathname;
-     if(current_fail==="/list.html"){
+   window.onload = function () { // htmlが読み込まれたとき
+     var current_file=location.pathname; // 現在のhtmlファイル取得
+     if(current_file==="/list.html"){
        file_search();
        search_sum();
+     }
+     else if(current_file==="/favorite.html"){
+       favorite_search();
+     }
+     else if(current_file==="/search.html"){
+       new_imgf();
      }
    };
 $(".back").click(function(){
@@ -57,7 +66,7 @@ $("#back_page_3").click(function(){
 /***検索画面*****************************************************/
  
    $('#dress').click(function() {
-    $('#popup_1').addClass('js_active');
+    $('#popup_1').addClass('js_active'); // popup_1にjs_activeクラスを追加(このクラスの追加でポップアップが表示される)
     index=0;
    });
    $('#line').click(function() {
@@ -105,7 +114,7 @@ $("#back_page_3").click(function(){
          }
          i++;
      });
-     if(i===0){
+     if(i===0){ // なにも選択されていない場合
        $(search_box[index]).text("ーーー");
      }
      else{
@@ -114,77 +123,51 @@ $("#back_page_3").click(function(){
           $('.popup').removeClass('js_active'); // ポップアップを閉じる(js_activeクラスを削除)
    });
  
-  /*詳しく・画像表示****************************/
-    /*ドレス*/
-    $(".deteil_text").click(function(){ //詳しく一行目
-      if(img_f[0]!=1){ //一行目の開閉判判定
-        $("#image_1").slideDown("slow", function() { // 画像を開くアニメーション."slow"部分はスピード
-          $("#deteil_1").text(deteil[1]);  // 画像を開いているとき「詳しく」を「閉じる」に変更
-        });
-        img_f[0]=1;
-      }
-      else{
-        $("#image_1").slideUp("slow", function() {
-          $("#deteil_1").text(deteil[0]);
-            img_f[0]=0;
-        });
-      }
-    });
-    $("#deteil_2").click(function(){
-      if(img_f[1]!=1){
-        $("#image_2").slideDown("slow", function() {
-        $("#deteil_2").text(deteil[1]);
-        });
-      img_f[1]=1;
-      }
-      else{
-          $("#image_2").slideUp("slow", function() {
-            $("#deteil_2").text(deteil[0]);
-          img_f[1]=0;
-          });
-        }
-      });
-      $("#deteil_3").click(function(){
-      if(img_f[1]!=1){
-        $("#image_3").slideDown("slow", function() {
-        $("#deteil_3").text(deteil[1]);
-        });
-      img_f[1]=1;
-      }
-      else{
-          $("#image_3").slideUp("slow", function() {
-            $("#deteil_3").text(deteil[0]);
-          img_f[1]=0;
-          });
-        }
-      });
 
-      /*ライン*/
+ /**ここから調整中(未完成) ****/
+   $(".deteil_text").click(function(){ //詳しく一行目
+   img_index++;
+   var te=$(this).attr("name");
 
-   
+     if(img_f[te]!=1){ //一行目の開閉判判定
+       $("#image_"+te).slideDown("slow", function() { // 画像を開くアニメーション."slow"部分はスピード
+         $("#deteil_text").text(deteil[1]);  // 画像を開いているとき「詳しく」を「閉じる」に変更
+       });
+       img_f[te]=1;
+     }
+     else{
+       $("#image_"+te).slideUp("slow", function() {
+         $("#deteil_text").text(deteil[0]);
+           img_f[te]=0;
+       });
+     }
+   });
+   /***ここまで調整中 *****/
+
+    
 
     $("#search_button").click(function(){
-        te=$("#dress").text();
-        var ncmb = new NCMB(apikey, clientkey);
-        var Test = ncmb.DataStore("test_table");
+      where_texts[0]=$("#dress").text();
 
-        Test .equalTo("id", "1").fetchAll().then(function(objects){
-          var object = objects[0];
-          object.set("dress",te).set("line","test");
-           object.update();
-       }).catch(function(err) {
-                        console.error(err);
-                    })
-
-
-       
-
+      var Test = ncmb.DataStore("test_table");
+      Test .equalTo("id", "1").fetchAll().then(function(objects){
+        var object = objects[0];
+        object.set("dress",where_texts[0]).set("line","test"); //条件を格納
+        object.update();
+      }).catch(function(err) {
+        alert(err);
+      })
     setTimeout(function(){
-window.location.href = "list.html"; 
-
+      window.location.href = "list.html"; 
     },500);
         
     });
+
+    function new_imgf(){
+      for(var i=0;i<100;i++){
+        img_f[i]=0;
+      }
+    }
  
 /***ここまで検索画面*****************************************************/
  
@@ -203,6 +186,75 @@ function search_sum(){
  $("#search_sum").text(sumresult + "件");
 }
 
+  var reader = new FileReader(); //リーダークラス作成
+  reader.onload = function(e) { //リーダーが読み込んだ時のイベント
+  var add_text="";
+  item_count++;
+  var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
+    if(flag[item_count-1]){
+      add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+    }else{
+      add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+    }
+    $("#result_list").append(add_text);
+    $("#search_sum").text(item_count + "件");
+    }  
+
+  function file_search(){
+    for(var i=0;i<100;i++){ //いいねフラグ初期化
+      flag[i]=false;
+    }
+    j=0; // いいねフラグindex
+    get_path();
+  }
+
+  function get_path(){
+    var get_where = ncmb.DataStore("test_table"); 
+    get_where.fetchAll() .then(function(objects){ // 条件を取得
+      var object = objects[0];         
+      where_text=object.get("dress"); 
+
+      var get_data = ncmb.DataStore("test");
+      test_data.equalTo("dress", where_text).fetchAll() .then(function(results){  // ドレスの画像取得
+        for(var i=0;i<results.length;i++){
+          var a=results[i]; 
+          path[i]=a.get("path");    
+          dress_id[i]=a.get("dress_id");
+          var saveData_2 = ncmb.DataStore("favorite");
+          saveData_2.equalTo("dress_id", dress_id[i]).fetchAll().then(function(results){ // いいね判定
+            var res=results[0];
+            if(res.dress_id!=" "){ // idが存在するかどうか
+              flag[j]=true;
+              j++;
+            }
+          })
+          .catch(function(error){
+            //alert(error);
+            j++;
+          });
+          
+          ncmb.File.download(path[i], "blob")
+          .then(function(blob) {
+            reader.readAsDataURL(blob);
+          })
+          .catch(function(err) {
+            alert(err);
+          })
+        }              
+      })
+      .catch(function(error){
+        alert(error);
+      });
+    })
+    .catch(function(error){
+      alert(error);
+    }); 
+
+      
+            //alert(path);
+            //return path;
+}
+
 
 /***ここまで一覧画面*****************************************************/
  
@@ -210,14 +262,15 @@ function search_sum(){
  
  //いいね
    $("body").on('click','.heart_enp',function(){
-     var element_id=$(this).attr('id');
+     var element_id=$(this).attr('id'); // いいねを押した要素のidを取得
      $("#"+element_id).removeClass('heart_enp');
      $("#"+element_id).addClass('heart');
-     var item_name=$(this).attr('name');
+     var item_name=$(this).attr('name'); 
      var item_name_sprite = item_name.split(',');
+
      var Favorite = ncmb.DataStore("favorite");
      var favorite = new Favorite();
-    favorite.set("user_id","test").set("path",item_name_sprite[0]).set("dress_id",item_name_sprite[1]).save();
+      favorite.set("user_id","test").set("path",item_name_sprite[0]).set("dress_id",item_name_sprite[1]).save();
 
    });
  
@@ -241,7 +294,43 @@ function search_sum(){
   
      
    });
- 
+function favorite_search(){
+  var favorite_path=[];
+
+var reader = new FileReader(); //リーダークラス作成
+    reader.onload = function(e) { //リーダーが読み込んだ時のイベント
+      item_count++;
+      var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
+      var add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+      $("#result_list").append(add_text);
+      $("#search_sum").text(item_count + "件");
+    }  
+
+
+         var favorite_test = ncmb.DataStore("favorite");
+      favorite_test
+            .equalTo("user_id", "test")
+            .fetchAll() 
+            .then(function(results){
+                for(var i=0;i<results.length;i++){
+                var a=results[i];
+                favorite_path[i]=a.path;
+
+                var fileName=favorite_path[i];
+                ncmb.File.download(fileName, "blob")
+                .then(function(blob) {
+                  // ファイルリーダーにデータを渡す
+                  reader.readAsDataURL(blob);
+                })
+                .catch(function(err) {
+                    console.error(err);
+                })
+                }
+            })
+            .catch(function(error){
+              alert(error);
+            });
+}
   //ショップリストの折り返し　配列にショップの名前を入れてから正規表現する
 /*   var count_6 = $("#nice_list").match(/.{1,6}/g);
    for( let n = 0; n <= count_6.length; n++ ) {
@@ -409,59 +498,7 @@ var test = new Test();
     /*************ここまでテスト**********/
 
     /*************画像読み込みテスト*********/
-    var reader = new FileReader(); //リーダークラス作成
-    reader.onload = function(e) { //リーダーが読み込んだ時のイベント
-      item_count++;
-      var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
-      var add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
-      $("#result_list").append(add_text);
-      $("#search_sum").text(item_count + "件");
-    }  
 
-    function file_search(){
-  // ファイル名からファイルを取得
-    get_path()
-
-    }
-
-function get_path(){
-      var ncmb = new NCMB(apikey, clientkey);
-
-var Test = ncmb.DataStore("test_table"); 
-        Test.fetchAll() 
-       .then(function(objects){
-          var object = objects[0];         
-           te= object.get("dress"); 
-          var test_data = ncmb.DataStore("test");
-   
-      test_data.equalTo("dress", te)
-            .fetchAll() 
-            .then(function(results){
-              for(var i=0;i<results.length;i++){
-                var a=results[i]; 
-                path[i]=a.get("path");     dress_id[i]=a.get("dress_id");       
-                ncmb.File.download(path[i], "blob")
-                    .then(function(blob) {
-                    reader.readAsDataURL(blob);
-                    })
-                    .catch(function(err) {
-                        console.error(err);
-                    })
-              }
-              
-            })
-            .catch(function(error){
-              alert(error);
-            });
-       })
-        .catch(function(error){
-              alert(error);
-            }); 
-
-      
-            //alert(path);
-            //return path;
-}
  
    /*************ここまでテスト**********/
 
