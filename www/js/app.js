@@ -14,8 +14,11 @@ var check_box=[".check_1:checked",".check_2:checked",".check_3:checked",".check_
 var flag=[]; // いいね判定フラグ
 var where_texts=[];  // テスト中
 var j=0; // いいねフラグ格納インデックス
-var where_text=""; // データを取得する際の条件を格納するテキスト
+var where=[]; // データを取得する際の条件を格納するテキスト
 var img_index=0;
+var favorite_tab="";
+var favorite_check=[];
+var favorite_index=0;
 
 /********ここまで変数部 *****/
  
@@ -147,12 +150,25 @@ $("#back_page_3").click(function(){
     
 
     $("#search_button").click(function(){
-      where_texts[0]=$("#dress").text();
+      where_texts[0]=$('[name=rental_shop] option:selected').text();
+      where_texts[1]=$('[name=dress_store] option:selected').text();
+      where_texts[2]=$("#dress").text();
+      where_texts[3]=$('[name=dress_color] option:selected').text();
+      where_texts[4]=$('[name=dress_image] option:selected').text();
+      where_texts[5]=$("#line").text();
+      where_texts[6]=$("#neck_line").text();
+      where_texts[7]=$("#sleeve").text();
+      where_texts[8]=$("#waist_line").text();
+      where_texts[9]=$("#skirt").text();
+      where_texts[10]=$("#skirt_length").text();
+      where_texts[11]=$("#trane").text();
+      where_texts[12]=$("#bodice").text();
+      where_texts[13]=$('[name=dress_size] option:selected').text();
 
       var Test = ncmb.DataStore("test_table");
       Test .equalTo("id", "1").fetchAll().then(function(objects){
         var object = objects[0];
-        object.set("dress",where_texts[0]).set("line","test"); //条件を格納
+        object.set("rental_shop",where_texts[0]).set("dress_store",where_texts[1]).set("dress",where_texts[2]).set("dress_color",where_texts[3]).set("dress_image",where_texts[4]).set("line",where_texts[5]).set("neck_line",where_texts[6]).set("sleeve",where_texts[7]).set("waist_line",where_texts[8]).set("skirt",where_texts[9]).set("skirt_length",where_texts[10]).set("trane",where_texts[11]).set("bodice",where_texts[12]).set("dress_size",where_texts[13]); //条件を格納
         object.update();
       }).catch(function(err) {
         alert(err);
@@ -212,47 +228,123 @@ function search_sum(){
     var get_where = ncmb.DataStore("test_table"); 
     get_where.fetchAll() .then(function(objects){ // 条件を取得
       var object = objects[0];         
-      where_text=object.get("dress"); 
-
+      where[0]=object.get("rental_shop");
+      where[1]=object.get("dress_store");
+      where[2]=object.get("dress"); 
+      where[3]=object.get("dress_color");
+      where[4]=object.get("dress_image");
+      where[5]=object.get("line");
+      where[6]=object.get("neck_line");
+      where[7]=object.get("sleeve");
+      where[8]=object.get("waist_line"); 
+      where[9]=object.get("skirt");
+      where[10]=object.get("skirt_length");
+      where[11]=object.get("trane");
+      where[12]=object.get("bodice");
+      where[13]=object.get("dress_size");
       var get_data = ncmb.DataStore("test");
-      test_data.equalTo("dress", where_text).fetchAll() .then(function(results){  // ドレスの画像取得
-        for(var i=0;i<results.length;i++){
-          var a=results[i]; 
-          path[i]=a.get("path");    
-          dress_id[i]=a.get("dress_id");
-          var saveData_2 = ncmb.DataStore("favorite");
-          saveData_2.equalTo("dress_id", dress_id[i]).fetchAll().then(function(results){ // いいね判定
-            var res=results[0];
-            if(res.dress_id!=" "){ // idが存在するかどうか
-              flag[j]=true;
+      
+      if(where_check(where)){
+          get_data.fetchAll().then(function(results){  // ドレスの画像取得
+          for(var i=0;i<results.length;i++){
+            var a=results[i]; 
+            path[i]=a.get("path");    
+            dress_id[i]=a.get("dress_id");
+            var saveData_2 = ncmb.DataStore("favorite");
+            saveData_2.equalTo("dress_id", dress_id[i]).fetchAll().then(function(results){ // いいね判定
+              var res=results[0];
+              if(res.dress_id!=" "){ // idが存在するかどうか
+                flag[j]=true;
+                j++;
+              }
+            })
+            .catch(function(error){
+              //alert(error);
               j++;
-            }
-          })
-          .catch(function(error){
-            //alert(error);
-            j++;
-          });
-          
-          ncmb.File.download(path[i], "blob")
-          .then(function(blob) {
-            reader.readAsDataURL(blob);
-          })
-          .catch(function(err) {
-            alert(err);
-          })
-        }              
-      })
-      .catch(function(error){
-        alert(error);
-      });
+            });
+            
+            ncmb.File.download(path[i], "blob")
+            .then(function(blob) {
+              reader.readAsDataURL(blob);
+            })
+            .catch(function(err) {
+              alert(err);
+            })
+          }              
+        })
+        .catch(function(error){
+          alert(error);
+        });    
+      }
+
+      else{ 
+        var subquery1 = get_data.equalTo("rental_shop", where[0]);
+        var subquery2 = get_data.equalTo("dress_store", where[1]);
+        var subquery3 = get_data.equalTo("dress", where[2]);
+        var subquery4 = get_data.equalTo("dress_color", where[3]);
+        var subquery5 = get_data.equalTo("dress_image", where[4]);
+        var subquery6 = get_data.equalTo("line", where[5]);
+        var subquery7 = get_data.equalTo("neck_line", where[6]);
+        var subquery8 = get_data.equalTo("sleeve", where[7]);
+        var subquery9 = get_data.equalTo("waist_line", where[8]);
+        var subquery10 = get_data.equalTo("skirt", where[9]);
+        var subquery11 = get_data.equalTo("skirt_length", where[10]);
+        var subquery12 = get_data.equalTo("trane", where[11]);
+        var subquery13 = get_data.equalTo("bodice", where[12]);
+        var subquery14 = get_data.equalTo("dress_size", where[13]);
+
+        get_data.or([subquery1, subquery2,subquery3,subquery4, subquery5,subquery6,subquery7, subquery8,subquery9,subquery10, subquery11,subquery12,subquery13,subquery14]).fetchAll() .then(function(results){  // ドレスの画像取得
+          for(var i=0;i<results.length;i++){
+            var a=results[i]; 
+            path[i]=a.get("path");    
+            dress_id[i]=a.get("dress_id");
+            var saveData_2 = ncmb.DataStore("favorite");
+            saveData_2.equalTo("dress_id", dress_id[i]).fetchAll().then(function(results){ // いいね判定
+              var res=results[0];
+              if(res.dress_id!=" "){ // idが存在するかどうか
+                flag[j]=true;
+                j++;
+              }
+            })
+            .catch(function(error){
+              //alert(error);
+              j++;
+            });
+            
+            ncmb.File.download(path[i], "blob")
+            .then(function(blob) {
+              reader.readAsDataURL(blob);
+            })
+            .catch(function(err) {
+              alert(err);
+            })
+          }              
+        })
+        .catch(function(error){
+          alert(error);
+        });
+      }
     })
     .catch(function(error){
       alert(error);
     }); 
 
       
-            //alert(path);
-            //return path;
+    function where_check(where){
+      var enp=0;
+      for(var i=0;i<where.length;i++){
+        where[i]=where[i].trim();
+        if(where[i]==="ーーー"){
+          enp++;
+        }
+      }
+      if(enp===where.length){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
 }
 
 
@@ -315,6 +407,10 @@ var reader = new FileReader(); //リーダークラス作成
                 for(var i=0;i<results.length;i++){
                 var a=results[i];
                 favorite_path[i]=a.path;
+                if(favorite_check(a.doress_store)){
+                  alert(favorite_check(a.path))
+                //favorite_tab+='<td id="list">'+a.dress_store+'</td>';
+                }
 
                 var fileName=favorite_path[i];
                 ncmb.File.download(fileName, "blob")
@@ -330,7 +426,19 @@ var reader = new FileReader(); //リーダークラス作成
             .catch(function(error){
               alert(error);
             });
+        function favorite_check(text){
+            favorite_check[favorite_index]=text;
+            for(var i=0;i<favorite_check.length;i++){
+              if(text===favorite_check[i]){
+                favorite_index++;
+                return true;
+              }
+            }
+            favorite_index++;
+            return false;
+        }
 }
+
   //ショップリストの折り返し　配列にショップの名前を入れてから正規表現する
 /*   var count_6 = $("#nice_list").match(/.{1,6}/g);
    for( let n = 0; n <= count_6.length; n++ ) {
