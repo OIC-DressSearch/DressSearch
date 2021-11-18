@@ -8,6 +8,7 @@
     <script src="components/loader.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <script src="lib/jquery/jquery-3.5.1.min.js"></script>
+    <script src="js/db.js"></script>    
 </head>
 <body>
     <!-- ヘッダー -->
@@ -52,14 +53,14 @@
         <div class="sinki_title">
           <div id="sinki_title" class="sinki1">パスワード</div>
           <div id="hissu" class="sinki1">必須</div><br>
-          <input type="text" id="my_textbox"></input><br>
+          <input type="password" id="my_textbox" placeholder="" maxlength="15"></input><br>
         </div>
         <div class="sinki_title">
           <div id="sinki_title" class="sinki1">パスワード再入力</div>
           <div id="hissu" class="sinki1">必須</div><br>
-          <input type="text" id="my_textbox"></input><br>
+          <input type="password" id="my_textbox" placeholder="" maxlength="15"></input><br>
         </div>
-        <button id="next_page_1" class="next_button">次へ</button> 
+        <button id="next_page_1" class="next_button" onclick="saveData()">次へ</button> 
       </div>
     </div>
 
