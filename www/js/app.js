@@ -465,3 +465,33 @@ var Test = ncmb.DataStore("test_table");
  
    /*************ここまでテスト**********/
 
+/***************ログイン画面************************/
+
+// 【メール / PW 認証】「登録する」ボタン押下時の処理
+function onEmailRegisterBtn() {
+    // loading の表示
+    $.mobile.loading('show');
+    // 入力フォームからメールアドレス(mailAddress)を取得
+    var mailAddress = $("#my_textbox").val();
+    // [NCMB] メールアドレス に会員登録を行うためのメールを送信
+    ncmb.User.requestSignUpEmail(mailAddress)
+             .then(function(user){
+                 /* 処理成功 */
+                 alert("【メール / PW 認証】新規登録メールを配信しました。");
+                 console.log("【メール / PW 認証】新規登録メールを配信しました。");
+                 alert("届いたメールに記載されているURLにアクセスし、パスワードを登録してください。");
+                 // フィールドを空に
+                 $("#reg_mailAddress").val("");
+                 // loading の表示終了
+                 $.mobile.loading('hide');
+                 // 【メール / PW 認証】ログインページへ移動
+                 $.mobile.changePage('#emailLoginPage');
+             })
+             .catch(function(error){
+                 /* 処理失敗 */
+                 alert("【メール / PW 認証】新規登録メールの配信に失敗しました：" + error);
+                 console.log("【メール / PW 認証】新規登録メールの配信失敗しました：" + error);
+                 // loading の表示終了
+                 $.mobile.loading('hide');
+             });
+}
