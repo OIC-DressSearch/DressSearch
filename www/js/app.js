@@ -122,9 +122,10 @@ $("#back_page_3").click(function(){
      }    
           $('.popup').removeClass('js_active'); // ポップアップを閉じる(js_activeクラスを削除)
    });
- 
+   
 
  /**ここから調整中(未完成) ****/
+
    $(".deteil_text").click(function(){ //詳しく一行目
    img_index++;
    var test_1=$(this).attr("name");
@@ -144,7 +145,8 @@ $("#back_page_3").click(function(){
    });
    /***ここまで調整中 *****/
 
-    
+
+
 
     $("#search_button").click(function(){
       where_texts[0]=$("#dress").text();
@@ -157,10 +159,9 @@ $("#back_page_3").click(function(){
       }).catch(function(err) {
         alert(err);
       })
-    setTimeout(function(){
-      window.location.href = "list.html"; 
-    },500);
-        
+      setTimeout(function(){
+        window.location.href = "list.html"; 
+      },500);
     });
 
     function new_imgf(){
