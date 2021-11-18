@@ -125,24 +125,28 @@ $("#back_page_3").click(function(){
    
 
  /**ここから調整中(未完成) ****/
-  $(".deteil_text").click(function(){ //詳しく一行目
-    img_index++;
-    var te=$(this).attr("name");
 
-    if(img_f[te]!=1){ //一行目の開閉判判定
-      $("#image_"+te).slideDown("slow", function() { // 画像を開くアニメーション."slow"部分はスピード
-        $("#deteil_text").text(deteil[1]);  // 画像を開いているとき「詳しく」を「閉じる」に変更
-      });
-      img_f[te]=1;
-    }
-    else{
-      $("#image_"+te).slideUp("slow", function() {
-        $("#deteil_text").text(deteil[0]);
-        img_f[te]=0;
-      });
-    }
-  });
+   $(".deteil_text").click(function(){ //詳しく一行目
+   img_index++;
+   var test_1=$(this).attr("name");
+
+     if(img_f[test_1]!=1){ //一行目の開閉判判定
+       $("#image_"+test_1).slideDown("slow", function() { // 画像を開くアニメーション."slow"部分はスピード
+         $("#deteil_text"+test_1).text(deteil[1]);  // 画像を開いているとき「詳しく」を「閉じる」に変更
+       });
+       img_f[test_1]=1;
+     }
+     else{
+       $("#image_"+test_1).slideUp("slow", function() {
+         $("#deteil_text"+test_1).text(deteil[0]);
+           img_f[test_1]=0;
+       });
+     }
+   });
    /***ここまで調整中 *****/
+
+
+
 
     $("#search_button").click(function(){
       where_texts[0]=$("#dress").text();
