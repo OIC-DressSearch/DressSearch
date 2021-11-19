@@ -127,7 +127,7 @@ $("#back_page_3").click(function(){
   });
   
 
- /**ここからポップアップ中身(未完成) ****/
+ /**ここからポップアップ中身****/
 
    $(".deteil_text").click(function(){ //詳しく一行目
    img_index++;
