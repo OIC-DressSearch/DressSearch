@@ -23,46 +23,49 @@ var favorite_index=0;
 /********ここまで変数部 *****/
  
 /***共通部分*****************************************************/
-   window.onload = function () { // htmlが読み込まれたとき
-     var current_file=location.pathname; // 現在のhtmlファイル取得
-     if(current_file==="/list.html"){
-       file_search();
-       search_sum();
-     }
-     else if(current_file==="/favorite.html"){
-       favorite_search();
-     }
-     else if(current_file==="/search.html"){
-       new_imgf();
-     }
-   };
-$(".back").click(function(){
- window.location.href = "my-page.html";
-});
-$("#ok-button").click(function(){
- window.location.href = "my-page.html";
-})
+  
+  window.onload = function () { // htmlが読み込まれたとき
+    var current_file=location.pathname; // 現在のhtmlファイル取得
+    if(current_file==="/list.html"){
+      file_search();
+      search_sum();
+    }
+    else if(current_file==="/favorite.html"){
+      favorite_search();
+    }
+    else if(current_file==="/search.html"){
+      new_imgf();
+    }
+  };
+
+  $(".back").click(function(){
+  window.location.href = "my-page.html";
+  });
+  $("#ok-button").click(function(){
+  window.location.href = "my-page.html";
+  })
  
 /***ここまで共通部分*****************************************************/
  
 /***新規作成画面*****************************************************/
- 
-$("#next_page_1").click(function(){
- $("#page_1").css("display","none");
- $("#page_2").css("display","block");
-});
-$("#next_page_2").click(function(){
- $("#page_2").css("display","none");
- $("#page_3").css("display","block");
-});
-$("#back_page_2").click(function(){
- $("#page_2").css("display","none");
- $("#page_1").css("display","block");
-});
-$("#back_page_3").click(function(){
- $("#page_3").css("display","none");
- $("#page_2").css("display","block");
-});
+
+  //画面遷移 
+  $("#next_page_1").click(function(){
+  $("#page_1").css("display","none");
+  $("#page_2").css("display","block");
+  });
+  $("#next_page_2").click(function(){
+  $("#page_2").css("display","none");
+  $("#page_3").css("display","block");
+  });
+  $("#back_page_2").click(function(){
+  $("#page_2").css("display","none");
+  $("#page_1").css("display","block");
+  });
+  $("#back_page_3").click(function(){
+  $("#page_3").css("display","none");
+  $("#page_2").css("display","block");
+  });
  
 /***ここまで新規作成画面*****************************************************/
  
@@ -187,18 +190,16 @@ $("#back_page_3").click(function(){
  
 /***一覧画面*****************************************************/
  
-//件数表示
- 
-function search_sum(){
+  //件数表示
+  function search_sum(){
 
-  //listの子要素のカウントしたかったやつ
-  /*var scnt = document.getElementsByClassName("list").childElementCount;*/
-  var ssum = $(".item").length;//liの数をカウント
+    //listの子要素のカウントしたかったやつ
+    /*var scnt = document.getElementsByClassName("list").childElementCount;*/
+    var ssum = $(".item").length;//liの数をカウント
 
- 
- var sumresult = String(item_count);
- $("#search_sum").text(sumresult + "件");
-}
+    var sumresult = String(item_count);
+    $("#search_sum").text(sumresult + "件");
+  }
 
   var reader = new FileReader(); //リーダークラス作成
   reader.onload = function(e) { //リーダーが読み込んだ時のイベント
@@ -291,7 +292,7 @@ function search_sum(){
         var subquery13 = get_data.equalTo("bodice", where[12]);
         var subquery14 = get_data.equalTo("dress_size", where[13]);
 
-        get_data.or([subquery1, subquery2,subquery3,subquery4, subquery5,subquery6,subquery7, subquery8,subquery9,subquery10, subquery11,subquery12,subquery13,subquery14]).fetchAll() .then(function(results){  // ドレスの画像取得
+        get_data.or([subquery1, subquery2,subquery3,subquery4, subquery5,subquery6,subquery7, subquery8,subquery9,subquery10, subquery11,subquery12,subquery13,subquery14]).fetchAll() .then(function(results){     // ドレスの画像取得
           for(var i=0;i<results.length;i++){
             var a=results[i]; 
             path[i]=a.get("path");    
@@ -327,7 +328,6 @@ function search_sum(){
       alert(error);
     }); 
 
-      
     function where_check(where){
       var enp=0;
       for(var i=0;i<where.length;i++){
@@ -343,102 +343,96 @@ function search_sum(){
         return false;
       }
     }
-}
+    }
 
 
 /***ここまで一覧画面*****************************************************/
  
 /***いいね画面*****************************************************/
  
- //いいね
-   $("body").on('click','.heart_enp',function(){
-     var element_id=$(this).attr('id'); // いいねを押した要素のidを取得
-     $("#"+element_id).removeClass('heart_enp');
-     $("#"+element_id).addClass('heart');
-     var item_name=$(this).attr('name'); 
-     var item_name_sprite = item_name.split(',');
+  //いいね
+  $("body").on('click','.heart_enp',function(){
+    var element_id=$(this).attr('id'); // いいねを押した要素のidを取得
+    $("#"+element_id).removeClass('heart_enp');
+    $("#"+element_id).addClass('heart');
+    var item_name=$(this).attr('name'); 
+    var item_name_sprite = item_name.split(',');
 
-     var Favorite = ncmb.DataStore("favorite");
-     var favorite = new Favorite();
-      favorite.set("user_id","test").set("path",item_name_sprite[0]).set("dress_id",item_name_sprite[1]).save();
+    var Favorite = ncmb.DataStore("favorite");
+    var favorite = new Favorite();
+    favorite.set("user_id","test").set("path",item_name_sprite[0]).set("dress_id",item_name_sprite[1]).save();
 
-   });
+  });
  
- //いいね取消し
-   $("body").on('click','.heart',function(){
-     var element_id=$(this).attr('id');
-     $("#"+element_id).removeClass('heart');
-     $("#"+element_id).addClass('heart_enp');
+  //いいね取消し
+  $("body").on('click','.heart',function(){
+    var element_id=$(this).attr('id');
+    $("#"+element_id).removeClass('heart');
+    $("#"+element_id).addClass('heart_enp');
     var item_name=$(this).attr('name');
     var item_name_sprite = item_name.split(',');
-     var Favorite = ncmb.DataStore("favorite");
-            Favorite.equalTo("dress_id", item_name_sprite[1]) 
-            .fetchAll() 
-            .then(function(results){
-              var object=results[0];
-              object.delete()             
-            })
-            .catch(function(error){
-              alert(error);
-            });
-  
-     
-   });
+    var Favorite = ncmb.DataStore("favorite");
+    Favorite.equalTo("dress_id", item_name_sprite[1]) 
+    .fetchAll() 
+    .then(function(results){
+      var object=results[0];
+      object.delete()             
+    })
+    .catch(function(error){
+      alert(error);
+    });    
+  });
 function favorite_search(){
   var favorite_path=[];
-
-var reader = new FileReader(); //リーダークラス作成
-    reader.onload = function(e) { //リーダーが読み込んだ時のイベント
-      item_count++;
-      var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
-      var add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
-      $("#result_list").append(add_text);
-      $("#search_sum").text(item_count + "件");
-    }  
-
-
-         var favorite_test = ncmb.DataStore("favorite");
-      favorite_test
-            .equalTo("user_id", "test")
-            .fetchAll() 
-            .then(function(results){
-                for(var i=0;i<results.length;i++){
-                var a=results[i];
-                favorite_path[i]=a.path;
-                if(favorite_check(a.doress_store)){
-                  alert(favorite_check(a.path))
-                //favorite_tab+='<td id="list">'+a.dress_store+'</td>';
-                }
-
-                var fileName=favorite_path[i];
-                ncmb.File.download(fileName, "blob")
-                .then(function(blob) {
-                  // ファイルリーダーにデータを渡す
-                  reader.readAsDataURL(blob);
-                })
-                .catch(function(err) {
-                    console.error(err);
-                })
-                }
-            })
-            .catch(function(error){
-              alert(error);
-            });
-        function favorite_check(text){
-            favorite_check[favorite_index]=text;
-            for(var i=0;i<favorite_check.length;i++){
-              if(text===favorite_check[i]){
-                favorite_index++;
-                return true;
-              }
-            }
-            favorite_index++;
-            return false;
-        }
+  var reader = new FileReader(); //リーダークラス作成
+  reader.onload = function(e) { //リーダーが読み込んだ時のイベント
+    item_count++;
+    var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
+    var add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+    $("#result_list").append(add_text);
+    $("#search_sum").text(item_count + "件");
+  }  
+  var favorite_test = ncmb.DataStore("favorite");
+  favorite_test
+  .equalTo("user_id", "test")
+  .fetchAll() 
+  .then(function(results){
+    for(var i=0;i<results.length;i++){
+      var a=results[i];
+      favorite_path[i]=a.path;
+      if(favorite_check(a.doress_store)){
+        alert(favorite_check(a.path))
+        //favorite_tab+='<td id="list">'+a.dress_store+'</td>';
+      }
+      var fileName=favorite_path[i];
+      ncmb.File.download(fileName, "blob")
+      .then(function(blob) {
+        // ファイルリーダーにデータを渡す
+        reader.readAsDataURL(blob);
+      })
+      .catch(function(err) {
+          console.error(err);
+      })
+    }
+  })
+  .catch(function(error){
+    alert(error);
+  });
+  function favorite_check(text){
+    favorite_check[favorite_index]=text;
+    for(var i=0;i<favorite_check.length;i++){
+      if(text===favorite_check[i]){
+        favorite_index++;
+        return true;
+      }
+    }
+    favorite_index++;
+    return false;
+  }
 }
 
   //ショップリストの折り返し　配列にショップの名前を入れてから正規表現する
-/*   var count_6 = $("#nice_list").match(/.{1,6}/g);
+  /*   var count_6 = $("#nice_list").match(/.{1,6}/g);
    for( let n = 0; n <= count_6.length; n++ ) {
    console.log( count_6[n] );
    }*/
@@ -455,96 +449,105 @@ var reader = new FileReader(); //リーダークラス作成
  
 /***会員情報変更画面*****************************************************/
  
- $("#login_info").click(function(){
-   $(".display_login").css("display","none");
-   $(".display_info1").css("display","block");
- });
- $("#info_button").click(function(){
-   $(".display_info1").css("display","none");
-   $(".display_info2").css("display","block");
- });
- 
+  //画面遷移
+  $("#login_info").click(function(){
+    $(".display_login").css("display","none");
+    $(".display_info1").css("display","block");
+  });
+  $("#info_button").click(function(){
+    $(".display_info1").css("display","none");
+    $(".display_info2").css("display","block");
+  });
  
 /***ここまで会員情報変更画面*****************************************************/
  
 /***パスワード変更画面*****************************************************/
- $("#login_pass").click(function(){
-   $(".display_login").css("display","none");
-   $(".display_pass1").css("display","block");
- });
- $("#pass_button").click(function(){
-   $(".display_pass1").css("display","none");
-   $(".display_pass2").css("display","block");
- });
+ 
+  //画面遷移
+  $("#login_pass").click(function(){
+    $(".display_login").css("display","none");
+    $(".display_pass1").css("display","block");
+  });
+  $("#pass_button").click(function(){
+    $(".display_pass1").css("display","none");
+    $(".display_pass2").css("display","block");
+  });
  
 /***ここまでパスワード変更画面*****************************************************/
  
 /***身長/BWH変更画面*****************************************************/
  
- $("#login_higth").click(function(){
-   $(".display_login").css("display","none");
-   $(".display_higth1").css("display","block");
- });
- /*保存ボタン遷移*/
- $("#higth_button").click(function(){
-   $(".display_higth1").css("display","none");
-   $(".display_higth2").css("display","block");
- });
- /***ここまで身長/BWH変更画面*****************************************************/
+  //画面遷移
+  $("#login_higth").click(function(){
+    $(".display_login").css("display","none");
+    $(".display_higth1").css("display","block");
+  });
+
+  /*保存ボタン遷移*/
+  $("#higth_button").click(function(){
+    $(".display_higth1").css("display","none");
+    $(".display_higth2").css("display","block");
+  });
+
+ /***ここまで身長/BWH変更画面******************************************/
  
  
-/***メールアドレス画面*****************************************************/
-$("#login_mail").click(function(){
- $(".display_login").css("display","none");
- $(".display_mail1").css("display","block");
-});
-$("#mail_update").click(function(){
- $(".display_mail1").css("display","none");
- $(".display_mail2").css("display","block");
-});
+/***メールアドレス画面************************************************/
+
+  //画面遷移
+  $("#login_mail").click(function(){
+  $(".display_login").css("display","none");
+  $(".display_mail1").css("display","block");
+  });
+  $("#mail_update").click(function(){
+  $(".display_mail1").css("display","none");
+  $(".display_mail2").css("display","block");
+  });
  
-/*パスワード認証*/
-$("#mail-button").click(function(){
- var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
-  var address = $("#new_address").val();
-  var address_check= $("#check_address").val();
-  if(address!=address_check){
-    alert("再入力されたアドレスが違います");
+  /*パスワード認証*/
+  $("#mail-button").click(function(){
+  var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
+    var address = $("#new_address").val();
+    var address_check= $("#check_address").val();
+    if(address!=address_check){
+      alert("再入力されたアドレスが違います");
+    }
+    else{
+    if(reg.test(address)){
+      $("#mail-button").click(function(){
+    $(".change").css("display","none");
+  $(".ok").css("display","block");
+  });
+    }
+    else{
+      alert("入力されたメールアドレスが正しくないです");
+    }
   }
-  else{
-   if(reg.test(address)){
-     $("#mail-button").click(function(){
-   $(".change").css("display","none");
- $(".ok").css("display","block");
-});
-   }
-   else{
-     alert("入力されたメールアドレスが正しくないです");
-   }
- }
-});
+  });
  
 /***ここまでメールアドレス画面*************************************/
  
 /***logout画面*****************************************************/
-$("#logout-button1").click(function(){
- $(".display_logout1").css("display","none");
- $(".display_logout2").css("display","block");
-});
- 
+
+  //画面遷移
+  $("#logout-button1").click(function(){
+  $(".display_logout1").css("display","none");
+  $(".display_logout2").css("display","block");
+  });
  
 /***ここまでlogout画面*****************************************************/
  
- 
 /***退会画面*****************************************************/
-$("#withdrawal-button1").click(function(){
- $(".display_withdrawal1").css("display","none");
- $(".display_withlogin").css("display","block");
-});
-$("#login_with").click(function(){
- $(".display_withlogin").css("display","none");
- $(".display_withdrawal2").css("display","block");
-});
+
+  //画面遷移
+  $("#withdrawal-button1").click(function(){
+  $(".display_withdrawal1").css("display","none");
+  $(".display_withlogin").css("display","block");
+  });
+  $("#login_with").click(function(){
+  $(".display_withlogin").css("display","none");
+  $(".display_withdrawal2").css("display","block");
+  });
  
 /***ここまで退会画面*****************************************************/
  
