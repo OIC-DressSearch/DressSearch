@@ -68,43 +68,45 @@ $("#back_page_3").click(function(){
  
 /***検索画面*****************************************************/
  
-   $('#dress').click(function() {
-    $('#popup_1').addClass('js_active'); // popup_1にjs_activeクラスを追加(このクラスの追加でポップアップが表示される)
-    index=0;
-   });
-   $('#line').click(function() {
-    $('#popup_2').addClass('js_active');
-    index=1;
-   });
-   $('#neck_line').click(function() {
-    $('#popup_3').addClass('js_active');
-    index=2;
-   });
-   $('#sleeve').click(function() {
-    $('#popup_4').addClass('js_active');
-    index=3;
-   });
-   $('#waist_line').click(function() {
-    $('#popup_5').addClass('js_active');
-    index=4;
-   });
-   $('#skirt').click(function() {
-    $('#popup_6').addClass('js_active');
-    index=5;
-   });
-   $('#skirt_length').click(function() {
-    $('#popup_7').addClass('js_active');
-    index=6;
-   });
-   $('#trane').click(function() {
-    $('#popup_8').addClass('js_active');
-    index=7;
-   });
-   $('#bodice').click(function() {
-    $('#popup_9').addClass('js_active');
-    index=8;
-   });
+  //ポップアップ開く
+  $('#dress').click(function() {
+  $('#popup_1').addClass('js_active'); // popup_1にjs_activeクラスを追加(このクラスの追加でポップアップが表示される)
+  index=0;
+  });
+  $('#line').click(function() {
+  $('#popup_2').addClass('js_active');
+  index=1;
+  });
+  $('#neck_line').click(function() {
+  $('#popup_3').addClass('js_active');
+  index=2;
+  });
+  $('#sleeve').click(function() {
+  $('#popup_4').addClass('js_active');
+  index=3;
+  });
+  $('#waist_line').click(function() {
+  $('#popup_5').addClass('js_active');
+  index=4;
+  });
+  $('#skirt').click(function() {
+  $('#popup_6').addClass('js_active');
+  index=5;
+  });
+  $('#skirt_length').click(function() {
+  $('#popup_7').addClass('js_active');
+  index=6;
+  });
+  $('#trane').click(function() {
+  $('#popup_8').addClass('js_active');
+  index=7;
+  });
+  $('#bodice').click(function() {
+  $('#popup_9').addClass('js_active');
+  index=8;
+  });
   
+  //ポップアップ閉じる
   $(".back_search").click(function(){
     text="";
     var i=0;
@@ -126,66 +128,60 @@ $("#back_page_3").click(function(){
         $('.popup').removeClass('js_active'); // ポップアップを閉じる(js_activeクラスを削除)
   });
   
+  //ポップアップ中身
+  $(".deteil_text").click(function(){ //詳しく一行目
+  img_index++;
+  var test_1=$(this).attr("name");
 
- /**ここからポップアップ中身****/
-
-   $(".deteil_text").click(function(){ //詳しく一行目
-   img_index++;
-   var test_1=$(this).attr("name");
-
-     if(img_f[test_1]!=1){ //閉じている時
-       $("#image_"+test_1).slideDown("slow", function() { // 画像を開くアニメーション."slow"部分はスピード
-         $("#deteil_text"+test_1).text(deteil[1]);  // 画像を開いているとき「詳しく」を「閉じる」に変更
-       });
-       img_f[test_1]=1;
-     }
-     else{//開いている時
-       $("#image_"+test_1).slideUp("slow", function() {
-         $("#deteil_text"+test_1).text(deteil[0]);
-           img_f[test_1]=0;
-       });
-     }
-   });
-   
-   /***ここからポップアップ中身 *****/
-
-
-
-
-    $("#search_button").click(function(){
-      where_texts[0]=$('[name=rental_shop] option:selected').text();
-      where_texts[1]=$('[name=dress_store] option:selected').text();
-      where_texts[2]=$("#dress").text();
-      where_texts[3]=$('[name=dress_color] option:selected').text();
-      where_texts[4]=$('[name=dress_image] option:selected').text();
-      where_texts[5]=$("#line").text();
-      where_texts[6]=$("#neck_line").text();
-      where_texts[7]=$("#sleeve").text();
-      where_texts[8]=$("#waist_line").text();
-      where_texts[9]=$("#skirt").text();
-      where_texts[10]=$("#skirt_length").text();
-      where_texts[11]=$("#trane").text();
-      where_texts[12]=$("#bodice").text();
-      where_texts[13]=$('[name=dress_size] option:selected').text();
-
-      var Test = ncmb.DataStore("test_table");
-      Test .equalTo("id", "1").fetchAll().then(function(objects){
-        var object = objects[0];
-        object.set("rental_shop",where_texts[0]).set("dress_store",where_texts[1]).set("dress",where_texts[2]).set("dress_color",where_texts[3]).set("dress_image",where_texts[4]).set("line",where_texts[5]).set("neck_line",where_texts[6]).set("sleeve",where_texts[7]).set("waist_line",where_texts[8]).set("skirt",where_texts[9]).set("skirt_length",where_texts[10]).set("trane",where_texts[11]).set("bodice",where_texts[12]).set("dress_size",where_texts[13]); //条件を格納
-        object.update();
-      }).catch(function(err) {
-        alert(err);
-      })
-      setTimeout(function(){
-        window.location.href = "list.html"; 
-      },500);
-    });
-
-    function new_imgf(){
-      for(var i=0;i<100;i++){
-        img_f[i]=0;
-      }
+    if(img_f[test_1]!=1){ //閉じている時
+      $("#image_"+test_1).slideDown("slow", function() { // 画像を開くアニメーション."slow"部分はスピード
+        $("#deteil_text"+test_1).text(deteil[1]);  // 画像を開いているとき「詳しく」を「閉じる」に変更
+      });
+      img_f[test_1]=1;
     }
+    else{//開いている時
+      $("#image_"+test_1).slideUp("slow", function() {
+        $("#deteil_text"+test_1).text(deteil[0]);
+          img_f[test_1]=0;
+      });
+    }
+  });
+  
+  //検索ボタンを押した時の検索条件保持
+  $("#search_button").click(function(){
+    where_texts[0]=$('[name=rental_shop] option:selected').text();
+    where_texts[1]=$('[name=dress_store] option:selected').text();
+    where_texts[2]=$("#dress").text();
+    where_texts[3]=$('[name=dress_color] option:selected').text();
+    where_texts[4]=$('[name=dress_image] option:selected').text();
+    where_texts[5]=$("#line").text();
+    where_texts[6]=$("#neck_line").text();
+    where_texts[7]=$("#sleeve").text();
+    where_texts[8]=$("#waist_line").text();
+    where_texts[9]=$("#skirt").text();
+    where_texts[10]=$("#skirt_length").text();
+    where_texts[11]=$("#trane").text();
+    where_texts[12]=$("#bodice").text();
+    where_texts[13]=$('[name=dress_size] option:selected').text();
+
+    var Test = ncmb.DataStore("test_table");
+    Test .equalTo("id", "1").fetchAll().then(function(objects){
+      var object = objects[0];
+      object.set("rental_shop",where_texts[0]).set("dress_store",where_texts[1]).set("dress",where_texts[2]).set("dress_color",where_texts[3]).set("dress_image",where_texts[4]).set("line",where_texts[5]).set("neck_line",where_texts[6]).set("sleeve",where_texts[7]).set("waist_line",where_texts[8]).set("skirt",where_texts[9]).set("skirt_length",where_texts[10]).set("trane",where_texts[11]).set("bodice",where_texts[12]).set("dress_size",where_texts[13]); //条件を格納
+      object.update();
+    }).catch(function(err) {
+      alert(err);
+    })
+    setTimeout(function(){
+      window.location.href = "list.html"; 
+    },500);
+  });
+
+  function new_imgf(){
+    for(var i=0;i<100;i++){
+      img_f[i]=0;
+    }
+  }
  
 /***ここまで検索画面*****************************************************/
  
