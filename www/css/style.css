@@ -485,12 +485,12 @@
     table-layout: fixed;
   }
 
-  .table-header #list:hover{
+  .table-header .tab_list:hover{
 
     color: #68c3c5;
     border-bottom: 3px solid #68c3c5;
   }
-  #list {
+  .tab_list {
     width:110px;
     /* background-color:#99cc00; */
     margin-right: 5%; 
@@ -613,6 +613,22 @@
     right: 14%;                /* 右からの位置を指定 */
   }
 
+
+#favorite_tab_1{
+  
+}
+#favorite_tab_2{
+  
+}
+#favorite_tab_3{
+  display: none;
+}
+#favorite_tab_4{
+  display: none;
+}
+#favorite_tab_5{
+  display: none;
+}
 /***********ここまでいいね画面のCSS**************************/
 
 /***********マイページのCSS**********************************/

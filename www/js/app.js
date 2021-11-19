@@ -4,6 +4,7 @@ var clientkey="a35cc47c9dc52261c4590dae8f7d466eb3cdf83aa729c0443933ae8cb1d95b13"
 var ncmb = new NCMB(apikey, clientkey);
 var path=[];  //画像ファイルを取得するファイル名を入れる配列
 var dress_id=[]; // ドレスIDを格納する配列
+var fdress_id=[];
 var text=""; // 検索画面で選択した項目を反映させる変数
 var img_f=[]; // 検索画面のポップアップ画面の画像が閉じているか開いているか 
 var deteil=["詳しく","閉じる"]; 
@@ -357,11 +358,9 @@ var favorite_index=0;
     $("#"+element_id).addClass('heart');
     var item_name=$(this).attr('name'); 
     var item_name_sprite = item_name.split(',');
-
     var Favorite = ncmb.DataStore("favorite");
     var favorite = new Favorite();
     favorite.set("user_id","test").set("path",item_name_sprite[0]).set("dress_id",item_name_sprite[1]).save();
-
   });
  
   //いいね取消し
@@ -380,68 +379,97 @@ var favorite_index=0;
     })
     .catch(function(error){
       alert(error);
-    });    
+    });
   });
-function favorite_search(){
-  var favorite_path=[];
+
+  function favorite_search(){
+    var favorite_path=[];
   var reader = new FileReader(); //リーダークラス作成
-  reader.onload = function(e) { //リーダーが読み込んだ時のイベント
-    item_count++;
-    var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
-    var add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
-    $("#result_list").append(add_text);
-    $("#search_sum").text(item_count + "件");
-  }  
-  var favorite_test = ncmb.DataStore("favorite");
-  favorite_test
-  .equalTo("user_id", "test")
-  .fetchAll() 
-  .then(function(results){
-    for(var i=0;i<results.length;i++){
-      var a=results[i];
-      favorite_path[i]=a.path;
-      if(favorite_check(a.doress_store)){
-        alert(favorite_check(a.path))
-        //favorite_tab+='<td id="list">'+a.dress_store+'</td>';
+    reader.onload = function(e) { //リーダーが読み込んだ時のイベント
+      item_count++;
+      var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
+      var add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+      $("#result_list").append(add_text);
+      $("#search_sum").text(item_count + "件");
+    }  
+    var favorite_test = ncmb.DataStore("favorite");
+    var fdress_store = ncmb.DataStore("test");
+    /*var ttt=[]
+    var ss="";
+    for(var i=0;i<3;i++){
+      ttt[i]=fdress_store.equalTo("dress_id",i+1);
+    }
+    fdress_store.or([ss]).fetchAll().then(function(results){
+      var a=results[0];
+      alert(a.dress_store);
+    }).catch(function(err) {
+      alert(err);
+    })*/
+
+    favorite_test
+    .equalTo("user_id", "test")
+    .fetchAll() 
+    .then(function(results){
+      for(var i=0;i<results.length;i++){
+        var a=results[i];
+        fdress_id[i]=a.dress_id;
+        favorite_path[i]=a.path;
+        var fileName=favorite_path[i];
+        ncmb.File.download(fileName, "blob")
+        .then(function(blob) {
+          reader.readAsDataURL(blob);
+        })
+        .catch(function(err) {
+          alert(err);
+        })
       }
-      var fileName=favorite_path[i];
-      ncmb.File.download(fileName, "blob")
-      .then(function(blob) {
-        // ファイルリーダーにデータを渡す
-        reader.readAsDataURL(blob);
+      fdress_store.fetchAll() .then(function(results){
+        for(var i=0;i<fdress_id.length;i++){
+          for(var j=0;j<results.length;j++){
+            var aa=results[j];
+            if(fdress_id[i]===aa.dress_id){
+              switch(aa.dress_store){
+                case "ラヴィール岡山":$("#favorite_tab_1").css("display","");
+                break;
+                case "クラブハウスセフィロト":$("#favorite_tab_2").css("display","");
+                break;
+                case "ANAクラウンプラザホテル岡山":$("#favorite_tab_3").css("display","");
+                break;
+                case "THE MAGRITTE":$("#favorite_tab_4").css("display","");
+                break;
+                case "THE STYLE":$("#favorite_tab_5").css("display","");
+                break;
+              }
+            }
+          }
+        }
       })
       .catch(function(err) {
-          console.error(err);
+        alert(err);
       })
-    }
-  })
-  .catch(function(error){
-    alert(error);
-  });
-  function favorite_check(text){
-    favorite_check[favorite_index]=text;
-    for(var i=0;i<favorite_check.length;i++){
-      if(text===favorite_check[i]){
-        favorite_index++;
-        return true;
+    })
+    .catch(function(err) {
+      alert(err);
+    })
+              
+    function favorite_check(text){
+      favorite_check[favorite_index]=text;
+      for(var i=0;i<favorite_check.length;i++){
+        if(text===favorite_check[i]){
+          favorite_index++;
+          return true;
+        }
       }
+      favorite_index++;
+      return false;
     }
-    favorite_index++;
-    return false;
   }
-}
-
-  //ショップリストの折り返し　配列にショップの名前を入れてから正規表現する
-  /*   var count_6 = $("#nice_list").match(/.{1,6}/g);
-   for( let n = 0; n <= count_6.length; n++ ) {
-   console.log( count_6[n] );
-   }*/
- 
+  
 /***ここまでいいね画面*****************************************************/
  
 /***マイページ*****************************************************/
  
- //遷移
+ 
   
  
  
@@ -602,12 +630,9 @@ var test = new Test();
     });
 */
 
+/*************ここまでテスト**********/
+
+/*************画像読み込みテスト*********/
 
 
-    /*************ここまでテスト**********/
-
-    /*************画像読み込みテスト*********/
-
- 
-   /*************ここまでテスト**********/
-
+/*************ここまでテスト**********/
