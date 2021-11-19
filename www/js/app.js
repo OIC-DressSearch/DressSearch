@@ -421,6 +421,14 @@ var reader = new FileReader(); //リーダークラス作成
       var a=results[i];
       fdress_id[i]=a.dress_id;
       favorite_path[i]=a.path;
+      var fileName=favorite_path[i];
+      ncmb.File.download(fileName, "blob")
+      .then(function(blob) {
+        reader.readAsDataURL(blob);
+      })
+      .catch(function(err) {
+        alert(err);
+      })
     }
       fdress_store.fetchAll() .then(function(results){
         for(var i=0;i<fdress_id.length;i++){
@@ -428,15 +436,15 @@ var reader = new FileReader(); //リーダークラス作成
              var aa=results[j];
              if(fdress_id[i]===aa.dress_id){
                switch(aa.dress_store){
-                 case "ラヴィール岡山":$("#favorite_tab_1").css("display","block");
+                 case "ラヴィール岡山":$("#favorite_tab_1").css("display","");
                  break;
-                 case "クラブハウスセフィロト":$("#favorite_tab_2").css("display","block");
+                 case "クラブハウスセフィロト":$("#favorite_tab_2").css("display","");
                  break;
-                 case "ANAクラウンプラザホテル岡山":$("#favorite_tab_3").css("display","block");
+                 case "ANAクラウンプラザホテル岡山":$("#favorite_tab_3").css("display","");
                  break;
-                 case "THE MAGRITTE":$("#favorite_tab_4").css("display","block");
+                 case "THE MAGRITTE":$("#favorite_tab_4").css("display","");
                  break;
-                 case "THE STYLE":$("#favorite_tab_5").css("display","block");
+                 case "THE STYLE":$("#favorite_tab_5").css("display","");
                  break;
                }
              }
@@ -448,19 +456,8 @@ var reader = new FileReader(); //リーダークラス作成
         alert(err);
       })
     
-      if(favorite_check(a.doress_store)){
-        favorite_tab+='<td id="list">'+a.dress_store+'</td>';
-        //alert(favorite_tab);
-      }
+ 
 
-      var fileName=favorite_path[i];
-      ncmb.File.download(fileName, "blob")
-      .then(function(blob) {
-        reader.readAsDataURL(blob);
-      })
-      .catch(function(err) {
-        alert(err);
-      })
   })
   .catch(function(err) {
     alert(err);

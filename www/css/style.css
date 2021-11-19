@@ -485,7 +485,7 @@
     table-layout: fixed;
   }
 
-  .table-header #list:hover{
+  .table-header .tab_list:hover{
 
     color: #68c3c5;
     border-bottom: 3px solid #68c3c5;
@@ -615,10 +615,10 @@
 
 
 #favorite_tab_1{
-  display: none;
+  
 }
 #favorite_tab_2{
-  display: none;
+  
 }
 #favorite_tab_3{
   display: none;
