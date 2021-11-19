@@ -4,6 +4,7 @@ var clientkey="a35cc47c9dc52261c4590dae8f7d466eb3cdf83aa729c0443933ae8cb1d95b13"
 var ncmb = new NCMB(apikey, clientkey);
 var path=[];  //画像ファイルを取得するファイル名を入れる配列
 var dress_id=[]; // ドレスIDを格納する配列
+var fdress_id=[];
 var text=""; // 検索画面で選択した項目を反映させる変数
 var img_f=[]; // 検索画面のポップアップ画面の画像が閉じているか開いているか 
 var deteil=["詳しく","閉じる"]; 
@@ -397,33 +398,74 @@ var reader = new FileReader(); //リーダークラス作成
     }  
 
 
-         var favorite_test = ncmb.DataStore("favorite");
-      favorite_test
-            .equalTo("user_id", "test")
-            .fetchAll() 
-            .then(function(results){
-                for(var i=0;i<results.length;i++){
-                var a=results[i];
-                favorite_path[i]=a.path;
-                if(favorite_check(a.doress_store)){
-                  alert(favorite_check(a.path))
-                //favorite_tab+='<td id="list">'+a.dress_store+'</td>';
-                }
+  var favorite_test = ncmb.DataStore("favorite");
+  var fdress_store = ncmb.DataStore("test");
+  /*var ttt=[]
+  var ss="";
+      for(var i=0;i<3;i++){
+        ttt[i]=fdress_store.equalTo("dress_id",i+1);
+      }
 
-                var fileName=favorite_path[i];
-                ncmb.File.download(fileName, "blob")
-                .then(function(blob) {
-                  // ファイルリーダーにデータを渡す
-                  reader.readAsDataURL(blob);
-                })
-                .catch(function(err) {
-                    console.error(err);
-                })
-                }
-            })
-            .catch(function(error){
-              alert(error);
-            });
+    fdress_store.or([ss]).fetchAll().then(function(results){
+      var a=results[0];
+      alert(a.dress_store);
+    }).catch(function(err) {
+    alert(err);
+  })*/
+
+  favorite_test
+  .equalTo("user_id", "test")
+  .fetchAll() 
+  .then(function(results){
+    for(var i=0;i<results.length;i++){
+      var a=results[i];
+      fdress_id[i]=a.dress_id;
+      favorite_path[i]=a.path;
+    }
+      fdress_store.fetchAll() .then(function(results){
+        for(var i=0;i<fdress_id.length;i++){
+           for(var j=0;j<results.length;j++){
+             var aa=results[j];
+             if(fdress_id[i]===aa.dress_id){
+               switch(aa.dress_store){
+                 case "ラヴィール岡山":$("#favorite_tab_1").css("display","block");
+                 break;
+                 case "クラブハウスセフィロト":$("#favorite_tab_2").css("display","block");
+                 break;
+                 case "ANAクラウンプラザホテル岡山":$("#favorite_tab_3").css("display","block");
+                 break;
+                 case "THE MAGRITTE":$("#favorite_tab_4").css("display","block");
+                 break;
+                 case "THE STYLE":$("#favorite_tab_5").css("display","block");
+                 break;
+               }
+             }
+           }
+        
+        }
+      })
+      .catch(function(err) {
+        alert(err);
+      })
+    
+      if(favorite_check(a.doress_store)){
+        favorite_tab+='<td id="list">'+a.dress_store+'</td>';
+        //alert(favorite_tab);
+      }
+
+      var fileName=favorite_path[i];
+      ncmb.File.download(fileName, "blob")
+      .then(function(blob) {
+        reader.readAsDataURL(blob);
+      })
+      .catch(function(err) {
+        alert(err);
+      })
+  })
+  .catch(function(err) {
+    alert(err);
+  })
+            
         function favorite_check(text){
             favorite_check[favorite_index]=text;
             for(var i=0;i<favorite_check.length;i++){
