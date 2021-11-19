@@ -105,48 +105,49 @@ $("#back_page_3").click(function(){
     index=8;
    });
   
-    $(".back_search").click(function(){
-     text="";
-     var i=0;
-     $(check_box[index]).each(function() { //チェックされているチェックボックスを全て探索
-         if(i===0){ //一番初めの時はコンマを付けない
-           text += $(this).val();     
-         }
-         else{
-           text += ","+$(this).val();
-         }
-         i++;
-     });
-     if(i===0){ // なにも選択されていない場合
-       $(search_box[index]).text("ーーー");
-     }
-     else{
-       $(search_box[index]).text(text); // ボックスの中にテキストを格納
-     }    
-          $('.popup').removeClass('js_active'); // ポップアップを閉じる(js_activeクラスを削除)
-   });
-   
+  $(".back_search").click(function(){
+    text="";
+    var i=0;
+    $(check_box[index]).each(function() { //チェックされているチェックボックスを全て探索
+        if(i===0){ //一番初めの時はコンマを付けない
+          text += $(this).val();     
+        }
+        else{
+          text += ","+$(this).val();
+        }
+        i++;
+    });
+    if(i===0){ // なにも選択されていない場合
+      $(search_box[index]).text("ーーー");
+    }
+    else{
+      $(search_box[index]).text(text); // ボックスの中にテキストを格納
+    }    
+        $('.popup').removeClass('js_active'); // ポップアップを閉じる(js_activeクラスを削除)
+  });
+  
 
- /**ここから調整中(未完成) ****/
+ /**ここからポップアップ中身(未完成) ****/
 
    $(".deteil_text").click(function(){ //詳しく一行目
    img_index++;
    var test_1=$(this).attr("name");
 
-     if(img_f[test_1]!=1){ //一行目の開閉判判定
+     if(img_f[test_1]!=1){ //閉じている時
        $("#image_"+test_1).slideDown("slow", function() { // 画像を開くアニメーション."slow"部分はスピード
          $("#deteil_text"+test_1).text(deteil[1]);  // 画像を開いているとき「詳しく」を「閉じる」に変更
        });
        img_f[test_1]=1;
      }
-     else{
+     else{//開いている時
        $("#image_"+test_1).slideUp("slow", function() {
          $("#deteil_text"+test_1).text(deteil[0]);
            img_f[test_1]=0;
        });
      }
    });
-   /***ここまで調整中 *****/
+   
+   /***ここからポップアップ中身 *****/
 
 
 
