@@ -20,7 +20,7 @@ var img_index=0;
 var favorite_tab="";
 var favorite_check=[];
 var favorite_index=0;
-
+var dataUrl=[];
 /********ここまで変数部 *****/
  
 /***共通部分*****************************************************/
@@ -203,18 +203,18 @@ var favorite_index=0;
   }
 
   var reader = new FileReader(); //リーダークラス作成
-  reader.onload = function(e) { //リーダーが読み込んだ時のイベント
+  /*reader.onload = function(e) { //リーダーが読み込んだ時のイベント
   var add_text="";
   item_count++;
-  var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
+  dataUrl[item_count-1] = reader.result; //リーダークラスが取得した結果を変数に格納
     if(flag[item_count-1]){
-      add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+      add_text='<li class="item"><img src="'+dataUrl[item_count-1]+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
     }else{
-      add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+      add_text='<li class="item"><img src="'+dataUrl[item_count-1]+'"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
     }
     $("#result_list").append(add_text);
     $("#search_sum").text(item_count + "件");
-    }  
+  } */ 
 
   function file_search(){
     for(var i=0;i<100;i++){ //いいねフラグ初期化
@@ -245,8 +245,9 @@ var favorite_index=0;
       var get_data = ncmb.DataStore("test");
       
       if(where_check(where)){
-          get_data.fetchAll().then(function(results){  // ドレスの画像取得
+          get_data.order('dress_id',false).fetchAll().then(function(results){  // ドレスの画像取得
           for(var i=0;i<results.length;i++){
+            html_create(results.length);
             var a=results[i]; 
             path[i]=a.get("path");    
             dress_id[i]=a.get("dress_id");
@@ -254,23 +255,27 @@ var favorite_index=0;
             saveData_2.equalTo("dress_id", dress_id[i]).fetchAll().then(function(results){ // いいね判定
               var res=results[0];
               if(res.dress_id!=" "){ // idが存在するかどうか
-                flag[j]=true;
-                j++;
+                flag[j++]=true;
+                /***次回メモ　ここにいいねクラスを操作する処理をいれる */
               }
             })
             .catch(function(error){
               //alert(error);
-              j++;
+              //j++;
             });
-            
             ncmb.File.download(path[i], "blob")
             .then(function(blob) {
               reader.readAsDataURL(blob);
+
+            /***次回メモ　ここで画像いれる */
+              reader.onload = function(e) { 
+              } 
+            /************ */
             })
             .catch(function(err) {
               alert(err);
             })
-          }              
+          }         
         })
         .catch(function(error){
           alert(error);
@@ -302,18 +307,17 @@ var favorite_index=0;
             saveData_2.equalTo("dress_id", dress_id[i]).fetchAll().then(function(results){ // いいね判定
               var res=results[0];
               if(res.dress_id!=" "){ // idが存在するかどうか
-                flag[j]=true;
-                j++;
+                flag[j++]=true;
               }
             })
             .catch(function(error){
               //alert(error);
-              j++;
+              //j++;
             });
             
             ncmb.File.download(path[i], "blob")
             .then(function(blob) {
-              reader.readAsDataURL(blob);
+              reader.readAsDataURL(blob); 
             })
             .catch(function(err) {
               alert(err);
@@ -346,6 +350,9 @@ var favorite_index=0;
     }
     }
 
+    function html_create(num){
+      /***次回メモ　ここでHTML作成しておく処理をかく */
+    }
 
 /***ここまで一覧画面*****************************************************/
  
@@ -354,6 +361,7 @@ var favorite_index=0;
   //いいね
   $("body").on('click','.heart_enp',function(){
     var element_id=$(this).attr('id'); // いいねを押した要素のidを取得
+
     $("#"+element_id).removeClass('heart_enp');
     $("#"+element_id).addClass('heart');
     var item_name=$(this).attr('name'); 
@@ -392,19 +400,9 @@ var favorite_index=0;
       $("#result_list").append(add_text);
       $("#search_sum").text(item_count + "件");
     }  
+
     var favorite_test = ncmb.DataStore("favorite");
     var fdress_store = ncmb.DataStore("test");
-    /*var ttt=[]
-    var ss="";
-    for(var i=0;i<3;i++){
-      ttt[i]=fdress_store.equalTo("dress_id",i+1);
-    }
-    fdress_store.or([ss]).fetchAll().then(function(results){
-      var a=results[0];
-      alert(a.dress_store);
-    }).catch(function(err) {
-      alert(err);
-    })*/
 
     favorite_test
     .equalTo("user_id", "test")
@@ -414,8 +412,7 @@ var favorite_index=0;
         var a=results[i];
         fdress_id[i]=a.dress_id;
         favorite_path[i]=a.path;
-        var fileName=favorite_path[i];
-        ncmb.File.download(fileName, "blob")
+        ncmb.File.download(favorite_path[i], "blob")
         .then(function(blob) {
           reader.readAsDataURL(blob);
         })
@@ -423,22 +420,30 @@ var favorite_index=0;
           alert(err);
         })
       }
+      setTimeout(function(){
+      
+    },500);
       fdress_store.fetchAll() .then(function(results){
         for(var i=0;i<fdress_id.length;i++){
           for(var j=0;j<results.length;j++){
             var aa=results[j];
             if(fdress_id[i]===aa.dress_id){
               switch(aa.dress_store){
-                case "ラヴィール岡山":$("#favorite_tab_1").css("display","");
-                break;
-                case "クラブハウスセフィロト":$("#favorite_tab_2").css("display","");
-                break;
-                case "ANAクラウンプラザホテル岡山":$("#favorite_tab_3").css("display","");
-                break;
-                case "THE MAGRITTE":$("#favorite_tab_4").css("display","");
-                break;
-                case "THE STYLE":$("#favorite_tab_5").css("display","");
-                break;
+                case "ラヴィール岡山":
+                  $('#favorite_tab_1').attr('id', 'ftab_1');
+                  break;
+                case "クラブハウスセフィロト":
+                  $('#favorite_tab_2').attr('id', 'ftab_2');
+                  break;
+                case "ANAクラウンプラザホテル岡山":
+                  $('#favorite_tab_3').attr('id', 'ftab_3');
+                  break;
+                case "THE MAGRITTE":
+                  $('#favorite_tab_4').attr('id', 'ftab_4');
+                  break;
+                case "THE STYLE":
+                  $('#favorite_tab_5').attr('id', 'ftab_5');
+                  break;
               }
             }
           }
