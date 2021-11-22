@@ -615,10 +615,10 @@
 
 
 #favorite_tab_1{
-  
+  display: none;
 }
 #favorite_tab_2{
-  
+  display: none;
 }
 #favorite_tab_3{
   display: none;
