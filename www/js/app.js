@@ -203,7 +203,7 @@ var dataUrl=[];
   }
 
   var reader = new FileReader(); //リーダークラス作成
-  /*reader.onload = function(e) { //リーダーが読み込んだ時のイベント
+  reader.onload = function(e) { //リーダーが読み込んだ時のイベント
   var add_text="";
   item_count++;
   dataUrl[item_count-1] = reader.result; //リーダークラスが取得した結果を変数に格納
@@ -214,7 +214,7 @@ var dataUrl=[];
     }
     $("#result_list").append(add_text);
     $("#search_sum").text(item_count + "件");
-  } */ 
+  } 
 
   function file_search(){
     for(var i=0;i<100;i++){ //いいねフラグ初期化
@@ -247,7 +247,7 @@ var dataUrl=[];
       if(where_check(where)){
           get_data.order('dress_id',false).fetchAll().then(function(results){  // ドレスの画像取得
           for(var i=0;i<results.length;i++){
-            html_create(results.length);
+           // html_create(results.length);
             var a=results[i]; 
             path[i]=a.get("path");    
             dress_id[i]=a.get("dress_id");
