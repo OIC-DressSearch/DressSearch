@@ -216,7 +216,7 @@ var favorite_index=0;
     var get_where = ncmb.DataStore("test_table"); 
     get_where.fetchAll() .then(function(objects){ // 条件を取得
       var object = objects[0];         
-      where[0]=object.get("rental_shop");
+      where[0]=object.get("rental_shop"); // 検索条件取得
       where[1]=object.get("dress_store");
       where[2]=object.get("dress"); 
       where[3]=object.get("dress_color");
@@ -232,18 +232,18 @@ var favorite_index=0;
       where[13]=object.get("dress_size");
       var get_data = ncmb.DataStore("test");
       
-      if(where_check(where)){
+      if(where_check(where)){ // 検索条件が選択されているかどうか
           get_data.order('dress_id',false).fetchAll().then(function(results){  // ドレスの画像取得
           for(var i=0;i<results.length;i++){
             var a=results[i]; 
-            path[i]=a.get("path");    
-            dress_id[i]=a.get("dress_id");
-            var saveData_2 = ncmb.DataStore("favorite");
-            saveData_2.fetchAll().then(function(results_2){ // いいね判定
+            path[i]=a.get("path");    // 画像ファイル名取得
+            dress_id[i]=a.get("dress_id"); // ドレスＩＤ取得
+            var saveData_2 = ncmb.DataStore("favorite"); // いいねを判定するためにいいねデータベースを開く
+            saveData_2.fetchAll().then(function(results_2){ 
               for(var i=0;i<results.length;i++){
                 for(var z=0;z<results_2.length;z++){
                   var res=results_2[z];
-                  if(dress_id[i]===res.dress_id){               
+                  if(dress_id[i]===res.dress_id){  // 同じIDならいいね判定をつける           
                     flag[i]=true;
                   }
                 }
@@ -257,11 +257,11 @@ var favorite_index=0;
             .then(function(blob) {
               reader.readAsDataURL(blob);
 
-            reader.onload = function(e) { 
+            reader.onload = function(e) { //リーダークラス読み込まれたら発火するイベント
               var add_text="";
               item_count++;
               var dataUrl= reader.result; //リーダークラスが取得した結果を変数に格納
-              if(flag[item_count-1]){
+              if(flag[item_count-1]){///いいねがあるかどうか
                 add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
               }else{
                 add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
@@ -281,7 +281,7 @@ var favorite_index=0;
         });    
       }
 
-      else{ 
+      else{  // 条件がある場合
         var subquery1 = get_data.equalTo("rental_shop", where[0]);
         var subquery2 = get_data.equalTo("dress_store", where[1]);
         var subquery3 = get_data.equalTo("dress", where[2]);
@@ -298,7 +298,7 @@ var favorite_index=0;
         var subquery14 = get_data.equalTo("dress_size", where[13]);
 
         get_data.or([subquery1, subquery2,subquery3,subquery4, subquery5,subquery6,subquery7, subquery8,subquery9,subquery10, subquery11,subquery12,subquery13,subquery14]).fetchAll() .then(function(results){     // ドレスの画像取得
-          for(var i=0;i<results.length;i++){
+          for(var i=0;i<results.length;i++){ // ここからの処理は上に同じ
             var a=results[i]; 
             path[i]=a.get("path");    
             dress_id[i]=a.get("dress_id");
@@ -351,12 +351,12 @@ var favorite_index=0;
       alert(error);
     }); 
 
-    function where_check(where){
+    function where_check(where){ // 入力された条件check
       var enp=0;
       for(var i=0;i<where.length;i++){
-        where[i]=where[i].trim();
+        where[i]=where[i].trim(); // 空白削除
         if(where[i]==="ーーー"){
-          enp++;
+          enp++; // 検索条件が選択されてない場合にカウント
         }
       }
       if(enp===where.length){
@@ -379,11 +379,11 @@ var favorite_index=0;
   //いいね
   $("body").on('click','.heart_enp',function(){
     var element_id=$(this).attr('id'); // いいねを押した要素のidを取得
-    $("#"+element_id).removeClass('heart_enp');
+    $("#"+element_id).removeClass('heart_enp'); 
     $("#"+element_id).addClass('heart');
     var item_name=$(this).attr('name'); 
-    var item_name_sprite = item_name.split(',');
-    var int_id=parseInt(item_name_sprite[1]);
+    var item_name_sprite = item_name.split(',');//nameからとってきたテクストを，で分断。[0]は画像ファイル名、[1]はドレスID
+    var int_id=parseInt(item_name_sprite[1]); //ドレスIDをintに変換
     var Favorite = ncmb.DataStore("favorite");
     var favorite = new Favorite();
     favorite.set("user_id","test").set("path",item_name_sprite[0]).set("dress_id",int_id).save();
@@ -403,7 +403,7 @@ var favorite_index=0;
     .then(function(results){
       var object=results[0];
       //alert(object);
-      object.delete();             
+      object.delete();   // いいねデータ削除          
     })
     .catch(function(error){
       alert(error);
@@ -442,7 +442,7 @@ var favorite_index=0;
         for(stop=0;stop<1000000;stop++){}
         }
 
-      fdress_store.fetchAll() .then(function(results){
+      fdress_store.fetchAll() .then(function(results){ //タブバーの表示
         for(var i=0;i<fdress_id.length;i++){
           for(var j=0;j<results.length;j++){
             var aa=results[j];
