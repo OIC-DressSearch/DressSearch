@@ -53,10 +53,13 @@ var favorite_index=0;
   $("#next_page_1").click(function(){
   $("#page_1").css("display","none");
   $("#page_2").css("display","block");
+  //onRegisterBtn();
+  
   });
   $("#next_page_2").click(function(){
   $("#page_2").css("display","none");
   $("#page_3").css("display","block");
+  
   });
   $("#back_page_2").click(function(){
   $("#page_2").css("display","none");
@@ -649,59 +652,32 @@ var test = new Test();
 /*************画像読み込みテスト*********/
 
 /***************ログイン画面************************/
-// 【ID / PW 認証】「登録する」ボタン押下時の処理
-/*function onIDRegisterBtn() {
-    // 入力フォームからID(username)とPW(password)を取得
-    var username = $("#new_username").val();
-    var mailaddress = $("#new_mailadd").val();
-    var password = $("#new_password").val();
-    // loading の表示
-    $.mobile.loading('show');
-    // [NCMB] user インスタンスの生成
-    var user = new ncmb.User();
-    // [NCMB] ID / PW で新規登録
-    user.set("userName", username)
-        .set("mailAddress", mailaddress)
-        .set("password", password)
-        .signUpByAccount()
-        .then(function(user) {*/
-            /* 処理成功 */
-            /*console.log("【ID / PW 認証】新規登録に成功しました");
-            // [NCMB] userインスタンスでログイン
-            ncmb.User.login(user)
-                     .then(function(user) {
-                         /* 処理成功 */
-                        /* console.log("【ID / PW 認証】ログインに成功しました");
-                         // [NCMB] ログイン中の会員情報の取得
-                         currentLoginUser = ncmb.User.getCurrentUser();
-                         // フィールドを空に
-                         $("#new_username").val("");
-                         $("#new_mialadd").val("");
-                         $("#new_password").val("");
-                     })
-                     .catch(function(error) {
-                         /* 処理失敗 */
-                         /*console.log("【ID / PW 認証】ログインに失敗しました: " + error);
-                         alert("【ID / PW 認証】ログインに失敗しました: " + error);
-                         // フィールドを空に
-                         $("#reg_username").val("");
-                         $("#IDReg_password").val("");
-                         // loading の表示
-                         $.mobile.loading('hide');
-                     });
-        })
-        .catch(function(error) {
-            /* 処理失敗 */
-            /*console.log("【ID / PW 認証】新規登録に失敗しました：" + error);
-            alert("【ID / PW 認証】新規登録に失敗しました：" + error);
-            // フィールドを空に
-            $("#reg_username").val("");
-            $("#IDReg_password").val("");
-            // loading の表示
-            $.mobile.loading('hide');
-        });
-}
+
 $(function(){
-    $.mobile.defaultPageTransition = 'none';
-  $("next_page_1").click(onIDRegisterBtn);
-})*/
+  $(".next_button").click(onRegisterBtn)
+})
+
+  var currentLoginUser; //現在ログイン中ユーザー
+function onRegisterBtn()
+{
+  //　入力フォームを取得
+  var username = $("#new_username").val();
+  var mailaddress = $("#new_mailadd").val();
+  var password = $("#new_password").val();
+
+  var user = new ncmb.User();
+  // [NCMB] ID / PW で新規登録
+  user.set("userName", username)
+      .set("mailAddress", mailaddress)
+      .set("password", password)
+
+  user.signUpByAccount()
+      .then(function(user){
+          alert("新規登録に成功");
+          currentLoginUser = ncmb.User.getCurrentUser();
+          $.mobile.changePage('#DetailPage');
+      })
+      .catch(function(error) {
+          alert("新規登録に失敗！次のエラー発生：" + error);
+      })
+}
