@@ -439,7 +439,8 @@ var favorite_index=0;
         .catch(function(err) {
           alert(err);
         })
-      }
+        for(stop=0;stop<1000000;stop++){}
+        }
 
       fdress_store.fetchAll() .then(function(results){
         for(var i=0;i<fdress_id.length;i++){
