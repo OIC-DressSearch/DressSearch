@@ -20,7 +20,6 @@ var img_index=0;
 var favorite_tab="";
 var favorite_check=[];
 var favorite_index=0;
-var dataUrl=[];
 /********ここまで変数部 *****/
  
 /***共通部分*****************************************************/
@@ -54,7 +53,7 @@ var dataUrl=[];
   $("#next_page_1").click(function(){
   $("#page_1").css("display","none");
   $("#page_2").css("display","block");
-  onRegisterBtn();
+  //onRegisterBtn();
   
   });
   $("#next_page_2").click(function(){
@@ -206,18 +205,7 @@ var dataUrl=[];
   }
 
   var reader = new FileReader(); //リーダークラス作成
-  /*reader.onload = function(e) { //リーダーが読み込んだ時のイベント
-  var add_text="";
-  item_count++;
-  dataUrl[item_count-1] = reader.result; //リーダークラスが取得した結果を変数に格納
-    if(flag[item_count-1]){
-      add_text='<li class="item"><img src="'+dataUrl[item_count-1]+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
-    }else{
-      add_text='<li class="item"><img src="'+dataUrl[item_count-1]+'"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
-    }
-    $("#result_list").append(add_text);
-    $("#search_sum").text(item_count + "件");
-  } */ 
+
 
   function file_search(){
     for(var i=0;i<100;i++){ //いいねフラグ初期化
@@ -250,16 +238,18 @@ var dataUrl=[];
       if(where_check(where)){
           get_data.order('dress_id',false).fetchAll().then(function(results){  // ドレスの画像取得
           for(var i=0;i<results.length;i++){
-            html_create(results.length);
             var a=results[i]; 
             path[i]=a.get("path");    
             dress_id[i]=a.get("dress_id");
             var saveData_2 = ncmb.DataStore("favorite");
-            saveData_2.equalTo("dress_id", dress_id[i]).fetchAll().then(function(results){ // いいね判定
-              var res=results[0];
-              if(res.dress_id!=" "){ // idが存在するかどうか
-                flag[j++]=true;
-                /***次回メモ　ここにいいねクラスを操作する処理をいれる */
+            saveData_2.fetchAll().then(function(results_2){ // いいね判定
+              for(var i=0;i<results.length;i++){
+                for(var z=0;z<results_2.length;z++){
+                  var res=results_2[z];
+                  if(dress_id[i]===res.dress_id){               
+                    flag[i]=true;
+                  }
+                }
               }
             })
             .catch(function(error){
@@ -270,14 +260,23 @@ var dataUrl=[];
             .then(function(blob) {
               reader.readAsDataURL(blob);
 
-            /***次回メモ　ここで画像いれる */
-              reader.onload = function(e) { 
-              } 
-            /************ */
+            reader.onload = function(e) { 
+              var add_text="";
+              item_count++;
+              var dataUrl= reader.result; //リーダークラスが取得した結果を変数に格納
+              if(flag[item_count-1]){
+                add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+              }else{
+                add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+              }
+              $("#result_list").append(add_text);
+              $("#search_sum").text(item_count + "件");
+            } 
             })
             .catch(function(err) {
               alert(err);
             })
+            for(stop=0;stop<1000000;stop++){}
           }         
         })
         .catch(function(error){
@@ -307,10 +306,14 @@ var dataUrl=[];
             path[i]=a.get("path");    
             dress_id[i]=a.get("dress_id");
             var saveData_2 = ncmb.DataStore("favorite");
-            saveData_2.equalTo("dress_id", dress_id[i]).fetchAll().then(function(results){ // いいね判定
-              var res=results[0];
-              if(res.dress_id!=" "){ // idが存在するかどうか
-                flag[j++]=true;
+            saveData_2.fetchAll().then(function(results_2){ // いいね判定
+              for(var i=0;i<results.length;i++){
+                for(var z=0;z<results_2.length;z++){
+                  var res=results_2[z];
+                  if(dress_id[i]===res.dress_id){               
+                    flag[i]=true;
+                  }
+                }
               }
             })
             .catch(function(error){
@@ -318,18 +321,33 @@ var dataUrl=[];
               //j++;
             });
             
-            ncmb.File.download(path[i], "blob")
+          ncmb.File.download(path[i], "blob")
             .then(function(blob) {
               reader.readAsDataURL(blob); 
+
+              reader.onload = function(e) { 
+              var add_text="";
+              item_count++;
+              var dataUrl= reader.result; //リーダークラスが取得した結果を変数に格納
+              if(flag[item_count-1]){
+                add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+              }else{
+                add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+              }
+              $("#result_list").append(add_text);
+              $("#search_sum").text(item_count + "件");
+              } 
             })
             .catch(function(err) {
               alert(err);
             })
+            for(stop=0;stop<1000000;stop++){}
           }              
         })
         .catch(function(error){
           alert(error);
         });
+        
       }
     })
     .catch(function(error){
@@ -353,9 +371,9 @@ var dataUrl=[];
     }
     }
 
-    function html_create(num){
-      /***次回メモ　ここでHTML作成しておく処理をかく */
-    }
+    /*function html_create(num){
+      /***次回メモ　ここでHTML作成しておく処理をかく 
+    }*/
 
 /***ここまで一覧画面*****************************************************/
  
@@ -364,14 +382,14 @@ var dataUrl=[];
   //いいね
   $("body").on('click','.heart_enp',function(){
     var element_id=$(this).attr('id'); // いいねを押した要素のidを取得
-
     $("#"+element_id).removeClass('heart_enp');
     $("#"+element_id).addClass('heart');
     var item_name=$(this).attr('name'); 
     var item_name_sprite = item_name.split(',');
+    var int_id=parseInt(item_name_sprite[1]);
     var Favorite = ncmb.DataStore("favorite");
     var favorite = new Favorite();
-    favorite.set("user_id","test").set("path",item_name_sprite[0]).set("dress_id",item_name_sprite[1]).save();
+    favorite.set("user_id","test").set("path",item_name_sprite[0]).set("dress_id",int_id).save();
   });
  
   //いいね取消し
@@ -381,12 +399,14 @@ var dataUrl=[];
     $("#"+element_id).addClass('heart_enp');
     var item_name=$(this).attr('name');
     var item_name_sprite = item_name.split(',');
+    var int_id=parseInt(item_name_sprite[1]);
     var Favorite = ncmb.DataStore("favorite");
-    Favorite.equalTo("dress_id", item_name_sprite[1]) 
+    Favorite.equalTo("dress_id", int_id) 
     .fetchAll() 
     .then(function(results){
       var object=results[0];
-      object.delete()             
+      //alert(object);
+      object.delete();             
     })
     .catch(function(error){
       alert(error);
@@ -396,13 +416,6 @@ var dataUrl=[];
   function favorite_search(){
     var favorite_path=[];
   var reader = new FileReader(); //リーダークラス作成
-    reader.onload = function(e) { //リーダーが読み込んだ時のイベント
-      item_count++;
-      var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
-      var add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
-      $("#result_list").append(add_text);
-      $("#search_sum").text(item_count + "件");
-    }  
 
     var favorite_test = ncmb.DataStore("favorite");
     var fdress_store = ncmb.DataStore("test");
@@ -418,14 +431,19 @@ var dataUrl=[];
         ncmb.File.download(favorite_path[i], "blob")
         .then(function(blob) {
           reader.readAsDataURL(blob);
+          reader.onload = function(e) { //リーダーが読み込んだ時のイベント
+            item_count++;
+            var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
+            var add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart" id="heart_'+item_count+'" name="'+favorite_path[item_count-1]+','+fdress_id[item_count-1]+'"></div></li>';
+            $("#result_list").append(add_text);
+            $("#search_sum").text(item_count + "件");
+          }  
         })
         .catch(function(err) {
           alert(err);
         })
       }
-      setTimeout(function(){
-      
-    },500);
+
       fdress_store.fetchAll() .then(function(results){
         for(var i=0;i<fdress_id.length;i++){
           for(var j=0;j<results.length;j++){
@@ -460,17 +478,7 @@ var dataUrl=[];
       alert(err);
     })
               
-    function favorite_check(text){
-      favorite_check[favorite_index]=text;
-      for(var i=0;i<favorite_check.length;i++){
-        if(text===favorite_check[i]){
-          favorite_index++;
-          return true;
-        }
-      }
-      favorite_index++;
-      return false;
-    }
+
   }
   
 /***ここまでいいね画面*****************************************************/
