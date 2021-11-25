@@ -19,12 +19,36 @@ var where=[]; // データを取得する際の条件を格納するテキスト
 var img_index=0;
 var favorite_tab="";
 var favorite_check=[];
+var favorite_index=0;  var username = $("#new_username").val();
+
+  var mailaddress = null;
+  var mailaddress_test = null;
+  var password = null;
+  var password_test = null;
+  var higth = null;
+  var bmw_B = null;
+  var bmw_W = null;
+  var bmw_H = null;
 var favorite_index=0;
+var img_path_pc="/image/";
+var img_path_phon="/www/image/";
 /********ここまで変数部 *****/
  
 /***共通部分*****************************************************/
-  
-  window.onload = function () { // htmlが読み込まれたとき
+$(document).ready(function(){
+  var current_file=location.pathname; // 現在のhtmlファイル取得
+    if(current_file==="/www/list.html" || current_file==="/list.html"){
+      file_search();
+      search_sum();
+    }
+    else if(current_file==="/www/favorite.html" || current_file==="/favorite.html"){
+      favorite_search();
+    }
+    else if(current_file==="/www/search.html" || current_file==="/search.html"){
+      new_imgf();
+    }
+});
+  /*window.onload = function () { // htmlが読み込まれたとき
     var current_file=location.pathname; // 現在のhtmlファイル取得
     if(current_file==="/list.html"){
       file_search();
@@ -36,7 +60,7 @@ var favorite_index=0;
     else if(current_file==="/search.html"){
       new_imgf();
     }
-  };
+  };*/
 
   $(".back").click(function(){
   window.location.href = "my-page.html";
@@ -44,6 +68,20 @@ var favorite_index=0;
   $("#ok-button").click(function(){
   window.location.href = "my-page.html";
   })
+
+  function mobile_check(){
+      const ua = navigator.userAgent;
+      if (ua.indexOf('iPhone') > -1 || (ua.indexOf('Android') > -1 && ua.indexOf('Mobile') > -1)) {
+          // スマートフォン
+          return img_path_phon;
+      } else if (ua.indexOf('iPad') > -1 || ua.indexOf('Android') > -1) {
+          // タブレット
+          return img_path_phon;
+      } else {
+          // PC
+          return img_path_pc;
+      }
+    }
  
 /***ここまで共通部分*****************************************************/
  
@@ -53,7 +91,6 @@ var favorite_index=0;
   $("#next_page_1").click(function(){
   $("#page_1").css("display","none");
   $("#page_2").css("display","block");
-  onRegisterBtn();
   
   });
   $("#next_page_2").click(function(){
@@ -183,7 +220,7 @@ var favorite_index=0;
     },500);
   });
 
-  function new_imgf(){
+  function new_imgf(){ // imgフラグ初期化
     for(var i=0;i<100;i++){
       img_f[i]=0;
     }
@@ -216,6 +253,7 @@ var favorite_index=0;
   }
 
   function get_path(){
+    var img_text=mobile_check();
     var get_where = ncmb.DataStore("test_table"); 
     get_where.fetchAll() .then(function(objects){ // 条件を取得
       var object = objects[0];         
@@ -251,33 +289,22 @@ var favorite_index=0;
                   }
                 }
               }
-            })
+              var add_text="";
+              item_count++;
+              if(flag[item_count-1]){///いいねがあるかどうか
+                add_text='<li class="item"><img src="'+img_text+path[item_count-1]+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+              }else{
+                add_text='<li class="item"><img src="'+img_text+path[item_count-1]+'"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+              }
+              $("#result_list").append(add_text);
+              $("#search_sum").text(item_count + "件");
+              })
             .catch(function(error){
               //alert(error);
               //j++;
             });
-            ncmb.File.download(path[i], "blob")
-            .then(function(blob) {
-              reader.readAsDataURL(blob);
-
-            reader.onload = function(e) { //リーダークラス読み込まれたら発火するイベント
-              var add_text="";
-              item_count++;
-              var dataUrl= reader.result; //リーダークラスが取得した結果を変数に格納
-              if(flag[item_count-1]){///いいねがあるかどうか
-                add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
-              }else{
-                add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
-              }
-              $("#result_list").append(add_text);
-              $("#search_sum").text(item_count + "件");
-            } 
-            })
-            .catch(function(err) {
-              alert(err);
-            })
-            for(stop=0;stop<1000000;stop++){}
-          }         
+          }
+                  
         })
         .catch(function(error){
           alert(error);
@@ -315,39 +342,22 @@ var favorite_index=0;
                   }
                 }
               }
-            })
+              var add_text="";
+              item_count++;
+              if(flag[item_count-1]){
+                add_text='<li class="item"><img src="'+img_text+path[item_count-1]+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+              }else{
+                add_text='<li class="item"><img src="'+img_text+path[item_count-1]+'"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+              }
+              $("#result_list").append(add_text);
+              $("#search_sum").text(item_count + "件");
+              })
             .catch(function(error){
               //alert(error);
               //j++;
             });
-            
-          ncmb.File.download(path[i], "blob")
-            .then(function(blob) {
-              reader.readAsDataURL(blob); 
-
-              reader.onload = function(e) { 
-              var add_text="";
-              item_count++;
-              var dataUrl= reader.result; //リーダークラスが取得した結果を変数に格納
-              if(flag[item_count-1]){
-                add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
-              }else{
-                add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
-              }
-              $("#result_list").append(add_text);
-              $("#search_sum").text(item_count + "件");
-              } 
-            })
-            .catch(function(err) {
-              alert(err);
-            })
-            for(stop=0;stop<1000000;stop++){}
-          }              
+          }             
         })
-        .catch(function(error){
-          alert(error);
-        });
-        
       }
     })
     .catch(function(error){
@@ -369,7 +379,9 @@ var favorite_index=0;
         return false;
       }
     }
-    }
+
+    
+  }
 
     /*function html_create(num){
       /***次回メモ　ここでHTML作成しておく処理をかく 
@@ -415,7 +427,7 @@ var favorite_index=0;
 
   function favorite_search(){
     var favorite_path=[];
-  var reader = new FileReader(); //リーダークラス作成
+    var img_text=mobile_check();
 
     var favorite_test = ncmb.DataStore("favorite");
     var fdress_store = ncmb.DataStore("test");
@@ -428,21 +440,12 @@ var favorite_index=0;
         var a=results[i];
         fdress_id[i]=a.dress_id;
         favorite_path[i]=a.path;
-        ncmb.File.download(favorite_path[i], "blob")
-        .then(function(blob) {
-          reader.readAsDataURL(blob);
-          reader.onload = function(e) { //リーダーが読み込んだ時のイベント
+          
             item_count++;
             var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
-            var add_text='<li class="item"><img src="'+dataUrl+'"><div class="heart" id="heart_'+item_count+'" name="'+favorite_path[item_count-1]+','+fdress_id[item_count-1]+'"></div></li>';
+            var add_text='<li class="item"><img src="'+img_text+favorite_path[item_count-1]+'"><div class="heart" id="heart_'+item_count+'" name="'+favorite_path[item_count-1]+','+fdress_id[item_count-1]+'"></div></li>';
             $("#result_list").append(add_text);
             $("#search_sum").text(item_count + "件");
-          }  
-        })
-        .catch(function(err) {
-          alert(err);
-        })
-        for(stop=0;stop<1000000;stop++){}
         }
 
       fdress_store.fetchAll() .then(function(results){ //タブバーの表示
@@ -481,7 +484,48 @@ var favorite_index=0;
               
 
   }
-  
+
+  $(".tab_list").click(function(){
+    var img_text=mobile_check();
+    var tab_text=$(this).text();
+    $('.item').remove();
+    item_count=0;
+    var reader = new FileReader(); //リーダークラス作成
+
+    var favorite_test = ncmb.DataStore("favorite");
+    var fdress_store = ncmb.DataStore("test");
+
+    favorite_test
+    .equalTo("user_id", "test")
+    .fetchAll() 
+    .then(function(results){
+      var store=[];
+      var store_id=[];
+      var idx=0;
+        fdress_store.equalTo("dress_store",tab_text).fetchAll() .then(function(results_2){
+          for(var i=0;i<results.length;i++){
+            var item=results[i];
+            for(var z=0;z<results_2.length;z++){
+              var item_2=results_2[z];
+              if(item.dress_id===item_2.dress_id){
+                store[idx]=item_2.path;
+                store_id[idx++]=item_2.dress_id;
+              }
+            }
+          }
+        for(var i=0;i<store.length;i++){
+              item_count++;
+              var add_text='<li class="item"><img src="'+img_text+store[item_count-1]+'"><div class="heart" id="heart_'+item_count+'" name="'+store[item_count-1]+','+store_id[item_count-1]+'"></div></li>';
+              $("#result_list").append(add_text);
+              $("#search_sum").text(item_count + "件");
+        }
+        
+        }).catch(function(err) {
+        alert(err);
+      })
+    });
+  });
+
 /***ここまでいいね画面*****************************************************/
  
 /***マイページ*****************************************************/
@@ -655,18 +699,30 @@ var test = new Test();
 
   var currentLoginUser; //現在ログイン中ユーザー
 
-//入力フォームの取得
-function saveData(){
-  var username = $("#new_username").val();
-  var mailaddress = $("#new_mailadd").val();
-  var mailaddress = $("#new_mialadd_test").val();
-  var password = $("#new_password").val();
-  var password = $("#new_password_test").val();
+//個人情報１
+function saveData1(){
+  //
+}
+//個人情報２
+function saveData2(){
+  //
 }
 
 //会員登録
-function saveData()
+function onRegisterBtn()
 {
+  //個人情報１の入力フォームの取得
+  username = $("#new_username").val();
+  mailaddress = $("#new_mailadd").val();
+  mailaddress_test = $("#new_mialadd_test").val();
+  password = $("#new_password").val();
+  password_test = $("#new_password_test").val();
+  //個人情報２の入力フォームの取得
+  higth = $("#my_higthbox").val();
+  bmw_B = $("#bmw_b").val();
+  bmw_W = $("#bmw_w").val();
+  bmw_H = $("#bmw_h").val();
+
   var user = new ncmb.User();
   // [NCMB] ID / PW で新規登録
   user.set("userName", username)

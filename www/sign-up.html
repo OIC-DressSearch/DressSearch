@@ -62,7 +62,7 @@
           <input type="password" id="new_password_test" placeholder="" maxlength="15" minlength="8" pattern="/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,100}$/"></input><br>
           <!-- 半角英数・小文字・大文字を１文字ずつ含むパスワードだけ許可 -->
         </div>
-        <button id="next_page_1" class="next_button" onclick="saveData()">次へ</button> 
+        <button id="next_page_1" class="next_button" onclick="saveData1()">次へ</button> 
       </div>
     </div>
 
@@ -86,14 +86,14 @@
         </div>
       </div>
       <div id="sinki_bwh">
-        <div id="sinki_title" class="sinki1">スリーサイズ</div><br>
+        <div id="sinki_title"  class="sinki1">スリーサイズ</div><br>
           <p id="my_text1">B：</p>
-          <input type="text" id="bwh_textbox">
+          <input type="text" class="bwh_textbox" id="bmw_b">
           <p id="my_text1">W：</p>
-          <input type="text" id="bwh_textbox">          
+          <input type="text" class="bwh_textbox" id="bmw_w">          
           <p id="my_text1">H：</p>
-          <input type="text" id="bwh_textbox">
-          <button id="next_page_2" class="next_button"">次へ</button>
+          <input type="text" class="bwh_textbox" id="bmw_h">
+          <button id="next_page_2" class="next_button" onclick="saveData2()">次へ</button>
           <button id="back_page_2" class="next_button"">戻る</button> 
       </div>
     </div>
@@ -124,9 +124,9 @@
         <div></div>
       </div>
       <a href="search.html">
-        <button id="next_page_3" class="next_button"">登録</button> 
+        <button id="next_page_3" class="next_button" onclick="onRegisterBtn()">登録</button> 
       </a>
-      <button id="back_page_3" class="next_button"">戻る</button> 
+      <button id="back_page_3" class="next_button">戻る</button> 
     </div>
       
     <script src="js/app.js"></script>
