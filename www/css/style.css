@@ -227,6 +227,28 @@
 
 /***********ここまで新規登録のCSS********************************/
 
+/**************おすすめのCSS********************************/
+
+  .display_search{
+    margin-bottom: 19%;
+    font-size: 0;
+  }
+  .re_im{
+    margin: 0;
+    padding: 0;
+  }
+
+  #reim_1{
+    height: 70%;
+    width: 100%;
+  }
+  #reim_2{
+    height: 45%;
+    width: 50%;
+  }
+  
+/***********ここまでおすすめのCSS********************************/
+
 /**************検索画面のCSS********************************/
 
   /*「検索」ボタン*/  
@@ -307,7 +329,7 @@
       font-size: 20px;
       margin-left: 2%;
       color: #68c3c5; 
-  }
+   }
 
   .popup {
     position: fixed;
@@ -795,7 +817,7 @@
   .display_higth2{
     display: none;
   }
-  #bwh_textbox{
+  .bwh_textbox{
     margin-left: 0%;
     font-size: 18px;
     border-radius:5px;
