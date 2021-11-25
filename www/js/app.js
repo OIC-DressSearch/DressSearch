@@ -655,9 +655,18 @@ var test = new Test();
 
   var currentLoginUser; //現在ログイン中ユーザー
 
-//入力フォームの取得
-function saveData(){
+//個人情報１の入力フォームの取得
+function saveData1(){
   var username = $("#new_username").val();
+  var mailaddress = $("#new_mailadd").val();
+  var mailaddress_test = $("#new_mialadd_test").val();
+  var password = $("#new_password").val();
+  var password_test = $("#new_password_test").val();
+}
+
+//個人情報２の入力フォームの取得
+function saveData1(){
+  var higth = $("#my_higthbox").val();
   var mailaddress = $("#new_mailadd").val();
   var mailaddress = $("#new_mialadd_test").val();
   var password = $("#new_password").val();
@@ -665,7 +674,7 @@ function saveData(){
 }
 
 //会員登録
-function saveData()
+function onRegisterBtn()
 {
   var user = new ncmb.User();
   // [NCMB] ID / PW で新規登録
