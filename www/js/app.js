@@ -38,19 +38,6 @@ $(document).ready(function(){
       new_imgf();
     }
 });
-  /*window.onload = function () { // htmlが読み込まれたとき
-    var current_file=location.pathname; // 現在のhtmlファイル取得
-    if(current_file==="/list.html"){
-      file_search();
-      search_sum();
-    }
-    else if(current_file==="/favorite.html"){
-      favorite_search();
-    }
-    else if(current_file==="/search.html"){
-      new_imgf();
-    }
-  };*/
 
   $(".back").click(function(){
   window.location.href = "my-page.html";
@@ -59,7 +46,7 @@ $(document).ready(function(){
   window.location.href = "my-page.html";
   })
 
-  function mobile_check(){
+  function mobile_check(){  // 使っている端末を確認
       const ua = navigator.userAgent;
       if (ua.indexOf('iPhone') > -1 || (ua.indexOf('Android') > -1 && ua.indexOf('Mobile') > -1)) {
           // スマートフォン
