@@ -19,6 +19,16 @@ var where=[]; // データを取得する際の条件を格納するテキスト
 var img_index=0;
 var favorite_tab="";
 var favorite_check=[];
+var favorite_index=0;  var username = $("#new_username").val();
+
+  var mailaddress = null;
+  var mailaddress_test = null;
+  var password = null;
+  var password_test = null;
+  var higth = null;
+  var bmw_B = null;
+  var bmw_W = null;
+  var bmw_H = null;
 var favorite_index=0;
 var img_path_pc="/image/";
 var img_path_phon="/www/image/";
@@ -68,7 +78,6 @@ $(document).ready(function(){
   $("#next_page_1").click(function(){
   $("#page_1").css("display","none");
   $("#page_2").css("display","block");
-  onRegisterBtn();
   
   });
   $("#next_page_2").click(function(){
@@ -677,26 +686,30 @@ var test = new Test();
 
   var currentLoginUser; //現在ログイン中ユーザー
 
-//個人情報１の入力フォームの取得
+//個人情報１
 function saveData1(){
-  var username = $("#new_username").val();
-  var mailaddress = $("#new_mailadd").val();
-  var mailaddress_test = $("#new_mialadd_test").val();
-  var password = $("#new_password").val();
-  var password_test = $("#new_password_test").val();
+  //
 }
-
-//個人情報２の入力フォームの取得
+//個人情報２
 function saveData2(){
-  var higth = $("#my_higthbox").val();
-  var bmw_B = $("#bmw_b").val();
-  var bmw_W = $("#bmw_w").val();
-  var bmw_H = $("#bmw_h").val();
+  //
 }
 
 //会員登録
 function onRegisterBtn()
 {
+  //個人情報１の入力フォームの取得
+  username = $("#new_username").val();
+  mailaddress = $("#new_mailadd").val();
+  mailaddress_test = $("#new_mialadd_test").val();
+  password = $("#new_password").val();
+  password_test = $("#new_password_test").val();
+  //個人情報２の入力フォームの取得
+  higth = $("#my_higthbox").val();
+  bmw_B = $("#bmw_b").val();
+  bmw_W = $("#bmw_w").val();
+  bmw_H = $("#bmw_h").val();
+
   var user = new ncmb.User();
   // [NCMB] ID / PW で新規登録
   user.set("userName", username)
