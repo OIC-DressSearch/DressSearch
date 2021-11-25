@@ -683,3 +683,14 @@ function saveData()
           alert("新規登録に失敗！次のエラー発生：" + error);
       })
 }
+
+//メールアドレスの正規表現
+$("#login_with").click(function(){
+  var address = $("#my_mailbox").val();
+  var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/;
+  if (reg.test(address)) {
+    alert("正しい");
+  } else {
+    alert("メールアドレスを正しく入力してください");
+  }
+});
