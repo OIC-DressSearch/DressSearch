@@ -665,12 +665,11 @@ function saveData1(){
 }
 
 //個人情報２の入力フォームの取得
-function saveData1(){
+function saveData2(){
   var higth = $("#my_higthbox").val();
-  var mailaddress = $("#new_mailadd").val();
-  var mailaddress = $("#new_mialadd_test").val();
-  var password = $("#new_password").val();
-  var password = $("#new_password_test").val();
+  var bmw_B = $("#bmw_b").val();
+  var bmw_W = $("#bmw_w").val();
+  var bmw_H = $("#bmw_h").val();
 }
 
 //会員登録
