@@ -788,7 +788,7 @@
   .display_higth2{
     display: none;
   }
-  #bwh_textbox{
+  .bwh_textbox{
     margin-left: 0%;
     font-size: 18px;
     border-radius:5px;
