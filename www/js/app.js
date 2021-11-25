@@ -69,7 +69,19 @@ $(document).ready(function(){
           return img_path_pc;
       }
     }
- 
+
+      /*$("body").on('click','.item',function(){
+        var element_id=$(this).attr('id'); // いいねを押した要素のidを取得
+        var item_name=$(this).attr('name'); 
+        var item_name_sprite = item_name.split(',');//nameからとってきたテクストを，で分断。[0]は画像ファイル名、[1]はドレスID
+        var int_id=parseInt(item_name_sprite[1]); //ドレスIDをintに変換
+        var dress_item = ncmb.DataStore("test");
+        dress_item.equalTo("dress_id",int_id).fetchAll().then(function(results){
+          var item=results[0];
+          
+        });
+      });*/
+
 /***ここまで共通部分*****************************************************/
  
 /***新規作成画面*****************************************************/
@@ -370,9 +382,7 @@ $(document).ready(function(){
     
   }
 
-    /*function html_create(num){
-      /***次回メモ　ここでHTML作成しておく処理をかく 
-    }*/
+
 
 /***ここまで一覧画面*****************************************************/
  
