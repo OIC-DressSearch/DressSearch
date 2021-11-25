@@ -53,7 +53,7 @@ var favorite_index=0;
   $("#next_page_1").click(function(){
   $("#page_1").css("display","none");
   $("#page_2").css("display","block");
-  //onRegisterBtn();
+  onRegisterBtn();
   
   });
   $("#next_page_2").click(function(){
@@ -652,18 +652,20 @@ var test = new Test();
 
 /***************ログイン画面************************/
 
-$(function(){
-  $(".next_button").click(onRegisterBtn)
-})
-
   var currentLoginUser; //現在ログイン中ユーザー
-function onRegisterBtn()
-{
-  //　入力フォームを取得
+
+//入力フォームの取得
+function saveData(){
   var username = $("#new_username").val();
   var mailaddress = $("#new_mailadd").val();
+  var mailaddress = $("#new_mialadd_test").val();
   var password = $("#new_password").val();
+  var password = $("#new_password_test").val();
+}
 
+//会員登録
+function saveData()
+{
   var user = new ncmb.User();
   // [NCMB] ID / PW で新規登録
   user.set("userName", username)
