@@ -41,12 +41,12 @@
         <div class="sinki_title">
             <div id="sinki_title" class="sinki1">メールアドレス</div>
             <div id="hissu" class="sinki1">必須</div><br>
-            <input type="text" id="new_mailadd"></input><br>
+            <input type="email" id="new_mailadd"></input><br>
         </div>
         <div class="sinki_title">
             <div id="sinki_title" class="sinki1">メールアドレス再入力</div>
             <div id="hissu" class="sinki1">必須</div><br>
-            <input type="text" id="new_mialadd_test"></input><br>
+            <input type="email" id="new_mialadd_test"></input><br>
         </div>
       </div>
       <div id="sinki_pass">
@@ -60,7 +60,7 @@
           <div id="hissu" class="sinki1">必須</div><br>
           <input type="password" id="new_password_test" placeholder="" maxlength="15"></input><br>
         </div>
-        <button id="next_page_1" class="next_button" onclick="saveData()">次へ</button> 
+        <button id="next_page_1" class="next_button" onclick="saveData()1">次へ</button> 
       </div>
     </div>
 
@@ -84,13 +84,13 @@
         </div>
       </div>
       <div id="sinki_bwh">
-        <div id="sinki_title" class="sinki1">スリーサイズ</div><br>
+        <div id="sinki_title"  class="sinki1">スリーサイズ</div><br>
           <p id="my_text1">B：</p>
-          <input type="text" id="bwh_textbox">
+          <input type="text" class="bwh_textbox">
           <p id="my_text1">W：</p>
-          <input type="text" id="bwh_textbox">          
+          <input type="text" class="bwh_textbox">          
           <p id="my_text1">H：</p>
-          <input type="text" id="bwh_textbox">
+          <input type="text" class="bwh_textbox">
           <button id="next_page_2" class="next_button"">次へ</button>
           <button id="back_page_2" class="next_button"">戻る</button> 
       </div>
@@ -122,9 +122,9 @@
         <div></div>
       </div>
       <a href="search.html">
-        <button id="next_page_3" class="next_button"">登録</button> 
+        <button id="next_page_3" class="next_button" onclick="onRegisterBtn()">登録</button> 
       </a>
-      <button id="back_page_3" class="next_button"">戻る</button> 
+      <button id="back_page_3" class="next_button">戻る</button> 
     </div>
       
     <script src="js/app.js"></script>
