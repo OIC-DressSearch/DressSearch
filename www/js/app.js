@@ -703,3 +703,16 @@ $("#login_with").click(function(){
     alert("メールアドレスを正しく入力してください");
   }
 });
+
+//再入力したものとの判定
+$("#next_page_1").click(function(){
+  //var address1 = $("new_mailadd").val();
+  //var address2 = $("new_mialadd_test").val();
+  var mail = document.getElementById("new_mailadd").value; //メールフォームの値を取得
+  var mailConfirm = document.getElementById("new_mialadd_test").value; //メール確認用フォームの値を取得
+  if(mail == mailConfirm){
+    alert("正しい");
+  } else {
+    alert("もう一度入力して下さい");
+  }
+})
