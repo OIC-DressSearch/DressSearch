@@ -48,19 +48,6 @@ $(document).ready(function(){
       new_imgf();
     }
 });
-  /*window.onload = function () { // htmlが読み込まれたとき
-    var current_file=location.pathname; // 現在のhtmlファイル取得
-    if(current_file==="/list.html"){
-      file_search();
-      search_sum();
-    }
-    else if(current_file==="/favorite.html"){
-      favorite_search();
-    }
-    else if(current_file==="/search.html"){
-      new_imgf();
-    }
-  };*/
 
   $(".back").click(function(){
   window.location.href = "my-page.html";
@@ -69,7 +56,7 @@ $(document).ready(function(){
   window.location.href = "my-page.html";
   })
 
-  function mobile_check(){
+  function mobile_check(){  // 使っている端末を確認
       const ua = navigator.userAgent;
       if (ua.indexOf('iPhone') > -1 || (ua.indexOf('Android') > -1 && ua.indexOf('Mobile') > -1)) {
           // スマートフォン
@@ -82,7 +69,19 @@ $(document).ready(function(){
           return img_path_pc;
       }
     }
- 
+
+      /*$("body").on('click','.item',function(){
+        var element_id=$(this).attr('id'); // いいねを押した要素のidを取得
+        var item_name=$(this).attr('name'); 
+        var item_name_sprite = item_name.split(',');//nameからとってきたテクストを，で分断。[0]は画像ファイル名、[1]はドレスID
+        var int_id=parseInt(item_name_sprite[1]); //ドレスIDをintに変換
+        var dress_item = ncmb.DataStore("test");
+        dress_item.equalTo("dress_id",int_id).fetchAll().then(function(results){
+          var item=results[0];
+          
+        });
+      });*/
+
 /***ここまで共通部分*****************************************************/
  
 /***新規作成画面*****************************************************/
@@ -383,9 +382,7 @@ $(document).ready(function(){
     
   }
 
-    /*function html_create(num){
-      /***次回メモ　ここでHTML作成しておく処理をかく 
-    }*/
+
 
 /***ここまで一覧画面*****************************************************/
  
@@ -741,3 +738,27 @@ function onRegisterBtn()
           alert("新規登録に失敗！次のエラー発生：" + error);
       })
 }
+
+//メールアドレスの正規表現
+$("#login_with").click(function(){
+  var address = $("#my_mailbox").val();
+  var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/;
+  if (reg.test(address)) {
+    alert("正しい");
+  } else {
+    alert("メールアドレスを正しく入力してください");
+  }
+});
+
+//再入力したものとの判定
+$("#next_page_1").click(function(){
+  //var address1 = $("new_mailadd").val();
+  //var address2 = $("new_mialadd_test").val();
+  var mail = document.getElementById("new_mailadd").value; //メールフォームの値を取得
+  var mailConfirm = document.getElementById("new_mialadd_test").value; //メール確認用フォームの値を取得
+  if(mail == mailConfirm){
+    alert("正しい");
+  } else {
+    alert("もう一度入力して下さい");
+  }
+})
