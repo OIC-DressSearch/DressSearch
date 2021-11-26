@@ -239,12 +239,16 @@
   }
 
   #reim_1{
+    margin: 0;
     height: 70%;
     width: 100%;
+    font-size: 0;
   }
   #reim_2{
+    margin: 0;
     height: 45%;
     width: 50%;
+    font-size: 0;
   }
   
 /***********ここまでおすすめのCSS********************************/

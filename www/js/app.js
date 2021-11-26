@@ -83,9 +83,9 @@ $(document).ready(function(){
       }
     }
  
-/***ここまで共通部分*****************************************************/
+/***ここまで共通部分**************************************/
  
-/***新規作成画面*****************************************************/
+/***新規作成画面******************************************/
 
   //画面遷移 
   $("#next_page_1").click(function(){
@@ -107,9 +107,24 @@ $(document).ready(function(){
   $("#page_2").css("display","block");
   });
  
-/***ここまで新規作成画面*****************************************************/
+/***ここまで新規作成画面***********************************/
  
-/***検索画面*****************************************************/
+/***おすすめ**********************************************/
+ 
+  var add_text="";
+              item_count++;
+              if(flag[item_count-1]){
+                add_text='<li class="item"><img src="'+img_text+path[item_count-1]+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+              }else{
+                add_text='<li class="item"><img src="'+img_text+path[item_count-1]+'"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+              }
+              $("#result_list").append(add_text);
+              $("#search_sum").text(item_count + "件");
+              
+
+/***ここまでおすすめ***********************************/
+
+/***検索画面******************************************/
  
   //ポップアップ開く
   $('#dress').click(function() {
