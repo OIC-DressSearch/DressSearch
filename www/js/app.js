@@ -19,8 +19,8 @@ var where=[]; // データを取得する際の条件を格納するテキスト
 var img_index=0;
 var favorite_tab="";
 var favorite_check=[];
-var favorite_index=0;  var username = $("#new_username").val();
-
+var favorite_index=0;  
+var username = $("#new_username").val();
   var mailaddress = null;
   var mailaddress_test = null;
   var password = null;
@@ -29,7 +29,6 @@ var favorite_index=0;  var username = $("#new_username").val();
   var bmw_B = null;
   var bmw_W = null;
   var bmw_H = null;
-var favorite_index=0;
 var img_path_pc="/image/";
 var img_path_phon="/www/image/";
 /********ここまで変数部 *****/
@@ -70,18 +69,41 @@ $(document).ready(function(){
       }
     }
 
-      /*$("body").on('click','.item',function(){
-        var element_id=$(this).attr('id'); // いいねを押した要素のidを取得
-        var item_name=$(this).attr('name'); 
-        var item_name_sprite = item_name.split(',');//nameからとってきたテクストを，で分断。[0]は画像ファイル名、[1]はドレスID
-        var int_id=parseInt(item_name_sprite[1]); //ドレスIDをintに変換
-        var dress_item = ncmb.DataStore("test");
-        dress_item.equalTo("dress_id",int_id).fetchAll().then(function(results){
+    $("body").on('click','.item',function(){
+      var element_id=$(this).attr('id'); // いいねを押した要素のidを取得
+      var item_name=$("#"+element_id+" div").attr('name');
+      var item_name_sprite = item_name.split(',');
+        //nameからとってきたテクストを，で分断。[0]は画像ファイル名、[1]はドレスID
+      var int_id=parseInt(item_name_sprite[1]); //ドレスIDをintに変換
+      var dress_item = ncmb.DataStore("test");
+      dress_item.equalTo("dress_id",int_id).fetchAll().then(function(results){
           var item=results[0];
-          
+          var item_set=[];
+          item_set[0]=item.name;
+          item_set[1]=item.dress_store;
+          item_set[2]=item.dress;
+          create_html(item_name_sprite[0],item_set);
         });
-      });*/
+      $('.js-modal').fadeIn();
+      return false;
 
+      });
+
+      $("body").on('click','.js-modal-close',function(){
+        $('.js-modal').fadeOut();
+        return false;
+      });
+       $("body").on('click','.js-modal-close_2',function(){
+        $('.js-modal').fadeOut();
+        return false;
+      });
+
+  function create_html(src,item_set){
+    $(".modal_con").remove();
+    var ele_text='<div class="modal_con"><img src="/image/'+src+'" class="modal_img"><div>名前:'+item_set[0]+'<br>式場:'+item_set[1]+'<br>ドレス:'+item_set[2]+'</div><div class="js-modal-close_2">閉じる</div></div>';
+            
+    $(".modal__content").append(ele_text);
+  }
 /***ここまで共通部分*****************************************************/
 
 /***新規作成画面******************************************/
@@ -454,8 +476,7 @@ $(document).ready(function(){
         favorite_path[i]=a.path;
           
             item_count++;
-            var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
-            var add_text='<li class="item"><img src="'+img_text+favorite_path[item_count-1]+'"><div class="heart" id="heart_'+item_count+'" name="'+favorite_path[item_count-1]+','+fdress_id[item_count-1]+'"></div></li>';
+            var add_text='<li class="item" id="item_'+item_count+'" ><img src="'+img_text+favorite_path[item_count-1]+'"><div class="heart" id="heart_'+item_count+'" name="'+favorite_path[item_count-1]+','+fdress_id[item_count-1]+'"></div></li>';
             $("#result_list").append(add_text);
             $("#search_sum").text(item_count + "件");
         }
@@ -502,7 +523,6 @@ $(document).ready(function(){
     var tab_text=$(this).text();
     $('.item').remove();
     item_count=0;
-    var reader = new FileReader(); //リーダークラス作成
 
     var favorite_test = ncmb.DataStore("favorite");
     var fdress_store = ncmb.DataStore("test");
