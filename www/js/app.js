@@ -781,3 +781,57 @@ $("#next_page_1").click(function(){
     alert("もう一度入力して下さい");
   }
 })
+
+
+//メールアドレスのサジェスト機能
+$(function() {
+    var availableTags = [
+        "yahoo.co.jp",
+        "gmail.com",
+        "icloud.com",
+        "ezweb.ne.jp",
+        "softbank.ne.jp",
+        "i.softbank.jp",
+        "outlook.jp",
+        "outlook.com",
+        "docomo.ne.jp"
+    ];
+    function extractLast( val ) {
+        if (val.indexOf("@")!=-1){
+            var tmp=val.split("@");
+            console.log(tmp[tmp.length-1]);
+            return tmp[tmp.length-1];
+        }
+        console.log("returning empty");
+        return "";
+    }
+
+    $( ".domain-autocomplete" )
+        // don't navigate away from the field on tab when selecting an item
+        .bind( "keydown", function( event ) {
+            if ( event.keyCode === $.ui.keyCode.TAB &&
+                    $( this ).data( "autocomplete" ).menu.active ) {
+                event.preventDefault();
+            }
+        })
+        .autocomplete({
+            minLength: 1,
+            source: function( request, response ) {
+                        var mail = extractLast(request.term);
+                        if(mail.length<1){return;}
+                        var matcher = new RegExp( "^" + mail, "i" );
+                        response( $.grep( availableTags, function( item ){
+                            return matcher.test( item );
+                        }));
+             },
+            focus: function() {
+                // prevent value inserted on focus
+                return false;
+            },
+
+            select: function( event, ui ) {
+    this.value = this.value.substring(0, this.value.indexOf('@') + 1) + ui.item.value;
+    return false;
+}
+        });
+});
