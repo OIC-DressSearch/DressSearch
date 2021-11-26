@@ -48,19 +48,6 @@ $(document).ready(function(){
       new_imgf();
     }
 });
-  /*window.onload = function () { // htmlが読み込まれたとき
-    var current_file=location.pathname; // 現在のhtmlファイル取得
-    if(current_file==="/list.html"){
-      file_search();
-      search_sum();
-    }
-    else if(current_file==="/favorite.html"){
-      favorite_search();
-    }
-    else if(current_file==="/search.html"){
-      new_imgf();
-    }
-  };*/
 
   $(".back").click(function(){
   window.location.href = "my-page.html";
@@ -69,7 +56,7 @@ $(document).ready(function(){
   window.location.href = "my-page.html";
   })
 
-  function mobile_check(){
+  function mobile_check(){  // 使っている端末を確認
       const ua = navigator.userAgent;
       if (ua.indexOf('iPhone') > -1 || (ua.indexOf('Android') > -1 && ua.indexOf('Mobile') > -1)) {
           // スマートフォン
@@ -82,9 +69,21 @@ $(document).ready(function(){
           return img_path_pc;
       }
     }
- 
-/***ここまで共通部分**************************************/
- 
+
+      /*$("body").on('click','.item',function(){
+        var element_id=$(this).attr('id'); // いいねを押した要素のidを取得
+        var item_name=$(this).attr('name'); 
+        var item_name_sprite = item_name.split(',');//nameからとってきたテクストを，で分断。[0]は画像ファイル名、[1]はドレスID
+        var int_id=parseInt(item_name_sprite[1]); //ドレスIDをintに変換
+        var dress_item = ncmb.DataStore("test");
+        dress_item.equalTo("dress_id",int_id).fetchAll().then(function(results){
+          var item=results[0];
+          
+        });
+      });*/
+
+/***ここまで共通部分*****************************************************/
+
 /***新規作成画面******************************************/
 
   //画面遷移 
@@ -398,9 +397,7 @@ $(document).ready(function(){
     
   }
 
-    /*function html_create(num){
-      /***次回メモ　ここでHTML作成しておく処理をかく 
-    }*/
+
 
 /***ここまで一覧画面*****************************************************/
  
@@ -778,3 +775,57 @@ $("#next_page_1").click(function(){
     alert("もう一度入力して下さい");
   }
 })
+
+
+//メールアドレスのサジェスト機能
+$(function() {
+    var availableTags = [
+        "yahoo.co.jp",
+        "gmail.com",
+        "icloud.com",
+        "ezweb.ne.jp",
+        "softbank.ne.jp",
+        "i.softbank.jp",
+        "outlook.jp",
+        "outlook.com",
+        "docomo.ne.jp"
+    ];
+    function extractLast( val ) {
+        if (val.indexOf("@")!=-1){
+            var tmp=val.split("@");
+            console.log(tmp[tmp.length-1]);
+            return tmp[tmp.length-1];
+        }
+        console.log("returning empty");
+        return "";
+    }
+
+    $( ".domain-autocomplete" )
+        // don't navigate away from the field on tab when selecting an item
+        .bind( "keydown", function( event ) {
+            if ( event.keyCode === $.ui.keyCode.TAB &&
+                    $( this ).data( "autocomplete" ).menu.active ) {
+                event.preventDefault();
+            }
+        })
+        .autocomplete({
+            minLength: 1,
+            source: function( request, response ) {
+                        var mail = extractLast(request.term);
+                        if(mail.length<1){return;}
+                        var matcher = new RegExp( "^" + mail, "i" );
+                        response( $.grep( availableTags, function( item ){
+                            return matcher.test( item );
+                        }));
+             },
+            focus: function() {
+                // prevent value inserted on focus
+                return false;
+            },
+
+            select: function( event, ui ) {
+    this.value = this.value.substring(0, this.value.indexOf('@') + 1) + ui.item.value;
+    return false;
+}
+        });
+});
