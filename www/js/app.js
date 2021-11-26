@@ -714,9 +714,7 @@ function onRegisterBtn()
   //個人情報１の入力フォームの取得
   username = $("#new_username").val();
   mailaddress = $("#new_mailadd").val();
-  mailaddress_test = $("#new_mialadd_test").val();
   password = $("#new_password").val();
-  password_test = $("#new_password_test").val();
   //個人情報２の入力フォームの取得
   higth = $("#my_higthbox").val();
   bmw_B = $("#bmw_b").val();
@@ -728,6 +726,10 @@ function onRegisterBtn()
   user.set("userName", username)
       .set("mailAddress", mailaddress)
       .set("password", password)
+      .set("higth", higth)
+      .set("bust", bmw_b)
+      .set("hips", bmw_w)
+      .set("waist", bmw_h)
 
   user.signUpByAccount()
       .then(function(user){
