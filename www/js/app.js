@@ -694,39 +694,58 @@ var test = new Test();
 
 /***************ログイン画面************************/
 
-  var currentLoginUser; //現在ログイン中ユーザー
+function login_user(){
+  //入力フォームの取得
+  var mailAddress = $("#new_mailadd").val();
+  var password = $("#new_password").val();
 
-//個人情報１
-function saveData1(){
-  //
+  ncmb.User.login(mailAddress,password)
+      .then(function(user){
+        alert("ログイン成功");
+        currentLoginUser = ncmb.User.getCurrentUser();
+        $.mobile.changePage('#DetailPage');
+    })
+    .catch(function(error) {
+        alert("ログイン失敗！次のエラー発生: " + error);
+      })
 }
-//個人情報２
-function saveData2(){
-  //
+
+/*******ログアウト******/
+
+function logout(){
+  ncmb.User.logout();
+  alert('ログアウト成功');
+  currentLoginUser = null;
+  $.mobile.changePage('#LoginPage');
 }
+
+
+/**********************新規登録画面*****************/
+
+  var currentLoginUser; //現在ログイン中ユーザー
 
 //会員登録
 function onRegisterBtn()
 {
   //個人情報１の入力フォームの取得
-  username = $("#new_username").val();
-  mailaddress = $("#new_mailadd").val();
-  password = $("#new_password").val();
+  var username = $("#new_username").val();
+  var mailaddress = $("#new_mailadd").val();
+  var password = $("#new_password").val();
   //個人情報２の入力フォームの取得
-  higth = $("#my_higthbox").val();
-  bmw_B = $("#bmw_b").val();
-  bmw_W = $("#bmw_w").val();
-  bmw_H = $("#bmw_h").val();
+  var higth = $("#my_higthbox").val();
+  var bmw_B = $("#bmw_b").val();
+  var bmw_W = $("#bmw_w").val();
+  var bmw_H = $("#bmw_h").val();
 
   var user = new ncmb.User();
-  // [NCMB] ID / PW で新規登録
+  // 新規登録
   user.set("userName", username)
       .set("mailAddress", mailaddress)
       .set("password", password)
       .set("higth", higth)
       .set("bust", bmw_b)
       .set("hips", bmw_w)
-      .set("waist", bmw_h)
+      .set("waist", bmw_h);
 
   user.signUpByAccount()
       .then(function(user){
