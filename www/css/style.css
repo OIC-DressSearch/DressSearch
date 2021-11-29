@@ -274,11 +274,11 @@
     font-size: 0;
   }
 
-  .re_im{
+  /* .re_im{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-  }
+  } */
 
   #reim_1{
     height: 70%;
@@ -286,9 +286,11 @@
     margin-bottom: -21%;
   }
   #reim_2{
-    height: 45%;
-    width: 50%;
-    margin-bottom: -1%;
+    margin: 0;
+    font-size: 0px;
+    height: 90%;
+    width: 80%;
+    /* margin-bottom: -1%; */
   }
 
   #re1_heart{
