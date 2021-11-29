@@ -886,18 +886,16 @@ $("#login_with").click(function(){
 });
 
 //再入力したものとの判定
-$("#next_page_1").click(function(){
-  //var address1 = $("new_mailadd").val();
-  //var address2 = $("new_mialadd_test").val();
-  var mail = document.getElementById("new_mailadd").value; //メールフォームの値を取得
-  var mailConfirm = document.getElementById("new_mialadd_test").value; //メール確認用フォームの値を取得
-  if(mail == mailConfirm){
-    alert("正しい");
-  } else {
-    alert("もう一度入力して下さい");
-  }
-})
-
+function CheckMail(input) {
+    var mail = document.getElementById("new_mialadd").value; //メールフォームの値を取得
+    var mailConfirm = document.getElementById("new_mialadd_test").value; //メール確認用フォームの値を取得
+    // パスワードの一致確認
+    if (mail != mailConfirm){
+      input.setCustomValidity("パスワードと確認用パスワードが一致しません"); // 一致していなかったら、エラーメッセージを表示する
+    }else{
+      input.setCustomValidity("");
+    }
+}
 
 //メールアドレスのサジェスト機能
 $(function() {
