@@ -20,15 +20,6 @@ var img_index=0;
 var favorite_tab="";
 var favorite_check=[];
 var favorite_index=0;  
-var username = $("#new_username").val();
-  var mailaddress = null;
-  var mailaddress_test = null;
-  var password = null;
-  var password_test = null;
-  var higth = null;
-  var bmw_B = null;
-  var bmw_W = null;
-  var bmw_H = null;
 var img_path_pc="/image/";
 var img_path_phon="/www/image/";
 /********ここまで変数部 *****/
@@ -130,7 +121,7 @@ $(document).ready(function(){
  
 /***ここまで新規作成画面***********************************/
  
-/***おすすめ**********************************************/
+/***おすすめ
  
   var add_text="";
               item_count++;
@@ -142,7 +133,7 @@ $(document).ready(function(){
               $("#result_list").append(add_text);
               $("#search_sum").text(item_count + "件");
               
-
+**********************************************/
 /***ここまでおすすめ***********************************/
 
 /***検索画面******************************************/
@@ -745,7 +736,7 @@ function login_user(){
       })
 }
 
-/*******ログアウト******/
+/*******ログアウト
 
 function logout(){
   ncmb.User.logout();
@@ -753,11 +744,11 @@ function logout(){
   currentLoginUser = null;
   $.mobile.changePage('#LoginPage');
 }
-
+******/
 
 /**********************新規登録画面*****************/
 
-  var currentLoginUser; //現在ログイン中ユーザー
+var currentLoginUser; //現在ログイン中ユーザー
 
 //会員登録
 function onRegisterBtn()
@@ -816,7 +807,6 @@ $("#next_page_1").click(function(){
     alert("もう一度入力して下さい");
   }
 })
-
 
 //メールアドレスのサジェスト機能
 $(function() {
