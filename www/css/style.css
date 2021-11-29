@@ -139,8 +139,8 @@
     width: 60%;
 }
 .modal_img{
-    width:200px;
-    height:250px;
+    width:250px;
+    height:300px;
 }
 .js-modal-close_2{
   margin-left:90px;
@@ -302,8 +302,8 @@
     width: 40px;  /* 正方形を作る */
     height: 40px; /* 正方形を作る */
     position: relative;/* 基準位置とする */
-    top: -15px;
-    left: 33%;
+    top: -35px;
+    left: 25%;
     z-index: 3000;
   }
   
@@ -569,7 +569,6 @@
   }
 
   .table-header .tab_list:hover{
-
     color: #68c3c5;
     border-bottom: 3px solid #68c3c5;
   }
@@ -643,6 +642,23 @@
     transform: translateY(4px);/*下に動く*/
     border-bottom: none;/*線を消す*/
   }
+  #change_push{ /*試着予約*/
+    background: #abd8e0;/*ボタン色*/
+    color: #FFF;
+    border-radius: 3px;
+    width: 20%;
+    text-align: center;
+    font-size: 15px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  #change_push:active{
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+  }
 
   /*画像*/
   .heart {/*ハート*/
@@ -650,7 +666,7 @@
     height: 40px; /* 正方形を作る */
     position: relative;/* 基準位置とする */
     top: -45px;
-    left: 33%;
+    left: 110px;
   }
   .heart::before,
   .heart::after {
@@ -697,19 +713,75 @@
   }
 
 
+#favorite_tab_0_n_color{
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
+}
+#favorite_tab_o_n_color{
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
+}
 #favorite_tab_1{
   display: none;
+}
+#favorite_tab_1_n_color{
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
 }
 #favorite_tab_2{
   display: none;
 }
+#favorite_tab_2_n_color{
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
+}
 #favorite_tab_3{
   display: none;
+}
+#favorite_tab_3_n_color{
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
 }
 #favorite_tab_4{
   display: none;
 }
+#favorite_tab_4_n_color{
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
+}
 #favorite_tab_5{
+  display: none;
+}
+#favorite_tab_5_n_color{
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
+}
+#favorite_tab_a{
+  display: none;
+}
+#favorite_tab_a_n_color{
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
+}
+#favorite_tab_b{
+  display: none;
+}
+#favorite_tab_b_n_color{
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
+}
+#favorite_tab_c{
+  display: none;
+}
+#favorite_tab_c_n_color{
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
+}
+
+#dress_store{
+  display: none;
+}
+#rental_shop{
   display: none;
 }
 /***********ここまでいいね画面のCSS**************************/
