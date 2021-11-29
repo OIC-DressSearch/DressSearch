@@ -736,7 +736,7 @@ function login_user(){
       })
 }
 
-/*******ログアウト
+/*******ログアウト******/
 
 function logout(){
   ncmb.User.logout();
@@ -744,7 +744,6 @@ function logout(){
   currentLoginUser = null;
   $.mobile.changePage('#LoginPage');
 }
-******/
 
 /**********************新規登録画面*****************/
 
