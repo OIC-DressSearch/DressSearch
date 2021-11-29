@@ -244,6 +244,15 @@
     margin-top: 3%;
     padding-bottom:  5%;
   }
+  /*テキストボックス*/
+  .sinki_box{
+    font-size:18px;
+    border-radius:5px;
+  }
+  .domain-autocomplete{
+    font-size:18px;
+    border-radius:5px;
+  }
 
   /*２のレイアウト*/
   #sinki_higth{
