@@ -293,8 +293,8 @@
     width: 40px;  /* 正方形を作る */
     height: 40px; /* 正方形を作る */
     position: relative;/* 基準位置とする */
-    top: -15px;
-    left: 33%;
+    top: -35px;
+    left: 25%;
     z-index: 3000;
   }
   
@@ -657,7 +657,7 @@
     height: 40px; /* 正方形を作る */
     position: relative;/* 基準位置とする */
     top: -45px;
-    left: 33%;
+    left: 110px;
   }
   .heart::before,
   .heart::after {
