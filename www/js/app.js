@@ -838,7 +838,7 @@ var test = new Test();
 
 /**********************新規登録画面*****************/
 
-  /*var currentLoginUser; //現在ログイン中ユーザー
+  /**/var currentLoginUser; //現在ログイン中ユーザー
 
 //会員登録
 function onRegisterBtn()
@@ -878,22 +878,18 @@ function onRegisterBtn()
 $("#login_with").click(function(){
   var address = $("#my_mailbox").val();
   var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/;
-  if (reg.test(address)) {
-    alert("正しい");
-  } else {
+  if (!reg.test(address)) {
     alert("メールアドレスを正しく入力してください");
-  }
+  } 
 });
 
 //再入力したものとの判定
-function CheckMail(input) {
+function CheckMail() {
     var mail = document.getElementById("new_mialadd").value; //メールフォームの値を取得
     var mailConfirm = document.getElementById("new_mialadd_test").value; //メール確認用フォームの値を取得
     // パスワードの一致確認
     if (mail != mailConfirm){
-      input.setCustomValidity("パスワードと確認用パスワードが一致しません"); // 一致していなかったら、エラーメッセージを表示する
-    }else{
-      input.setCustomValidity("");
+      alert("入力したメールアドレスが一致していません"); // 一致していなかったら、エラーメッセージを表示する
     }
 }
 
@@ -948,4 +944,4 @@ $(function() {
     return false;
 }
         });
-});*/
+});
