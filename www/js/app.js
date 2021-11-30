@@ -38,6 +38,7 @@ var tab_name; // (いいね画面の)現在の選択中のタブを格納する
 /***共通部分*****************************************************/
 $(document).ready(function(){
   var current_file=location.pathname; // 現在のhtmlファイル取得
+  current_footer(current_file);
   if(current_file==="/www/list.html" || current_file==="/list.html"){
     file_search();
     search_sum();
@@ -76,12 +77,33 @@ $(document).ready(function(){
 
     $("body").on('click','.item_img',function(){
       var element_id=$(this).attr('id'); // いいねを押した要素のidを取得
-      //var item_name=$("#"+element_id+" div").attr('name');
+      modal_create(element_id);
+    });
+    $("body").on('click','.re_img_1',function(){
+      var element_id=$(this).attr('id'); 
+      modal_create(element_id);
+    });
+    $("body").on('click','.re_img_2',function(){
+      var element_id=$(this).attr('id'); 
+      modal_create(element_id);
+    });
+
+    $("body").on('click','.js-modal-close',function(){
+      $('.js-modal').fadeOut();
+      return false;
+    });
+    $("body").on('click','.js-modal-close_2',function(){
+      $('.js-modal').fadeOut();
+      return false;
+    });
+
+  function modal_create(element_id){
       var item_name=$("#"+element_id).nextAll("div");
       item_name=item_name.attr("name")
       var item_name_sprite = item_name.split(',');
         //nameからとってきたテクストを，で分断。[0]は画像ファイル名、[1]はドレスID
       var int_id=parseInt(item_name_sprite[1]); //ドレスIDをintに変換
+
       var dress_item = ncmb.DataStore("test");
       dress_item.equalTo("dress_id",int_id).fetchAll().then(function(results){
           var item=results[0];
@@ -93,17 +115,7 @@ $(document).ready(function(){
         });
       $('.js-modal').fadeIn();
       return false;
-
-      });
-
-      $("body").on('click','.js-modal-close',function(){
-        $('.js-modal').fadeOut();
-        return false;
-      });
-       $("body").on('click','.js-modal-close_2',function(){
-        $('.js-modal').fadeOut();
-        return false;
-      });
+  }
 
   function create_html(src,item_set){
     $(".modal_con").remove();
@@ -113,7 +125,39 @@ $(document).ready(function(){
   }
 
   function current_footer(current_name){
-    $('#dress_store_tab').attr('id','dress_store_n');
+    switch(current_name){
+      case "/www/recommend.html":
+        $('#recommend_footer').css('background-color','#68c3c5');
+        break;
+      case "/recommend.html":
+          $('#recommend_footer').css('background-color','#68c3c5');
+        break;
+      case "/www/search.html":
+        $('#search_footer').css('background-color','#68c3c5');
+        break;
+      case "/search.html":
+          $('#search_footer').css('background-color','#68c3c5');
+        break;
+        case "/www/list.html":
+        $('#search_footer').css('background-color','#68c3c5');
+        break;
+      case "/list.html":
+          $('#search_footer').css('background-color','#68c3c5');
+        break;
+      case "/www/favorite.html":
+        $('#favorite_footer').css('background-color','#68c3c5');
+        break;
+      case "/favorite.html":
+        $('#favorite_footer').css('background-color','#68c3c5');
+        break;
+      case "/www/my-page.html":
+        $('#my-page_footer').css('background-color','#68c3c5');
+        break;
+      case "/my-page.html":
+        $('#my-page_footer').css('background-color','#68c3c5');
+        break;
+
+    }
   }
 
 /***ここまで共通部分*****************************************************/
@@ -144,9 +188,78 @@ $(document).ready(function(){
 /***おすすめ**********************************************/
  
   function recommend(){
+    for(var i=0;i<7;i++){ //いいねフラグ初期化
+      flag[i]=false;
+    }
+    item_count=0;
     var img_text=mobile_check();
-    
-  }      
+    var get_data = ncmb.DataStore("test");
+    var saveData_2 = ncmb.DataStore("favorite");
+    get_data.order('dress_id',false).fetchAll().then(function(results){  // ドレスの画像取得
+      saveData_2.fetchAll().then(function(results_2){ 
+        for(var i=0;i<results.length;i++){
+          var a=results[i]; 
+          path[i]=a.get("path");    // 画像ファイル名取得
+          dress_id[i]=a.get("dress_id"); // ドレスＩＤ取得
+          for(var z=0;z<results_2.length;z++){
+            var res=results_2[z];
+            if(dress_id[i]===res.dress_id){  // 同じIDならいいね判定をつける           
+              flag[i]=true;
+            }
+          }
+        }
+        sort(dress_id,path,flag);
+        for(var i=0;i<6;i++){
+          if(i%2===0){
+          var add_text="";
+          }
+          if(i===0){
+            if(flag[item_count]){///いいねがあるかどうか
+              add_text='<img src="'+img_text+path[item_count]+'" id="item_'+item_count+'" class="re_img_1"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count]+','+dress_id[item_count]+'"></div>';
+            }else{
+              add_text='<img src="'+img_text+path[item_count]+'" id="item_'+item_count+'" class="re_img_1"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count]+','+dress_id[item_count]+'"></div>';
+            }
+            item_count++;
+            $("#top-img").append(add_text);  
+            var add_text="";
+          }
+          if(flag[item_count]){///いいねがあるかどうか
+            add_text+='<th class="re_td"><img src="'+img_text+path[item_count]+'" id="item_'+item_count+'" class="re_img_2"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count]+','+dress_id[item_count]+'"></div></th>';
+          }else{
+            add_text+='<th class="re_td"><img src="'+img_text+path[item_count]+'" id="item_'+item_count+'" class="re_img_2"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count]+','+dress_id[item_count]+'"></div></th>';
+          }
+          item_count++;
+          if((i+1)%2===0){  
+            var tr_id=parseInt(i/2);
+            $("#tr_"+tr_id).append(add_text);
+          }
+        }
+      })
+      .catch(function(error){
+          alert(error);
+      });            
+    })
+    .catch(function(error){
+      alert(error);
+    });
+  }
+
+function sort(array_1,array_2,array_3){
+  for(var i = (array_1.length - 1); 0 < i; i--){
+    // 0〜(i+1)の範囲で値を取得
+    var r = Math.floor(Math.random() * (i + 1));
+    // 要素の並び替えを実行
+    var tmp_1 = array_1[i];
+    array_1[i] = array_1[r];
+    array_1[r] = tmp_1;
+    var tmp_2 = array_2[i];
+    array_2[i] = array_2[r];
+    array_2[r] = tmp_2;
+    var tmp_3 = array_3[i];
+    array_3[i] = array_3[r];
+    array_3[r] = tmp_3;
+  }
+}
 
 /***ここまでおすすめ***********************************/
 

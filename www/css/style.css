@@ -68,7 +68,7 @@
         font-size:25px;/*アイコンのサイズ*/}
 
     #recommend_footer{
-       
+
     }
     #search_footer{
 
@@ -296,12 +296,12 @@
     width: 200px;
      margin-bottom: -12%;
   }
-  #reim_1{
+  .re_img_1{
     height: 70%;
     width: 100%;
     margin-bottom: -22%;
   }
-  #reim_2{
+  .re_img_2{
     margin: 0;
     font-size: 0px;
     height: 100%;
@@ -310,14 +310,31 @@
 
   }
 
-  #re1_heart{
+  #top-img > .heart{
     width: 70px;  /* 正方形を作る */
     height: 70px; /* 正方形を作る */
     position: relative;/* 基準位置とする */
     top: -10px;
     left: 73%;
   }
-  #re2_heart{
+
+  .re_td > .heart{
+    width: 40px;  /* 正方形を作る */
+    height: 40px; /* 正方形を作る */
+    position: relative;/* 基準位置とする */
+    top: -5px;
+    left: 65%;
+    margin-bottom: 0%;
+  }
+  #top-img > .heart_enp{
+    width: 70px;  /* 正方形を作る */
+    height: 70px; /* 正方形を作る */
+    position: relative;/* 基準位置とする */
+    top: -10px;
+    left: 73%;
+  }
+
+  .re_td > .heart_enp{
     width: 40px;  /* 正方形を作る */
     height: 40px; /* 正方形を作る */
     position: relative;/* 基準位置とする */
@@ -386,7 +403,6 @@
     .search_box{ 
       margin-left: 3%;
       width:95%;
-      height:30px;
       border-radius:5px;
       box-shadow: none;
       padding: 1px px;
@@ -395,6 +411,7 @@
       color: #000000;
       font-size: 19px;
     }
+
 
   /*ポップアップタイトル*/
     #pop_title{
