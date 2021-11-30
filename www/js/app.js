@@ -29,25 +29,25 @@ var username = $("#new_username").val();
   var bmw_B = null;
   var bmw_W = null;
   var bmw_H = null;
-var img_path_pc="/image/";
-var img_path_phon="/www/image/";
-var menu_flag=true;
-var tab_name;
+var img_path_pc="/image/";  //PC時の画像パス
+var img_path_phon="/www/image/";  //スマートフォン時の画像パス
+var menu_flag=true; // レンタル、式場の切り替えフラグ
+var tab_name; // (いいね画面の)現在の選択中のタブを格納する
 /********ここまで変数部 *****/
  
 /***共通部分*****************************************************/
 $(document).ready(function(){
   var current_file=location.pathname; // 現在のhtmlファイル取得
-    if(current_file==="/www/list.html" || current_file==="/list.html"){
-      file_search();
-      search_sum();
-    }
-    else if(current_file==="/www/favorite.html" || current_file==="/favorite.html"){
-      favorite_search();
-    }
-    else if(current_file==="/www/search.html" || current_file==="/search.html"){
-      new_imgf();
-    }
+  if(current_file==="/www/list.html" || current_file==="/list.html"){
+    file_search();
+    search_sum();
+  }
+  else if(current_file==="/www/favorite.html" || current_file==="/favorite.html"){
+    favorite_search();
+  }
+  else if(current_file==="/www/search.html" || current_file==="/search.html"){
+    new_imgf();
+  }
 });
 
   $(".back").click(function(){
@@ -108,6 +108,11 @@ $(document).ready(function(){
             
     $(".modal__content").append(ele_text);
   }
+
+  function current_footer(current_name){
+    $('#dress_store_tab').attr('id','dress_store_n');
+  }
+
 /***ここまで共通部分*****************************************************/
 
 /***新規作成画面******************************************/
@@ -467,10 +472,13 @@ $(document).ready(function(){
     var img_text=mobile_check();
     var favorite_test = ncmb.DataStore("favorite");
     var fdress_store = ncmb.DataStore("test");
-    tab_name="favorite_tab_0_n";
 
     if(menu_flag){
-     $('#dress_store').attr('id', 'dress_store_n');
+     $('#dress_store_tab').attr('id', 'dress_store_n');
+     tab_name="favorite_tab_0_n";
+    }
+    else{
+      tab_name="favorite_tab_o_n";
     }
     favorite_test
     .equalTo("user_id", "test")
@@ -624,8 +632,9 @@ $(document).ready(function(){
       tab_name="favorite_tab_o_n";
       $("#"+tab_name).attr("id",tab_name+"_color");
       $("#change_push").text("式場");
-      $('#dress_store_n').attr('id', 'dress_store');
-      $('#rental_shop').attr('id', 'rental_shop_n');
+      $('#dress_store_n').attr('id', 'dress_store_tab');
+      $('#rental_shop_tab').attr('id', 'rental_shop_n');
+      all_favorite();
       menu_flag=false;
     }
     else{
@@ -633,11 +642,34 @@ $(document).ready(function(){
       tab_name="favorite_tab_0_n";
       $("#"+tab_name).attr("id",tab_name+"_color");
       $("#change_push").text("レンタル");
-      $('#dress_store').attr('id', 'dress_store_n');
-      $('#rental_shop_n').attr('id', 'rental_shop');
+      $('#dress_store_tab').attr('id', 'dress_store_n');
+      $('#rental_shop_n').attr('id', 'rental_shop_tab');
+      all_favorite();
       menu_flag=true;
     }
   });
+
+  function all_favorite(){
+    $('.item').remove();
+    var img_text=mobile_check();
+    var favorite_path=[];
+    item_count=0;
+    var favorite_test = ncmb.DataStore("favorite");
+    favorite_test
+    .equalTo("user_id", "test")
+    .fetchAll() 
+    .then(function(results){
+      for(var i=0;i<results.length;i++){
+        var a=results[i];
+        fdress_id[i]=a.dress_id;
+        favorite_path[i]=a.path;
+            item_count++;
+            var add_text='<li class="item"><img src="'+img_text+favorite_path[item_count-1]+'" id="item_'+item_count+'" class="item_img"><div class="heart" id="heart_'+item_count+'" name="'+favorite_path[item_count-1]+','+fdress_id[item_count-1]+'"></div></li>';
+            $("#result_list").append(add_text);
+            $("#search_sum").text(item_count + "件");
+        }
+    });
+  }
 
 /***ここまでいいね画面*****************************************************/
  
