@@ -270,27 +270,30 @@
 /**************おすすめのCSS********************************/
 
   .display_recommend{
+    margin-left: 0%;
     margin-bottom: 19%;
     font-size: 0;
   }
 
-  /* .re_im{
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  } */
-
+  #re_table{
+    margin-left: -0.8%;
+  }
+  .re_td{
+    height: 250px;
+    width: 200px;
+     margin-bottom: -12%;
+  }
   #reim_1{
     height: 70%;
     width: 100%;
-    margin-bottom: -21%;
+    margin-bottom: -22%;
   }
   #reim_2{
     margin: 0;
     font-size: 0px;
-    height: 90%;
-    width: 80%;
-    /* margin-bottom: -1%; */
+    height: 100%;
+    width: 100%;
+    margin-bottom: -30%;
   }
 
   #re1_heart{
@@ -304,12 +307,12 @@
     width: 40px;  /* 正方形を作る */
     height: 40px; /* 正方形を作る */
     position: relative;/* 基準位置とする */
-    top: -35px;
-    left: 25%;
-    z-index: 3000;
+    top: -5px;
+    left: 65%;
+    margin-bottom: 0%;
   }
   
-/***********ここまでおすすめのCSS********************************/
+/***********ここまでおすすめのCSS**************************/
 
 /**************検索画面のCSS********************************/
 
