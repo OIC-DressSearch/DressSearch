@@ -295,7 +295,7 @@
   .re_td{
     height: 250px;
     width: 200px;
-     margin-bottom: -12%;
+    margin-bottom: -12%;
   }
   #reim_1{
     height: 70%;
@@ -483,8 +483,14 @@
       width:50%;
     }
 
+    .display_list{
+      margin-top: -20%;
+      margin-left: -3%;
+      margin-right: -3%;
+    }
     .item img{
-      width:150px;
+      margin-bottom: -23%;
+      width:165px;
       height:200px;
     }
     /*ヘッダー下*/
