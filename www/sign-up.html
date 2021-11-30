@@ -34,41 +34,45 @@
         </table>
       </div>
       <!-- メイン -->
-      <div id="sinki_name">
-        <div class="sinki_title">
-            <div id="sinki_title" class="sinki1">お名前</div>
-            <div id="hissu" class="sinki1">必須</div><br>
-            <input type="text" id="new_username" class="sinki_box"></input><br>
+      <form onSubmit="CheckMail()">
+        <div id="sinki_name">
+          <div class="sinki_title">
+              <label id="sinki_title" class="sinki1">お名前</label>
+              <label id="hissu" class="sinki1">必須</label><br>
+              <input type="text" id="new_username" class="sinki_box"></input><br>
+          </div>
+        </div>
+        <div id="sinki_mail">
+          <div class="sinki_title">
+              <label for="new_mailadd" id="sinki_title" class="sinki1">メールアドレス</label>
+              <label id="hissu" class="sinki1">必須</label><br>
+              <input type="email" id="new_mailadd" class="domain-autocomplete" required></input><br>
+          </div>
+          <div class="sinki_title">
+              <label for="new_mialadd_test" id="sinki_title" class="sinki1">メールアドレス再入力</label>
+              <label id="hissu" class="sinki1">必須</label><br>
+              <input type="email" id="new_mialadd_test" class="domain-autocomplete"></input><br>
+          </div>
+        </div>
+        <div id="sinki_pass">
+          <div class="sinki_title">
+            <label id="sinki_title" class="sinki1">パスワード</label>
+            <label id="hissu" class="sinki1">必須</label><br>
+            <input type="password" id="new_password" placeholder="" maxlength="15" minlength="8" pattern="/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,100}$/" class="sinki_box"></input><br>
+            <!-- 半角英数・小文字・大文字を１文字ずつ含むパスワードだけ許可 -->
+          </div>
+          <div class="sinki_title">
+            <label id="sinki_title" class="sinki1">パスワード再入力</label>
+            <label id="hissu" class="sinki1">必須</label><br>
+            <input type="password" id="new_password_test" placeholder="" maxlength="15" minlength="8" pattern="/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,100}$/" class="sinki_box"></input><br>
+            <!-- 半角英数・小文字・大文字を１文字ずつ含むパスワードだけ許可 -->
+          </div>
+          <div>
+            <button type="submit" id="next_page_1" class="next_button" onclick="saveData1()">次へ</button>
+          </div> 
         </div>
       </div>
-      <div id="sinki_mail">
-        <div class="sinki_title">
-            <div id="sinki_title" class="sinki1">メールアドレス</div>
-            <div id="hissu" class="sinki1">必須</div><br>
-            <input type="email" id="new_mailadd" class="domain-autocomplete"></input><br>
-        </div>
-        <div class="sinki_title">
-            <div id="sinki_title" class="sinki1">メールアドレス再入力</div>
-            <div id="hissu" class="sinki1">必須</div><br>
-            <input type="email" id="new_mialadd_test" class="domain-autocomplete" oninput="CheckMail(this)" ></input><br>
-        </div>
-      </div>
-      <div id="sinki_pass">
-        <div class="sinki_title">
-          <div id="sinki_title" class="sinki1">パスワード</div>
-          <div id="hissu" class="sinki1">必須</div><br>
-          <input type="password" id="new_password" placeholder="" maxlength="15" minlength="8" pattern="/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,100}$/" class="sinki_box"></input><br>
-          <!-- 半角英数・小文字・大文字を１文字ずつ含むパスワードだけ許可 -->
-        </div>
-        <div class="sinki_title">
-          <div id="sinki_title" class="sinki1">パスワード再入力</div>
-          <div id="hissu" class="sinki1">必須</div><br>
-          <input type="password" id="new_password_test" placeholder="" maxlength="15" minlength="8" pattern="/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,100}$/" class="sinki_box"></input><br>
-          <!-- 半角英数・小文字・大文字を１文字ずつ含むパスワードだけ許可 -->
-        </div>
-        <button id="next_page_1" class="next_button" onclick="saveData1()">次へ</button> 
-      </div>
-    </div>
+    </form>
 
     <!-- ２ -->
     <div id="page_2">
