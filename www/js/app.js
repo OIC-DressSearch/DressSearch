@@ -48,6 +48,9 @@ $(document).ready(function(){
   else if(current_file==="/www/search.html" || current_file==="/search.html"){
     new_imgf();
   }
+  else if(current_file==="/www/recommend.html" || "/recommnd"){
+    recommend();
+  }
 });
 
   $(".back").click(function(){
@@ -140,16 +143,10 @@ $(document).ready(function(){
  
 /***おすすめ**********************************************/
  
-  /*var add_text="";
-              item_count++;
-              if(flag[item_count-1]){
-                add_text='<li class="item"><img src="'+img_text+path[item_count-1]+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
-              }else{
-                add_text='<li class="item"><img src="'+img_text+path[item_count-1]+'"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
-              }
-              $("#result_list").append(add_text);
-              $("#search_sum").text(item_count + "件");*/
-              
+  function recommend(){
+    var img_text=mobile_check();
+    
+  }      
 
 /***ここまでおすすめ***********************************/
 
