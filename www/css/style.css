@@ -67,6 +67,19 @@
         text-align:center;
         font-size:25px;/*アイコンのサイズ*/}
 
+    #recommend_footer{
+       
+    }
+    #search_footer{
+
+    }
+    #favorite_footer{
+
+    }
+    #my-page_footer{
+
+    }
+
     /*アイコン位置*/
     .bottom-menu li a{
       display: block;
@@ -295,6 +308,7 @@
     height: 100%;
     width: 100%;
     margin-bottom: -30%;
+
   }
 
   #re1_heart{
@@ -783,10 +797,10 @@
   border-bottom: 3px solid #68c3c5;
 }
 
-#dress_store{
+#dress_store_tab{
   display: none;
 }
-#rental_shop{
+#rental_shop_tab{
   display: none;
 }
 /***********ここまでいいね画面のCSS**************************/
