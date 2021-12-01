@@ -19,24 +19,42 @@ var where=[]; // データを取得する際の条件を格納するテキスト
 var img_index=0;
 var favorite_tab="";
 var favorite_check=[];
-var favorite_index=0;  
+var favorite_index=0;
 var img_path_pc="/image/";
 var img_path_phon="/www/image/";
+var username = $("#new_username").val();
+  var mailaddress = null;
+  var mailaddress_test = null;
+  var password = null;
+  var password_test = null;
+  var higth = null;
+  var bmw_B = null;
+  var bmw_W = null;
+  var bmw_H = null;
+var img_path_pc="/image/";  //PC時の画像パス
+var img_path_phon="/www/image/";  //スマートフォン時の画像パス
+var menu_flag=true; // レンタル、式場の切り替えフラグ
+var tab_name; // (いいね画面の)現在の選択中のタブを格納する
+
 /********ここまで変数部 *****/
  
 /***共通部分*****************************************************/
 $(document).ready(function(){
   var current_file=location.pathname; // 現在のhtmlファイル取得
-    if(current_file==="/www/list.html" || current_file==="/list.html"){
-      file_search();
-      search_sum();
-    }
-    else if(current_file==="/www/favorite.html" || current_file==="/favorite.html"){
-      favorite_search();
-    }
-    else if(current_file==="/www/search.html" || current_file==="/search.html"){
-      new_imgf();
-    }
+  current_footer(current_file);
+  if(current_file==="/www/list.html" || current_file==="/list.html"){
+    file_search();
+    search_sum();
+  }
+  else if(current_file==="/www/favorite.html" || current_file==="/favorite.html"){
+    favorite_search();
+  }
+  else if(current_file==="/www/search.html" || current_file==="/search.html"){
+    new_imgf();
+  }
+  else if(current_file==="/www/recommend.html" || "/recommnd"){
+    recommend();
+  }
 });
 
   $(".back").click(function(){
@@ -60,12 +78,35 @@ $(document).ready(function(){
       }
     }
 
-    $("body").on('click','.item',function(){
+    $("body").on('click','.item_img',function(){
       var element_id=$(this).attr('id'); // いいねを押した要素のidを取得
-      var item_name=$("#"+element_id+" div").attr('name');
+      modal_create(element_id);
+    });
+    $("body").on('click','.re_img_1',function(){
+      var element_id=$(this).attr('id'); 
+      modal_create(element_id);
+    });
+    $("body").on('click','.re_img_2',function(){
+      var element_id=$(this).attr('id'); 
+      modal_create(element_id);
+    });
+
+    $("body").on('click','.js-modal-close',function(){
+      $('.js-modal').fadeOut();
+      return false;
+    });
+    $("body").on('click','.js-modal-close_2',function(){
+      $('.js-modal').fadeOut();
+      return false;
+    });
+
+  function modal_create(element_id){
+      var item_name=$("#"+element_id).nextAll("div");
+      item_name=item_name.attr("name")
       var item_name_sprite = item_name.split(',');
         //nameからとってきたテクストを，で分断。[0]は画像ファイル名、[1]はドレスID
       var int_id=parseInt(item_name_sprite[1]); //ドレスIDをintに変換
+
       var dress_item = ncmb.DataStore("test");
       dress_item.equalTo("dress_id",int_id).fetchAll().then(function(results){
           var item=results[0];
@@ -77,17 +118,7 @@ $(document).ready(function(){
         });
       $('.js-modal').fadeIn();
       return false;
-
-      });
-
-      $("body").on('click','.js-modal-close',function(){
-        $('.js-modal').fadeOut();
-        return false;
-      });
-       $("body").on('click','.js-modal-close_2',function(){
-        $('.js-modal').fadeOut();
-        return false;
-      });
+  }
 
   function create_html(src,item_set){
     $(".modal_con").remove();
@@ -95,6 +126,43 @@ $(document).ready(function(){
             
     $(".modal__content").append(ele_text);
   }
+
+  function current_footer(current_name){
+    switch(current_name){
+      case "/www/recommend.html":
+        $('#recommend_footer').css('background-color','#68c3c5');
+        break;
+      case "/recommend.html":
+          $('#recommend_footer').css('background-color','#68c3c5');
+        break;
+      case "/www/search.html":
+        $('#search_footer').css('background-color','#68c3c5');
+        break;
+      case "/search.html":
+          $('#search_footer').css('background-color','#68c3c5');
+        break;
+        case "/www/list.html":
+        $('#search_footer').css('background-color','#68c3c5');
+        break;
+      case "/list.html":
+          $('#search_footer').css('background-color','#68c3c5');
+        break;
+      case "/www/favorite.html":
+        $('#favorite_footer').css('background-color','#68c3c5');
+        break;
+      case "/favorite.html":
+        $('#favorite_footer').css('background-color','#68c3c5');
+        break;
+      case "/www/my-page.html":
+        $('#my-page_footer').css('background-color','#68c3c5');
+        break;
+      case "/my-page.html":
+        $('#my-page_footer').css('background-color','#68c3c5');
+        break;
+
+    }
+  }
+
 /***ここまで共通部分*****************************************************/
 
 /***新規作成画面******************************************/
@@ -108,7 +176,6 @@ $(document).ready(function(){
   $("#next_page_2").click(function(){
   $("#page_2").css("display","none");
   $("#page_3").css("display","block");
-  
   });
   $("#back_page_2").click(function(){
   $("#page_2").css("display","none");
@@ -122,7 +189,6 @@ $(document).ready(function(){
 /***ここまで新規作成画面***********************************/
  
 /***おすすめ
- 
   var add_text="";
               item_count++;
               if(flag[item_count-1]){
@@ -134,6 +200,81 @@ $(document).ready(function(){
               $("#search_sum").text(item_count + "件");
               
 **********************************************/
+  function recommend(){
+    for(var i=0;i<7;i++){ //いいねフラグ初期化
+      flag[i]=false;
+    }
+    item_count=0;
+    var img_text=mobile_check();
+    var get_data = ncmb.DataStore("test");
+    var saveData_2 = ncmb.DataStore("favorite");
+    get_data.order('dress_id',false).fetchAll().then(function(results){  // ドレスの画像取得
+      saveData_2.fetchAll().then(function(results_2){ 
+        for(var i=0;i<results.length;i++){
+          var a=results[i]; 
+          path[i]=a.get("path");    // 画像ファイル名取得
+          dress_id[i]=a.get("dress_id"); // ドレスＩＤ取得
+          for(var z=0;z<results_2.length;z++){
+            var res=results_2[z];
+            if(dress_id[i]===res.dress_id){  // 同じIDならいいね判定をつける           
+              flag[i]=true;
+            }
+          }
+        }
+        sort(dress_id,path,flag);
+        for(var i=0;i<6;i++){
+          if(i%2===0){
+          var add_text="";
+          }
+          if(i===0){
+            if(flag[item_count]){///いいねがあるかどうか
+              add_text='<img src="'+img_text+path[item_count]+'" id="item_'+item_count+'" class="re_img_1"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count]+','+dress_id[item_count]+'"></div>';
+            }else{
+              add_text='<img src="'+img_text+path[item_count]+'" id="item_'+item_count+'" class="re_img_1"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count]+','+dress_id[item_count]+'"></div>';
+            }
+            item_count++;
+            $("#top-img").append(add_text);  
+            var add_text="";
+          }
+          if(flag[item_count]){///いいねがあるかどうか
+            add_text+='<th class="re_td"><img src="'+img_text+path[item_count]+'" id="item_'+item_count+'" class="re_img_2"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count]+','+dress_id[item_count]+'"></div></th>';
+          }else{
+            add_text+='<th class="re_td"><img src="'+img_text+path[item_count]+'" id="item_'+item_count+'" class="re_img_2"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count]+','+dress_id[item_count]+'"></div></th>';
+          }
+          item_count++;
+          if((i+1)%2===0){  
+            var tr_id=parseInt(i/2);
+            $("#tr_"+tr_id).append(add_text);
+          }
+        }
+      })
+      .catch(function(error){
+          alert(error);
+      });            
+    })
+    .catch(function(error){
+      alert(error);
+    });
+  }
+
+function sort(array_1,array_2,array_3){
+  for(var i = (array_1.length - 1); 0 < i; i--){
+    // 0〜(i+1)の範囲で値を取得
+    var r = Math.floor(Math.random() * (i + 1));
+    // 要素の並び替えを実行
+    var tmp_1 = array_1[i];
+    array_1[i] = array_1[r];
+    array_1[r] = tmp_1;
+    var tmp_2 = array_2[i];
+    array_2[i] = array_2[r];
+    array_2[r] = tmp_2;
+    var tmp_3 = array_3[i];
+    array_3[i] = array_3[r];
+    array_3[r] = tmp_3;
+  }
+}
+
+
 /***ここまでおすすめ***********************************/
 
 /***検索画面******************************************/
@@ -299,7 +440,7 @@ $(document).ready(function(){
       where[12]=object.get("bodice");
       where[13]=object.get("dress_size");
       var get_data = ncmb.DataStore("test");
-      
+
       if(where_check(where)){ // 検索条件が選択されているかどうか
           get_data.order('dress_id',false).fetchAll().then(function(results){  // ドレスの画像取得
           for(var i=0;i<results.length;i++){
@@ -319,9 +460,9 @@ $(document).ready(function(){
               var add_text="";
               item_count++;
               if(flag[item_count-1]){///いいねがあるかどうか
-                add_text='<li class="item"><img src="'+img_text+path[item_count-1]+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+                add_text='<li class="item"><img src="'+img_text+path[item_count-1]+'" id="item_'+item_count+'" class="item_img"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
               }else{
-                add_text='<li class="item"><img src="'+img_text+path[item_count-1]+'"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+                add_text='<li class="item"><img src="'+img_text+path[item_count-1]+'" id="item_'+item_count+'" class="item_img"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
               }
               $("#result_list").append(add_text);
               $("#search_sum").text(item_count + "件");
@@ -372,9 +513,9 @@ $(document).ready(function(){
               var add_text="";
               item_count++;
               if(flag[item_count-1]){
-                add_text='<li class="item"><img src="'+img_text+path[item_count-1]+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+                add_text='<li class="item"><img src="'+img_text+path[item_count-1]+'" id="item_'+item_count+'" class="item_img"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
               }else{
-                add_text='<li class="item"><img src="'+img_text+path[item_count-1]+'"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
+                add_text='<li class="item"><img src="'+img_text+path[item_count-1]+'" id="item_'+item_count+'" class="item_img"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
               }
               $("#result_list").append(add_text);
               $("#search_sum").text(item_count + "件");
@@ -453,10 +594,16 @@ $(document).ready(function(){
   function favorite_search(){
     var favorite_path=[];
     var img_text=mobile_check();
-
     var favorite_test = ncmb.DataStore("favorite");
     var fdress_store = ncmb.DataStore("test");
 
+    if(menu_flag){
+     $('#dress_store_tab').attr('id', 'dress_store_n');
+     tab_name="favorite_tab_0_n";
+    }
+    else{
+      tab_name="favorite_tab_o_n";
+    }
     favorite_test
     .equalTo("user_id", "test")
     .fetchAll() 
@@ -465,9 +612,8 @@ $(document).ready(function(){
         var a=results[i];
         fdress_id[i]=a.dress_id;
         favorite_path[i]=a.path;
-          
             item_count++;
-            var add_text='<li class="item" id="item_'+item_count+'" ><img src="'+img_text+favorite_path[item_count-1]+'"><div class="heart" id="heart_'+item_count+'" name="'+favorite_path[item_count-1]+','+fdress_id[item_count-1]+'"></div></li>';
+            var add_text='<li class="item"><img src="'+img_text+favorite_path[item_count-1]+'" id="item_'+item_count+'" class="item_img"><div class="heart" id="heart_'+item_count+'" name="'+favorite_path[item_count-1]+','+fdress_id[item_count-1]+'"></div></li>';
             $("#result_list").append(add_text);
             $("#search_sum").text(item_count + "件");
         }
@@ -479,19 +625,32 @@ $(document).ready(function(){
             if(fdress_id[i]===aa.dress_id){
               switch(aa.dress_store){
                 case "ラヴィール岡山":
-                  $('#favorite_tab_1').attr('id', 'ftab_1');
+                  $('#favorite_tab_1').attr('id', 'favorite_tab_1_n');
                   break;
                 case "クラブハウスセフィロト":
-                  $('#favorite_tab_2').attr('id', 'ftab_2');
+                  $('#favorite_tab_2').attr('id', 'favorite_tab_2_n');
                   break;
                 case "ANAクラウンプラザホテル岡山":
-                  $('#favorite_tab_3').attr('id', 'ftab_3');
+                  $('#favorite_tab_3').attr('id', 'favorite_tab_3_n');
                   break;
                 case "THE MAGRITTE":
-                  $('#favorite_tab_4').attr('id', 'ftab_4');
+                  $('#favorite_tab_4').attr('id', 'favorite_tab_4_n');
                   break;
                 case "THE STYLE":
-                  $('#favorite_tab_5').attr('id', 'ftab_5');
+                  $('#favorite_tab_5').attr('id', 'favorite_tab_5_n');
+                  break;
+              }
+            }
+            if(fdress_id[i]===aa.dress_id){
+              switch(aa.rental_shop){
+                case "ブライダル三松岡山店":
+                  $('#favorite_tab_a').attr('id', 'favorite_tab_a_n');
+                  break;
+                case "ブライダルサロンNISHIKIYA":
+                  $('#favorite_tab_b').attr('id', 'favorite_tab_b_n');
+                  break;
+                case "チュチュ岡山":
+                  $('#favorite_tab_c').attr('id', 'favorite_tab_c_n');
                   break;
               }
             }
@@ -510,44 +669,131 @@ $(document).ready(function(){
   }
 
   $(".tab_list").click(function(){
+    $("#"+tab_name+"_color").attr("id",tab_name);
+    tab_name=$(this).attr("id");
+    $("#"+tab_name).attr("id",tab_name+"_color");
+
     var img_text=mobile_check();
     var tab_text=$(this).text();
     $('.item').remove();
     item_count=0;
 
-    var favorite_test = ncmb.DataStore("favorite");
-    var fdress_store = ncmb.DataStore("test");
+    if(tab_text==="全て"){
+      favorite_search();
+    }else{
+      var favorite_test = ncmb.DataStore("favorite");
+      var fdress_store = ncmb.DataStore("test");
 
+      if(menu_flag){
+        favorite_test
+        .equalTo("user_id", "test")
+        .fetchAll() 
+        .then(function(results){
+          var store=[];
+          var store_id=[];
+          var idx=0;
+            fdress_store.equalTo("dress_store",tab_text).fetchAll() .then(function(results_2){
+              for(var i=0;i<results.length;i++){
+                var item=results[i];
+                for(var z=0;z<results_2.length;z++){
+                  var item_2=results_2[z];
+                  if(item.dress_id===item_2.dress_id){
+                    store[idx]=item_2.path;
+                    store_id[idx++]=item_2.dress_id;
+                  }
+                }
+              }
+            for(var i=0;i<store.length;i++){
+                  item_count++;
+                  var add_text='<li class="item"><img src="'+img_text+store[item_count-1]+'" id="item_'+item_count+'" class="item_img"><div class="heart" id="heart_'+item_count+'" name="'+store[item_count-1]+','+store_id[item_count-1]+'"></div></li>';
+                  $("#result_list").append(add_text);
+                  $("#search_sum").text(item_count + "件");
+            }
+            
+            }).catch(function(err) {
+            alert(err);
+          })
+        });
+      }
+      else{
+        favorite_test
+        .equalTo("user_id", "test")
+        .fetchAll() 
+        .then(function(results){
+          var store=[];
+          var store_id=[];
+          var idx=0;
+            fdress_store.equalTo("rental_shop",tab_text).fetchAll() .then(function(results_2){
+              for(var i=0;i<results.length;i++){
+                var item=results[i];
+                for(var z=0;z<results_2.length;z++){
+                  var item_2=results_2[z];
+                  if(item.dress_id===item_2.dress_id){
+                    store[idx]=item_2.path;
+                    store_id[idx++]=item_2.dress_id;
+                  }
+                }
+              }
+            for(var i=0;i<store.length;i++){
+                  item_count++;
+                  var add_text='<li class="item"><img src="'+img_text+store[item_count-1]+'" id="item_'+item_count+'" class="item_img"><div class="heart" id="heart_'+item_count+'" name="'+store[item_count-1]+','+store_id[item_count-1]+'"></div></li>';
+                  $("#result_list").append(add_text);
+                  $("#search_sum").text(item_count + "件");
+            }
+            
+            
+            }).catch(function(err) {
+            alert(err);
+          })
+        });
+      }
+    }
+  });
+
+  $("#change_push").click(function(){
+    if(menu_flag){
+      $("#"+tab_name+"_color").attr("id",tab_name);
+      tab_name="favorite_tab_o_n";
+      $("#"+tab_name).attr("id",tab_name+"_color");
+      $("#change_push").text("式場");
+      $('#dress_store_n').attr('id', 'dress_store_tab');
+      $('#rental_shop_tab').attr('id', 'rental_shop_n');
+      all_favorite();
+      menu_flag=false;
+    }
+    else{
+      $("#"+tab_name+"_color").attr("id",tab_name);
+      tab_name="favorite_tab_0_n";
+      $("#"+tab_name).attr("id",tab_name+"_color");
+      $("#change_push").text("レンタル");
+      $('#dress_store_tab').attr('id', 'dress_store_n');
+      $('#rental_shop_n').attr('id', 'rental_shop_tab');
+      all_favorite();
+      menu_flag=true;
+    }
+  });
+
+  function all_favorite(){
+    $('.item').remove();
+    var img_text=mobile_check();
+    var favorite_path=[];
+    item_count=0;
+    var favorite_test = ncmb.DataStore("favorite");
     favorite_test
     .equalTo("user_id", "test")
     .fetchAll() 
     .then(function(results){
-      var store=[];
-      var store_id=[];
-      var idx=0;
-        fdress_store.equalTo("dress_store",tab_text).fetchAll() .then(function(results_2){
-          for(var i=0;i<results.length;i++){
-            var item=results[i];
-            for(var z=0;z<results_2.length;z++){
-              var item_2=results_2[z];
-              if(item.dress_id===item_2.dress_id){
-                store[idx]=item_2.path;
-                store_id[idx++]=item_2.dress_id;
-              }
-            }
-          }
-        for(var i=0;i<store.length;i++){
-              item_count++;
-              var add_text='<li class="item"><img src="'+img_text+store[item_count-1]+'"><div class="heart" id="heart_'+item_count+'" name="'+store[item_count-1]+','+store_id[item_count-1]+'"></div></li>';
-              $("#result_list").append(add_text);
-              $("#search_sum").text(item_count + "件");
+      for(var i=0;i<results.length;i++){
+        var a=results[i];
+        fdress_id[i]=a.dress_id;
+        favorite_path[i]=a.path;
+            item_count++;
+            var add_text='<li class="item"><img src="'+img_text+favorite_path[item_count-1]+'" id="item_'+item_count+'" class="item_img"><div class="heart" id="heart_'+item_count+'" name="'+favorite_path[item_count-1]+','+fdress_id[item_count-1]+'"></div></li>';
+            $("#result_list").append(add_text);
+            $("#search_sum").text(item_count + "件");
         }
-        
-        }).catch(function(err) {
-        alert(err);
-      })
     });
-  });
+  }
 
 /***ここまでいいね画面*****************************************************/
  
@@ -720,7 +966,7 @@ var test = new Test();
 
 /***************ログイン画面************************/
 
-function login_user(){
+/*function login_user(){
   //入力フォームの取得
   var mailAddress = $("#new_mailadd").val();
   var password = $("#new_password").val();
@@ -742,16 +988,10 @@ function logout(){
   ncmb.User.logout();
   alert('ログアウト成功');
   currentLoginUser = null;
-  $.mobile.changePage('#LoginPage');
 }
 
-/**********************新規登録画面*****************/
-
-var currentLoginUser; //現在ログイン中ユーザー
-
-//会員登録
-function onRegisterBtn()
-{
+/*************新規登録*********/
+function onRegisterBtn(){
   //個人情報１の入力フォームの取得
   var username = $("#new_username").val();
   var mailaddress = $("#new_mailadd").val();
@@ -762,7 +1002,7 @@ function onRegisterBtn()
   var bmw_W = $("#bmw_w").val();
   var bmw_H = $("#bmw_h").val();
 
-  var user = new ncmb.User();
+  let user = new ncmb.User();
   // 新規登録
   user.set("userName", username)
       .set("mailAddress", mailaddress)
@@ -770,28 +1010,60 @@ function onRegisterBtn()
       .set("higth", higth)
       .set("bust", bmw_b)
       .set("hips", bmw_w)
-      .set("waist", bmw_h);
+      .set("waist", bmw_h)
+        .signUpByAccount()
+        .then(function(user) {
+            /* 処理成功 */
+            alert("新規登録に成功しました");
+            // [NCMB] userインスタンスでログイン
+            ncmb.User.login(user)
+                     .then(function(user) {
+                         /* 処理成功 */
+                         alert("ログインに成功しました");
+                         // [NCMB] ログイン中の会員情報の取得
+                         currentLoginUser = ncmb.User.getCurrentUser();
+                         // フィールドを空に
+                         $("#new_username").val("");
+                         $("new_mailadd").val("");
+                         $("#new_password").val("");
 
-  user.signUpByAccount()
-      .then(function(user){
-          alert("新規登録に成功");
-          currentLoginUser = ncmb.User.getCurrentUser();
-          $.mobile.changePage('#DetailPage');
-      })
-      .catch(function(error) {
-          alert("新規登録に失敗！次のエラー発生：" + error);
-      })
+                         // 詳細ページへ移動
+                        //  $.mobile.changePage('#DetailPage');
+                        //ここに画面遷移するコードを書く
+                        location.href='search.html';
+                     })
+
+                     .catch(function(error) {
+                         /* 処理失敗 */
+                         alert("【ID / PW 認証】ログインに失敗しました: " + error);
+                         alert("【ID / PW 認証】ログインに失敗しました: " + error);
+                         // フィールドを空に
+                          $("#new_username").val("");
+                          $("new_mailadd").val("");
+                          $("#new_password").val("");
+                        //  // loading の表示
+                        //  $.mobile.loading('hide');
+                     });
+        })
+        .catch(function(error) {
+            /* 処理失敗 */
+            alert("【ID / PW 認証】新規登録に失敗しました：" + error);
+            // フィールドを空に
+            $("#new_username").val("");
+            $("new_mailadd").val("");
+            $("#new_password").val("");
+            // // loading の表示
+            // $.mobile.loading('hide');
+        });
 }
 
 //メールアドレスの正規表現
 $("#login_with").click(function(){
   var address = $("#my_mailbox").val();
   var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/;
-  if (reg.test(address)) {
-    alert("正しい");
-  } else {
+  if (!reg.test(address)) {
     alert("メールアドレスを正しく入力してください");
-  }
+  } 
 });
 
 //再入力したものとの判定
@@ -806,6 +1078,14 @@ $("#next_page_1").click(function(){
     alert("もう一度入力して下さい");
   }
 })
+function CheckMail() {
+    var mail = document.getElementById("new_mialadd").value; //メールフォームの値を取得
+    var mailConfirm = document.getElementById("new_mialadd_test").value; //メール確認用フォームの値を取得
+    // パスワードの一致確認
+    if (mail != mailConfirm){
+      alert("入力したメールアドレスが一致していません"); // 一致していなかったら、エラーメッセージを表示する
+    }
+}
 
 //メールアドレスのサジェスト機能
 $(function() {
