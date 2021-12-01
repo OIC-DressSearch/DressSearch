@@ -19,7 +19,9 @@ var where=[]; // データを取得する際の条件を格納するテキスト
 var img_index=0;
 var favorite_tab="";
 var favorite_check=[];
-var favorite_index=0;  
+var favorite_index=0;
+var img_path_pc="/image/";
+var img_path_phon="/www/image/";
 var username = $("#new_username").val();
   var mailaddress = null;
   var mailaddress_test = null;
@@ -119,7 +121,8 @@ $(document).ready(function(){
 
   function create_html(src,item_set){
     $(".modal_con").remove();
-    var ele_text='<div class="modal_con"><img src="/image/'+src+'" class="modal_img"><div>名前:'+item_set[0]+'<br>式場:'+item_set[1]+'<br>ドレス:'+item_set[2]+'</div><div class="js-modal-close_2">閉じる</div></div>';
+    var img_text=mobile_check();
+    var ele_text='<div class="modal_con"><img src="'+img_text+src+'" class="modal_img"><div>名前:'+item_set[0]+'<br>式場:'+item_set[1]+'<br>ドレス:'+item_set[2]+'</div><div class="js-modal-close_2">閉じる</div></div>';
             
     $(".modal__content").append(ele_text);
   }
@@ -186,8 +189,7 @@ $(document).ready(function(){
 /***ここまで新規作成画面***********************************/
  
 /***おすすめ**********************************************/
- 
-  function recommend(){
+  function recommend(){ 
     for(var i=0;i<7;i++){ //いいねフラグ初期化
       flag[i]=false;
     }
@@ -402,6 +404,9 @@ function sort(array_1,array_2,array_3){
     for(var i=0;i<100;i++){ //いいねフラグ初期化
       flag[i]=false;
     }
+    for(var i=0;i<14;i++){
+      where[i]=[];
+    }
     j=0; // いいねフラグindex
     get_path();
   }
@@ -409,24 +414,39 @@ function sort(array_1,array_2,array_3){
   function get_path(){
     var img_text=mobile_check();
     var get_where = ncmb.DataStore("test_table"); 
+    var arr = [];
     get_where.fetchAll() .then(function(objects){ // 条件を取得
       var object = objects[0];         
-      where[0]=object.get("rental_shop"); // 検索条件取得
-      where[1]=object.get("dress_store");
-      where[2]=object.get("dress"); 
-      where[3]=object.get("dress_color");
-      where[4]=object.get("dress_image");
-      where[5]=object.get("line");
-      where[6]=object.get("neck_line");
-      where[7]=object.get("sleeve");
-      where[8]=object.get("waist_line"); 
-      where[9]=object.get("skirt");
-      where[10]=object.get("skirt_length");
-      where[11]=object.get("trane");
-      where[12]=object.get("bodice");
-      where[13]=object.get("dress_size");
-      var get_data = ncmb.DataStore("test");
+      where[0][0]=object.get("rental_shop"); // 検索条件取得
+      arr[0]=object.get("rental_shop");
+      where[1][0]=object.get("dress_store");
+      arr[1]=object.get("dress_store");
+      where_split(2,object.get("dress"));
+      arr[2]=object.get("dress");
+      where[3][0]=object.get("dress_color");
+      arr[3]=object.get("dress_color");
+      where[4][0]=object.get("dress_image");
+      arr[4]=object.get("dress_image");
+      where_split(5,object.get("line"));
+      arr[5]=object.get("line");
+      where_split(6,object.get("neck_line"));
+      arr[6]=object.get("neck_line");
+      where_split(7,object.get("sleeve"));
+      arr[7]=object.get("sleeve");
+      where_split(8,object.get("waist_line"));
+      arr[8]=object.get("waist_line"); 
+      where_split(9,object.get("skirt"));
+      arr[9]=object.get("skirt");
+      where_split(10,object.get("skirt_length"));
+      arr[10]=object.get("skirt_length");
+      where_split(11,object.get("trane"));
+      arr[11]=object.get("trane");
+      where_split(12,object.get("bodice"));
+      arr[12]=object.get("bodice");
+      where[13][0]=object.get("dress_size");
+      arr[13]=object.get("dress_size");
 
+      var get_data = ncmb.DataStore("test");
       if(where_check(where)){ // 検索条件が選択されているかどうか
           get_data.order('dress_id',false).fetchAll().then(function(results){  // ドレスの画像取得
           for(var i=0;i<results.length;i++){
@@ -465,23 +485,50 @@ function sort(array_1,array_2,array_3){
         });    
       }
 
-      else{  // 条件がある場合
-        var subquery1 = get_data.equalTo("rental_shop", where[0]);
-        var subquery2 = get_data.equalTo("dress_store", where[1]);
-        var subquery3 = get_data.equalTo("dress", where[2]);
-        var subquery4 = get_data.equalTo("dress_color", where[3]);
-        var subquery5 = get_data.equalTo("dress_image", where[4]);
-        var subquery6 = get_data.equalTo("line", where[5]);
-        var subquery7 = get_data.equalTo("neck_line", where[6]);
-        var subquery8 = get_data.equalTo("sleeve", where[7]);
-        var subquery9 = get_data.equalTo("waist_line", where[8]);
-        var subquery10 = get_data.equalTo("skirt", where[9]);
-        var subquery11 = get_data.equalTo("skirt_length", where[10]);
-        var subquery12 = get_data.equalTo("trane", where[11]);
-        var subquery13 = get_data.equalTo("bodice", where[12]);
-        var subquery14 = get_data.equalTo("dress_size", where[13]);
+      else{  // 条件がある場合 
+        var subquery1 = get_data.equalTo("rental_shop", where[0][0]);
+        var subquery2 = get_data.equalTo("dress_store", where[1][0]);
+        var subquery3 =set_subquery(3);
+        for(var i=0;i<where[2].length;i++){
+          subquery3[i]=get_data.equalTo("dress", where[2][i]);
+        } 
+        var subquery4 = get_data.equalTo("dress_color", where[3][0]);
+        var subquery5 = get_data.equalTo("dress_image", where[4][0]);
+        var subquery6 = set_subquery(6);
+        for(var i=0;i<where[5].length;i++){
+          subquery6[i]=get_data.equalTo("line", where[5][i]);
+        }
+        var subquery7 = set_subquery(7);
+        for(var i=0;i<where[6].length;i++){
+          subquery7[i]=get_data.equalTo("neck_line", where[6][i]);
+        }
+        var subquery8 = set_subquery(8);
+        for(var i=0;i<where[7].length;i++){
+          subquery8[i]=get_data.equalTo("sleeve", where[7][i]);
+        }
+        var subquery9 = set_subquery(9);
+        for(var i=0;i<where[8].length;i++){
+          subquery9[i]=get_data.equalTo("waist_line", where[8][i]);
+        }
+        var subquery10 = set_subquery(10);
+        for(var i=0;i<where[9].length;i++){
+          subquery10[i]=get_data.equalTo("skirt", where[9][i]);
+        }
+        var subquery11 = set_subquery(11);
+        for(var i=0;i<where[10].length;i++){
+          subquery11[i]=get_data.equalTo("skirt_length", where[10][i]);
+        }
+        var subquery12 = set_subquery(12);
+        for(var i=0;i<where[11].length;i++){
+          subquery12[i]=get_data.equalTo("trane", where[11][i]);
+        }
+        var subquery13 = set_subquery(13);
+        for(var i=0;i<where[12].length;i++){
+          subquery13[i]=get_data.equalTo("bodice", where[12][i]);
+        }
+        var subquery14 = get_data.equalTo("dress_size", where[13][0]);
 
-        get_data.or([subquery1, subquery2,subquery3,subquery4, subquery5,subquery6,subquery7, subquery8,subquery9,subquery10, subquery11,subquery12,subquery13,subquery14]).fetchAll() .then(function(results){     // ドレスの画像取得
+        get_data.or([subquery1, subquery2,subquery3[0],subquery3[1],subquery3[2],subquery4, subquery5,subquery6[0],subquery6[1],subquery6[2],subquery6[3],subquery6[4],subquery6[5],subquery7[0],subquery7[1],subquery7[2],subquery7[3],subquery7[4],subquery7[5],subquery7[6],subquery7[7],subquery7[8],subquery7[9],subquery7[10],subquery7[11],subquery7[12],subquery7[13],subquery7[14],subquery8[0],subquery8[1],subquery8[2],subquery8[3],subquery8[4],subquery8[5],subquery8[6],subquery8[7],subquery8[8],subquery8[9],subquery8[10],subquery8[11],subquery8[12],subquery8[13],subquery8[14],subquery9[0],subquery9[1],subquery9[2],subquery9[3],subquery9[4],subquery9[5],subquery9[6],subquery9[7],subquery9[8],subquery9[9],subquery9[10],subquery10[0],subquery10[1],subquery10[2],subquery10[3],subquery10[4],subquery10[5],subquery10[6],subquery10[7],subquery10[8],subquery10[9],subquery11[0],subquery11[1],subquery11[2],subquery11[3],subquery11[4],subquery11[5],subquery11[6],subquery11[7],subquery11[8],subquery12[0],subquery12[1],subquery12[2],subquery12[3],subquery12[4],subquery12[5],subquery12[6],subquery12[7],subquery13[0],subquery13[1],subquery13[2],subquery13[3],subquery13[4],subquery14]).fetchAll() .then(function(results){     // ドレスの画像取得
           for(var i=0;i<results.length;i++){ // ここからの処理は上に同じ
             var a=results[i]; 
             path[i]=a.get("path");    
@@ -518,15 +565,15 @@ function sort(array_1,array_2,array_3){
       alert(error);
     }); 
 
-    function where_check(where){ // 入力された条件check
+    function where_check(arr){ // 入力された条件check
       var enp=0;
-      for(var i=0;i<where.length;i++){
-        where[i]=where[i].trim(); // 空白削除
-        if(where[i]==="ーーー"){
+      for(var i=0;i<arr.length;i++){
+        arr[i][0]=arr[i][0].trim(); // 空白削除
+        if(arr[i][0]==="ーーー"){
           enp++; // 検索条件が選択されてない場合にカウント
         }
       }
-      if(enp===where.length){
+      if(enp===arr.length){
         return true;
       }
       else{
@@ -537,6 +584,65 @@ function sort(array_1,array_2,array_3){
     
   }
 
+  function where_split(index,obj){
+    var text=obj.split(",");
+    for(var i=0;i<text.length;i++){
+      where[index][i]=text[i];
+    }
+  }
+
+  function set_subquery(index){
+    var get_data = ncmb.DataStore("test");
+    var query=[];
+    switch(index){
+      case 3:
+        for(var i=0;i<3;i++){
+          query[i]=get_data.equalTo("dress", "---");
+        }
+        break;
+      case 6:
+        for(var i=0;i<6;i++){
+          query[i]=get_data.equalTo("line", "---");
+        }
+        break;
+      case 7:
+        for(var i=0;i<15;i++){
+          query[i]=get_data.equalTo("neck_line", "---");
+        }
+        break;
+      case 8:
+        for(var i=0;i<15;i++){
+          query[i]=get_data.equalTo("sleeve", "---");
+        }
+        break;
+      case 9:
+        for(var i=0;i<10;i++){
+          query[i]=get_data.equalTo("waist_line", "---");
+        }
+        break;
+      case 10:
+        for(var i=0;i<14;i++){
+          query[i]=get_data.equalTo("skirt", "---");
+        }
+        break;
+      case 11:
+        for(var i=0;i<9;i++){
+          query[i]=get_data.equalTo("skirt_length", "---");
+        }
+        break;
+      case 12:
+        for(var i=0;i<8;i++){
+          query[i]=get_data.equalTo("bodice", "---");
+        }
+        break;
+      case 13:
+        for(var i=0;i<6;i++){
+          query[i]=get_data.equalTo("dress_size", "---");
+        }
+        break;
+    }
+    return query;
+  }
 
 
 /***ここまで一覧画面*****************************************************/
@@ -951,33 +1057,29 @@ var test = new Test();
 /*************画像読み込みテスト*********/
 
 /***************ログイン画面************************/
-
-/*function login_user(){
+$("#login_with").click(function(){
   //入力フォームの取得
-  var mailAddress = $("#new_mailadd").val();
-  var password = $("#new_password").val();
-
-  ncmb.User.login(mailAddress,password)
+  var user_name = $("#my_userbox").val();
+  var password = $("#my_passbox").val();
+  ncmb.User.login(user_name,password)
       .then(function(user){
         alert("ログイン成功");
         currentLoginUser = ncmb.User.getCurrentUser();
-        $.mobile.changePage('#DetailPage');
+         window.location.href = "recommend.html"; 
     })
     .catch(function(error) {
         alert("ログイン失敗！次のエラー発生: " + error);
       })
-}
+});
+
 
 /*******ログアウト******/
 
-/*function logout(){
+function logout(){
   ncmb.User.logout();
   alert('ログアウト成功');
   currentLoginUser = null;
-  $.mobile.changePage('#LoginPage');
 }
-
-
 /**********************新規登録画面*****************/
 
   /**/var currentLoginUser; //現在ログイン中ユーザー
@@ -993,47 +1095,85 @@ function onRegisterBtn()
   var higth = $("#my_higthbox").val();
   var bmw_B = $("#bmw_b").val();
   var bmw_W = $("#bmw_w").val();
-  var bmw_H = $("#bmw_h").val();
-
-  var user = new ncmb.User();
+  var bmw_H = $("#bmw_h").val(); 
+  let user = new ncmb.User();
   // 新規登録
   user.set("userName", username)
       .set("mailAddress", mailaddress)
       .set("password", password)
       .set("higth", higth)
-      .set("bust", bmw_b)
-      .set("hips", bmw_w)
-      .set("waist", bmw_h);
+      .set("bust", bmw_B)
+      .set("hips", bmw_W)
+      .set("waist", bmw_H)
+        .signUpByAccount()
+        .then(function(user) {
+            /* 処理成功 */
+            alert("新規登録に成功しました");
+            // [NCMB] userインスタンスでログイン
+            ncmb.User.login(user)
+                     .then(function(user) {
+                         /* 処理成功 */
+                         alert("ログインに成功しました");
+                         // [NCMB] ログイン中の会員情報の取得
+                         currentLoginUser = ncmb.User.getCurrentUser();
+                         // フィールドを空に
+                         $("#new_username").val("");
+                         $("new_mailadd").val("");
+                         $("#new_password").val("");
 
-  user.signUpByAccount()
-      .then(function(user){
-          alert("新規登録に成功");
-          currentLoginUser = ncmb.User.getCurrentUser();
-          $.mobile.changePage('#DetailPage');
-      })
-      .catch(function(error) {
-          alert("新規登録に失敗！次のエラー発生：" + error);
-      })
+                         // 詳細ページへ移動
+                        //  $.mobile.changePage('#DetailPage');
+                        //ここに画面遷移するコードを書く
+                        location.href='search.html';
+                     })
+
+                     .catch(function(error) {
+                         /* 処理失敗 */
+                         alert("【ID / PW 認証】ログインに失敗しました: " + error);
+                         alert("【ID / PW 認証】ログインに失敗しました: " + error);
+                         // フィールドを空に
+                          $("#new_username").val("");
+                          $("new_mailadd").val("");
+                          $("#new_password").val("");
+                        //  // loading の表示
+                        //  $.mobile.loading('hide');
+                     });
+        })
+        .catch(function(error) {
+            /* 処理失敗 */
+            alert("【ID / PW 認証】新規登録に失敗しました：" + error);
+            // フィールドを空に
+            $("#new_username").val("");
+            $("new_mailadd").val("");
+            $("#new_password").val("");
+            // // loading の表示
+            // $.mobile.loading('hide');
+        });
 }
 
 //メールアドレスの正規表現
-$("#login_with").click(function(){
+/*$("#login_with").click(function(){
   var address = $("#my_mailbox").val();
   var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/;
   if (!reg.test(address)) {
     alert("メールアドレスを正しく入力してください");
   } 
-});
+});*/
+
 
 //再入力したものとの判定
-function CheckMail() {
-    var mail = document.getElementById("new_mialadd").value; //メールフォームの値を取得
-    var mailConfirm = document.getElementById("new_mialadd_test").value; //メール確認用フォームの値を取得
-    // パスワードの一致確認
-    if (mail != mailConfirm){
-      alert("入力したメールアドレスが一致していません"); // 一致していなかったら、エラーメッセージを表示する
-    }
-}
+$("#next_page_1").click(function(){
+  var mail = $("#new_mailadd").val();
+  var mailconfirm = $("#new_mailadd_test").val();
+  if (mail != confirm) {
+    alert("入力したメールアドレスが一致していません");
+  } 
+  var pass = $("#new_password").val();
+  var passconfirm = $("#new_password_test").val();
+  if (pass != passconfirm) {
+    alert("入力したパスワードが一致していません");
+  }
+});
 
 //メールアドレスのサジェスト機能
 $(function() {
