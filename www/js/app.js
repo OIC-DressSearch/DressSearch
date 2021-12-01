@@ -189,7 +189,7 @@ $(document).ready(function(){
 /***ここまで新規作成画面***********************************/
  
 /***おすすめ**********************************************/
-  function recommend(){
+  function recommend(){ 
     for(var i=0;i<7;i++){ //いいねフラグ初期化
       flag[i]=false;
     }
@@ -1057,22 +1057,21 @@ var test = new Test();
 /*************画像読み込みテスト*********/
 
 /***************ログイン画面************************/
-
-/*function login_user(){
+$("#login_with").click(function(){
   //入力フォームの取得
-  var mailAddress = $("#new_mailadd").val();
-  var password = $("#new_password").val();
-
-  ncmb.User.login(mailAddress,password)
+  var user_name = $("#my_userbox").val();
+  var password = $("#my_passbox").val();
+  ncmb.User.login(user_name,password)
       .then(function(user){
         alert("ログイン成功");
         currentLoginUser = ncmb.User.getCurrentUser();
-        $.mobile.changePage('#DetailPage');
+         window.location.href = "recommend.html"; 
     })
     .catch(function(error) {
         alert("ログイン失敗！次のエラー発生: " + error);
       })
-}
+});
+
 
 /*******ログアウト******/
 
@@ -1096,17 +1095,16 @@ function onRegisterBtn()
   var higth = $("#my_higthbox").val();
   var bmw_B = $("#bmw_b").val();
   var bmw_W = $("#bmw_w").val();
-  var bmw_H = $("#bmw_h").val();
-
+  var bmw_H = $("#bmw_h").val(); 
   let user = new ncmb.User();
   // 新規登録
   user.set("userName", username)
       .set("mailAddress", mailaddress)
       .set("password", password)
       .set("higth", higth)
-      .set("bust", bmw_b)
-      .set("hips", bmw_w)
-      .set("waist", bmw_h)
+      .set("bust", bmw_B)
+      .set("hips", bmw_W)
+      .set("waist", bmw_H)
         .signUpByAccount()
         .then(function(user) {
             /* 処理成功 */
@@ -1154,13 +1152,14 @@ function onRegisterBtn()
 }
 
 //メールアドレスの正規表現
-$("#login_with").click(function(){
+/*$("#login_with").click(function(){
   var address = $("#my_mailbox").val();
   var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/;
   if (!reg.test(address)) {
     alert("メールアドレスを正しく入力してください");
   } 
-});
+});*/
+
 
 $("#next_page_1").click(function(){
   //var address1 = $("new_mailadd").val();
