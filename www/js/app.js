@@ -953,7 +953,7 @@ var test = new Test();
 
 /***************ログイン画面************************/
 
-/*function login_user(){
+function login_user(){
   //入力フォームの取得
   var mailAddress = $("#new_mailadd").val();
   var password = $("#new_password").val();
@@ -971,7 +971,7 @@ var test = new Test();
 
 /*******ログアウト******/
 
-/*function logout(){
+function logout(){
   ncmb.User.logout();
   alert('ログアウト成功');
   currentLoginUser = null;
@@ -999,9 +999,9 @@ function onRegisterBtn()
       .set("mailAddress", mailaddress)
       .set("password", password)
       .set("higth", higth)
-      .set("bust", bmw_b)
-      .set("hips", bmw_w)
-      .set("waist", bmw_h)
+      .set("bust", bmw_B)
+      .set("hips", bmw_W)
+      .set("waist", bmw_H)
         .signUpByAccount()
         .then(function(user) {
             /* 処理成功 */
