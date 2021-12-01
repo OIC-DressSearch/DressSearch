@@ -2,35 +2,25 @@
 
   /*基本のヘッダー******************************************/
     .hed{
-      margin-top: 5%;
+      padding-top:  3%;
+      padding-bottom: 2%;
       text-align: center;
       font-size: 21px;
       height: 8%;
-      width: 100%;
-      background-color: rgb(255, 255, 255);
+      width: 103%;
+      background-color: #fff;
       color: #68c3c5;
       top: 0;
       right: 0;
       left: 0;
-      z-index: 100;
+      z-index: 999;
       display: flex;
-      position: sticky;
+      position: fixed;
       align-items: center;
       justify-content: space-around;
       border-bottom: 0.5px solid #808080;/*バーの下の線*/
     }
-
-  /*戻るボタンが必要な場合のヘッダー************************/
-    .hed_re{
-      margin-top: 5%;
-      height: 8%;
-      width: 100%;
-      background-color: rgb(255, 255, 255);
-      color: #68c3c5;
-      display: flex; /*要素の横並び*/
-      position: sticky;
-      border-bottom: 0.5px solid #808080;/*バーの下の線*/
-    }
+    
     /* ≪ */
       #return{
         font-size: 21px;
@@ -39,8 +29,18 @@
         margin-left: 5%;
         margin-right: 5%;
       }
-    
 
+    /*サブヘッダー*/    
+    .sub_hed{
+      max-width: 109%;
+      padding-top: 3%;
+      margin-top: 15%;
+      margin-left: -2%;
+      margin-right: 3%;
+      position: fixed;
+      background-color: #fff;
+      z-index: 990;
+    }
   /*フッター************************************************************/
 
     ul.bottom-menu {
@@ -56,7 +56,7 @@
     background-color:rgb(250, 250, 250);/*背景色*/
     border-top:0.5px solid #808080;/*バーの上の線*/
     border-bottom:0.5px solid #808080;/*バーの下の線*/
-    z-index:30;}
+    z-index:999;}
 
     /*フッターのリスト*/
     ul.bottom-menu li {
@@ -200,12 +200,15 @@
   /*遷移*/
   #page_1{
     display: block;
+    margin-top: 30%;
   }
   #page_2{
     display: none;
+    margin-top: 30%;
   }
   #page_3{
     display: none;
+    margin-top: 30%;
   }
 
   /*ボタン*/
@@ -284,7 +287,7 @@
 
   .display_recommend{
     margin-left: 0%;
-    margin-top: 1%;
+    margin-top: 22%;
     margin-bottom: 21%;
     font-size: 0;
   }
@@ -297,12 +300,12 @@
     width: 200px;
     margin-bottom: -12%;
   }
-  .re_img_1{
+  .re_img_1{ /*スマホＯＫ*/
     height: 70%;
     width: 100%;
-    margin-bottom: -22%;
+    margin-bottom: -21%;
   }
-  .re_img_2{
+  .re_img_2{ /*スマホＯＫ*/
     margin: 0;
     font-size: 0px;
     height: 100%;
@@ -323,8 +326,8 @@
     width: 40px;  /* 正方形を作る */
     height: 40px; /* 正方形を作る */
     position: relative;/* 基準位置とする */
-    top: -5px;
-    left: 65%;
+    top: 2px;
+    left: 70%;
     margin-bottom: 0%;
   }
   #top-img > .heart_enp{
@@ -339,14 +342,18 @@
     width: 40px;  /* 正方形を作る */
     height: 40px; /* 正方形を作る */
     position: relative;/* 基準位置とする */
-    top: -5px;
-    left: 65%;
+    top: 2px;
+    left: 70%;
     margin-bottom: 0%;
   }
   
 /***********ここまでおすすめのCSS**************************/
 
 /**************検索画面のCSS********************************/
+
+  .display_search{
+    margin-top: 30%;
+  }
 
   /*「検索」ボタン*/  
     #push-button{ 
@@ -413,7 +420,6 @@
       font-size: 19px;
     }
 
-
   /*ポップアップタイトル*/
     #pop_title{
       text-align: center;
@@ -479,7 +485,7 @@
     margin: 0 20%;
   }
 
-/***********ここまで検索画面のCSS***************************/
+/***********ここまで検索画面のCSS**********************/
 
 /**************一覧画面のCSS****************************/
 
@@ -497,12 +503,12 @@
       text-align: center;
     }
 
+    /*画像*/
     .item {
       width:50%;
     }
-
     .display_list{ /*スマホＯＫ*/
-      margin-top: -20%;
+      margin-top: -21%;
       margin-left: -3%;
       margin-right: -3%;
       margin-bottom: 16%;
@@ -514,6 +520,8 @@
     }
     /*ヘッダー下*/
       #itiran_header{
+        /* position: fixed; */
+        margin-top: 22%;
         text-align: right;
         height: 44px;
         border-bottom:0.2px solid #cccbcb;
@@ -534,7 +542,7 @@
         font-size: 15px;
       }
       
-/***********いいね画面のCSS******************************/
+/***********お気に入りのCSS******************************/
  .test1 {
     padding-left: 3px;
     height: 100px;
@@ -573,6 +581,8 @@
     max-width: 100%;
     overflow-x: auto; /*スクロールバー表示用*/
     border-bottom: 1px solid #cccbcb;
+    padding-top: 5%;
+    background-color: #fff;
   }
   .list-header{ /*ul全体*/
     display: inline-table;
@@ -631,9 +641,10 @@
 
 /*  3段目 */
   #nice_header_3{/*3段目全体*/
-    text-align: right;
+    max-width: 109%;
     margin-top: 1%;
     margin-bottom: 1%;
+    margin-right: 3%;
     border-bottom: 1px solid #cccbcb;
   } 
   .menu{ /*3段目全部*/
@@ -662,6 +673,8 @@
     padding-bottom: 3px;
     padding-left: 5px;
     padding-right: 5px;
+    margin-left: 30%;
+    margin-right: 2%;
   }
   #push:active {
     /*ボタンを押したとき*/
@@ -705,12 +718,19 @@
   }
 
   /*画像*/
+  .display_favo{ /*スマホＯＫ*/
+    padding-top:  43%;
+    margin-left: -3%;
+    margin-right: -3%;
+    margin-bottom: 16%;
+  }
+
   .heart {/*ハート*/
     width: 40px;  /* 正方形を作る */
     height: 40px; /* 正方形を作る */
     position: relative;/* 基準位置とする */
-    top: -45px;
-    left: 110px;
+    top: -15px;
+    left: 120px;
   }
   .heart::before,
   .heart::after {
@@ -755,7 +775,6 @@
     transform: rotate(45deg);  /* 右に回転 */
     right: 14%;                /* 右からの位置を指定 */
   }
-
 
 #favorite_tab_0_n_color{
   color: #68c3c5;
@@ -842,11 +861,14 @@
     border-bottom: 1px solid #ddd;
   }
 
-  .display{
-    margin-bottom: 80px;
+  .display_my-page{
+    margin-top: 35%;
   }
 
   /***共通部分*********************************/
+  .display_login{
+    margin-top: 30%;
+  }
 
   .now{
     margin-top: 10%;
@@ -898,9 +920,11 @@
 
   .display_info1{
     display: none;
+    margin-top: 30%;
   }
   .display_info2{
     display: none;
+    margin-top: 30%;
   }
 
   /*レイアウト*/
@@ -947,9 +971,11 @@
   }
   .display_mail1{
     display: none;
+    margin-top: 30%;
   }
   .display_mail2{
     display: none;
+    margin-top: 30%;
   }
 
 /***********ここまでメールアドレスのCSS*********************/
@@ -973,9 +999,11 @@
 
     .display_pass1{
       display: none;
+      margin-top: 30%;
     }
     .display_pass2{
       display: none;
+      margin-top: 30%;
     }
 
 /***********ここまでパスワードのCSS*************************/
@@ -989,9 +1017,11 @@
     }
   .display_higth1{
     display: none;
+    margin-top: 30%;
   }
   .display_higth2{
     display: none;
+    margin-top: 30%;
   }
   .bwh_textbox{
     margin-left: 0%;
@@ -1033,6 +1063,7 @@
 
   .display_logout2{
     display: none;
+    margin-top: 30%;
   }
 
   #logout-button1{
@@ -1065,9 +1096,11 @@
   }
   .display_withlogin{
     display: none;
+    margin-top: 30%;
   }
   .display_withdrawal2{
     display: none;
+    margin-top: 30%;
   }
 
 /***********ここまで退会のCSS********************************/
