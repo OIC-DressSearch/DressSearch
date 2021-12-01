@@ -1026,14 +1026,18 @@ $("#login_with").click(function(){
 });
 
 //再入力したものとの判定
-function CheckMail() {
-    var mail = document.getElementById("new_mialadd").value; //メールフォームの値を取得
-    var mailConfirm = document.getElementById("new_mialadd_test").value; //メール確認用フォームの値を取得
-    // パスワードの一致確認
-    if (mail != mailConfirm){
-      alert("入力したメールアドレスが一致していません"); // 一致していなかったら、エラーメッセージを表示する
-    }
-}
+$("#next_page_1").click(function(){
+  var mail = $("#new_mailadd").val();
+  var mailconfirm = $("#new_mailadd_test").val();
+  if (mail != confirm) {
+    alert("入力したメールアドレスが一致していません");
+  } 
+  var pass = $("#new_password").val();
+  var passconfirm = $("#new_password_test").val();
+  if (pass != passconfirm) {
+    alert("入力したパスワードが一致していません");
+  }
+});
 
 //メールアドレスのサジェスト機能
 $(function() {
