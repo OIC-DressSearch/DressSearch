@@ -882,20 +882,20 @@
     margin-top: 10%;
     margin-bottom: 15%;
   }
-    #my_title{
+    .my_title{
       margin-left: 5%;
       font-size: 19px;
     }
-    #my_text{
+    .my_text{
       margin-left: 5%;
       font-size: 18px;
     }
-    #my_text1{
+    .my_text1{
       display: inline-block;
       margin-left: 5%;
       font-size: 18px;
     }
-    #my_textbox{
+    .my_textbox{
       margin-left: 5%;
       font-size: 18px;
       border-radius:5px;
