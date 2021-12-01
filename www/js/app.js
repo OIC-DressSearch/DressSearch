@@ -1057,25 +1057,19 @@ $("#login_with").click(function(){
   } 
 });
 
+//再入力したものとの判定
 $("#next_page_1").click(function(){
-  //var address1 = $("new_mailadd").val();
-  //var address2 = $("new_mialadd_test").val();
-  var mail = document.getElementById("new_mailadd").value; //メールフォームの値を取得
-  var mailConfirm = document.getElementById("new_mialadd_test").value; //メール確認用フォームの値を取得
-  if(mail == mailConfirm){
-    alert("正しい");
-  } else {
-    alert("もう一度入力して下さい");
+  var mail = $("#new_mailadd").val();
+  var mailconfirm = $("#new_mailadd_test").val();
+  if (mail != confirm) {
+    alert("入力したメールアドレスが一致していません");
+  } 
+  var pass = $("#new_password").val();
+  var passconfirm = $("#new_password_test").val();
+  if (pass != passconfirm) {
+    alert("入力したパスワードが一致していません");
   }
-})
-function CheckMail() {
-    var mail = document.getElementById("new_mialadd").value; //メールフォームの値を取得
-    var mailConfirm = document.getElementById("new_mialadd_test").value; //メール確認用フォームの値を取得
-    // パスワードの一致確認
-    if (mail != mailConfirm){
-      alert("入力したメールアドレスが一致していません"); // 一致していなかったら、エラーメッセージを表示する
-    }
-}
+});
 
 //メールアドレスのサジェスト機能
 $(function() {
