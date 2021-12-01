@@ -67,6 +67,19 @@
         text-align:center;
         font-size:25px;/*アイコンのサイズ*/}
 
+    #recommend_footer{
+
+    }
+    #search_footer{
+
+    }
+    #favorite_footer{
+
+    }
+    #my-page_footer{
+
+    }
+
     /*アイコン位置*/
     .bottom-menu li a{
       display: block;
@@ -139,8 +152,8 @@
     width: 60%;
 }
 .modal_img{
-    width:200px;
-    height:250px;
+    width:250px;
+    height:300px;
 }
 .js-modal-close_2{
   margin-left:90px;
@@ -244,6 +257,15 @@
     margin-top: 3%;
     padding-bottom:  5%;
   }
+  /*テキストボックス*/
+  .sinki_box{
+    font-size:18px;
+    border-radius:5px;
+  }
+  .domain-autocomplete{
+    font-size:18px;
+    border-radius:5px;
+  }
 
   /*２のレイアウト*/
   #sinki_higth{
@@ -261,28 +283,68 @@
 /**************おすすめのCSS********************************/
 
   .display_recommend{
-    margin-bottom: 19%;
+    margin-left: 0%;
+    margin-top: 1%;
+    margin-bottom: 21%;
     font-size: 0;
-  }
-  .re_im{
-    margin: 0;
-    padding: 0;
   }
 
-  #reim_1{
-    margin: 0;
+  #re_table{
+    margin-left: -0.8%;
+  }
+  .re_td{
+    height: 250px;
+    width: 200px;
+    margin-bottom: -12%;
+  }
+  .re_img_1{
     height: 70%;
     width: 100%;
-    font-size: 0;
+    margin-bottom: -22%;
   }
-  #reim_2{
+  .re_img_2{
     margin: 0;
-    height: 45%;
-    width: 50%;
-    font-size: 0;
+    font-size: 0px;
+    height: 100%;
+    width: 100%;
+    margin-bottom: -30%;
+
+  }
+
+  #top-img > .heart{
+    width: 70px;  /* 正方形を作る */
+    height: 70px; /* 正方形を作る */
+    position: relative;/* 基準位置とする */
+    top: -10px;
+    left: 73%;
+  }
+
+  .re_td > .heart{
+    width: 40px;  /* 正方形を作る */
+    height: 40px; /* 正方形を作る */
+    position: relative;/* 基準位置とする */
+    top: -5px;
+    left: 65%;
+    margin-bottom: 0%;
+  }
+  #top-img > .heart_enp{
+    width: 70px;  /* 正方形を作る */
+    height: 70px; /* 正方形を作る */
+    position: relative;/* 基準位置とする */
+    top: -10px;
+    left: 73%;
+  }
+
+  .re_td > .heart_enp{
+    width: 40px;  /* 正方形を作る */
+    height: 40px; /* 正方形を作る */
+    position: relative;/* 基準位置とする */
+    top: -5px;
+    left: 65%;
+    margin-bottom: 0%;
   }
   
-/***********ここまでおすすめのCSS********************************/
+/***********ここまでおすすめのCSS**************************/
 
 /**************検索画面のCSS********************************/
 
@@ -321,7 +383,7 @@
       margin-left: 3%;
       margin-top: 3%;
       margin-bottom: -2%;
-      width:95%;
+      max-width:95%;
       height:30px;
       font-size:18px;
       border-radius:5px;
@@ -342,7 +404,6 @@
     .search_box{ 
       margin-left: 3%;
       width:95%;
-      height:30px;
       border-radius:5px;
       box-shadow: none;
       padding: 1px px;
@@ -351,6 +412,7 @@
       color: #000000;
       font-size: 19px;
     }
+
 
   /*ポップアップタイトル*/
     #pop_title{
@@ -439,8 +501,15 @@
       width:50%;
     }
 
-    .item img{
-      width:150px;
+    .display_list{ /*スマホＯＫ*/
+      margin-top: -20%;
+      margin-left: -3%;
+      margin-right: -3%;
+      margin-bottom: 16%;
+    }
+    .item img{ /*スマホＯＫ*/
+      margin-bottom: -23%;
+      width:175px; 
       height:200px;
     }
     /*ヘッダー下*/
@@ -544,7 +613,6 @@
   }
 
   .table-header .tab_list:hover{
-
     color: #68c3c5;
     border-bottom: 3px solid #68c3c5;
   }
@@ -618,6 +686,23 @@
     transform: translateY(4px);/*下に動く*/
     border-bottom: none;/*線を消す*/
   }
+  #change_push{ /*試着予約*/
+    background: #abd8e0;/*ボタン色*/
+    color: #FFF;
+    border-radius: 3px;
+    width: 20%;
+    text-align: center;
+    font-size: 15px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  #change_push:active{
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+  }
 
   /*画像*/
   .heart {/*ハート*/
@@ -672,19 +757,75 @@
   }
 
 
+#favorite_tab_0_n_color{
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
+}
+#favorite_tab_o_n_color{
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
+}
 #favorite_tab_1{
   display: none;
+}
+#favorite_tab_1_n_color{
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
 }
 #favorite_tab_2{
   display: none;
 }
+#favorite_tab_2_n_color{
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
+}
 #favorite_tab_3{
   display: none;
+}
+#favorite_tab_3_n_color{
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
 }
 #favorite_tab_4{
   display: none;
 }
+#favorite_tab_4_n_color{
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
+}
 #favorite_tab_5{
+  display: none;
+}
+#favorite_tab_5_n_color{
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
+}
+#favorite_tab_a{
+  display: none;
+}
+#favorite_tab_a_n_color{
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
+}
+#favorite_tab_b{
+  display: none;
+}
+#favorite_tab_b_n_color{
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
+}
+#favorite_tab_c{
+  display: none;
+}
+#favorite_tab_c_n_color{
+  color: #68c3c5;
+  border-bottom: 3px solid #68c3c5;
+}
+
+#dress_store_tab{
+  display: none;
+}
+#rental_shop_tab{
   display: none;
 }
 /***********ここまでいいね画面のCSS**************************/

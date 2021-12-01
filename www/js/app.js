@@ -35,7 +35,6 @@ var img_path_pc="/image/";  //PC時の画像パス
 var img_path_phon="/www/image/";  //スマートフォン時の画像パス
 var menu_flag=true; // レンタル、式場の切り替えフラグ
 var tab_name; // (いいね画面の)現在の選択中のタブを格納する
-
 /********ここまで変数部 *****/
  
 /***共通部分*****************************************************/
@@ -188,18 +187,7 @@ $(document).ready(function(){
  
 /***ここまで新規作成画面***********************************/
  
-/***おすすめ
-  var add_text="";
-              item_count++;
-              if(flag[item_count-1]){
-                add_text='<li class="item"><img src="'+img_text+path[item_count-1]+'"><div class="heart" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
-              }else{
-                add_text='<li class="item"><img src="'+img_text+path[item_count-1]+'"><div class="heart_enp" id="heart_'+item_count+'" name="'+path[item_count-1]+','+dress_id[item_count-1]+'"></div></li>';
-              }
-              $("#result_list").append(add_text);
-              $("#search_sum").text(item_count + "件");
-              
-**********************************************/
+/***おすすめ**********************************************/
   function recommend(){
     for(var i=0;i<7;i++){ //いいねフラグ初期化
       flag[i]=false;
@@ -273,7 +261,6 @@ function sort(array_1,array_2,array_3){
     array_3[r] = tmp_3;
   }
 }
-
 
 /***ここまでおすすめ***********************************/
 
@@ -984,14 +971,18 @@ var test = new Test();
 
 /*******ログアウト******/
 
-function logout(){
+/*function logout(){
   ncmb.User.logout();
   alert('ログアウト成功');
   currentLoginUser = null;
 }
+/**********************新規登録画面*****************/
 
-/*************新規登録*********/
-function onRegisterBtn(){
+  /**/var currentLoginUser; //現在ログイン中ユーザー
+
+//会員登録
+function onRegisterBtn()
+{
   //個人情報１の入力フォームの取得
   var username = $("#new_username").val();
   var mailaddress = $("#new_mailadd").val();
@@ -1066,7 +1057,6 @@ $("#login_with").click(function(){
   } 
 });
 
-//再入力したものとの判定
 $("#next_page_1").click(function(){
   //var address1 = $("new_mailadd").val();
   //var address2 = $("new_mialadd_test").val();

@@ -24,41 +24,44 @@
 
     <!-- メイン -->
     <div id="itiran_header">
-        <div id="kensaku_kensu" class="menu"><a id="search_sum">件</a></div>
-        <div id="kensaku_joken" class="menu">＊＊＊</div> 
-        <div  id="reserve" class="menu" onclick="history.back()">条件変更</div>
+      <div id="kensaku_kensu" class="menu"><a id="search_sum">件</a></div>
+      <div id="kensaku_joken" class="menu">＊＊＊</div> 
+      <div  id="reserve" class="menu" onclick="history.back()">条件変更</div>
     </div>
-
-
-    <div class="search_list">
-      <ul class="list"  id="result_list"  style="margin-top:70px;">
-
-
-        
-      </ul>
+    
+    <div class="display_list">
+      <div class="search_list">
+        <ul class="list"  id="result_list"  style="margin-top:70px;">
+          
+        </ul>
+      </div>
+        <div class="modal js-modal">
+        <div class="modal__bg js-modal-close"></div>
+        <div class="modal__content">              
+        </div><!--modal__inner-->
+      </div><!--modal-->
     </div>
-
     <!--フッター-->
       <footer>
-        <ul class="bottom-menu">
-          <li>
-            <a href="recommend.html">
-            <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/star.png"></span></a>
-          </li>
-          <li>
-            <a href="search.html">
-            <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/search.png"</span></a>
-          </li>
-          <li>
-            <a href="favorite.html">
-            <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/heart.png"></span></a>
-          </li>
-          <li>
-            <a href="my-page.html">
-            <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/my-page.png"></span></a>
-          </li>
-        </ul>
-      </footer>
+      <ul class="bottom-menu">
+        <li id="recommend_footer">
+          <a href="recommend.html">
+          <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/star.png"></span></a>
+        </li>
+        <li id="search_footer">
+          <a href="search.html">
+          <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/search.png"</span></a>
+        </li>
+        <li id="favorite_footer">
+          <a href="favorite.html">
+          <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/heart.png"></span></a>
+        </li>
+        <li id="my-page_footer">
+          <a href="my-page.html">
+          <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/my-page.png"></span></a>
+        </li>
+      </ul>
+    </footer>
       <script src="js/app.js"></script>
   </body>
 </html>
