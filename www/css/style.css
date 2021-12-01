@@ -501,14 +501,15 @@
       width:50%;
     }
 
-    .display_list{
+    .display_list{ /*スマホＯＫ*/
       margin-top: -20%;
       margin-left: -3%;
       margin-right: -3%;
+      margin-bottom: 16%;
     }
-    .item img{
+    .item img{ /*スマホＯＫ*/
       margin-bottom: -23%;
-      width:165px;
+      width:175px; 
       height:200px;
     }
     /*ヘッダー下*/
