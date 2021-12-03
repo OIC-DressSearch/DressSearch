@@ -847,7 +847,7 @@ function sort(array_1,array_2,array_3){
       $("#"+tab_name+"_color").attr("id",tab_name);
       tab_name="favorite_tab_o_n";
       $("#"+tab_name).attr("id",tab_name+"_color");
-      $("#change_push").text("式場");
+      $("#change_push").text("式場を表示");
       $('#dress_store_n').attr('id', 'dress_store_tab');
       $('#rental_shop_tab').attr('id', 'rental_shop_n');
       all_favorite();
@@ -857,7 +857,7 @@ function sort(array_1,array_2,array_3){
       $("#"+tab_name+"_color").attr("id",tab_name);
       tab_name="favorite_tab_0_n";
       $("#"+tab_name).attr("id",tab_name+"_color");
-      $("#change_push").text("レンタル");
+      $("#change_push").text("レンタルを表示");
       $('#dress_store_tab').attr('id', 'dress_store_n');
       $('#rental_shop_n').attr('id', 'rental_shop_tab');
       all_favorite();
