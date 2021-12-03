@@ -991,12 +991,12 @@ function sort(array_1,array_2,array_3){
 
   //画面遷移
   $("#withdrawal-button1").click(function(){
-  $(".display_withdrawal1").css("display","none");
-  $(".display_withlogin").css("display","block");
+    $(".display_withdrawal1").css("display","none");
+    $(".display_withlogin").css("display","block");
   });
   $("#login_with").click(function(){
-  $(".display_withlogin").css("display","none");
-  $(".display_withdrawal2").css("display","block");
+    $(".display_withlogin").css("display","none");
+    $(".display_withdrawal2").css("display","block");
   });
  
 /***ここまで退会画面*****************************************************/

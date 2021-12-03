@@ -3,8 +3,7 @@
   /*基本のヘッダー******************************************/
     .hed{
       padding-top:  3%;
-      padding-bottom: 3%;
-      margin-bottom: 2%;
+      padding-bottom: 4%;
       text-align: center;
       font-size: 21px;
       height: 8%;
@@ -14,32 +13,44 @@
       top: 0;
       right: 0;
       left: 0;
-      z-index: 999;
+      z-index: 990;
       display: flex;
       position: fixed;
       align-items: center;
       justify-content: space-around;
       border-bottom: 0.5px solid #808080;/*バーの下の線*/
     }
-
-    #hed2{
+    .hed_re{
+      padding-top:  2%;
+      padding-bottom: 4%;
+      font-size: 21px;
+      background-color: #fff;
+      color: #68c3c5;
+      max-width: 100%;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 990;
+      position: fixed;
+      border-bottom: 0.5px solid #808080;/*バーの下の線*/
+    }
+    #hed2{ /*検索などのなぜか高さがずれてたヘッダー無理矢理調整*/
       padding-top: 8%;
     }
-    
     /* ≪ */
-      #return{
-        font-size: 21px;
-        color: #68c3c5;
-        margin-top: 7%; 
-        margin-left: 5%;
-        margin-right: 5%;
-      }
+    #return{
+      font-size: 23px;
+      color: #68c3c5;
+      float: left;
+      padding-top: 6%;
+      margin-left: 8%;
+    }
 
     /*サブヘッダー*/    
     .sub_hed{
       max-width: 109%;
       padding-top: 3%;
-      margin-top: 18%;
+      margin-top: 16%;
       margin-left: -2%;
       margin-right: 3%;
       position: fixed;
@@ -55,6 +66,7 @@
       position: fixed;
       z-index: 999;
     }
+
   /*フッター******************************************/
     .footer{
       bottom: 0;
@@ -79,13 +91,14 @@
 
     /*フッターのリスト*/
     ul.bottom-menu li {
-        float:left;
-        width:35%;
-        background-color:rgb(250, 250, 250);/*背景色*/
-        list-style-type:none;
-        text-align:center;
-        font-size:25px;/*アイコンのサイズ*/}
-
+      float:left;
+      width:35%;
+      background-color:rgb(250, 250, 250);/*背景色*/
+      list-style-type:none;
+      text-align:center;
+      font-size:25px;/*アイコンのサイズ*/
+    }
+    
     #recommend_footer{
 
     }
@@ -146,7 +159,6 @@
       text-decoration: none;
       color: rgb(5, 5, 5);
     }
-    
 
   .modal{
     display: none;
@@ -154,30 +166,30 @@
     position: fixed;
     top: 0;
     width: 100%;
-}
-.modal__bg{
-    background: rgba(0,0,0,0.8);
-    height: 100vh;
-    position: absolute;
-    width: 100%;
-}
-.modal__content{
-    background: #fff;
-    left: 50%;
-    padding: 40px;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    width: 60%;
-}
-.modal_img{
-    width:250px;
-    height:300px;
-}
-.js-modal-close_2{
-  margin-left:90px;
-  margin-top:20px
-}
+  }
+  .modal__bg{
+      background: rgba(0,0,0,0.8);
+      height: 100vh;
+      position: absolute;
+      width: 100%;
+  }
+  .modal__content{
+      background: #fff;
+      left: 50%;
+      padding: 40px;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 60%;
+  }
+  .modal_img{
+      width:250px;
+      height:300px;
+  }
+  .js-modal-close_2{
+    margin-left:90px;
+    margin-top:20px
+  }
 /**************ここまで共通部分のcss************************/
 
 /***********ここからログインのCSS********************************/
@@ -190,6 +202,13 @@
     text-decoration: none;
     color: #68c3c5;
    text-align: center;
+  }
+  .my_textbox{
+    margin-left: 5%;
+    font-size: 18px;
+    border-radius:5px;
+    width: 60%;
+    height: 25px;
   }
 /**************ここまでログインのcss************************/
 
@@ -306,7 +325,7 @@
 
   .display_recommend{
     margin-left: 0%;
-    margin-top: 22%;
+    margin-top: 23%;
     margin-bottom: 21%;
     font-size: 0;
   }
@@ -508,10 +527,10 @@
 
 /**************一覧画面のCSS****************************/
 
-  /*戻るボタンありヘッダー***/
-  #title_0{
-    font-size: 21px;
-    
+  /*ヘッダー*/
+  #title_list{
+    float: left;
+    margin-left: 25%;
   }
 
   /*サブヘッダー*/
@@ -528,9 +547,9 @@
       z-index: 990;
     }     
     #kensaku_kensu{
-      margin-left: 5%;
+      margin-left: 8%;
       color: #68c3c5;
-      font-size: 16px;
+      font-size: 18px;
     }
     #kensaku_joken{
       margin-left: 5%;
@@ -866,25 +885,25 @@
 /***********ここまでいいね画面のCSS**************************/
 
 /***********マイページのCSS**********************************/
+  .display_my-page{
+    margin-top: 40%;
+    margin-bottom: 37%; /*フッターを無理矢理下部に */
+  }
 
   #mypage_list{
     font-size: 20px;
     margin-left: 5%;
     margin-right: 5%;
-    margin-top: 15%;
+    margin-top: 13%;
     margin-bottom: 10%;
     list-style-type:none;
     border-bottom: 1px solid #ddd;
   }
 
-  .display_my-page{
-    margin-top: 38%;
-    margin-bottom: 30%; /*フッターを無理矢理下部に */
-  }
-
   /***共通部分*********************************/
   .display_login{
-    margin-top: 30%;
+    margin-top: 35%;
+    margin-bottom: 51%;
   }
 
   .now{
@@ -904,7 +923,7 @@
       margin-left: 5%;
       font-size: 18px;
     }
-    .my_textbox{
+    #my_textbox{
       margin-left: 5%;
       font-size: 18px;
       border-radius:5px;
@@ -929,19 +948,20 @@
 
 /***********ここから会員情報画面のCSS***********************/
 
-  /*戻るボタンありヘッダー***/
-    #title_1{
-      font-size: 21px;
-      margin-left: 17%;
-    }
-
+  /*ヘッダー*/
+  #title_info{
+    float: left;
+    
+    margin-left: 25%;
+  }
+    
   .display_info1{
     display: none;
-    margin-top: 30%;
+    margin-top: 35%;
   }
   .display_info2{
     display: none;
-    margin-top: 30%;
+    margin-top: 35%;
   }
 
   /*レイアウト*/
@@ -988,11 +1008,11 @@
   }
   .display_mail1{
     display: none;
-    margin-top: 30%;
+    margin-top: 35%;
   }
   .display_mail2{
     display: none;
-    margin-top: 30%;
+    margin-top: 35%;
   }
 
 /***********ここまでメールアドレスのCSS*********************/
@@ -1016,11 +1036,11 @@
 
     .display_pass1{
       display: none;
-      margin-top: 30%;
+      margin-top: 35%;
     }
     .display_pass2{
       display: none;
-      margin-top: 30%;
+      margin-top: 35%;
     }
 
 /***********ここまでパスワードのCSS*************************/
@@ -1028,19 +1048,19 @@
 /***********ここから身長/BWHのCSS**************************/
 
   /*戻るボタンありヘッダー***/
-    #title_4{
-      font-size: 21px;
-      margin-left: 17%;
-    }
+  #title_4{
+    font-size: 21px;
+    margin-left: 17%;
+  }
   .display_higth1{
     display: none;
-    margin-top: 30%;
+    margin-top: 35%;
   }
   .display_higth2{
     display: none;
-    margin-top: 30%;
+    margin-top: 35%;
   }
-  .bwh_textbox{
+  #bwh_textbox{
     margin-left: 0%;
     font-size: 18px;
     border-radius:5px;
@@ -1067,20 +1087,25 @@
 /***********ここからログアウトのCSS*************************/
 
   /*戻るボタンありヘッダー***/
-    #title_5{
-      font-size: 21px;
-      margin-left: 20%;
-    }
+  #title_5{
+    font-size: 21px;
+    margin-left: 20%;
+  }
 
-    #log_text{
-      margin-top: 20%;
-      text-align: center;
-      font-size: 19px;
-    }
+  #log_text{
+    margin-top: 20%;
+    text-align: center;
+    font-size: 19px;
+  }
 
+  .display_logout1{
+    margin-top: 35%;
+    margin-bottom: 55%;
+  }
   .display_logout2{
     display: none;
-    margin-top: 30%;
+    margin-top: 35%;
+    margin-bottom: 85%;
   }
 
   #logout-button1{
@@ -1111,13 +1136,16 @@
     margin-top: 20%;
     margin-bottom: 5%;
   }
+  .display_withdrawal1{
+    margin-top: 35%;
+  }
   .display_withlogin{
     display: none;
-    margin-top: 30%;
+    margin-top: 35%;
   }
   .display_withdrawal2{
     display: none;
-    margin-top: 30%;
+    margin-top: 35%;
   }
 
 /***********ここまで退会のCSS********************************/
