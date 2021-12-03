@@ -3,7 +3,8 @@
   /*基本のヘッダー******************************************/
     .hed{
       padding-top:  3%;
-      padding-bottom: 2%;
+      padding-bottom: 3%;
+      margin-bottom: 2%;
       text-align: center;
       font-size: 21px;
       height: 8%;
@@ -20,6 +21,10 @@
       justify-content: space-around;
       border-bottom: 0.5px solid #808080;/*バーの下の線*/
     }
+
+    #hed2{
+      padding-top: 8%;
+    }
     
     /* ≪ */
       #return{
@@ -34,12 +39,12 @@
     .sub_hed{
       max-width: 109%;
       padding-top: 3%;
-      margin-top: 15%;
+      margin-top: 18%;
       margin-left: -2%;
       margin-right: 3%;
       position: fixed;
       background-color: #fff;
-      z-index: 990;
+      z-index: 999;
     }
     .sub_hedlist{
       max-width: 109%;
@@ -48,8 +53,14 @@
       margin-right: 3%;
       border-bottom: 1px solid #cccbcb;
       position: fixed;
+      z-index: 999;
     }
-  /*フッター************************************************************/
+  /*フッター******************************************/
+    .footer{
+      bottom: 0;
+      position: fixed;
+      z-index: 999;
+    }
 
     ul.bottom-menu {
     position: fixed;
@@ -360,7 +371,7 @@
 /**************検索画面のCSS********************************/
 
   .display_search{
-    margin-top: 30%;
+    margin-top: 33%;
   }
 
   /*「検索」ボタン*/  
@@ -498,9 +509,46 @@
 /**************一覧画面のCSS****************************/
 
   /*戻るボタンありヘッダー***/
-    #title_0{
-      font-size: 21px;
-      margin-left: 21%;
+  #title_0{
+    font-size: 21px;
+    
+  }
+
+  /*サブヘッダー*/
+    #itiran_header{ /*スマホＯＫ*/
+      position: fixed;
+      margin-top: 8%;
+      margin-left: -5%;
+      padding-top:  3%;
+      padding-bottom: 1.5%;
+      border-bottom:0.2px solid #cccbcb;
+      width: 103%;
+      display: inline-block;
+      background-color: #fff;
+      z-index: 990;
+    }     
+    #kensaku_kensu{
+      margin-left: 5%;
+      color: #68c3c5;
+      font-size: 16px;
+    }
+    #kensaku_joken{
+      margin-left: 5%;
+      font-size: 15px;
+    }
+      #reserve{ 
+      float: right;
+      background: #abd8e0;/*ボタン色*/
+      color: #FFF;
+      border-radius: 3px;
+      width: 20%;
+      text-align: center;
+      font-size: 15px;
+      margin-right: 5%;
+      padding-top: 1%;
+      padding-bottom: 1%;
+      padding-left: 2%;
+      padding-right: 2%;
     }
 
     .list {
@@ -515,8 +563,8 @@
     .item {
       width:50%;
     }
-    .display_list{ /*スマホＯＫ*/
-      margin-top: 40%;
+    .display_list{ 
+      margin-top: 33%;
       margin-left: -3%;
       margin-right: -3%;
       margin-bottom: 16%;
@@ -526,30 +574,9 @@
       width:175px; 
       height:200px;
     }
-    /*ヘッダー下*/
-      #itiran_header{
-        /* position: fixed; */
-        margin-top: 22%;
-        text-align: right;
-        height: 44px;
-        border-bottom:0.2px solid #cccbcb;
-      }
-      .menu{
-        margin-top: 2%;
-        margin-bottom: 1%;
-      }
-      #kensaku_kensu{
-        float: left;
-        margin-left: 5%;
-        color: #68c3c5;
-        font-size: 16px;
-      }
-      #kensaku_joken{
-        float: left;
-        margin-left: 5%;
-        font-size: 15px;
-      }
-      
+
+/***********ここまで一覧画面のCSS**********************/      
+
 /***********お気に入りのCSS******************************/
  .test1 {
     padding-left: 3px;
@@ -559,12 +586,11 @@
      -ms-user-select: none;
     -webkit-user-select: none;
     -moz-user-select: -moz-none;
-} 
+  } 
  .test1 ul {      /*ulはリストマーカー部分の設定*/
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
-  
-} 
+  } 
  .L1 li:hover{
     color: #68c3c5;
     border-bottom: 3px solid #68c3c5;
@@ -575,21 +601,20 @@
    line-height: 25px;     /*縦３文字横６文字*/
    width: 6em;
   
-} 
-.t1 {
+  } 
+  .t1 {
     width: 100px;
     text-align: center;
     float: left;
     margin-right: 10px;
     /* flex-wrap:wrap; */
- } 
+  } 
 
-/*  2段目 */
+  /*  2段目 */
   .nice_header_2{ /*２段目全体*/
     max-width: 100%;
     overflow-x: auto; /*スクロールバー表示用*/
     border-bottom: 1px solid #cccbcb;
-    padding-top: 5%;
     background-color: #fff;
   }
   .list-header{ /*ul全体*/
@@ -636,7 +661,6 @@
   }
   .tab_list {
     width:110px;
-    /* background-color:#99cc00; */
     margin-right: 5%; 
     text-align: center;
   }
@@ -648,17 +672,16 @@
 /* ****************　　変更　　　*************** */
 
 /*  3段目 */
-  #nice_header_3{/*3段目全体*/
+  #nice_header_3{/*スマホＯＫ*/
     max-width: 109%;
     margin-top: 1%;
     margin-bottom: 1%;
     margin-right: 3%;
+    padding-bottom: 1.5%;
     border-bottom: 1px solid #cccbcb;
   } 
   .menu{ /*3段目全部*/
     display: inline-block;
-    margin-bottom: 1%;
-    max-width: 95%;
   }
   #result{ /*件数*/
     float: left;
@@ -672,52 +695,36 @@
     background: #abd8e0;/*ボタン色*/
     color: #FFF;
     border-radius: 3px;
-    margin-left: 20px;
     height: 38%;
     width: 20%;
     text-align: center;
     font-size: 15px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-left: 30%;
+    margin-left: 22%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
     margin-right: 2%;
   }
-  #push:active {
-    /*ボタンを押したとき*/
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);/*下に動く*/
-    border-bottom: none;/*線を消す*/
-  }
-  #reserve{ /*試着予約*/
+    #push:active {
+      /*ボタンを押したとき*/
+      -webkit-transform: translateY(4px);
+      transform: translateY(4px);/*下に動く*/
+      border-bottom: none;/*線を消す*/
+    }
+  #change_push{ /*レンタル・式場*/
+    float: right;
     background: #abd8e0;/*ボタン色*/
     color: #FFF;
     border-radius: 3px;
-    width: 20%;
+    width: 28%;
     text-align: center;
     font-size: 15px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  #reserve:active{
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);/*下に動く*/
-    border-bottom: none;/*線を消す*/
-  }
-  #change_push{ /*試着予約*/
-    background: #abd8e0;/*ボタン色*/
-    color: #FFF;
-    border-radius: 3px;
-    width: 20%;
-    text-align: center;
-    font-size: 15px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-right: 8%;
   }
   #change_push:active{
     -webkit-transform: translateY(4px);
@@ -733,7 +740,8 @@
     margin-bottom: 16%;
   }
 
-  .heart {/*ハート*/
+  /*ハート*/
+  .heart {
     width: 40px;  /* 正方形を作る */
     height: 40px; /* 正方形を作る */
     position: relative;/* 基準位置とする */
@@ -762,8 +770,8 @@
     width: 40px;  /* 正方形を作る */
     height: 40px; /* 正方形を作る */
     position: relative;/* 基準位置とする */
-    top: -45px;
-    left: 110px;
+    top: -15px;
+    left: 120px;
   }
   .heart_enp::before,
   .heart_enp::after {
@@ -784,77 +792,77 @@
     right: 14%;                /* 右からの位置を指定 */
   }
 
-#favorite_tab_0_n_color{
-  color: #68c3c5;
-  border-bottom: 3px solid #68c3c5;
-}
-#favorite_tab_o_n_color{
-  color: #68c3c5;
-  border-bottom: 3px solid #68c3c5;
-}
-#favorite_tab_1{
-  display: none;
-}
-#favorite_tab_1_n_color{
-  color: #68c3c5;
-  border-bottom: 3px solid #68c3c5;
-}
-#favorite_tab_2{
-  display: none;
-}
-#favorite_tab_2_n_color{
-  color: #68c3c5;
-  border-bottom: 3px solid #68c3c5;
-}
-#favorite_tab_3{
-  display: none;
-}
-#favorite_tab_3_n_color{
-  color: #68c3c5;
-  border-bottom: 3px solid #68c3c5;
-}
-#favorite_tab_4{
-  display: none;
-}
-#favorite_tab_4_n_color{
-  color: #68c3c5;
-  border-bottom: 3px solid #68c3c5;
-}
-#favorite_tab_5{
-  display: none;
-}
-#favorite_tab_5_n_color{
-  color: #68c3c5;
-  border-bottom: 3px solid #68c3c5;
-}
-#favorite_tab_a{
-  display: none;
-}
-#favorite_tab_a_n_color{
-  color: #68c3c5;
-  border-bottom: 3px solid #68c3c5;
-}
-#favorite_tab_b{
-  display: none;
-}
-#favorite_tab_b_n_color{
-  color: #68c3c5;
-  border-bottom: 3px solid #68c3c5;
-}
-#favorite_tab_c{
-  display: none;
-}
-#favorite_tab_c_n_color{
-  color: #68c3c5;
-  border-bottom: 3px solid #68c3c5;
-}
+  #favorite_tab_0_n_color{
+    color: #68c3c5;
+    border-bottom: 3px solid #68c3c5;
+  }
+  #favorite_tab_o_n_color{
+    color: #68c3c5;
+    border-bottom: 3px solid #68c3c5;
+  }
+  #favorite_tab_1{
+    display: none;
+  }
+  #favorite_tab_1_n_color{
+    color: #68c3c5;
+    border-bottom: 3px solid #68c3c5;
+  }
+  #favorite_tab_2{
+    display: none;
+  }
+  #favorite_tab_2_n_color{
+    color: #68c3c5;
+    border-bottom: 3px solid #68c3c5;
+  }
+  #favorite_tab_3{
+    display: none;
+  }
+  #favorite_tab_3_n_color{
+    color: #68c3c5;
+    border-bottom: 3px solid #68c3c5;
+  }
+  #favorite_tab_4{
+    display: none;
+  }
+  #favorite_tab_4_n_color{
+    color: #68c3c5;
+    border-bottom: 3px solid #68c3c5;
+  }
+  #favorite_tab_5{
+    display: none;
+  }
+  #favorite_tab_5_n_color{
+    color: #68c3c5;
+    border-bottom: 3px solid #68c3c5;
+  }
+  #favorite_tab_a{
+    display: none;
+  }
+  #favorite_tab_a_n_color{
+    color: #68c3c5;
+    border-bottom: 3px solid #68c3c5;
+  }
+  #favorite_tab_b{
+    display: none;
+  }
+  #favorite_tab_b_n_color{
+    color: #68c3c5;
+    border-bottom: 3px solid #68c3c5;
+  }
+  #favorite_tab_c{
+    display: none;
+  }
+  #favorite_tab_c_n_color{
+    color: #68c3c5;
+    border-bottom: 3px solid #68c3c5;
+  }
 
-#dress_store_tab{
-  display: none;
-}
-#rental_shop_tab{
-  display: none;
-}
+  #dress_store_tab{
+    display: none;
+  }
+  #rental_shop_tab{
+    display: none;
+  }
 /***********ここまでいいね画面のCSS**************************/
 
 /***********マイページのCSS**********************************/
@@ -870,7 +878,8 @@
   }
 
   .display_my-page{
-    margin-top: 35%;
+    margin-top: 38%;
+    margin-bottom: 30%; /*フッターを無理矢理下部に */
   }
 
   /***共通部分*********************************/
