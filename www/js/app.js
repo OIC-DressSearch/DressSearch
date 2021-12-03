@@ -1084,6 +1084,26 @@ function logout(){
 
   /**/var currentLoginUser; //現在ログイン中ユーザー
 
+  function finalcheckBtn()
+  {
+    //個人情報１の入力フォームの取得
+    var username = $("#new_username").val();
+    var mailaddress = $("#new_mailadd").val();
+    var password = $("#new_password").val();
+    //個人情報２の入力フォームの取得
+    var higth = $("#my_higthbox").val();
+    var bmw_B = $("#bmw_b").val();
+    var bmw_W = $("#bmw_w").val();
+    var bmw_H = $("#bmw_h").val(); 
+    $(".usernameSet").text(username);
+    $(".mailaddSet").text(mailaddress);
+    $(".passwordSet").text(password);
+    $(".higthSet").text(higth);
+    $(".bmw_bSet").text(bmw_B);
+    $(".bmw_wSet").text(bmw_W);
+    $(".bmw_hSet").text(bmw_H);
+  }
+
 //会員登録
 function onRegisterBtn()
 {
@@ -1118,7 +1138,7 @@ function onRegisterBtn()
                          currentLoginUser = ncmb.User.getCurrentUser();
                          // フィールドを空に
                          $("#new_username").val("");
-                         $("new_mailadd").val("");
+                         $("#new_mailadd").val("");
                          $("#new_password").val("");
 
                          // 詳細ページへ移動
@@ -1133,7 +1153,7 @@ function onRegisterBtn()
                          alert("【ID / PW 認証】ログインに失敗しました: " + error);
                          // フィールドを空に
                           $("#new_username").val("");
-                          $("new_mailadd").val("");
+                          $("#new_mailadd").val("");
                           $("#new_password").val("");
                         //  // loading の表示
                         //  $.mobile.loading('hide');
@@ -1144,7 +1164,7 @@ function onRegisterBtn()
             alert("【ID / PW 認証】新規登録に失敗しました：" + error);
             // フィールドを空に
             $("#new_username").val("");
-            $("new_mailadd").val("");
+            $("#new_mailadd").val("");
             $("#new_password").val("");
             // // loading の表示
             // $.mobile.loading('hide');
