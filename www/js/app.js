@@ -51,8 +51,11 @@ $(document).ready(function(){
   else if(current_file==="/www/search.html" || current_file==="/search.html"){
     new_imgf();
   }
-  else if(current_file==="/www/recommend.html" || "/recommnd"){
+  else if(current_file==="/www/recommend.html" || current_file==="/recommend.html"){
     recommend();
+  }
+  else if(current_file==="/www/info.html" || current_file==="/info.html"){
+    info();
   }
 });
 
@@ -908,6 +911,17 @@ function sort(array_1,array_2,array_3){
     $(".display_info1").css("display","none");
     $(".display_info2").css("display","block");
   });
+
+  function info(){
+    var currentLoginUser = ncmb.User.getCurrentUser();
+    $("#my_name").text(currentLoginUser.userName);
+    $("#my_higth").text(currentLoginUser.higth);
+    $("#my_bust").text(currentLoginUser.bust);
+    $("#my_waist").text(currentLoginUser.waist);
+    $("#my_hip").text(currentLoginUser.hips);
+    var str=currentLoginUser.pass;
+
+  }
  
 /***ここまで会員情報変更画面*****************************************************/
  
