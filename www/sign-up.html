@@ -15,9 +15,9 @@
 </head>
 <body>
     <!-- ヘッダー -->
-    <header class="hed">
-      <a href="login.html" class="link" id="return">≪</a>
-      <p id="title_sinki">新規登録</p>      
+    <header class="hed_re">
+      <a href="login.html" class="link" id="return_sign">≪</a>
+      <p id="title_sign">新規登録</p>      
     </header>
     
     <!-- １ -->
@@ -56,7 +56,8 @@
         <div id="sinki_pass">
           <div class="sinki_title">
             <label id="sinki_title" class="sinki1">パスワード</label>
-            <label id="hissu" class="sinki1">必須</label><br>
+            <label id="hissu" class="sinki1">必須</label>
+            <label id="passinfo">英数字８字以上</label><br>
             <input type="password" id="new_password" placeholder="" maxlength="15" minlength="8" pattern="/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,100}$/" class="my_textbox" autocomplete="off"></input><br>
             <!-- 半角英数・小文字・大文字を１文字ずつ含むパスワードだけ許可 -->
           </div>
@@ -89,21 +90,19 @@
       <div id="sinki_higth">
         <div class="sinki_title">
           <div id="sinki_title" class="sinki1">身長</div><br>
-          <input type="text" id="my_higthbox" class="my_textbox">cm
+          <input type="text" id="my_higthbox" class="my_textbox">　cm
         </div>
       </div>
-      <div id="sinki_bwh">
+      <div id="sinki2_bwh">
         <div id="sinki_title"  class="sinki1">スリーサイズ</div><br>
-
-          <p class="my_text1">B：</p>
-          <input type="text" class="bwh_textbox" id="bmw_b">
-          <p class="my_text1">W：</p>
-          <input type="text" class="bwh_textbox" id="bmw_w">          
-          <p class="my_text1">H：</p>
-          <input type="text" class="bwh_textbox" id="bmw_h">
-          <button id="next_page_2" class="next_button" onclick="finalcheckBtn()">次へ</button>
-
-          <button id="back_page_2" class="next_button"">戻る</button> 
+        <p class="my_text1">B：</p>
+        <input type="text" class="bwh_textbox" id="bmw_b">
+        <p class="my_text1">W：</p>
+        <input type="text" class="bwh_textbox" id="bmw_w">          
+        <p class="my_text1">H：</p>
+        <input type="text" class="bwh_textbox" id="bmw_h">
+        <button id="next_page_2" class="next_button" onclick="finalcheckBtn()">次へ</button>
+        <button id="back_page_2" class="next_button"">戻る</button> 
       </div>
     </div>
     
@@ -120,19 +119,19 @@
         </table>
       </div> 
        <!-- メイン -->
-      <div>
-        <div id="sinki_title" class="sinki1">氏名</div>
-        <div><span class="usernameSet"></div>
-        <div id="sinki_title" class="sinki1">メールアドレス</div>
-        <div><span class="mailaddSet">></div>
-        <div id="sinki_title" class="sinki1">パスワード</div>
-        <div><span class="passwordSet"></div>
-        <div id="sinki_title" class="sinki1">身長</div>
-        <div><span class="higthSet"></div>
-        <div id="sinki_title" class="sinki1">スリーサイズ</div>
-        <div>B：<span class="bmw_bSet"></div>
-        <div>W：<span class="bmw_wSet"></div>
-        <div>H：<span class="bmw_hSet"></div>
+      <div class="display_sinki3">
+        <div id="sinki_title3" class="sinki1">氏名</div>
+        <div id="sinki_text3"><span class="usernameSet"></div>
+        <div id="sinki_title3" class="sinki1">メールアドレス</div>
+        <div id="sinki_text3"><span class="mailaddSet">></div>
+        <div id="sinki_title3" class="sinki1">パスワード</div>
+        <div id="sinki_text3"><span class="passwordSet"></div>
+        <div id="sinki_title3" class="sinki1">身長</div>
+        <div id="sinki_text3"><span class="higthSet"></div>
+        <div id="sinki_title3" class="sinki1">スリーサイズ</div><br>
+        <div id="sinki_bwh">B：<span class="bmw_bSet"></div>
+        <div id="sinki_bwh">W：<span class="bmw_wSet"></div>
+        <div id="sinki_bwh">H：<span class="bmw_hSet"></div>
       </div>
       <!-- <a href="search.html"> -->
         <button id="next_page_3" class="next_button" onclick="onRegisterBtn()">登録</button> 
