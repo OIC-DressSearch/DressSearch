@@ -51,8 +51,11 @@ $(document).ready(function(){
   else if(current_file==="/www/search.html" || current_file==="/search.html"){
     new_imgf();
   }
-  else if(current_file==="/www/recommend.html" || "/recommnd"){
+  else if(current_file==="/www/recommend.html" || current_file==="/recommend.html"){
     recommend();
+  }
+  else if(current_file==="/www/info.html" || current_file==="/info.html"){
+    info();
   }
 });
 
@@ -897,13 +900,130 @@ function sort(array_1,array_2,array_3){
  
   //画面遷移
   $("#login_info").click(function(){
-    $(".display_login").css("display","none");
-    $(".display_info1").css("display","block");
+     var currentLoginUser = ncmb.User.getCurrentUser();
+     var login_address=$("#info_login_address").val();
+     var login_pass=$("#info_login_pass").val();
+     if(currentLoginUser.mailAddress===login_address && currentLoginUser.password===login_pass){
+      $(".display_login").css("display","none");
+      $(".display_info1").css("display","block");
+     }
+     else{
+       alert("入力されたアドレスまたはパスワードが違います");
+     }
   });
   $("#info_button").click(function(){
-    $(".display_info1").css("display","none");
-    $(".display_info2").css("display","block");
+    var update_address=$("#update_address").val();
+    var update_address_2=$("#update_address_2").val();
+    var update_pass=$("#update_pass").val();
+    var update_pass_2=$("#update_pass_2").val();
+    check_1=address_check(update_address,update_address_2);
+    check_2=pass_check(update_pass,update_pass_2);
+    if(check_1 && check_2){
+      $(".display_info1").css("display","none");
+      $(".display_info2").css("display","block");
+    }
   });
+
+  function info(){
+    var currentLoginUser = ncmb.User.getCurrentUser();
+    var pass=currentLoginUser.password;
+    var address=currentLoginUser.mailAddress;
+    var pass_rep=replace(pass,true);
+    var address_rep=replace(address,false);
+
+    $("#my_name").text(currentLoginUser.userName);
+    $("#my_higth").text(currentLoginUser.higth);
+    $("#my_bust").text(currentLoginUser.bust);
+    $("#my_waist").text(currentLoginUser.waist);
+    $("#my_hip").text(currentLoginUser.hips);
+    $("#my_pass").text(pass_rep);
+    $("#my_mailaddress").text(address_rep);
+  }
+  $("#info-update").click(function(){
+    var currentLoginUser = ncmb.User.getCurrentUser();
+    var update_name=$("#update_name").val();
+    var update_address=$("#update_address").val();
+    var update_pass=$("#update_pass").val();
+    var update_higth=$("#update_higth").val();
+    var update_b=$("#update_b").val();
+    var update_w=$("#update_w").val();
+    var update_h=$("#update_h").val();
+
+    currentLoginUser
+    .set("userName", update_name)
+    .set("mailAddress",update_address )
+    .set("password", update_pass)
+    .set("higth",update_higth)
+    .set("bust",update_b)
+    .set("waist", update_w)
+    .set("hips",update_h)
+    .update()
+    .then(function(obj) {
+        // 更新成功時
+      alert("更新成功");
+    })
+    .catch(function(error) {
+        // 更新失敗時
+        alert("更新失敗" + error);
+    });
+    setTimeout(function(){
+        window.location.href = "my-page.html"; 
+      },500);
+  });
+
+  function address_check(str_1,str_2){ // メールアドレスチェック
+    var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
+    if(str_1!=str_2){
+      alert("再入力されたアドレスが違います");
+    }
+    else{
+      if(reg.test(str_1)){
+        return true;
+      }
+      else{
+        alert("入力されたメールアドレスが正しくないです");
+      }
+    }
+  }
+  function pass_check(str_1,str_2){ // パスワードcheck
+    var reg =/^[a-z\d]{8,100}$/i;
+    if(str_1!=str_2){
+      alert("再入力されたパスワードが違います");
+    }
+    else{
+      if(reg.test(str_1)){
+        return true;
+      }
+      else{
+        alert("入力されたパスワードが正しくないです");
+      }
+    }
+  }
+
+  function replace(str,f){  // パスワードとメールアドレスを＊に置き換え
+    var rep="";
+    if(f){
+      for(var i=0;i<str.length;i++){
+        rep+="*";
+      }
+      return rep;
+    }
+    else{
+      var address_2=str.split(/[@.]/);
+      for(var i=0;i<address_2.length;i++){
+        for(var j=0;j<address_2[i].length;j++){
+          rep+="*"
+        }
+        if(i===0){
+          rep+="@";
+        }
+        else if(i===1){
+          rep+="."
+        }
+      }
+      return rep;
+    }
+  }
  
 /***ここまで会員情報変更画面*****************************************************/
  
