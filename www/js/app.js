@@ -1249,7 +1249,7 @@ $(function() {
 });
 
 //ユーザー情報の変更
-function ChangeBtn(){
+$("#ok-button").click(function(){
   var currentUser = ncmb.User.getCurrentUser();
   //個人情報１の入力フォームの取得
   var username = $("#Change_name").val();
@@ -1261,15 +1261,15 @@ function ChangeBtn(){
   var bmw_W = $("#bmw_w").val();
   var bmw_H = $("#bmw_h").val(); 
   currentUser
-  .set("userName", username)
-  .set("mailAddress", mailaddress)
-  .set("password", password)
-  .set("higth", higth)
-  .set("bust", bmw_B)
-  .set("hips", bmw_W)
-  .set("waist", bmw_H)
+    .set("userName", username)
+    .set("mailAddress", mailaddress)
+    .set("password", password)
+    .set("higth", higth)
+    .set("bust", bmw_B)
+    .set("hips", bmw_W)
+    .set("waist", bmw_H)
       .update()
-      .then(function(obj) {
+      .then(function(currentUser) {
           // 更新成功時
           alert("更新成功");
       })
