@@ -25,7 +25,7 @@
       <div class="display_login">
         <div id="my_mail">
           <div class="my_title">メールアドレス</div>
-          <input type="text" id="my_textbox"></input>
+          <input type="text" class="my_textbox" id="new_username"></input>
         </div>
         <div class="my_pass">
           <div class="my_title">パスワード</div>
@@ -70,11 +70,11 @@
         <input type="text" id="my_higthbox">
         <p id="my_title">◉BWHの変更</p>
         <p id="my_text1">B：</p>
-        <input type="text" class="bwh_textbox">
+        <input type="text" class="bwh_textbox" id="bmw_b">
         <p id="my_text1">W：</p>
-        <input type="text" class="bwh_textbox">
+        <input type="text" class="bwh_textbox" id="bmw_w">
         <p id="my_text1">H：</p>
-        <input type="text" class="bwh_textbox">
+        <input type="text" class="bwh_textbox" id="bmw_h">
         </div>
         <button id="info_button" class="push-button">保存</button>
       </div>
@@ -82,7 +82,7 @@
       <!--2-->
       <div class="display_info2">
         <div id="my_henko">こちらの内容で登録してもよろしいですか？</div>
-        <button id="ok-button" class="push-button" style="margin-top:60px;">OK</button>
+        <button id="ok-button" class="push-button" style="margin-top:60px;" onclick="ChangeBtn()">OK</button>
       </div>
     
     <!-- フッター -->
