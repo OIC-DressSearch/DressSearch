@@ -25,56 +25,58 @@
       <div class="display_login">
         <div id="my_mail">
           <div class="my_title">メールアドレス</div>
-          <input type="text" class="my_textbox"></input>
+          <input type="text" class="my_textbox" id="info_login_address"></input>
         </div>
         <div class="my_pass">
           <div class="my_title">パスワード</div>
-          <input type="password" class="my_textbox" placeholder="" maxlength="15"></input>
+          <input type="password" class="my_textbox" id="info_login_pass" placeholder="" maxlength="15"></input>
         </div>
         <button id="login_info" class="push-button">ログイン</button>  
       </div>
 
     <div class="display_info1">
       <div id="info_name">
-        <p  id="my_title">◎登録済みの氏名</p>
-        <p  id="my_text">加藤</p>
-        <p  id="my_title">◉変更する氏名</p>
-        <input type="text" id="Change_name" class="my_textbox" >
+        <p  class="my_title">◎登録済みの氏名</p>
+        <p  class="my_text" id="my_name"></p>
+        <p  class="my_title">◉変更する氏名</p>
+        <input type="text" class="my_textbox" id="update_name" >
       </div>
       <div id="info_mail">
-        <p  id="my_title">◎登録済みのメールアドレス</p>
-        <p  id="my_text">*****@*****.***</p>
-        <p id="my_title">◉新規メールアドレス</p>
-        <input type="text" id="new_mailadd" class="my_textbox"></input>
-        <p id="my_title">◉メールアドレス再入力</p>
-        <input type="text" id="new_mailadd_test" class="my_textbox"></input>
+        <p  class="my_title">◎登録済みのメールアドレス</p>
+        <p  class="my_text" id="my_mailaddress"></p>
+        <p class="my_title">◉新規メールアドレス</p>
+        <input type="text" class="my_textbox"  id="update_address"></input>
+        <p class="my_title">◉メールアドレス再入力</p>
+        <input type="text" class="my_textbox" id="update_address_2" ></input>
       </div>
       <div id="info_pass">
-        <p id="my_title">◎登録済みのパスワード</p>
-        <p id="my_text">***************</p>
-        <p id="my_title">◉新規パスワード</p>
-        <input type="password" name="pass" id="new_password"  class="my_textbox">
-        <p id="my_title">◉パスワード再入力</p>
-        <input type="password" name="pass" id="new_password_test" class="my_textbox">
+        <p class="my_title">◎登録済みのパスワード</p>
+        <p class="my_text" id="my_pass"></p>
+        <p class="my_title">◉新規パスワード</p>
+        <input type="password" name="pass" class="my_textbox" id="update_pass">
+        <p class="my_title">◉パスワード再入力</p>
+        <input type="password" name="pass" class="my_textbox" id="update_pass_2">
       </div>
       <div id="info_higth">
-        <p id="my_title">◎登録済みの身長</p>
-        <p id="my_text">156cm</p>
-        <p id="my_title">◎登録済みのBWH</p>
+        <p class="my_title">◎登録済みの身長</p>
+        <p class="my_text" id="my_higth"></p>
+        <p class="my_title">◎登録済みのBWH</p>
         <div id="bwh_text">
-          <p id="my_text1">85</p>
-          <p id="my_text1">:　60</p>
-          <p id="my_text1">:　80</p>
+          <p class="my_text1" id="my_bust"></p>
+          <p class="my_text1" id="my_waist"></p>
+          <p class="my_text1" id="my_hip"></p>
         </div>
-        <p id="my_title">◉身長の変更</p>
-        <input type="text" id="my_higthbox">
-        <p id="my_title">◉BWHの変更</p>
-        <p id="my_text1">B：</p>
-        <input type="text" class="bwh_textbox">
-        <p id="my_text1">W：</p>
-        <input type="text" class="bwh_textbox">
-        <p id="my_text1">H：</p>
-        <input type="text" class="bwh_textbox">
+       
+          <p class="my_title">◉身長の変更</p>
+          <input type="text" class="my_higthbox" id="update_higth">
+          <p class="my_title">◉BWHの変更</p>
+          <p class="my_text1">B：</p>
+          <input type="text" class="bwh_textbox" id="update_b">
+          <p class="my_text1">W：</p>
+          <input type="text" class="bwh_textbox" id="update_w">          
+          <p class="my_text1">H：</p>
+          <input type="text" class="bwh_textbox" id="update_h">
+
         </div>
         <button id="info_button" class="push-button">保存</button>
       </div>
@@ -82,7 +84,7 @@
       <!--2-->
       <div class="display_info2">
         <div id="my_henko">こちらの内容で登録してもよろしいですか？</div>
-        <button id="ok-button" class="push-button" style="margin-top:60px;">OK</button>
+        <button id="info-update" class="push-button" style="margin-top:60px;">OK</button>
       </div>
     
     <!-- フッター -->
