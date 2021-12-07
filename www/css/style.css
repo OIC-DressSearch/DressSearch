@@ -923,7 +923,7 @@
       margin-left: 5%;
       font-size: 18px;
     }
-    #my_textbox{
+    .my_textbox{
       margin-left: 5%;
       font-size: 18px;
       border-radius:5px;
@@ -1085,7 +1085,7 @@
     display: none;
     margin-top: 35%;
   }
-  #bwh_textbox{
+  .bwh_textbox{
     margin-left: 0%;
     font-size: 18px;
     border-radius:5px;

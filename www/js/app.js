@@ -1247,3 +1247,22 @@ $(function() {
 }
         });
 });
+
+//ユーザー情報の変更
+$("#ok-button").click(function(){
+  var currentUser = ncmb.User.getCurrentUser();
+  var Change_name = $("#Change_name").val();
+  var Change_name = $("#Change_name").val();
+  currentUser
+      .set("userNamet", Change_name)
+      .set("gender", gender)
+      .update()
+      .then(function(obj) {
+          // 更新成功時
+          alert("更新成功");
+      })
+      .catch(function(error) {
+          // 更新失敗時
+          alert("更新失敗" + error);
+  })
+});
