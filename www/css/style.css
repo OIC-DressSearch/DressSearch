@@ -902,7 +902,7 @@
 
   /***共通部分*********************************/
   .display_login{
-    margin-top: 35%;
+    margin-top: 40%;
     margin-bottom: 51%;
   }
 
@@ -923,7 +923,7 @@
       margin-left: 5%;
       font-size: 18px;
     }
-    #my_textbox{
+    .my_textbox{
       margin-left: 5%;
       font-size: 18px;
       border-radius:5px;
@@ -951,8 +951,17 @@
   /*ヘッダー*/
   #title_info{
     float: left;
-    
-    margin-left: 25%;
+    margin-top: 10%;
+    margin-left: 21%;
+    margin-bottom:  2%;
+  }
+  /* ≪ */
+  #return_info{
+    font-size: 23px;
+    color: #68c3c5;
+    float: left;
+    padding-top: 10%;
+    margin-left: 8%;
   }
     
   .display_info1{
@@ -984,6 +993,22 @@
 /***********ここまで会員情報のCSS***************************/
 
 /***********ここからメールアドレス画面のCSS******************/
+
+  /*ヘッダー*/
+  #title_mail{
+    float: left;
+    margin-top: 3%;
+    margin-left: 12%;
+    margin-bottom: 3%;
+  }
+  /* ≪ */
+  #return_mail{
+    font-size: 23px;
+    color: #68c3c5;
+    float: left;
+    padding-top: 3%;
+    margin-left: 8%;
+  }
 
   /*戻るボタンありヘッダー***/
     #title_2{
