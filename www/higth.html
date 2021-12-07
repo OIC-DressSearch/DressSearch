@@ -16,53 +16,56 @@
   
   <body>
     <!-- ヘッダー -->
-    <header class="hed">
+    <header class="hed_re">
       <a href="my-page.html" class="link" id="return">≪</a>
-      <p id="title_4">身長/BWH変更</p>      
+      <p id="title_re">身長/BWH変更</p>      
     </header>
 
     <!-- メイン -->
-    <div class="display_login">
-      <div id="my_mail">
-        <div id="my_title">メールアドレス</div>
-        <input type="text" id="my_textbox"></input>
-      </div>
-      <div class="my_pass">
-        <div id="my_title">パスワード</div>
-        <input type="password" id="my_textbox" placeholder=""></input>
-      </div>
-      <button id="login_higth" class="push-button">ログイン</button>  
-    </div>
-
-    <div class="display_higth1">
-      <div class="now">
-        <p id="my_title">◎登録済みの身長</p>
-        <p id="my_text">156cm</p>
-        <p id="my_title">◎登録済みのBWH</p>
-        <div id="bwh_text">
-          <p id="my_text1">85</p>
-          <p id="my_text1">:　60</p>
-          <p id="my_text1">:　80</p>
+      <!--ログイン-->
+      <div class="display_login">
+        <div id="my_mail">
+          <div class="my_title">メールアドレス</div>
+          <input type="text" id="my_textbox"></input>
         </div>
+        <div class="my_pass">
+          <div class="my_title">パスワード</div>
+          <input type="password" id="my_textbox" placeholder=""></input>
+        </div>
+        <button id="login_higth" class="push-button">ログイン</button>  
       </div>
-      <div class="new"> 
-        <p id="my_title">◉身長の変更</p>
-        <input type="text" id="my_higthbox">
-        <p id="my_title">◉BWHの変更</p>
-          <p id="my_text1">B：</p>
-          <input type="text" id="bwh_textbox">
-          <p id="my_text1">W：</p>
-          <input type="text" id="bwh_textbox">          
-          <p id="my_text1">H：</p>
-          <input type="text" id="bwh_textbox">
-      </div>
-      <button class="push-button" id="higth_button">保存</button>
-    </div>
 
-    <div class="display_higth2">
-      <p id="my_henko">こちらの内容で登録してもよろしいですか？</p>
-      <button id="ok-button" class="push-button" style="margin-top:60px;">OK</button>
-    </div>
+      <!--1-->
+      <div class="display_higth1">
+        <div class="now">
+          <p class="my_title">◎登録済みの身長</p>
+          <p class="my_text">156cm</p>
+          <p class="my_title">◎登録済みのBWH</p>
+          <div class="bwh_text">
+            <p class="my_text1">85</p>
+            <p class="my_text1">:　60</p>
+            <p class="my_text1">:　80</p>
+          </div>
+        </div>
+        <div class="new"> 
+          <p class="my_title">◉身長の変更</p>
+          <input type="text" id="my_higthbox">
+          <p class="my_title">◉BWHの変更</p>
+            <p class="my_text1">B：</p>
+            <input type="text" id="bwh_textbox">
+            <p class="my_text1">W：</p>
+            <input type="text" id="bwh_textbox">          
+            <p class="my_text1">H：</p>
+            <input type="text" id="bwh_textbox">
+        </div>
+        <button class="push-button" id="higth_button">保存</button>
+      </div>
+
+      <!--2-->
+      <div class="display_higth2">
+        <p id="my_henko">こちらの内容で登録してもよろしいですか？</p>
+        <button id="ok-button" class="push-button" style="margin-top:60px;">OK</button>
+      </div>
 
     <!--フッター-->
     <footer>
@@ -84,7 +87,6 @@
           <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/my-page.png"></span></a>
         </li>
       </ul>
-
     </footer>
     <script src="js/app.js"></script>
   </body>
