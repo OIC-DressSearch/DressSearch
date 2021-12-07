@@ -16,41 +16,45 @@
   </head>
 <body>
     <!-- ヘッダー -->
-    <header class="hed">
+    <header class="hed_re">
       <a href="my-page.html" class="link" id="return">≪</a>
-      <p id="title_3">パスワード変更</p>      
+      <p id="title_re">パスワード変更</p>      
     </header>
 
     <!-- メイン -->
-    <div class="display_login">
-      <div id="my_mail">
-        <div id="my_title">メールアドレス</div>
-        <input type="text" id="my_textbox"></input>
+      <!--ログイン-->
+      <div class="display_login">
+        <div id="my_mail">
+          <div class="my_title">メールアドレス</div>
+          <input type="text" id="my_textbox"></input>
+        </div>
+        <div class="my_pass">
+          <div class="my_title">パスワード</div>
+          <input type="password" id="my_textbox" placeholder="" maxlength="15"></input>
+        </div>
+        <button id="login_pass" class="push-button">ログイン</button>  
       </div>
-      <div class="my_pass">
-        <div id="my_title">パスワード</div>
-        <input type="password" id="my_textbox" placeholder="" maxlength="15"></input>
-      </div>
-      <button id="login_pass" class="push-button">ログイン</button>  
-    </div>
+
+    <!--1-->
     <div class="display_pass1">
       <div class="now">
-        <p id="my_title">◎登録済みのパスワード</p>
-        <p id="my_text">***************</p>
+        <p class="my_title">◎登録済みのパスワード</p>
+        <p class="my_text">***************</p>
       </div>
       <div class="new">   
-        <p id="my_title">◉新規パスワード</p>
+        <p class="my_title">◉新規パスワード</p>
         <input type="password" name="pass" id="my_textbox">
-        <p id="my_title">◉パスワード再入力</p>
+        <p class="my_title">◉パスワード再入力</p>
         <input type="password" name="pass" id="my_textbox">
       </div>
       <button class="push-button" id="pass_button">変更</button>
     </div>
 
-  <div class="display_pass2">
-       <div id="my_henko">変更しました</div>
-       <button id="ok-button" class="push-button" style="margin-top:60px;">OK</button>
-  </div>
+    <!--2-->
+    <div class="display_pass2">
+      <div id="my_henko">変更しました</div>
+      <button id="ok-button" class="push-button" style="margin-top:60px;">OK</button>
+    </div>
 
     <!--フッター-->
     <footer>
