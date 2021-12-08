@@ -1250,17 +1250,16 @@ $(function() {
 
 //ユーザー情報の変更
 $("#ok-button").click(function(){
-  var currentUser = ncmb.User.getCurrentUser();
-  //個人情報１の入力フォームの取得
+  //var currentUser = ncmb.User.getCurrentUser();
+  //入力フォームの取得
   var username = $("#Change_name").val();
   var mailaddress = $("#new_mailadd").val();
   var password = $("#new_password").val();
-  //個人情報２の入力フォームの取得
   var higth = $("#my_higthbox").val();
   var bmw_B = $("#bmw_b").val();
   var bmw_W = $("#bmw_w").val();
   var bmw_H = $("#bmw_h").val(); 
-  currentUser
+  currentLoginUser
     .set("userName", username)
     .set("mailAddress", mailaddress)
     .set("password", password)
@@ -1269,7 +1268,7 @@ $("#ok-button").click(function(){
     .set("hips", bmw_W)
     .set("waist", bmw_H)
       .update()
-      .then(function(currentUser) {
+      .then(function() {
           // 更新成功時
           alert("更新成功");
       })
@@ -1277,4 +1276,4 @@ $("#ok-button").click(function(){
           // 更新失敗時
           alert("更新失敗" + error);
   })
-};
+});
