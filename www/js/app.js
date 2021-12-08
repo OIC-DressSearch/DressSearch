@@ -170,12 +170,8 @@ $(document).ready(function(){
 
 /***新規作成画面******************************************/
 
-  //画面遷移 
-  $("#next_page_1").click(function(){
-  $("#page_1").css("display","none");
-  $("#page_2").css("display","block");
-  
-  });
+  //画面遷移  
+
   $("#next_page_2").click(function(){
   $("#page_2").css("display","none");
   $("#page_3").css("display","block");
@@ -1299,19 +1295,26 @@ function onRegisterBtn()
     alert("メールアドレスを正しく入力してください");
   } 
 });*/
+//画面遷移の入力チェック
+$("next_page_1").click(function(){
 
+});
 
 //再入力したものとの判定
 $("#next_page_1").click(function(){
   var mail = $("#new_mailadd").val();
   var mailconfirm = $("#new_mailadd_test").val();
-  if (mail != confirm) {
-    alert("入力したメールアドレスが一致していません");
-  } 
   var pass = $("#new_password").val();
   var passconfirm = $("#new_password_test").val();
-  if (pass != passconfirm) {
+  if (mail != mailconfirm) {
+    alert("入力したメールアドレスが一致していません");
+  }else if(pass != passconfirm){
     alert("入力したパスワードが一致していません");
+  }else{
+    $("#next_page_1").click(function(){
+    $("#page_1").css("display","none");
+    $("#page_2").css("display","block");
+  });
   }
 });
 
@@ -1338,7 +1341,7 @@ $(function() {
         return "";
     }
 
-    $( ".domain-autocomplete" )
+    $( "#new_mailadd")
         // don't navigate away from the field on tab when selecting an item
         .bind( "keydown", function( event ) {
             if ( event.keyCode === $.ui.keyCode.TAB &&
