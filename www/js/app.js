@@ -990,7 +990,7 @@ function sort(array_1,array_2,array_3){
     }
   }
   function pass_check(str_1,str_2){ // パスワードcheck
-    var reg =/^[a-z\d]{8,100}$/i;
+    var reg =/^[A-Z][a-z\d]{8,100}$/i;
     if(str_1!=str_2){
       alert("再入力されたパスワードが違います");
     }
