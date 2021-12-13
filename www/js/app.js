@@ -211,11 +211,12 @@ $(document).ready(function(){
       flag[i]=false;
     }
     item_count=0;
+    var currentLoginUser = ncmb.User.getCurrentUser();
     var img_text=mobile_check();
     var get_data = ncmb.DataStore("test");
     var saveData_2 = ncmb.DataStore("favorite");
     get_data.order('dress_id',false).fetchAll().then(function(results){  // ドレスの画像取得
-      saveData_2.fetchAll().then(function(results_2){ 
+      saveData_2.equalTo('user_id',currentLoginUser.userName).fetchAll().then(function(results_2){ 
         for(var i=0;i<results.length;i++){
           var a=results[i]; 
           path[i]=a.get("path");    // 画像ファイル名取得
@@ -430,6 +431,7 @@ function sort(array_1,array_2,array_3){
 
   function get_path(){
     var img_text=mobile_check();
+    var currentLoginUser = ncmb.User.getCurrentUser();
     var get_where = ncmb.DataStore("test_table"); 
     var arr = [];
     get_where.fetchAll() .then(function(objects){ // 条件を取得
@@ -471,7 +473,7 @@ function sort(array_1,array_2,array_3){
             path[i]=a.get("path");    // 画像ファイル名取得
             dress_id[i]=a.get("dress_id"); // ドレスＩＤ取得
             var saveData_2 = ncmb.DataStore("favorite"); // いいねを判定するためにいいねデータベースを開く
-            saveData_2.fetchAll().then(function(results_2){ 
+            saveData_2.equalTo('user_id',currentLoginUser.userName).fetchAll().then(function(results_2){ 
               for(var i=0;i<results.length;i++){
                 for(var z=0;z<results_2.length;z++){
                   var res=results_2[z];
@@ -552,7 +554,7 @@ function sort(array_1,array_2,array_3){
             path[i]=a.get("path");    
             dress_id[i]=a.get("dress_id");
             var saveData_2 = ncmb.DataStore("favorite");
-            saveData_2.fetchAll().then(function(results_2){ // いいね判定
+            saveData_2.equalTo('user_id',currentLoginUser.userName).fetchAll().then(function(results_2){ // いいね判定
               for(var i=0;i<results.length;i++){
                 for(var z=0;z<results_2.length;z++){
                   var res=results_2[z];
@@ -669,6 +671,7 @@ function sort(array_1,array_2,array_3){
  
   //いいね
   $("body").on('click','.heart_enp',function(){
+    var currentLoginUser = ncmb.User.getCurrentUser();
     var element_id=$(this).attr('id'); // いいねを押した要素のidを取得
     $("#"+element_id).removeClass('heart_enp'); 
     $("#"+element_id).addClass('heart');
@@ -677,11 +680,12 @@ function sort(array_1,array_2,array_3){
     var int_id=parseInt(item_name_sprite[1]); //ドレスIDをintに変換
     var Favorite = ncmb.DataStore("favorite");
     var favorite = new Favorite();
-    favorite.set("user_id","test").set("path",item_name_sprite[0]).set("dress_id",int_id).save();
+    favorite.set("user_id",currentLoginUser.userName).set("path",item_name_sprite[0]).set("dress_id",int_id).save();
   });
  
   //いいね取消し
   $("body").on('click','.heart',function(){
+    var currentLoginUser = ncmb.User.getCurrentUser();
     var element_id=$(this).attr('id');
     $("#"+element_id).removeClass('heart');
     $("#"+element_id).addClass('heart_enp');
@@ -689,7 +693,9 @@ function sort(array_1,array_2,array_3){
     var item_name_sprite = item_name.split(',');
     var int_id=parseInt(item_name_sprite[1]);
     var Favorite = ncmb.DataStore("favorite");
-    Favorite.equalTo("dress_id", int_id) 
+    var subquery1 = Favorite.equalTo("user_id", currentLoginUser.userName);
+    var subquery2 = Favorite.equalTo("dress_id", int_id);
+    Favorite.or([subquery1,subquery2]) 
     .fetchAll() 
     .then(function(results){
       var object=results[0];
@@ -702,6 +708,7 @@ function sort(array_1,array_2,array_3){
   });
 
   function favorite_search(){
+    var currentLoginUser = ncmb.User.getCurrentUser();
     var favorite_path=[];
     var img_text=mobile_check();
     var favorite_test = ncmb.DataStore("favorite");
@@ -715,7 +722,7 @@ function sort(array_1,array_2,array_3){
       tab_name="favorite_tab_o_n";
     }
     favorite_test
-    .equalTo("user_id", "test")
+    .equalTo("user_id", currentLoginUser.userName)
     .fetchAll() 
     .then(function(results){
       for(var i=0;i<results.length;i++){
@@ -783,6 +790,7 @@ function sort(array_1,array_2,array_3){
     tab_name=$(this).attr("id");
     $("#"+tab_name).attr("id",tab_name+"_color");
 
+    var currentLoginUser = ncmb.User.getCurrentUser();
     var img_text=mobile_check();
     var tab_text=$(this).text();
     $('.item').remove();
@@ -796,7 +804,7 @@ function sort(array_1,array_2,array_3){
 
       if(menu_flag){
         favorite_test
-        .equalTo("user_id", "test")
+        .equalTo("user_id", currentLoginUser.userName)
         .fetchAll() 
         .then(function(results){
           var store=[];
@@ -827,7 +835,7 @@ function sort(array_1,array_2,array_3){
       }
       else{
         favorite_test
-        .equalTo("user_id", "test")
+        .equalTo("user_id", currentLoginUser.userName)
         .fetchAll() 
         .then(function(results){
           var store=[];
@@ -885,12 +893,13 @@ function sort(array_1,array_2,array_3){
 
   function all_favorite(){
     $('.item').remove();
+    var currentLoginUser = ncmb.User.getCurrentUser();
     var img_text=mobile_check();
     var favorite_path=[];
     item_count=0;
     var favorite_test = ncmb.DataStore("favorite");
     favorite_test
-    .equalTo("user_id", "test")
+    .equalTo("user_id", currentLoginUser.userName)
     .fetchAll() 
     .then(function(results){
       for(var i=0;i<results.length;i++){
@@ -1438,10 +1447,10 @@ function onRegisterBtn()
     alert("メールアドレスを正しく入力してください");
   } 
 });*/
-// //画面遷移の入力チェック
-// $("next_page_1").click(function(){
+//画面遷移の入力チェック
+$("next_page_1").click(function(){
 
-// });
+});
 
 //再入力したものとの判定
 $("#next_page_1").click(function(){
@@ -1460,22 +1469,6 @@ $("#next_page_1").click(function(){
   });
   }
 });
-
-//  $("#next_page_1").click(function(){
-//     var currentLoginUser = ncmb.User.getCurrentUser();
-//     var mail = $("#new_mailadd").val();
-//     var mailconfirm = $("#new_mailadd_test").val();
-//     var pass = $("#new_password").val();
-//     var passconfirm = $("#new_password_test").val();
-
-//     if(currentLoginUser.mailAddress===login_address && currentLoginUser.password===login_pass){
-//     $("#page_1").css("display","none");
-//     $("#page_2").css("display","block");
-//     }
-//     else{
-//        alert("入力されたアドレスまたはパスワードが違います");
-//     }
-//   });
 
 //メールアドレスのサジェスト機能
 $(function() {
