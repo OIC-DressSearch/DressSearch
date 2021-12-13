@@ -1350,40 +1350,38 @@ function onRegisterBtn()
 // $("next_page_1").click(function(){
 
 // });
-
+// いまここ！！！！！！！！！！！！！！！！！！！！！！！！！！！
 //再入力したものとの判定
 $("#next_page_1").click(function(){
   var mail = $("#new_mailadd").val();
   var mailconfirm = $("#new_mailadd_test").val();
   var pass = $("#new_password").val();
   var passconfirm = $("#new_password_test").val();
-  if (mail != mailconfirm) {
-    alert("入力したメールアドレスが一致していません");
+  if (mail == mailconfirm && pass == passconfirm) {
+    alert("遷移成功");
+    $("#page_1").css("display","none");
+    $("#page_2").css("display","block");
   }else if(pass != passconfirm){
     alert("入力したパスワードが一致していません");
   }else{
-    $("#next_page_1").click(function(){
-    $("#page_1").css("display","none");
-    $("#page_2").css("display","block");
-  });
+    alert("入力したメールアドレスが一致していません");
   }
 });
 
-//  $("#next_page_1").click(function(){
-//     var currentLoginUser = ncmb.User.getCurrentUser();
-//     var mail = $("#new_mailadd").val();
-//     var mailconfirm = $("#new_mailadd_test").val();
-//     var pass = $("#new_password").val();
-//     var passconfirm = $("#new_password_test").val();
+// //正しいパスワードが入力されているか
+// document.getElementById("regular_button").onclick = function(){
+//   var pass_regular = $("#new_password").val();    //半角英数・小文字・大文字を１文字ずつ含むパスワードだけ許可
+//   var result = pass_regular.match(/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,100}$/);
+//   //パターンに一致しなければnull
+//   if(result == null){
+//     alert("パスワードが違います。半角英数・小文字・大文字をいれたパスワードを入力してください。");
+//   }else{
+    
+//   }
+// };
 
-//     if(currentLoginUser.mailAddress===login_address && currentLoginUser.password===login_pass){
-//     $("#page_1").css("display","none");
-//     $("#page_2").css("display","block");
-//     }
-//     else{
-//        alert("入力されたアドレスまたはパスワードが違います");
-//     }
-//   });
+
+
 
 //メールアドレスのサジェスト機能
 $(function() {
