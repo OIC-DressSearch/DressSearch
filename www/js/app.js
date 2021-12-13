@@ -162,6 +162,24 @@ $(document).ready(function(){
       case "/my-page.html":
         $('#my-page_footer').css('background-color','#68c3c5');
         break;
+      case "/mail-address.html":
+        $('#my-page_footer').css('background-color','#68c3c5');
+        break;
+      case "/pass.html":
+        $('#my-page_footer').css('background-color','#68c3c5');
+        break;
+      case "/higth.html":
+        $('#my-page_footer').css('background-color','#68c3c5');
+        break;
+      case "/info.html":
+        $('#my-page_footer').css('background-color','#68c3c5');
+        break;
+      case "/logout.html":
+        $('#my-page_footer').css('background-color','#68c3c5');
+        break;
+      case "/withdrawal.html":
+        $('#my-page_footer').css('background-color','#68c3c5');
+        break;
 
     }
   }
@@ -921,12 +939,12 @@ function sort(array_1,array_2,array_3){
     var update_b=$("#update_b").val();
     var update_w=$("#update_w").val();
     var update_h=$("#update_h").val();
-    check_1=address_check(update_address,update_address_2);
-    check_2=pass_check(update_pass,update_pass_2);
-    check_3=input_check(update_higth,1);
-    check_4=input_check(update_b,2);
-    check_5=input_check(update_w,2);
-    check_6=input_check(update_h,2);
+    var check_1=address_check(update_address,update_address_2);
+    var check_2=pass_check(update_pass,update_pass_2);
+    var check_3=input_check(update_higth,1);
+    var check_4=input_check(update_b,2);
+    var check_5=input_check(update_w,2);
+    var check_6=input_check(update_h,2);
     if(check_1 && check_2 && check_3 && check_4 && check_5 && check_6 ){
       $(".display_info1").css("display","none");
       $(".display_info2").css("display","block");
@@ -1064,12 +1082,40 @@ function sort(array_1,array_2,array_3){
  
   //画面遷移
   $("#login_pass").click(function(){
-    $(".display_login").css("display","none");
-    $(".display_pass1").css("display","block");
+    var currentLoginUser = ncmb.User.getCurrentUser();
+    var login_name=$("#info_login_name").val();
+    var login_pass=$("#info_login_pass").val();
+    var pass=currentLoginUser.password;
+    var pass_rep=replace(pass,true);
+    if(currentLoginUser.userName===login_name && currentLoginUser.password===login_pass){
+      $("#my_pass").text(pass_rep);
+      $(".display_login").css("display","none");
+      $(".display_pass1").css("display","block");
+    }
+    else{
+      alert("入力されたアドレスまたはパスワードが違います");
+    }
   });
   $("#pass_button").click(function(){
-    $(".display_pass1").css("display","none");
-    $(".display_pass2").css("display","block");
+    var update_pass=$("#update_pass").val();
+    var update_pass_2=$("#update_pass_2").val();
+    var check_2=pass_check(update_pass,update_pass_2);
+    if(check_2){
+      var currentLoginUser = ncmb.User.getCurrentUser();
+    var update_pass=$("#update_pass").val();
+    currentLoginUser
+    .set("password", update_pass)
+    .update()
+    .then(function(obj) {
+      // 更新成功時
+      $(".display_pass1").css("display","none");
+      $(".display_pass2").css("display","block");
+    })
+    .catch(function(error) {
+        // 更新失敗時
+        alert("更新失敗" + error);
+    });
+    }
   });
  
 /***ここまでパスワード変更画面*****************************************************/
@@ -1078,14 +1124,50 @@ function sort(array_1,array_2,array_3){
  
   //画面遷移
   $("#login_higth").click(function(){
-    $(".display_login").css("display","none");
-    $(".display_higth1").css("display","block");
+    var currentLoginUser = ncmb.User.getCurrentUser();
+    var login_name=$("#info_login_name").val();
+    var login_pass=$("#info_login_pass").val();
+    if(currentLoginUser.userName===login_name && currentLoginUser.password===login_pass){
+      $("#my_higth").text(currentLoginUser.higth);
+      $("#my_bust").text(currentLoginUser.bust);
+      $("#my_waist").text(currentLoginUser.waist);
+      $("#my_hip").text(currentLoginUser.hips);
+      $(".display_login").css("display","none");
+      $(".display_higth1").css("display","block");
+    }
+    else{
+      alert("入力されたアドレスまたはパスワードが違います");
+    }
   });
 
   /*保存ボタン遷移*/
   $("#higth_button").click(function(){
-    $(".display_higth1").css("display","none");
-    $(".display_higth2").css("display","block");
+    var currentLoginUser = ncmb.User.getCurrentUser();
+    var update_higth=$("#update_higth").val();
+    var update_b=$("#update_b").val();
+    var update_w=$("#update_w").val();
+    var update_h=$("#update_h").val();
+    var check_3=input_check(update_higth,1);
+    var check_4=input_check(update_b,2);
+    var check_5=input_check(update_w,2);
+    var check_6=input_check(update_h,2);
+    if(check_3 && check_4 && check_5 && check_6){
+      currentLoginUser
+      .set("higth",update_higth)
+      .set("bust",update_b)
+      .set("waist", update_w)
+      .set("hips",update_h)
+      .update()
+      .then(function(obj) {
+        // 更新成功時
+        $(".display_higth1").css("display","none");
+        $(".display_higth2").css("display","block");
+      })
+      .catch(function(error) {
+          // 更新失敗時
+          alert("更新失敗" + error);
+      });
+    }
   });
 
  /***ここまで身長/BWH変更画面******************************************/
@@ -1095,37 +1177,47 @@ function sort(array_1,array_2,array_3){
 
   //画面遷移
   $("#login_mail").click(function(){
-  $(".display_login").css("display","none");
-  $(".display_mail1").css("display","block");
+    var currentLoginUser = ncmb.User.getCurrentUser();
+    var login_name=$("#info_login_name").val();
+    var login_pass=$("#info_login_pass").val();
+    var address=currentLoginUser.mailAddress;
+    var address_rep=replace(address,false);
+    if(currentLoginUser.userName===login_name && currentLoginUser.password===login_pass){
+      $("#my_mailaddress").text(address_rep);
+      $(".display_login").css("display","none");
+      $(".display_mail1").css("display","block");
+    }
+    else{
+      alert("入力されたアドレスまたはパスワードが違います");
+    }
   });
-  $("#mail_update").click(function(){
-  $(".display_mail1").css("display","none");
-  $(".display_mail2").css("display","block");
-  });
+
  
   /*パスワード認証*/
   $("#mail-button").click(function(){
-  var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
-    var address = $("#new_address").val();
-    var address_check= $("#check_address").val();
-    if(address!=address_check){
-      alert("再入力されたアドレスが違います");
+    var currentLoginUser = ncmb.User.getCurrentUser();
+    var update_address=$("#new_mail").val();
+    var update_address_2=$("#check_mail").val();
+    var check_1=address_check(update_address,update_address_2);
+    if(check_1){
+      currentLoginUser
+      .set("mailAddress",update_address )
+      .update()
+      .then(function(obj) {
+        // 更新成功時
+        $(".display_mail1").css("display","none");
+        $(".display_mail2").css("display","block");
+      })
+      .catch(function(error) {
+          // 更新失敗時
+        alert("更新失敗" + error);
+      });
     }
-    else{
-    if(reg.test(address)){
-      $("#mail-button").click(function(){
-    $(".change").css("display","none");
-  $(".ok").css("display","block");
-  });
-    }
-    else{
-      alert("入力されたメールアドレスが正しくないです");
-    }
-  }
   });
  
 /***ここまでメールアドレス画面*************************************/
- 
+
+
 /***logout画面*****************************************************/
 
   //画面遷移
@@ -1355,6 +1447,14 @@ function onRegisterBtn()
 $("#next_page_1").click(function(){
   var mail = $("#new_mailadd").val();
   var mailconfirm = $("#new_mailadd_test").val();
+  var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/;
+  if (!reg.test(mail) || !reg.test(mailconfirm)) {
+    alert("メールアドレスを正しく入力してください");
+  } 
+  if (mail != mailconfirm) {
+    alert("入力したメールアドレスが一致していません");
+  } 
+
   var pass = $("#new_password").val();
   var passconfirm = $("#new_password_test").val();
   if (mail != mailconfirm) {
