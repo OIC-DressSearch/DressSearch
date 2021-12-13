@@ -1260,8 +1260,8 @@ function onRegisterBtn()
 
                          // 詳細ページへ移動
                         //  $.mobile.changePage('#DetailPage');
-                        //ここに画面遷移するコードを書く
-                        location.href='search.html';
+                        //新規登録後おすすめに遷移
+                        location.href='recommend.html';
                      })
 
                      .catch(function(error) {
