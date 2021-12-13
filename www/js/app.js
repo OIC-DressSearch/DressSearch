@@ -1346,10 +1346,10 @@ function onRegisterBtn()
     alert("メールアドレスを正しく入力してください");
   } 
 });*/
-//画面遷移の入力チェック
-$("next_page_1").click(function(){
+// //画面遷移の入力チェック
+// $("next_page_1").click(function(){
 
-});
+// });
 
 //再入力したものとの判定
 $("#next_page_1").click(function(){
@@ -1368,6 +1368,22 @@ $("#next_page_1").click(function(){
   });
   }
 });
+
+//  $("#next_page_1").click(function(){
+//     var currentLoginUser = ncmb.User.getCurrentUser();
+//     var mail = $("#new_mailadd").val();
+//     var mailconfirm = $("#new_mailadd_test").val();
+//     var pass = $("#new_password").val();
+//     var passconfirm = $("#new_password_test").val();
+
+//     if(currentLoginUser.mailAddress===login_address && currentLoginUser.password===login_pass){
+//     $("#page_1").css("display","none");
+//     $("#page_2").css("display","block");
+//     }
+//     else{
+//        alert("入力されたアドレスまたはパスワードが違います");
+//     }
+//   });
 
 //メールアドレスのサジェスト機能
 $(function() {
