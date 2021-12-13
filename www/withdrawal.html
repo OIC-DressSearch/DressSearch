@@ -16,41 +16,46 @@
   </head>
   <body>
     <!-- ヘッダー -->
-    <header class="hed">
+    <header class="hed_re">
       <a href="my-page.html" class="link" id="return">≪</a>
-      <p id="title_6">退会をご希望の方</p>      
+      <p id="title_re">退会をご希望の方</p>      
     </header>
 
     <!-- メイン -->
-    <div class="display_withdrawal1">
-      <div id="my_henko">本当に退会を希望しますか？</div>
-      <button id="withdrawal-button1" class="push-button">退会する</button>
-      <a href="my-page.html">
-        <button id="withdrawal-button2" class="push-button">退会をやめる</button>
-      </a>
-    </div>
-
-    <div class="display_withlogin" id="with_login">
-      <div id="my_mail">
-        <div id="my_title">メールアドレス</div>
-        <input type="text" id="my_textbox"></input>
+      <!--1-->
+      <div class="display_withdrawal1">
+        <div id="my_henko">本当に退会を希望しますか？</div>
+        <button id="withdrawal-button1" class="push-button">退会する</button>
+        <a href="my-page.html">
+          <button id="withdrawal-button2" class="push-button">退会をやめる</button>
+        </a>
       </div>
-      <div class="my_pass">
-        <div id="my_title">パスワード</div>
-        <input type="password" id="my_textbox" placeholder="" maxlength="15"></input>
-      </div>
-      <button id="login_with" class="push-button">ログイン</button> 
-    </div>
 
-    <div class="display_withdrawal2">
-      <div id="my_henko">退会処理を行います</div>
-      <a href="login.html">
-        <button id="withdrawal-button1" class="push-button">OK</button>
-      </a>
-      <a href="my-page.html">
-        <button id="withdrawal-button2" class="push-button">キャンセル</button>
-      </a>
-    </div>
+      <!--ログイン-->
+      <div class="display_withlogin">
+        <div class="display_withlogin" id="with_login">
+          <div id="my_mail">
+            <div class="my_title">メールアドレス</div>
+            <input type="text" id="my_textbox"></input>
+          </div>
+          <div class="my_pass">
+            <div class="my_title">パスワード</div>
+            <input type="password" id="my_textbox" placeholder="" maxlength="15"></input>
+          </div>
+          <button id="login_with" class="push-button">ログイン</button> 
+        </div>
+      </div>
+
+      <!--2-->
+      <div class="display_withdrawal2">
+        <div id="my_henko">退会処理を行います</div>
+        <a href="login.html">
+          <button id="withdrawal-button1" class="push-button">OK</button>
+        </a>
+        <a href="my-page.html">
+          <button id="withdrawal-button2" class="push-button">キャンセル</button>
+        </a>
+      </div>
 
     <!--フッター-->
     <footer>

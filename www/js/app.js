@@ -847,7 +847,7 @@ function sort(array_1,array_2,array_3){
       $("#"+tab_name+"_color").attr("id",tab_name);
       tab_name="favorite_tab_o_n";
       $("#"+tab_name).attr("id",tab_name+"_color");
-      $("#change_push").text("式場");
+      $("#change_push").text("式場を表示");
       $('#dress_store_n').attr('id', 'dress_store_tab');
       $('#rental_shop_tab').attr('id', 'rental_shop_n');
       all_favorite();
@@ -857,7 +857,7 @@ function sort(array_1,array_2,array_3){
       $("#"+tab_name+"_color").attr("id",tab_name);
       tab_name="favorite_tab_0_n";
       $("#"+tab_name).attr("id",tab_name+"_color");
-      $("#change_push").text("レンタル");
+      $("#change_push").text("レンタルを表示");
       $('#dress_store_tab').attr('id', 'dress_store_n');
       $('#rental_shop_n').attr('id', 'rental_shop_tab');
       all_favorite();
@@ -991,12 +991,12 @@ function sort(array_1,array_2,array_3){
 
   //画面遷移
   $("#withdrawal-button1").click(function(){
-  $(".display_withdrawal1").css("display","none");
-  $(".display_withlogin").css("display","block");
+    $(".display_withdrawal1").css("display","none");
+    $(".display_withlogin").css("display","block");
   });
   $("#login_with").click(function(){
-  $(".display_withlogin").css("display","none");
-  $(".display_withdrawal2").css("display","block");
+    $(".display_withlogin").css("display","none");
+    $(".display_withdrawal2").css("display","block");
   });
  
 /***ここまで退会画面*****************************************************/
@@ -1084,6 +1084,26 @@ function logout(){
 
   /**/var currentLoginUser; //現在ログイン中ユーザー
 
+  function finalcheckBtn()
+  {
+    //個人情報１の入力フォームの取得
+    var username = $("#new_username").val();
+    var mailaddress = $("#new_mailadd").val();
+    var password = $("#new_password").val();
+    //個人情報２の入力フォームの取得
+    var higth = $("#my_higthbox").val();
+    var bmw_B = $("#bmw_b").val();
+    var bmw_W = $("#bmw_w").val();
+    var bmw_H = $("#bmw_h").val(); 
+    $(".usernameSet").text(username);
+    $(".mailaddSet").text(mailaddress);
+    $(".passwordSet").text(password);
+    $(".higthSet").text(higth);
+    $(".bmw_bSet").text(bmw_B);
+    $(".bmw_wSet").text(bmw_W);
+    $(".bmw_hSet").text(bmw_H);
+  }
+
 //会員登録
 function onRegisterBtn()
 {
@@ -1118,7 +1138,7 @@ function onRegisterBtn()
                          currentLoginUser = ncmb.User.getCurrentUser();
                          // フィールドを空に
                          $("#new_username").val("");
-                         $("new_mailadd").val("");
+                         $("#new_mailadd").val("");
                          $("#new_password").val("");
 
                          // 詳細ページへ移動
@@ -1133,7 +1153,7 @@ function onRegisterBtn()
                          alert("【ID / PW 認証】ログインに失敗しました: " + error);
                          // フィールドを空に
                           $("#new_username").val("");
-                          $("new_mailadd").val("");
+                          $("#new_mailadd").val("");
                           $("#new_password").val("");
                         //  // loading の表示
                         //  $.mobile.loading('hide');
@@ -1144,7 +1164,7 @@ function onRegisterBtn()
             alert("【ID / PW 認証】新規登録に失敗しました：" + error);
             // フィールドを空に
             $("#new_username").val("");
-            $("new_mailadd").val("");
+            $("#new_mailadd").val("");
             $("#new_password").val("");
             // // loading の表示
             // $.mobile.loading('hide');
@@ -1166,7 +1186,7 @@ $("#next_page_1").click(function(){
   var mail = $("#new_mailadd").val();
   var mailconfirm = $("#new_mailadd_test").val();
   var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/;
-  if (!reg.test(mail) || !reg.test(mailconfirm) {
+  if (!reg.test(mail) || !reg.test(mailconfirm)) {
     alert("メールアドレスを正しく入力してください");
   } 
   if (mail != mailconfirm) {
@@ -1230,4 +1250,23 @@ $(function() {
     return false;
 }
         });
+});
+
+//ユーザー情報の変更
+$("#ok-button").click(function(){
+  var currentUser = ncmb.User.getCurrentUser();
+  var Change_name = $("#Change_name").val();
+  var Change_name = $("#Change_name").val();
+  currentUser
+      .set("userNamet", Change_name)
+      .set("gender", gender)
+      .update()
+      .then(function(obj) {
+          // 更新成功時
+          alert("更新成功");
+      })
+      .catch(function(error) {
+          // 更新失敗時
+          alert("更新失敗" + error);
+  })
 });
