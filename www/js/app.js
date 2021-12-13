@@ -527,7 +527,8 @@ function sort(array_1,array_2,array_3){
         }
         var subquery14 = get_data.equalTo("dress_size", where[13][0]);
 
-        get_data.or([subquery1, subquery2,subquery3[0],subquery3[1],subquery3[2],subquery4, subquery5,subquery6[0],subquery6[1],subquery6[2],subquery6[3],subquery6[4],subquery6[5],subquery7[0],subquery7[1],subquery7[2],subquery7[3],subquery7[4],subquery7[5],subquery7[6],subquery7[7],subquery7[8],subquery7[9],subquery7[10],subquery7[11],subquery7[12],subquery7[13],subquery7[14],subquery8[0],subquery8[1],subquery8[2],subquery8[3],subquery8[4],subquery8[5],subquery8[6],subquery8[7],subquery8[8],subquery8[9],subquery8[10],subquery8[11],subquery8[12],subquery8[13],subquery8[14],subquery9[0],subquery9[1],subquery9[2],subquery9[3],subquery9[4],subquery9[5],subquery9[6],subquery9[7],subquery9[8],subquery9[9],subquery9[10],subquery10[0],subquery10[1],subquery10[2],subquery10[3],subquery10[4],subquery10[5],subquery10[6],subquery10[7],subquery10[8],subquery10[9],subquery11[0],subquery11[1],subquery11[2],subquery11[3],subquery11[4],subquery11[5],subquery11[6],subquery11[7],subquery11[8],subquery12[0],subquery12[1],subquery12[2],subquery12[3],subquery12[4],subquery12[5],subquery12[6],subquery12[7],subquery13[0],subquery13[1],subquery13[2],subquery13[3],subquery13[4],subquery14]).fetchAll() .then(function(results){     // ドレスの画像取得
+
+        get_data.or([subquery1, subquery2,subquery3[0],subquery3[1],subquery3[2],subquery4, subquery5,subquery6[0],subquery6[1],subquery6[2],subquery6[3],subquery6[4],subquery6[5],subquery7[0],subquery7[1],subquery7[2],subquery7[3],subquery7[4],subquery7[5],subquery7[6],subquery7[7],subquery7[8],subquery7[9],subquery7[10],subquery7[11],subquery7[12],subquery7[13],subquery7[14],subquery8[0],subquery8[1],subquery8[2],subquery8[3],subquery8[4],subquery8[5],subquery8[6],subquery8[7],subquery8[8],subquery8[9],subquery8[10],subquery8[11],subquery8[12],subquery8[13],subquery8[14],subquery9[0],subquery9[1],subquery9[2],subquery9[3],subquery9[4],subquery9[5],subquery9[6],subquery9[7],subquery9[8],subquery9[9],subquery10[0],subquery10[1],subquery10[2],subquery10[3],subquery10[4],subquery10[5],subquery10[6],subquery10[7],subquery10[8],subquery10[9],subquery11[0],subquery11[1],subquery11[2],subquery11[3],subquery11[4],subquery11[5],subquery11[6],subquery11[7],subquery11[8],subquery12[0],subquery12[1],subquery12[2],subquery12[3],subquery12[4],subquery12[5],subquery12[6],subquery12[7],subquery13[0],subquery13[1],subquery13[2],subquery13[3],subquery13[4],subquery14]).fetchAll() .then(function(results){     // ドレスの画像取得
           for(var i=0;i<results.length;i++){ // ここからの処理は上に同じ
             var a=results[i]; 
             path[i]=a.get("path");    
@@ -900,25 +901,33 @@ function sort(array_1,array_2,array_3){
  
   //画面遷移
   $("#login_info").click(function(){
-     var currentLoginUser = ncmb.User.getCurrentUser();
-    //  var login_address=$("#info_login_address").val();
-    //  var login_pass=$("#info_login_pass").val();
-    //  if(currentLoginUser.mailAddress===login_address && currentLoginUser.password===login_pass){
+    var currentLoginUser = ncmb.User.getCurrentUser();
+    var login_name=$("#info_login_name").val();
+    var login_pass=$("#info_login_pass").val();
+    if(currentLoginUser.userName===login_name && currentLoginUser.password===login_pass){
       $(".display_login").css("display","none");
       $(".display_info1").css("display","block");
-     }
-    //  else{
-    //    alert("入力されたアドレスまたはパスワードが違います");
-    //  }}
-    );
+    }
+    else{
+      alert("入力されたアドレスまたはパスワードが違います");
+    }
+  });
   $("#info_button").click(function(){
     var update_address=$("#update_address").val();
     var update_address_2=$("#update_address_2").val();
     var update_pass=$("#update_pass").val();
     var update_pass_2=$("#update_pass_2").val();
+    var update_higth=$("#update_higth").val();
+    var update_b=$("#update_b").val();
+    var update_w=$("#update_w").val();
+    var update_h=$("#update_h").val();
     check_1=address_check(update_address,update_address_2);
     check_2=pass_check(update_pass,update_pass_2);
-    if(check_1 && check_2){
+    check_3=input_check(update_higth,1);
+    check_4=input_check(update_b,2);
+    check_5=input_check(update_w,2);
+    check_6=input_check(update_h,2);
+    if(check_1 && check_2 && check_3 && check_4 && check_5 && check_6 ){
       $(".display_info1").css("display","none");
       $(".display_info2").css("display","block");
     }
@@ -997,6 +1006,30 @@ function sort(array_1,array_2,array_3){
       else{
         alert("入力されたパスワードが正しくないです");
       }
+    }
+  }
+
+  function input_check(input,f){
+    if(isNaN(input)){
+      alert("身長、BWHは数字で入力してください");
+    }
+    if(f===1){
+      if(input>300){
+        alert("身長の数値が正しくありません");
+      }
+      else{
+        return true;
+      }
+    }
+    else{
+      if(input>200){
+        alert("BWHの数値が正しくありません");
+      }
+      else{
+        return true;
+      }
+    
+          
     }
   }
 
@@ -1110,11 +1143,28 @@ function sort(array_1,array_2,array_3){
     $(".display_withdrawal1").css("display","none");
     $(".display_withlogin").css("display","block");
   });
-  $("#login_with").click(function(){
-    $(".display_withlogin").css("display","none");
-    $(".display_withdrawal2").css("display","block");
+  $("#login_withdra").click(function(){
+     var currentLoginUser = ncmb.User.getCurrentUser();
+     var login_name=$("#user_login").val();
+     var login_pass=$("#pass_login").val();
+     if(currentLoginUser.userName===login_name && currentLoginUser.password===login_pass){
+      $(".display_withlogin").css("display","none");
+      $(".display_withdrawal2").css("display","block");
+     }
+     else{
+       alert("入力されたアドレスまたはパスワードが違います");
+     }
+
   });
- 
+
+  $("#withdrawal-button3").click(function(){
+    var user = ncmb.User.getCurrentUser();
+    user.delete();
+    setTimeout(function(){
+        window.location.href = "login.html"; 
+    },500);
+  });
+
 /***ここまで退会画面*****************************************************/
  
  
