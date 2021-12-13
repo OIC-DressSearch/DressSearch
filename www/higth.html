@@ -17,21 +17,21 @@
   <body>
     <!-- ヘッダー -->
     <header class="hed_re">
-      <a href="my-page.html" class="link" id="return">≪</a>
-      <p id="title_re">身長/BWH変更</p>      
+      <a href="my-page.html" class="link" id="return_higth">≪</a>
+      <p id="title_higth">身長/BWH変更</p>      
     </header>
 
     <!-- メイン -->
       <!--ログイン-->
       <div class="display_login">
         <div id="my_mail">
-          <div class="my_title">メールアドレス</div>
-          <input type="text" id="my_textbox"></input>
-        </div>
-        <div class="my_pass">
-          <div class="my_title">パスワード</div>
-          <input type="password" id="my_textbox" placeholder=""></input>
-        </div>
+        <div id="my_user" class="my_title">ユーザー名</div>
+        <input type="text" id="info_login_name" class="my_textbox"></input>
+      </div>
+      <div class="my_pass">
+        <div id="my_pass" class="my_title">パスワード</div>
+        <input type="password" id="info_login_pass" class="my_textbox" placeholder="" maxlength="15"></input>
+      </div>
         <button id="login_higth" class="push-button">ログイン</button>  
       </div>
 
@@ -39,24 +39,24 @@
       <div class="display_higth1">
         <div class="now">
           <p class="my_title">◎登録済みの身長</p>
-          <p class="my_text">156cm</p>
+          <p class="my_text" id="my_higth"></p>
           <p class="my_title">◎登録済みのBWH</p>
           <div class="bwh_text">
-            <p class="my_text1">85</p>
-            <p class="my_text1">:　60</p>
-            <p class="my_text1">:　80</p>
+            <p class="my_text1" id="my_bust"></p>
+            <p class="my_text1" id="my_waist"></p>
+            <p class="my_text1" id="my_hip"></p>
           </div>
         </div>
         <div class="new"> 
           <p class="my_title">◉身長の変更</p>
-          <input type="text" id="my_higthbox">
+          <input type="text" id="update_higth" class="my_textbox">
           <p class="my_title">◉BWHの変更</p>
             <p class="my_text1">B：</p>
-            <input type="text" id="bwh_textbox">
+            <input type="text" class="bwh_textbox" id="update_b">
             <p class="my_text1">W：</p>
-            <input type="text" id="bwh_textbox">          
+            <input type="text" class="bwh_textbox" id="update_w">          
             <p class="my_text1">H：</p>
-            <input type="text" id="bwh_textbox">
+            <input type="text" class="bwh_textbox" id="update_h">
         </div>
         <button class="push-button" id="higth_button">保存</button>
       </div>
@@ -70,19 +70,19 @@
     <!--フッター-->
     <footer>
       <ul class="bottom-menu">
-        <li>
+        <li id="recommend_footer">
           <a href="recommend.html">
           <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/star.png"></span></a>
         </li>
-        <li>
+        <li id="search_footer">
           <a href="search.html">
           <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/search.png"</span></a>
         </li>
-        <li>
+        <li id="favorite_footer">
           <a href="favorite.html">
           <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/heart.png"></span></a>
         </li>
-        <li>
+        <li id="my-page_footer">
           <a href="my-page.html">
           <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/my-page.png"></span></a>
         </li>

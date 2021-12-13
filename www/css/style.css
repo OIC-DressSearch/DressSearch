@@ -215,9 +215,21 @@
 /***********ここから新規登録のCSS********************************/
 
   /*ヘッダー*/
-  #title_sinki{
+  #title_sign{
+    float: left;
+    margin-top: 10%;
     margin-left: 25%;
+    margin-bottom:  2%;
   }
+  /* ≪ */
+  #return_sign{
+    font-size: 23px;
+    color: #68c3c5;
+    float: left;
+    padding-top: 10%;
+    margin-left: 8%;
+  }
+
   /*第二ヘッダー*/
   #head_tabbox{
     margin-top: 5%;
@@ -307,6 +319,10 @@
     font-size:18px;
     border-radius:5px;
   }
+  #passinfo{
+    margin-left: 5%;
+    font-size: 12px;
+  }
 
   /*２のレイアウト*/
   #sinki_higth{
@@ -314,9 +330,32 @@
     padding-bottom:  5%;
     border-bottom: 1px dashed #ddd;
   }
-  #sinki_bwh{
+  #sinki2_bwh{
     margin-top: 3%;
     padding-bottom:  5%;
+  }
+
+  /*3*/
+  .display_sinki3{
+    margin-top: 5%;
+    margin-left: 3%;
+  }
+  #sinki_title3{
+    font-size: 15px;
+    margin-top: 5%;
+    
+  }
+  #sinki_text3{
+    margin-left: 5%;
+    margin-bottom: 6%;
+    font-size: 17px;
+  }
+  #sinki_bwh{
+    font-size: 17px;
+    margin-top: -5%;
+    display: inline-block;
+    margin-right: 8%;
+    margin-left: 5%;
   }
 
 /***********ここまで新規登録のCSS********************************/
@@ -997,7 +1036,7 @@
   /*ヘッダー*/
   #title_mail{
     float: left;
-    margin-top: 3%;
+    margin-top: 4%;
     margin-left: 12%;
     margin-bottom: 3%;
   }
@@ -1006,7 +1045,7 @@
     font-size: 23px;
     color: #68c3c5;
     float: left;
-    padding-top: 3%;
+    padding-top: 4%;
     margin-left: 8%;
   }
 
@@ -1044,11 +1083,21 @@
 
 /***********ここからパスワード画面のCSS*********************/
 
-  /*戻るボタンありヘッダー***/
-    #title_3{
-      font-size: 21px;
-      margin-left: 16%;
-    }
+  /*ヘッダー*/
+  #title_pass{
+    float: left;
+    margin-top: 10%;
+    margin-left: 21%;
+    margin-bottom:  2%;
+  }
+  /* ≪ */
+  #return_pass{
+    font-size: 23px;
+    color: #68c3c5;
+    float: left;
+    padding-top: 10%;
+    margin-left: 8%;
+  }
 
     a {
       display: block;
@@ -1072,11 +1121,22 @@
 
 /***********ここから身長/BWHのCSS**************************/
 
-  /*戻るボタンありヘッダー***/
-  #title_4{
-    font-size: 21px;
-    margin-left: 17%;
+  /*ヘッダー*/
+  #title_higth{
+    float: left;
+    margin-top: 10%;
+    margin-left: 20%;
+    margin-bottom:  2%;
   }
+  /* ≪ */
+  #return_higth{
+    font-size: 23px;
+    color: #68c3c5;
+    float: left;
+    padding-top: 10%;
+    margin-left: 8%;
+  }
+
   .display_higth1{
     display: none;
     margin-top: 35%;
@@ -1098,7 +1158,7 @@
     margin-left: 1%;
     font-size: 18px;
   }
-  #my_higthbox{
+  .my_higthbox{
       margin-left: 8%;
       font-size: 18px;
       border-radius:5px;
@@ -1111,10 +1171,20 @@
 
 /***********ここからログアウトのCSS*************************/
 
-  /*戻るボタンありヘッダー***/
-  #title_5{
-    font-size: 21px;
-    margin-left: 20%;
+  /*ヘッダー*/
+  #title_logout{
+    float: left;
+    margin-top: 10%;
+    margin-left: 22%;
+    margin-bottom:  2%;
+  }
+  /* ≪ */
+  #return_logout{
+    font-size: 23px;
+    color: #68c3c5;
+    float: left;
+    padding-top: 10%;
+    margin-left: 8%;
   }
 
   #log_text{
@@ -1142,11 +1212,22 @@
 
 /***********ここから退会のCSS********************************/
 
-  /*戻るボタンありヘッダー***/
-    #title_6{
-      font-size: 21px;
-      margin-left: 13%;
-    }
+  /*ヘッダー*/
+  #title_with{
+    float: left;
+    margin-top: 10%;
+    margin-left: 16%;
+    margin-bottom:  2%;
+  }
+  /* ≪ */
+  #return_with{
+    font-size: 23px;
+    color: #68c3c5;
+    float: left;
+    padding-top: 10%;
+    margin-left: 8%;
+  }
+
   /*メール*/
     #my_mail{
       margin-top: 10%;
@@ -1163,6 +1244,7 @@
   }
   .display_withdrawal1{
     margin-top: 35%;
+    margin-bottom: 55%;
   }
   .display_withlogin{
     display: none;
