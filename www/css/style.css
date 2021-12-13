@@ -945,9 +945,13 @@
     margin-bottom: 51%;
   }
 
-  .now{
-    margin-top: 10%;
+  #now{
+    margin-top: 5%;
     margin-bottom: 15%;
+  }
+  #new{
+    margin-top: 10%;
+    margin-bottom: 2%;
   }
     .my_title{
       margin-left: 5%;
@@ -959,7 +963,16 @@
     }
     .my_text1{
       display: inline-block;
+      max-width: 100%;
       margin-left: 5%;
+      margin-right: 5%;
+      font-size: 18px;
+    }
+    .my_text2{
+      display: inline-block;
+      max-width: 100%;
+      margin-left: -2%;
+      margin-right: 5%;
       font-size: 18px;
     }
     .my_textbox{
@@ -1016,17 +1029,17 @@
   #info_name{
     margin-top: 5%;
     padding-bottom:  5%;
-    border-bottom: 1px dashed #ddd;
+    border-bottom: 2px dashed #68c3c5;
   }
   #info_mail{
     margin-top: 5%;
     padding-bottom:  5%;
-    border-bottom: 1px dashed #ddd;
+    border-bottom: 2px dashed #68c3c5;
   }
   #info_pass{
     margin-top: 5%;
     padding-bottom:  5%;
-    border-bottom: 1px dashed #ddd;
+    border-bottom: 2px dashed #68c3c5;
   }
 
 /***********ここまで会員情報のCSS***************************/
@@ -1146,7 +1159,7 @@
     margin-top: 35%;
   }
   .bwh_textbox{
-    margin-left: 0%;
+    margin-left: -3%;
     font-size: 18px;
     border-radius:5px;
     width: 8%;
@@ -1158,11 +1171,16 @@
     margin-left: 1%;
     font-size: 18px;
   }
-  .my_higthbox{
+  #bwh_text{
+    
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+  #my_higthbox{
       margin-left: 8%;
       font-size: 18px;
       border-radius:5px;
-      width: 30%;
+      width: 20%;
       height: 25px;
       text-align: right;
   }
