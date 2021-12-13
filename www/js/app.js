@@ -1456,6 +1456,14 @@ $("next_page_1").click(function(){
 $("#next_page_1").click(function(){
   var mail = $("#new_mailadd").val();
   var mailconfirm = $("#new_mailadd_test").val();
+  var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/;
+  if (!reg.test(mail) || !reg.test(mailconfirm)) {
+    alert("メールアドレスを正しく入力してください");
+  } 
+  if (mail != mailconfirm) {
+    alert("入力したメールアドレスが一致していません");
+  } 
+
   var pass = $("#new_password").val();
   var passconfirm = $("#new_password_test").val();
   if (mail != mailconfirm) {
