@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+      <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+      <script src="lib/jquery/jquery-3.5.1.min.js"></script>
+      <script src="components/loader.js"></script>
+      <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+      <link rel="stylesheet" href="components/loader.css">
+      <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+      <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+      <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+    <!-- ヘッダー -->
+    <header class="hed_re" id="hed_info">
+      <a href="admin_my-page.html" class="link" id="return_info">≪</a>
+      <p id="title_info">管理者情報変更</p>      
+    </header>
+
+    <!--メイン-->
+      <!--ログイン-->
+      <div class="display_login">
+        <div id="my_mail">
+          <div class="my_title">ユーザ名</div>
+          <input type="text" class="my_textbox" id="info_login_name"></input>
+        </div>
+        <div class="my_pass">
+          <div class="my_title">パスワード</div>
+          <input type="password" class="my_textbox" id="info_login_pass" placeholder="" maxlength="15"></input>
+        </div>
+        <button id="login_info" class="push-button">ログイン</button>  
+      </div>
+
+    <!--1-->
+    <div class="display_info1">
+      <div id="info_name">
+        <div id="now">
+          <p  class="my_title">◎登録済みのユーザー名</p>
+          <p  class="my_text" id="my_name"></p>
+        </div>
+        <div id="new">
+          <p  class="my_title">◉変更するユーザー名</p>
+          <input type="text" class="my_textbox" id="update_name" >
+        </div>
+      </div>
+      <div id="info_mail">
+        <div id="now">
+          <p  class="my_title">◎登録済みのメールアドレス</p>
+          <p  class="my_text" id="my_mailaddress"></p>
+        </div>
+        <div id="new">
+          <p class="my_title">◉新規メールアドレス</p>
+          <input type="text" class="my_textbox"  id="update_address"></input>
+          <p class="my_title">◉メールアドレス再入力</p>
+          <input type="text" class="my_textbox" id="update_address_2" ></input>
+        </div>
+      </div>
+      <div id="info_pass">
+        <div id="now">
+          <p class="my_title">◎登録済みのパスワード</p>
+          <p class="my_text" id="my_pass"></p>
+        </div>
+        <div id="new">
+          <p class="my_title">◉新規パスワード</p>
+          <input type="password" name="pass" class="my_textbox" id="update_pass">
+          <p class="my_title">◉パスワード再入力</p>
+          <input type="password" name="pass" class="my_textbox" id="update_pass_2">
+        </div>
+      </div>      
+        <button id="info_button" class="push-button">保存</button>
+      </div>
+      
+      <!--2-->
+      <div class="display_info2">
+        <div id="my_henko">こちらの内容で登録してもよろしいですか？</div>
+        <button id="info-update" class="push-button" style="margin-top:60px;">OK</button>
+      </div>
+    
+    <!-- フッター -->
+    <footer>
+        <ul class="bottom-menu">
+          <li id="recommend_footer">
+            <a href="recommend.html">
+            <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/star.png"></span></a>
+          </li>
+          <li id="search_footer">
+            <a href="search.html">
+            <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/search.png"</span></a>
+          </li>
+          <li id="favorite_fotoer">
+            <a href="favorite.html">
+            <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/heart.png"></span></a>
+          </li>
+          <li id="my-page_footer">
+            <a href="admin_my-page.html">
+            <i class="blogicon-home"></i><br><span class="mini-text"><img src="image/my-page.png"></span></a>
+          </li>
+        </ul>
+      </footer>
+    <script src="js/app.js"></script>
+  </body>
+</html>
