@@ -1041,7 +1041,6 @@
   #info_pass{
     margin-top: 5%;
     padding-bottom:  5%;
-    border-bottom: 2px dashed #68c3c5;
   }
 
 /***********ここまで会員情報のCSS***************************/
@@ -1337,6 +1336,15 @@
   .display_admin_emp2{
     display: none;
     margin-top: 35%;
+  }
+
+  #admin_emp_now{
+    margin-top: 5%;
+    padding-bottom:  5%;
+    border-bottom: 2px dashed #68c3c5;
+  }
+  #admin_emp_new{
+    margin-bottom: 10%;
   }
 
   #emp_tuikabtn{
