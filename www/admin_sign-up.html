@@ -17,7 +17,7 @@
     <!-- ヘッダー -->
     <header class="hed_re">
       <a href="login.html" class="link" id="return_sign">≪</a>
-      <p id="title_sign">管理者用新規登録</p>      
+      <p id="title_admin_sign">管理者用新規登録</p>      
     </header>
     
     <!-- １ -->
@@ -46,12 +46,7 @@
             <div class="sinki_title">
                 <label for="new_mailadd" id="sinki_title" class="sinki1">メールアドレス</label>
                 <label id="hissu" class="sinki1">必須</label><br>
-  <<<<<<< HEAD
-                <input type="email" id="new_mailadd" class="domain-autocomplete"></input><br>
-                <input type="email" id="new_mailadd" class="my_textbox" required></input><br>
-  =======
                 <input type="email" id="new_mailadd" class="my_textbox"></input><br>
-  >>>>>>> 2f220275e335cbab6b8f1cc7951f86cc7c33cbf7
             </div>
             <div class="sinki_title">
                 <label for="new_mailadd_test" id="sinki_title" class="sinki1">メールアドレス再入力</label>
@@ -79,7 +74,7 @@
         </form>
       </div>
     </div>
-        <button id="next_page_1" class="next_button">次へ</button> 
+        
 
     <!-- ２ -->
     <div id="page_2">
@@ -95,6 +90,8 @@
       </div>
       <!-- メイン -->
       <div class="display_admin_sinki2">
+        <button type="submit" id="next_page_2" class="next_button">次へ</button>
+        <button id="back_page_2" class="next_button">戻る</button> 
       </div>
     </div>
 
@@ -115,7 +112,7 @@
         <div id="sinki_title3" class="sinki1">ユーザー名</div>
         <div id="sinki_text3"><span class="usernameSet"></div>
         <div id="sinki_title3" class="sinki1">メールアドレス</div>
-        <div id="sinki_text3"><span class="mailaddSet">></div>
+        <div id="sinki_text3"><span class="mailaddSet"></div>
         <div id="sinki_title3" class="sinki1">パスワード</div>
         <div id="sinki_text3"><span class="passwordSet"></div>
       </div>

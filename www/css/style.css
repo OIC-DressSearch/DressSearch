@@ -1289,6 +1289,34 @@
 /*************************************************************/
 /***管理者側ＣＳＳ********************************************/
 
+/***********ここから新規登録***************************/
+/*ヘッダー*/
+  #title_admin_sign{
+    float: left;
+    margin-top: 10%;
+    margin-left: 15%;
+    margin-bottom:  2%;
+  }
+  
+  /*第二ヘッダー*/
+  #head_tabbox{
+    margin-top: 5%;
+    font-size: 15px;
+    color: #000000;
+  }
+  table th{
+    text-align: center;
+    width: 100px;
+  }
+  table{
+    margin-left: 5%;
+  }
+  .current{
+    background-color: #68c3c5;
+  }
+
+  #display_admin_
+/***********ここまで新規登録***************************/
 /***********ここから管理者管理画面***************************/
  .display_admin_my-page{
     margin-top: 40%;
