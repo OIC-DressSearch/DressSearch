@@ -195,6 +195,12 @@
 /**************ここまで共通部分のcss************************/
 
 /***********ここからログインのCSS********************************/
+  #admin_sign-up{
+    margin-top:   180%;
+  }
+  #display_login0{
+    margin-bottom: 80%;
+  }
 
   #login_with{
     margin-bottom: 15%;
@@ -1300,12 +1306,12 @@
     margin-bottom:  2%;
   }
  
-  .display_login{
+  /* .display_login{
     display: none;
     margin-top: 35%;
-  } 
+  }  */
   .display_admin_info1{
-    /* display: none; */
+    display: none;
     margin-top: 35%;
   }
   .display_admin_info2{
@@ -1324,12 +1330,12 @@
     margin-bottom:  2%;
   }
 
-.display_login{
+/* .display_login{
     display: none;
     margin-top: 35%;
-  } 
+  }  */
   .display_admin_emp1{
-    /* display: none; */
+    display: none;
     margin-top: 35%;  
     margin-bottom: 51%;
   }
