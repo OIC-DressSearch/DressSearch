@@ -35,6 +35,8 @@ var img_path_pc="/image/";  //PC時の画像パス
 var img_path_phon="/www/image/";  //スマートフォン時の画像パス
 var menu_flag=true; // レンタル、式場の切り替えフラグ
 var tab_name; // (いいね画面の)現在の選択中のタブを格納する
+var reserve_shop=[];
+var reserve_index=0;
 /********ここまで変数部 *****/
  
 /***共通部分*****************************************************/
@@ -865,6 +867,63 @@ function sort(array_1,array_2,array_3){
           })
         });
       }
+    }
+  });
+
+  $("#push").click(function(){
+    if($('#favorite_tab_1_n').text()){
+      reserve_shop[reserve_index++]=$('#favorite_tab_1_n').text();
+    }
+    if($('#favorite_tab_2_n').text()){
+      reserve_shop[reserve_index++]=$('#favorite_tab_2_n').text();
+    }
+    if($('#favorite_tab_3_n').text()){
+      reserve_shop[reserve_index++]=$('#favorite_tab_3_n').text();
+    }
+    if($('#favorite_tab_4_n').text()){
+      reserve_shop[reserve_index++]=$('#favorite_tab_4_n').text();
+    }
+    if($('#favorite_tab_5_n').text()){
+      reserve_shop[reserve_index++]=$('#favorite_tab_5_n').text();
+    }
+    if($('#favorite_tab_a_n').text()){
+      reserve_shop[reserve_index++]=$('#favorite_tab_a_n').text();
+    }
+    if($('#favorite_tab_b_n').text()){
+      reserve_shop[reserve_index++]=$('#favorite_tab_b_n').text();
+    }
+    if($('#favorite_tab_c_n').text()){
+      reserve_shop[reserve_index++]=$('#favorite_tab_c_n').text();
+    }
+    var add_text='<select name="reserve_shop">';
+    for(var i=0;i<reserve_shop.length;i++){
+      add_text+='<option>'+reserve_shop[i]+'</option>';
+    }  
+    add_text+='</select>';
+    $("#re_shop_select").append(add_text);
+    $('.modal_reserve').fadeIn();
+  });
+  $(".reserve_close").click(function(){
+    $('.modal_reserve').fadeOut();
+  });
+  $("#reserve_button").click(function(){
+    var re_shop_name=$('[name=reserve_shop] option:selected').text();
+    var re_day_1=$('#reserve_day_1').val();
+    var re_day_2=$('#reserve_day_2').val();
+    var re_day_3=$('#reserve_day_3').val();
+    var currentLoginUser = ncmb.User.getCurrentUser();
+    if(confirm("この内容で予約しますか？")){
+      var reserve = ncmb.DataStore("Reserve");
+      reserve.equalTo("user_name",currentLoginUser.userName).fetchAll().then(function(results){
+      var Reserve = results[0];
+      Reserve.set("user_name",currentLoginUser.userName).set("store",re_shop_name).set("day_1",re_day_1).set("day_2",re_day_2).set("day_3",re_day_3);
+      Reserve.update();
+      $('.modal_reserve').fadeOut();
+      }).catch(function(err) {
+        var Reserve = new reserve();
+        Reserve.set("user_name",currentLoginUser.userName).set("store",re_shop_name).set("day_1",re_day_1).set("day_2",re_day_2).set("day_3",re_day_3).save();
+        $('.modal_reserve').fadeOut();
+        })
     }
   });
 
