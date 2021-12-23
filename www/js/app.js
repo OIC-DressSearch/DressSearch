@@ -602,8 +602,6 @@ function sort(array_1,array_2,array_3){
         return false;
       }
     }
-
-    
   }
 
   function where_split(index,obj){
