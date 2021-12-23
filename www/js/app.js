@@ -1447,37 +1447,32 @@ function onRegisterBtn()
     alert("メールアドレスを正しく入力してください");
   } 
 });*/
-//画面遷移の入力チェック
-$("next_page_1").click(function(){
 
 
-});
 
-
-// });
+//画面遷移　必須項目が入力されているか・一致するか・メルアドが正しいか
 // いまここ！！！！！！！！！！！！！！！！！！！！！！！！！！！
-
+//次へボタン押しても遷移しない
 $("#next_page_1").click(function(){
+  var name = $("#new_username").val();
   var mail = $("#new_mailadd").val();
   var mailconfirm = $("#new_mailadd_test").val();
-  var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/;
-  if (!reg.test(mail) || !reg.test(mailconfirm)) {
-    alert("メールアドレスを正しく入力してください");
-  } 
-  if (mail != mailconfirm) {
-    alert("入力したメールアドレスが一致していません");
-  } 
-
   var pass = $("#new_password").val();
   var passconfirm = $("#new_password_test").val();
-  if (mail == mailconfirm && pass == passconfirm) {
+  var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/;
+
+  if(name=="" || mail=="" || mailconfirm=="" || pass=="" || passconfirm==""){
+    alert("必須項目が入力されていません");
+  }else if(!reg.test(mail) || !reg.test(mailconfirm)){
+    alert("メールアドレスを正しく入力してください");
+  }else if(pass != passconfirm){
+    alert("入力したパスワードが一致していません");
+  }else if(mail != mailconfirm){
+    alert("入力したメールアドレスが一致していません");
+  }else if(mail == mailconfirm && pass == passconfirm){
     alert("遷移成功");
     $("#page_1").css("display","none");
     $("#page_2").css("display","block");
-  }else if(pass != passconfirm){
-    alert("入力したパスワードが一致していません");
-  }else{
-    alert("入力したメールアドレスが一致していません");
   }
 });
 
