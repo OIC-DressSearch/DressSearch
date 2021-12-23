@@ -961,6 +961,15 @@
   .reserve_div_1{
     display: inline;
   }
+  .content_1{
+    display: block;
+  }
+  .content_2{
+    display: none;
+  }
+  #none{
+    display: none;
+  }
 /***********ここまでいいね画面のCSS**************************/
 
 /***********マイページのCSS**********************************/

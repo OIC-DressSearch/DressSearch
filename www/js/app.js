@@ -715,7 +715,12 @@ function sort(array_1,array_2,array_3){
     var img_text=mobile_check();
     var favorite_test = ncmb.DataStore("favorite");
     var fdress_store = ncmb.DataStore("test");
-
+    var reserve = ncmb.DataStore("Reserve");
+    reserve.equalTo("user_name",currentLoginUser.userName).fetchAll().then(function(results){
+      $("#none").text("1");
+    }).catch(function(err) {
+      $("#none").text("0");
+    })
     if(menu_flag){
      $('#dress_store_tab').attr('id', 'dress_store_n');
      tab_name="favorite_tab_0_n";
@@ -871,36 +876,57 @@ function sort(array_1,array_2,array_3){
   });
 
   $("#push").click(function(){
-    if($('#favorite_tab_1_n').text()){
-      reserve_shop[reserve_index++]=$('#favorite_tab_1_n').text();
+    if($("#none").text()!=1){
+      $(".content_1").css("display","block");
+      $(".content_2").css("display","none");
+      reserve_index=0;
+      if($('#favorite_tab_1_n').text()){
+        reserve_shop[reserve_index++]=$('#favorite_tab_1_n').text();
+      }
+      if($('#favorite_tab_2_n').text()){
+        reserve_shop[reserve_index++]=$('#favorite_tab_2_n').text();
+      }
+      if($('#favorite_tab_3_n').text()){
+        reserve_shop[reserve_index++]=$('#favorite_tab_3_n').text();
+      }
+      if($('#favorite_tab_4_n').text()){
+        reserve_shop[reserve_index++]=$('#favorite_tab_4_n').text();
+      }
+      if($('#favorite_tab_5_n').text()){
+        reserve_shop[reserve_index++]=$('#favorite_tab_5_n').text();
+      }
+      if($('#favorite_tab_a_n').text()){
+        reserve_shop[reserve_index++]=$('#favorite_tab_a_n').text();
+      }
+      if($('#favorite_tab_b_n').text()){
+        reserve_shop[reserve_index++]=$('#favorite_tab_b_n').text();
+      }
+      if($('#favorite_tab_c_n').text()){
+        reserve_shop[reserve_index++]=$('#favorite_tab_c_n').text();
+      }
+      $(".rem_select").remove();
+      var add_text='<select name="reserve_shop" class="rem_select">';
+      for(var i=0;i<reserve_shop.length;i++){
+        add_text+='<option>'+reserve_shop[i]+'</option>';
+      }  
+      add_text+='</select>';
+      $("#re_shop_select").append(add_text);
     }
-    if($('#favorite_tab_2_n').text()){
-      reserve_shop[reserve_index++]=$('#favorite_tab_2_n').text();
+    else{
+      $(".content_1").css("display","none");
+      $(".content_2").css("display","block");  
+      var currentLoginUser = ncmb.User.getCurrentUser();
+      var reserve = ncmb.DataStore("Reserve");
+      reserve.equalTo("user_name",currentLoginUser.userName).fetchAll().then(function(results){
+        var obj = results[0];
+        $("#re_shop_con").text(obj.store);
+        $("#con_day_1").text(obj.day_1);
+        $("#con_day_2").text(obj.day_2);
+        $("#con_day_3").text(obj.day_3);
+      }).catch(function(err) {
+        alert(err);
+      })
     }
-    if($('#favorite_tab_3_n').text()){
-      reserve_shop[reserve_index++]=$('#favorite_tab_3_n').text();
-    }
-    if($('#favorite_tab_4_n').text()){
-      reserve_shop[reserve_index++]=$('#favorite_tab_4_n').text();
-    }
-    if($('#favorite_tab_5_n').text()){
-      reserve_shop[reserve_index++]=$('#favorite_tab_5_n').text();
-    }
-    if($('#favorite_tab_a_n').text()){
-      reserve_shop[reserve_index++]=$('#favorite_tab_a_n').text();
-    }
-    if($('#favorite_tab_b_n').text()){
-      reserve_shop[reserve_index++]=$('#favorite_tab_b_n').text();
-    }
-    if($('#favorite_tab_c_n').text()){
-      reserve_shop[reserve_index++]=$('#favorite_tab_c_n').text();
-    }
-    var add_text='<select name="reserve_shop">';
-    for(var i=0;i<reserve_shop.length;i++){
-      add_text+='<option>'+reserve_shop[i]+'</option>';
-    }  
-    add_text+='</select>';
-    $("#re_shop_select").append(add_text);
     $('.modal_reserve').fadeIn();
   });
   $(".reserve_close").click(function(){
@@ -925,6 +951,10 @@ function sort(array_1,array_2,array_3){
         $('.modal_reserve').fadeOut();
         })
     }
+  });
+  $("#reserve_change").click(function(){
+    $(".content_1").css("display","block");
+    $(".content_2").css("display","none");
   });
 
   $("#change_push").click(function(){

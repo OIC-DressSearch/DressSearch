@@ -95,24 +95,47 @@
         <div class="modal modal_reserve">
         <div class="reserve_close"></div>
         <div class="modal_reserve_content">
-          <div>場所選択</div><div id="re_shop_select"></div>
-          <div>予約日時</div>
-          <div class="reserve_content_1">
-            <div>第一希望</div>
-            <input type="datetime-local" id="reserve_day_1">
-          </div>
-          <div class="reserve_content_2">
-            <div>第二希望</div>
-            <input type="datetime-local" id="reserve_day_2">
-          </div>
-          <div class="reserve_content_3">
-            <div>第三希望</div>
-            <input type="datetime-local" id="reserve_day_3">
-          </div>
+          <div class="content_1">
+            <div>場所選択</div><div id="re_shop_select"></div>
+            <div>予約日時</div>
+            <div class="reserve_content_1">
+              <div>第一希望</div>
+              <input type="datetime-local" id="reserve_day_1">
+            </div>
+            <div class="reserve_content_2">
+              <div>第二希望</div>
+              <input type="datetime-local" id="reserve_day_2">
+            </div>
+            <div class="reserve_content_3">
+              <div>第三希望</div>
+              <input type="datetime-local" id="reserve_day_3">
+            </div>
 
-          <button class="push-button_re" id="reserve_button">予約</button>
+            <button class="push-button_re" id="reserve_button">予約</button>
+          </div>
+          <div class="content_2">
+            <div>予約内容</div>
+            <div>予約場所</div>
+            <div id="re_shop_con"></div>
+            <div class="reserve_content_a">
+              <div>第一希望</div>
+              <div id="con_day_1"></div>
+            </div>
+            <div class="reserve_content_b">
+              <div>第二希望</div>
+               <div id="con_day_2"></div>
+            </div>
+            <div class="reserve_content_c">
+              <div>第三希望</div>
+               <div id="con_day_3"></div>
+            </div>
+            <button class="push-button_re" id="reserve_change">予約変更</button>
+          </div>
+          <div id="none"></div>
         </div><!--modal__inner-->
     </div><!--modal-->
+
+    
 
     <!-- フッター -->
       <footer>
