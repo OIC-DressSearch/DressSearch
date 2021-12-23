@@ -967,8 +967,15 @@
     z-index: 100;
     margin-top: 13%;
   }
-  .display_favo_repop{
+  .content_1{
     margin-top:  -15px;
+    display: block;
+  }
+  .content_2{
+    display: none;
+  }
+  #none{
+    display: none;
   }
   .re_pop{
     margin-bottom: 10%;
