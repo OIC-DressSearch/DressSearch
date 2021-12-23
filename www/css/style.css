@@ -967,6 +967,9 @@
     z-index: 100;
     margin-top: 13%;
   }
+  .display_favo_repop{
+    margin-top:  -15px;
+  }
   .re_pop{
     margin-bottom: 10%;
   }
@@ -979,8 +982,8 @@
   }
   #re_shop_select{
     font-size: 17px;
-    width: 95%;
-    height: 5%;
+    max-width: 95%;
+    height: 30px;
   }
   .re_popbox{
     margin-left: 5%; 
@@ -989,8 +992,8 @@
     width: 95%;
   }
   #reserve_button{
-    margin-top: 2%;
-    margin-bottom: 2%;
+    margin-top: -5%;
+    margin-bottom: 3%;
   }
 
 /***********ここまでいいね画面のCSS**************************/
