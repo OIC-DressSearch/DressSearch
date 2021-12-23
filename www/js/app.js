@@ -35,6 +35,8 @@ var img_path_pc="/image/";  //PC時の画像パス
 var img_path_phon="/www/image/";  //スマートフォン時の画像パス
 var menu_flag=true; // レンタル、式場の切り替えフラグ
 var tab_name; // (いいね画面の)現在の選択中のタブを格納する
+var reserve_shop=[];
+var reserve_index=0;
 /********ここまで変数部 *****/
  
 /***共通部分*****************************************************/
@@ -713,7 +715,12 @@ function sort(array_1,array_2,array_3){
     var img_text=mobile_check();
     var favorite_test = ncmb.DataStore("favorite");
     var fdress_store = ncmb.DataStore("test");
-
+    var reserve = ncmb.DataStore("Reserve");
+    reserve.equalTo("user_name",currentLoginUser.userName).fetchAll().then(function(results){
+      $("#none").text("1");
+    }).catch(function(err) {
+      $("#none").text("0");
+    })
     if(menu_flag){
      $('#dress_store_tab').attr('id', 'dress_store_n');
      tab_name="favorite_tab_0_n";
@@ -866,6 +873,88 @@ function sort(array_1,array_2,array_3){
         });
       }
     }
+  });
+
+  $("#push").click(function(){
+    if($("#none").text()!=1){
+      $(".content_1").css("display","block");
+      $(".content_2").css("display","none");
+      reserve_index=0;
+      if($('#favorite_tab_1_n').text()){
+        reserve_shop[reserve_index++]=$('#favorite_tab_1_n').text();
+      }
+      if($('#favorite_tab_2_n').text()){
+        reserve_shop[reserve_index++]=$('#favorite_tab_2_n').text();
+      }
+      if($('#favorite_tab_3_n').text()){
+        reserve_shop[reserve_index++]=$('#favorite_tab_3_n').text();
+      }
+      if($('#favorite_tab_4_n').text()){
+        reserve_shop[reserve_index++]=$('#favorite_tab_4_n').text();
+      }
+      if($('#favorite_tab_5_n').text()){
+        reserve_shop[reserve_index++]=$('#favorite_tab_5_n').text();
+      }
+      if($('#favorite_tab_a_n').text()){
+        reserve_shop[reserve_index++]=$('#favorite_tab_a_n').text();
+      }
+      if($('#favorite_tab_b_n').text()){
+        reserve_shop[reserve_index++]=$('#favorite_tab_b_n').text();
+      }
+      if($('#favorite_tab_c_n').text()){
+        reserve_shop[reserve_index++]=$('#favorite_tab_c_n').text();
+      }
+      $(".rem_select").remove();
+      var add_text='<select name="reserve_shop" class="rem_select">';
+      for(var i=0;i<reserve_shop.length;i++){
+        add_text+='<option>'+reserve_shop[i]+'</option>';
+      }  
+      add_text+='</select>';
+      $("#re_shop_select").append(add_text);
+    }
+    else{
+      $(".content_1").css("display","none");
+      $(".content_2").css("display","block");  
+      var currentLoginUser = ncmb.User.getCurrentUser();
+      var reserve = ncmb.DataStore("Reserve");
+      reserve.equalTo("user_name",currentLoginUser.userName).fetchAll().then(function(results){
+        var obj = results[0];
+        $("#re_shop_con").text(obj.store);
+        $("#con_day_1").text(obj.day_1);
+        $("#con_day_2").text(obj.day_2);
+        $("#con_day_3").text(obj.day_3);
+      }).catch(function(err) {
+        alert(err);
+      })
+    }
+    $('.modal_reserve').fadeIn();
+  });
+  $(".reserve_close").click(function(){
+    $('.modal_reserve').fadeOut();
+  });
+  $("#reserve_button").click(function(){
+    var re_shop_name=$('[name=reserve_shop] option:selected').text();
+    var re_day_1=$('#reserve_day_1').val();
+    var re_day_2=$('#reserve_day_2').val();
+    var re_day_3=$('#reserve_day_3').val();
+    var currentLoginUser = ncmb.User.getCurrentUser();
+    if(confirm("この内容で予約しますか？")){
+      var reserve = ncmb.DataStore("Reserve");
+      reserve.equalTo("user_name",currentLoginUser.userName).fetchAll().then(function(results){
+      var Reserve = results[0];
+      Reserve.set("user_name",currentLoginUser.userName).set("store",re_shop_name).set("day_1",re_day_1).set("day_2",re_day_2).set("day_3",re_day_3);
+      Reserve.update();
+      $('.modal_reserve').fadeOut();
+      }).catch(function(err) {
+        var Reserve = new reserve();
+        Reserve.set("user_name",currentLoginUser.userName).set("store",re_shop_name).set("day_1",re_day_1).set("day_2",re_day_2).set("day_3",re_day_3).save();
+        $('.modal_reserve').fadeOut();
+        })
+    }
+  });
+  $("#reserve_change").click(function(){
+    $(".content_1").css("display","block");
+    $(".content_2").css("display","none");
   });
 
   $("#change_push").click(function(){

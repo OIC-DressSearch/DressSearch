@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" id="com.example.helloworld" version="1.0.0">
   <name>DressSearch</name>
-  <description/>
+  <description>Made with Monaca (http://monaca.mobi)</description>
   <author/>
-  <content src="index.html"/>
+  <content src="login.html"/>
   <access origin="*"/>
   <allow-navigation href="*"/>
   <allow-intent href="itms:*"/>
@@ -102,4 +102,6 @@
     <preference name="SplashScreenHeight" value="300"/>
     <preference name="ShowSplashScreen" value="false"/>
   </platform>
+  <preference name="WindowsStorePublisherName" value="My Name"/>
+  <preference name="WindowsStoreIdentityName" value="8e81b71b-1d56-4c9a-c2a2-1dea60c9642a"/>
 </widget>

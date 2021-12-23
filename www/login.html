@@ -15,20 +15,23 @@
       <p>ログイン</p>
     </header>
 
-    <div class="display_login">
-      <div id="my_mail">
-        <div id="my_user" class="my_title">ユーザー名</div>
-        <input type="text" id="my_userbox" class="my_textbox"></input>
+    <div id="display_login0">
+      <div class="display_login">
+        <div id="my_mail">
+          <div id="my_user" class="my_title">ユーザー名</div>
+          <input type="text" id="my_userbox" class="my_textbox"></input>
+        </div>
+        <div class="my_pass">
+          <div id="my_pass" class="my_title">パスワード</div>
+          <input type="password" id="my_passbox" class="my_textbox" placeholder="" maxlength="15"></input>
+        </div>
+          <button id="login_with" class="push-button" onclick="login_user">ログイン</button>
+        <div><a href="sign-up.html" id="sinki">新規登録はこちら</a></div>
       </div>
-      <div class="my_pass">
-        <div id="my_pass" class="my_title">パスワード</div>
-        <input type="password" id="my_passbox" class="my_textbox" placeholder="" maxlength="15"></input>
+      <div id="admin_sign-up">
+        <a href="admin_sign-up.html" id="sinki">管理者用新規登録はこちら</a>
       </div>
-        <button id="login_with" class="push-button" onclick="login_user">ログイン</button>
-      <div><a href="sign-up.html" id="sinki">新規登録はこちら</a></div>
     </div>
-    
-
     <script src="js/app.js"></script>
 </body>
 </html>
