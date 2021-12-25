@@ -198,15 +198,7 @@
       position: absolute;
       width: 100%;
   }
-  .modal_reserve_content{
-      background: #fff;
-      left: 50%;
-      padding: 40px;
-      position: absolute;
-      top: 50%;
-      transform: translate(-50%,-50%);
-      width: 60%;
-  }
+  
 /**************ここまで共通部分のcss************************/
 
 /***********ここからログインのCSS********************************/
@@ -961,7 +953,22 @@
   .reserve_div_1{
     display: inline;
   }
+
+  /*予約ポップアップ*/
+  .modal_reserve_content{
+    background: #fff;
+    left: 50%;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 60%;
+    height: 45%;
+    z-index: 100;
+    margin-top: 13%;
+  }
   .content_1{
+    margin-top:  -15px;
     display: block;
   }
   .content_2{
@@ -970,6 +977,32 @@
   #none{
     display: none;
   }
+  .re_pop{
+    margin-bottom: 10%;
+  }
+  #pop_tex1{
+    font-size: 17px;
+  }
+  #pop_text2{
+    font-size: 13px;
+    margin-left: 5%;
+  }
+  #re_shop_select{
+    font-size: 17px;
+    max-width: 95%;
+    height: 30px;
+  }
+  .re_popbox{
+    margin-left: 5%; 
+    margin-bottom: 2%;
+    font-size: 17px;
+    width: 95%;
+  }
+  #reserve_button{
+    margin-top: -5%;
+    margin-bottom: 3%;
+  }
+
 /***********ここまでいいね画面のCSS**************************/
 
 /***********マイページのCSS**********************************/
