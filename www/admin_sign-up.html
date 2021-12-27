@@ -37,7 +37,12 @@
         <form>
           <div id="sinki_name">
             <div class="sinki_title">
-                <label id="sinki_title" class="sinki1">ユーザー名</label>
+                <label id="sinki_title" class="sinki1">店舗名</label>
+                <label id="hissu" class="sinki1">必須</label><br>
+                <input type="text" id="new_username" class="my_textbox"></input><br>
+            </div>
+            <div class="sinki_title">
+                <label id="sinki_title" class="sinki1">企業コード</label>
                 <label id="hissu" class="sinki1">必須</label><br>
                 <input type="text" id="new_username" class="my_textbox"></input><br>
             </div>
@@ -90,6 +95,12 @@
       </div>
       <!-- メイン -->
       <div class="display_admin_sinki2">
+        <div>
+          <p>スタッフ名</p>
+          <input type="text" >
+          <button type="submit">追加</button>
+        </div>
+
         <button type="submit" id="next_page_2" class="next_button">次へ</button>
         <button id="back_page_2" class="next_button">戻る</button> 
       </div>
@@ -109,12 +120,18 @@
       </div> 
        <!-- メイン -->
       <div class="display_admin_sinki3">
-        <div id="sinki_title3" class="sinki1">ユーザー名</div>
+        <div id="sinki_title3" class="sinki1">店舗名</div>
+        <div id="sinki_text3"><span class="usernameSet"></div>
+        <div id="sinki_title3" class="sinki1">企業コード</div>
         <div id="sinki_text3"><span class="usernameSet"></div>
         <div id="sinki_title3" class="sinki1">メールアドレス</div>
         <div id="sinki_text3"><span class="mailaddSet"></div>
         <div id="sinki_title3" class="sinki1">パスワード</div>
         <div id="sinki_text3"><span class="passwordSet"></div>
+
+        <div id="sinki_title3" class="sinki1">スタッフ名</div>
+        <div id="sinki_text3"><span class="usernameSet"></div>
+
       </div>
       <!-- <a href="search.html"> -->
         <button id="next_page_3" class="next_button" onclick="onRegisterBtn()">登録</button> 
