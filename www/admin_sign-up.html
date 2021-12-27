@@ -17,11 +17,11 @@
     <!-- ヘッダー -->
     <header class="hed_re">
       <a href="login.html" class="link" id="return_sign">≪</a>
-      <p id="title_admin_sign">管理者用新規登録</p>      
+      <p id="title_sign">新規登録</p>      
     </header>
     
     <!-- １ -->
-    <div id="page_1">
+  <div id="page_1">
       <!--ヘッダー２-->
       <div id="head_tabbox">
         <table border="1" cellspacing="0">
@@ -33,53 +33,49 @@
         </table>
       </div>
       <!-- メイン -->
-      <div class="display_admin_sinki1">
-        <form>
-          <div id="sinki_name">
-            <div class="sinki_title">
-                <label id="sinki_title" class="sinki1">店舗名</label>
-                <label id="hissu" class="sinki1">必須</label><br>
-                <input type="text" id="new_username" class="my_textbox"></input><br>
-            </div>
-            <div class="sinki_title">
-                <label id="sinki_title" class="sinki1">企業コード</label>
-                <label id="hissu" class="sinki1">必須</label><br>
-                <input type="text" id="new_username" class="my_textbox"></input><br>
-            </div>
-          </div>
-          <div id="sinki_mail">
-            <div class="sinki_title">
-                <label for="new_mailadd" id="sinki_title" class="sinki1">メールアドレス</label>
-                <label id="hissu" class="sinki1">必須</label><br>
-                <input type="email" id="new_mailadd" class="my_textbox"></input><br>
-            </div>
-            <div class="sinki_title">
-                <label for="new_mailadd_test" id="sinki_title" class="sinki1">メールアドレス再入力</label>
-                <label id="hissu" class="sinki1">必須</label><br>
-                <input type="email" id="new_mailadd_test" class="my_textbox"></input><br>
-            </div>
-          </div>
-          <div id="sinki_pass">
-            <div class="sinki_title">
-              <label id="sinki_title" class="sinki1">パスワード</label>
-              <label id="hissu" class="sinki1">必須</label>
-              <label id="passinfo">半角英数字８字以上</label><br>
-              <input type="password" id="new_password"  class="my_textbox"></input><br>
-              <!-- 半角英数・小文字・大文字を１文字ずつ含むパスワードだけ許可 -->
-            </div>
-            <div class="sinki_title">
-              <label id="sinki_title" class="sinki1">パスワード再入力</label>
+      <div id="sinki_name">
+        <div class="sinki_title">
+              <label id="sinki_title" class="sinki1">店舗名</label>
               <label id="hissu" class="sinki1">必須</label><br>
-              <input type="password" id="new_password_test" class="my_textbox"></input><br>
-            </div>
-            <div id="regular_button">
-              <button type="submit" id="next_page_1" class="next_button">次へ</button>
-            </div>
-          </div>
-        </form>
+              <input type="text" id="new_username" class="my_textbox"><br>
+        </div>
+        <div class="sinki_title">
+              <label id="sinki_title" class="sinki1">企業コード</label>
+              <label id="hissu" class="sinki1">必須</label><br>
+              <input type="text" id="new_username" class="my_textbox"><br>
+        </div>
       </div>
-    </div>
-        
+        <div id="sinki_mail">
+          <div class="sinki_title">
+              <label for="new_mailadd" id="sinki_title" class="sinki1">メールアドレス</label>
+              <label id="hissu" class="sinki1">必須</label><br>
+              <input type="email" id="new_mailadd" class="my_textbox"><br>
+          </div>
+          <div class="sinki_title">
+              <label for="new_mailadd_test" id="sinki_title" class="sinki1">メールアドレス再入力</label>
+              <label id="hissu" class="sinki1">必須</label><br>
+              <input type="email" id="new_mailadd_test" class="my_textbox"><br>
+          </div>
+        </div>
+        <div id="sinki_pass">
+          <div class="sinki_title">
+            <label id="sinki_title" class="sinki1">パスワード</label>
+            <label id="hissu" class="sinki1">必須</label>
+            <label id="passinfo">半角英数字８字以上</label><br>
+            <input type="password" id="new_password"  class="my_textbox"><br>
+            <!-- 半角英数・小文字・大文字を１文字ずつ含むパスワードだけ許可 -->
+          </div>
+          <div class="sinki_title">
+            <label id="sinki_title" class="sinki1">パスワード再入力</label>
+            <label id="hissu" class="sinki1">必須</label><br>
+            <input type="password" id="new_password_test" class="my_textbox"><br>
+          </div>
+          <div id="regular_button">
+            <button id="next_page_1" class="next_button">次へ</button>
+          </div>
+        </div>
+  </div>
+
 
     <!-- ２ -->
     <div id="page_2">
@@ -94,18 +90,15 @@
         </table>
       </div>
       <!-- メイン -->
-      <div class="display_admin_sinki2">
-        <div>
-          <p>スタッフ名</p>
-          <input type="text" >
-          <button type="submit">追加</button>
+      <div id="sinki_higth">
+        <div class="sinki_title">
+          <div id="sinki_title" class="sinki1">スタッフ名</div><br>
+          <input type="text" id="my_higthbox" class="my_textbox">
+          <button >スタッフの追加</button>
         </div>
-
-        <button type="submit" id="next_page_2" class="next_button">次へ</button>
-        <button id="back_page_2" class="next_button">戻る</button> 
       </div>
     </div>
-
+    
     <!-- ３ -->
     <div id="page_3">
       <!--ヘッダー２-->
@@ -119,19 +112,17 @@
         </table>
       </div> 
        <!-- メイン -->
-      <div class="display_admin_sinki3">
+      <div class="display_sinki3">
         <div id="sinki_title3" class="sinki1">店舗名</div>
         <div id="sinki_text3"><span class="usernameSet"></div>
         <div id="sinki_title3" class="sinki1">企業コード</div>
         <div id="sinki_text3"><span class="usernameSet"></div>
         <div id="sinki_title3" class="sinki1">メールアドレス</div>
-        <div id="sinki_text3"><span class="mailaddSet"></div>
+        <div id="sinki_text3"><span class="mailaddSet">></div>
         <div id="sinki_title3" class="sinki1">パスワード</div>
         <div id="sinki_text3"><span class="passwordSet"></div>
-
         <div id="sinki_title3" class="sinki1">スタッフ名</div>
-        <div id="sinki_text3"><span class="usernameSet"></div>
-
+        <div id="sinki_text3"><span class="higthSet"></div>
       </div>
       <!-- <a href="search.html"> -->
         <button id="next_page_3" class="next_button" onclick="onRegisterBtn()">登録</button> 
