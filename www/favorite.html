@@ -72,8 +72,12 @@
         <div class="reserve_close"></div>
         <div class="modal_reserve_content">
           <div class="content_1">
-            <div>場所選択</div><div id="re_shop_select"></div>
-            <div>予約日時</div>
+            <div>名前(必須)</div>
+            <input type="text" id="reserve_name">
+            <div>電話番号(必須)</div>
+            <input type="text" id="reserve_tel">
+            <div>場所選択(必須)</div><div id="re_shop_select"></div>
+            <div>予約日時(必須)</div>
             <div class="reserve_content_1">
               <div>第一希望</div>
               <input type="datetime-local" id="reserve_day_1" class="re_pop_favo">
@@ -90,6 +94,10 @@
           </div>
           <div class="content_2">
             <div>予約内容</div>
+            <div>名前</div>
+            <div id="reserve_name_a"></div>
+            <div>電話番号</div>
+            <div id="reserve_tel_a"></div>
             <div>予約場所</div>
             <div id="re_shop_con"></div>
             <div class="reserve_content_a">
@@ -111,7 +119,7 @@
     </div>
 
     <!-- フッター -->
-      <footer>
+      <footer class="footer_disply">
         <ul class="bottom-menu">
           <li id="recommend_footer">
             <a href="recommend.html">

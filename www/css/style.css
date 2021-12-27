@@ -485,7 +485,7 @@
  .push-button_re{ 
     margin-left: 3%;
     margin-right: 4%;
-    margin-top: 12%;
+    margin-top: 20px;
 
     width:93%;
     height:40px;
@@ -511,6 +511,9 @@
       background-color:rgb(238, 238, 238);
       border: 1px solid rgb(238, 238, 238);
       color: #000000;
+    }
+    .footer_disply{
+      display: block;
     }
   /*セレクトボックスタイトル*/
     #search_title{
@@ -969,7 +972,7 @@
     top: 50%;
     transform: translate(-50%,-50%);
     width: 60%;
-    height: 45%;
+    height: 55%;
     z-index: 100;
     margin-top: 13%;
   }
@@ -1010,7 +1013,7 @@
     width: 95%;
   }
   #reserve_button{
-    margin-top: -5%;
+    margin-top: 5%;
     margin-bottom: 3%;
   }
 

@@ -882,7 +882,93 @@ function sort(array_1,array_2,array_3){
       $(".content_1").css("display","block");
       $(".content_2").css("display","none");
       reserve_index=0;
-      if($('#favorite_tab_1_n').text()){
+      create_shop_box();
+    }
+    else{
+      $(".content_1").css("display","none");
+      $(".content_2").css("display","block");  
+      var currentLoginUser = ncmb.User.getCurrentUser();
+      var reserve = ncmb.DataStore("Reserve");
+      reserve.equalTo("user_name",currentLoginUser.userName).fetchAll().then(function(results){
+        var obj = results[0];
+        $("#re_shop_con").text(obj.store);
+        $("#con_day_1").text(obj.day_1);
+        $("#con_day_2").text(obj.day_2);
+        $("#con_day_3").text(obj.day_3);
+        $("#reserve_name_a").text(obj.name);
+        $("#reserve_tel_a").text(obj.tel);
+      }).catch(function(err) {
+        alert(err);
+      })
+    }
+    $('.modal_reserve').fadeIn();
+  });
+  $(".reserve_close").click(function(){
+    $('.modal_reserve').fadeOut();
+  });
+  $("#reserve_button").click(function(){
+    var re_shop_name=$('[name=reserve_shop] option:selected').text();
+    var re_day_1=$('#reserve_day_1').val();
+    var re_day_2=$('#reserve_day_2').val();
+    var re_day_3=$('#reserve_day_3').val();
+    var re_name=$('#reserve_name').val();
+    var re_tel=$('#reserve_tel').val();
+    var tel=re_tel.replace(/[━.*‐.*―.*－.*\-.*ー.*\-]/gi,'');
+    if(re_day_1 === "" || re_day_2 === "" || re_day_3 === "" || re_name==="" || re_tel===""){
+      alert("必須項目が未入力です");
+    }
+    else if(!tel.match(/^(0[5-9]0[0-9]{8}|0[1-9][1-9][0-9]{7})$/)){
+      alert("電話番号を正しく入力してください");
+    }
+    else{
+      var currentLoginUser = ncmb.User.getCurrentUser();
+      if(confirm("この内容で予約しますか？")){
+        var reserve = ncmb.DataStore("Reserve");
+        reserve.equalTo("user_name",currentLoginUser.userName).fetchAll().then(function(results){
+        var Reserve = results[0];
+        Reserve.set("user_name",currentLoginUser.userName).set("store",re_shop_name).set("day_1",re_day_1).set("day_2",re_day_2).set("day_3",re_day_3).set("name",re_name).set("tel",re_tel);
+        Reserve.update();
+        $('.modal_reserve').fadeOut();
+        }).catch(function(err) {
+          var Reserve = new reserve();
+          Reserve.set("user_name",currentLoginUser.userName).set("store",re_shop_name).set("day_1",re_day_1).set("day_2",re_day_2).set("day_3",re_day_3).set("name",re_name).set("tel",re_tel).save();
+          $('.modal_reserve').fadeOut();
+          })
+      }
+    }
+  });
+  $("#reserve_change").click(function(){
+    $(".content_1").css("display","block");
+    $(".content_2").css("display","none");
+      reserve_index=0;
+      create_shop_box();
+  });
+
+  $("#change_push").click(function(){
+    if(menu_flag){
+      $("#"+tab_name+"_color").attr("id",tab_name);
+      tab_name="favorite_tab_o_n";
+      $("#"+tab_name).attr("id",tab_name+"_color");
+      $("#change_push").text("式場を表示");
+      $('#dress_store_n').attr('id', 'dress_store_tab');
+      $('#rental_shop_tab').attr('id', 'rental_shop_n');
+      all_favorite();
+      menu_flag=false;
+    }
+    else{
+      $("#"+tab_name+"_color").attr("id",tab_name);
+      tab_name="favorite_tab_0_n";
+      $("#"+tab_name).attr("id",tab_name+"_color");
+      $("#change_push").text("レンタルを表示");
+      $('#dress_store_tab').attr('id', 'dress_store_n');
+      $('#rental_shop_n').attr('id', 'rental_shop_tab');
+      all_favorite();
+      menu_flag=true;
+    }
+  });
+
+  function create_shop_box(){
+          if($('#favorite_tab_1_n').text()){
         reserve_shop[reserve_index++]=$('#favorite_tab_1_n').text();
       }
       if($('#favorite_tab_2_n').text()){
@@ -913,74 +999,7 @@ function sort(array_1,array_2,array_3){
       }  
       add_text+='</select>';
       $("#re_shop_select").append(add_text);
-    }
-    else{
-      $(".content_1").css("display","none");
-      $(".content_2").css("display","block");  
-      var currentLoginUser = ncmb.User.getCurrentUser();
-      var reserve = ncmb.DataStore("Reserve");
-      reserve.equalTo("user_name",currentLoginUser.userName).fetchAll().then(function(results){
-        var obj = results[0];
-        $("#re_shop_con").text(obj.store);
-        $("#con_day_1").text(obj.day_1);
-        $("#con_day_2").text(obj.day_2);
-        $("#con_day_3").text(obj.day_3);
-      }).catch(function(err) {
-        alert(err);
-      })
-    }
-    $('.modal_reserve').fadeIn();
-  });
-  $(".reserve_close").click(function(){
-    $('.modal_reserve').fadeOut();
-  });
-  $("#reserve_button").click(function(){
-    var re_shop_name=$('[name=reserve_shop] option:selected').text();
-    var re_day_1=$('#reserve_day_1').val();
-    var re_day_2=$('#reserve_day_2').val();
-    var re_day_3=$('#reserve_day_3').val();
-    var currentLoginUser = ncmb.User.getCurrentUser();
-    if(confirm("この内容で予約しますか？")){
-      var reserve = ncmb.DataStore("Reserve");
-      reserve.equalTo("user_name",currentLoginUser.userName).fetchAll().then(function(results){
-      var Reserve = results[0];
-      Reserve.set("user_name",currentLoginUser.userName).set("store",re_shop_name).set("day_1",re_day_1).set("day_2",re_day_2).set("day_3",re_day_3);
-      Reserve.update();
-      $('.modal_reserve').fadeOut();
-      }).catch(function(err) {
-        var Reserve = new reserve();
-        Reserve.set("user_name",currentLoginUser.userName).set("store",re_shop_name).set("day_1",re_day_1).set("day_2",re_day_2).set("day_3",re_day_3).save();
-        $('.modal_reserve').fadeOut();
-        })
-    }
-  });
-  $("#reserve_change").click(function(){
-    $(".content_1").css("display","block");
-    $(".content_2").css("display","none");
-  });
-
-  $("#change_push").click(function(){
-    if(menu_flag){
-      $("#"+tab_name+"_color").attr("id",tab_name);
-      tab_name="favorite_tab_o_n";
-      $("#"+tab_name).attr("id",tab_name+"_color");
-      $("#change_push").text("式場を表示");
-      $('#dress_store_n').attr('id', 'dress_store_tab');
-      $('#rental_shop_tab').attr('id', 'rental_shop_n');
-      all_favorite();
-      menu_flag=false;
-    }
-    else{
-      $("#"+tab_name+"_color").attr("id",tab_name);
-      tab_name="favorite_tab_0_n";
-      $("#"+tab_name).attr("id",tab_name+"_color");
-      $("#change_push").text("レンタルを表示");
-      $('#dress_store_tab').attr('id', 'dress_store_n');
-      $('#rental_shop_n').attr('id', 'rental_shop_tab');
-      all_favorite();
-      menu_flag=true;
-    }
-  });
+  }
 
   function all_favorite(){
     $('.item').remove();
