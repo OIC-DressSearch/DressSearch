@@ -206,20 +206,23 @@
 
 /***********ここからログインのCSS********************************/
   #admin_sign-up{
-    margin-top:   180%;
-  }
-  #display_login0{
-    margin-bottom: 80%;
+    margin-top:   0%;
   }
 
   #login_with{
-    margin-bottom: 15%;
+    margin-bottom: 5%;
   }
   #sinki{
     font-size: 20px;
     text-decoration: none;
     color: #68c3c5;
-   text-align: center;
+    text-align: center;
+  }
+  #admin_sinki{
+    font-size: 15px;
+    text-decoration: none;
+    color: #68c3c5;
+    text-align: center;
   }
   .my_textbox{
     margin-left: 5%;
@@ -1037,7 +1040,10 @@
   /***共通部分*********************************/
   .display_login{
     margin-top: 40%;
-    margin-bottom: 51%;
+    margin-bottom: 10%;
+    padding-top: 0.5%;
+    padding-bottom: 7%;
+    background-color: rgb(245, 245, 245);
   }
 
   #now{
