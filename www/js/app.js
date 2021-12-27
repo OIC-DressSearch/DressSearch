@@ -192,10 +192,7 @@ $(document).ready(function(){
 
   //画面遷移  
 
-  // $("#next_page_1").click(function(){
-  // $("#page_1").css("display","none");
-  // $("#page_2").css("display","block");
-  // });
+
   $("#next_page_2").click(function(){
   $("#page_2").css("display","none");
   $("#page_3").css("display","block");
