@@ -1618,21 +1618,19 @@ $(function() {
   function staffFinalcheckBtn()
   {
     //個人情報１の入力フォームの取得
-    var staffusername = $("#new_staffusername").val();
-    var mailaddress = $("#new_mailadd").val();
-    var password = $("#new_password").val();
+    var companyname = $("#new_companyname").val();  //店舗名
+    var companyCode = $("#new_companycode").val();  //店舗コード
+    var staff_mailaddress = $("#new_staff_mailadd").val();
+    var staff_password = $("#new_staff_password").val();
     //個人情報２の入力フォームの取得
-    var higth = $("#my_higthbox").val();
-    var bmw_B = $("#bmw_b").val();
-    var bmw_W = $("#bmw_w").val();
-    var bmw_H = $("#bmw_h").val(); 
-    $(".staffusernameSet").text(staffusername);
-    $(".mailaddSet").text(mailaddress);
-    $(".passwordSet").text(password);
-    $(".higthSet").text(higth);
-    $(".bmw_bSet").text(bmw_B);
-    $(".bmw_wSet").text(bmw_W);
-    $(".bmw_hSet").text(bmw_H);
+    var staff_name = $("#new_staffname").val();
+
+    $(".companynameSet").text(companyname);
+    $(".companycodeSet").text(companyCode);
+    $(".staffmailaddSet").text(staff_mailaddress);
+    $(".staffpasswordSet").text(staff_password);
+    $(".staff_nameSet").text(staff_name);
+
   }
 
 //会員登録
