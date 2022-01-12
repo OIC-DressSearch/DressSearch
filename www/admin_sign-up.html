@@ -37,24 +37,24 @@
         <div class="sinki_title">
               <label id="sinki_title" class="sinki1">店舗名</label>
               <label id="hissu" class="sinki1">必須</label><br>
-              <input type="text" id="new_username" class="my_textbox"><br>
+              <input type="text" id="new_companyname" class="my_textbox"><br>
         </div>
         <div class="sinki_title">
               <label id="sinki_title" class="sinki1">企業コード</label>
               <label id="hissu" class="sinki1">必須</label><br>
-              <input type="text" id="new_username" class="my_textbox"><br>
+              <input type="text" id="new_companycode" class="my_textbox"><br>
         </div>
       </div>
         <div id="sinki_mail">
           <div class="sinki_title">
               <label for="new_mailadd" id="sinki_title" class="sinki1">メールアドレス</label>
               <label id="hissu" class="sinki1">必須</label><br>
-              <input type="email" id="new_mailadd" class="my_textbox"><br>
+              <input type="email" id="new_staff_mailadd" class="my_textbox"><br>
           </div>
           <div class="sinki_title">
               <label for="new_mailadd_test" id="sinki_title" class="sinki1">メールアドレス再入力</label>
               <label id="hissu" class="sinki1">必須</label><br>
-              <input type="email" id="new_mailadd_test" class="my_textbox"><br>
+              <input type="email" id="new_staff_mailadd_test" class="my_textbox"><br>
           </div>
         </div>
         <div id="sinki_pass">
@@ -62,13 +62,13 @@
             <label id="sinki_title" class="sinki1">パスワード</label>
             <label id="hissu" class="sinki1">必須</label>
             <label id="passinfo">半角英数字８字以上</label><br>
-            <input type="password" id="new_password"  class="my_textbox"><br>
+            <input type="password" id="new_staff_password"  class="my_textbox"><br>
             <!-- 半角英数・小文字・大文字を１文字ずつ含むパスワードだけ許可 -->
           </div>
           <div class="sinki_title">
             <label id="sinki_title" class="sinki1">パスワード再入力</label>
             <label id="hissu" class="sinki1">必須</label><br>
-            <input type="password" id="new_password_test" class="my_textbox"><br>
+            <input type="password" id="new_staff_password_test" class="my_textbox"><br>
           </div>
           <div id="regular_button">
             <button id="next_page_1" class="next_button">次へ</button>
@@ -93,9 +93,13 @@
       <div id="sinki_higth">
         <div class="sinki_title">
           <div id="sinki_title" class="sinki1">スタッフ名</div><br>
-          <input type="text" id="my_higthbox" class="my_textbox">
-          <button >スタッフの追加</button>
+          <input type="text" id="new_staffname" class="my_textbox">
+          <button>スタッフの追加</button>
         </div>
+        <div id="regular_button">
+          <button id="next_page_2" class="next_button" onclick="staffFinalcheckBtn">次へ</button>
+        </div>
+        <button id="back_page_2" class="next_button">戻る</button> 
       </div>
     </div>
     
@@ -114,18 +118,18 @@
        <!-- メイン -->
       <div class="display_sinki3">
         <div id="sinki_title3" class="sinki1">店舗名</div>
-        <div id="sinki_text3"><span class="usernameSet"></div>
+        <div id="sinki_text3"><span class="companynameSet"></div>
         <div id="sinki_title3" class="sinki1">企業コード</div>
-        <div id="sinki_text3"><span class="usernameSet"></div>
+        <div id="sinki_text3"><span class="companycodeSet"></div>
         <div id="sinki_title3" class="sinki1">メールアドレス</div>
-        <div id="sinki_text3"><span class="mailaddSet">></div>
+        <div id="sinki_text3"><span class="staffmailaddSet">></div>
         <div id="sinki_title3" class="sinki1">パスワード</div>
-        <div id="sinki_text3"><span class="passwordSet"></div>
+        <div id="sinki_text3"><span class="staffpasswordSet"></div>
         <div id="sinki_title3" class="sinki1">スタッフ名</div>
-        <div id="sinki_text3"><span class="higthSet"></div>
+        <div id="sinki_text3"><span class="staff_nameSet"></div>
       </div>
       <!-- <a href="search.html"> -->
-        <button id="next_page_3" class="next_button" onclick="onRegisterBtn()">登録</button> 
+        <button id="next_page_3" class="next_button" onclick="staffonRegisterBtn()">登録</button> 
       <!-- </a> -->
       <button id="back_page_3" class="next_button">戻る</button> 
     </div>

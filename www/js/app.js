@@ -192,10 +192,7 @@ $(document).ready(function(){
 
   //画面遷移  
 
-  $("#next_page_1").click(function(){
-  $("#page_1").css("display","none");
-  $("#page_2").css("display","block");
-  });
+
   $("#next_page_2").click(function(){
   $("#page_2").css("display","none");
   $("#page_3").css("display","block");
@@ -1549,14 +1546,6 @@ function onRegisterBtn()
         });
 }
 
-//メールアドレスの正規表現
-/*$("#login_with").click(function(){
-  var address = $("#my_mailbox").val();
-  var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/;
-  if (!reg.test(address)) {
-    alert("メールアドレスを正しく入力してください");
-  } 
-});*/
 
 
 
@@ -1585,20 +1574,6 @@ $("#next_page_1").click(function(){
     $("#page_2").css("display","block");
   }
 });
-
-
-// //正しいパスワードが入力されているか
-// document.getElementById("regular_button").onclick = function(){
-//   var pass_regular = $("#new_password").val();    //半角英数・小文字・大文字を１文字ずつ含むパスワードだけ許可
-//   var result = pass_regular.match(/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,100}$/);
-//   //パターンに一致しなければnull
-//   if(result == null){
-//     alert("パスワードが違います。半角英数・小文字・大文字をいれたパスワードを入力してください。");
-//   }else{
-    
-//   }
-// };
-
 
 
 //メールアドレスのサジェスト機能
@@ -1653,3 +1628,93 @@ $(function() {
 }
         });
 });
+
+
+/**********************管理者用新規登録画面*****************/
+
+  /**/var staffCurrentLoginUser; //現在ログイン中ユーザー
+
+  function staffFinalcheckBtn()
+  {
+    //個人情報１の入力フォームの取得
+    var companyname = $("#new_companyname").val();  //店舗名
+    var companyCode = $("#new_companycode").val();  //店舗コード
+    var staff_mailaddress = $("#new_staff_mailadd").val();
+    var staff_password = $("#new_staff_password").val();
+    //個人情報２の入力フォームの取得
+    var staff_name = $("#new_staffname").val();
+
+    $(".companynameSet").text(companyname);
+    $(".companycodeSet").text(companyCode);
+    $(".staffmailaddSet").text(staff_mailaddress);
+    $(".staffpasswordSet").text(staff_password);
+    $(".staff_nameSet").text(staff_name);
+
+  }
+
+//会員登録
+function staffonRegisterBtn()
+{
+  //個人情報１の入力フォームの取得
+  var staffusername = $("#new_staffusername").val();
+  var mailaddress = $("#new_mailadd").val();
+  var password = $("#new_password").val();
+  //個人情報２の入力フォームの取得
+  var higth = $("#my_higthbox").val();
+  var bmw_B = $("#bmw_b").val();
+  var bmw_W = $("#bmw_w").val();
+  var bmw_H = $("#bmw_h").val(); 
+  let user = new ncmb.User();
+  // 新規登録
+  user.set("staffuserName", staffusername)
+      .set("mailAddress", mailaddress)
+      .set("password", password)
+      .set("higth", higth)
+      .set("bust", bmw_B)
+      .set("hips", bmw_W)
+      .set("waist", bmw_H)
+        .signUpByAccount()
+        .then(function(user) {
+            /* 処理成功 */
+            alert("新規登録に成功しました");
+            // [NCMB] userインスタンスでログイン
+            ncmb.User.login(user)
+                     .then(function(user) {
+                         /* 処理成功 */
+                         alert("ログインに成功しました");
+                         // [NCMB] ログイン中の会員情報の取得
+                         staffCurrentLoginUser = ncmb.User.getCurrentUser();
+                         // フィールドを空に
+                         $("#new_staffusername").val("");
+                         $("#new_mailadd").val("");
+                         $("#new_password").val("");
+
+                         // 詳細ページへ移動
+                        //  $.mobile.changePage('#DetailPage');
+                        //新規登録後おすすめに遷移
+                        location.href='admin_my-page.html';
+                     })
+
+                     .catch(function(error) {
+                         /* 処理失敗 */
+                         alert("【ID / PW 認証】ログインに失敗しました: " + error);
+                         alert("【ID / PW 認証】ログインに失敗しました: " + error);
+                         // フィールドを空に
+                          $("#new_staffusername").val("");
+                          $("#new_mailadd").val("");
+                          $("#new_password").val("");
+                        //  // loading の表示
+                        //  $.mobile.loading('hide');
+                     });
+        })
+        .catch(function(error) {
+            /* 処理失敗 */
+            alert("【ID / PW 認証】新規登録に失敗しました：" + error);
+            // フィールドを空に
+            $("#new_staffusername").val("");
+            $("#new_mailadd").val("");
+            $("#new_password").val("");
+            // // loading の表示
+            // $.mobile.loading('hide');
+        });
+}
