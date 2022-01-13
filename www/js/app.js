@@ -1527,12 +1527,7 @@ function onRegisterBtn()
         });
 }
 
-
-
-
 //画面遷移　必須項目が入力されているか・一致するか・メルアドが正しいか
-// いまここ！！！！！！！！！！！！！！！！！！！！！！！！！！！
-//次へボタン押しても遷移しない
 $("#next_page_1").click(function(){
   var name = $("#new_username").val();
   var mail = $("#new_mailadd").val();
@@ -1542,6 +1537,30 @@ $("#next_page_1").click(function(){
   var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/;
 
   if(name=="" || mail=="" || mailconfirm=="" || pass=="" || passconfirm==""){
+    alert("必須項目が入力されていません");
+  }else if(!reg.test(mail) || !reg.test(mailconfirm)){
+    alert("メールアドレスを正しく入力してください");
+  }else if(pass != passconfirm){
+    alert("入力したパスワードが一致していません");
+  }else if(mail != mailconfirm){
+    alert("入力したメールアドレスが一致していません");
+  }else if(mail == mailconfirm && pass == passconfirm){
+    alert("遷移成功");
+    $("#page_1").css("display","none");
+    $("#page_2").css("display","block");
+  }
+});
+//管理者画面の
+$("#next_page_1_staff").click(function(){
+  var name = $("#new_companynamew_username").val();
+  var code = $("#new_companycode").val();
+  var mail = $("#new_staff_mailadd").val();
+  var mailconfirm = $("#new_staff_mailadd_test").val();
+  var pass = $("#new_staff_password").val();
+  var passconfirm = $("#new_staff_password_test").val();
+  var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/;
+
+  if(name=="" || code=="" || mail=="" || mailconfirm=="" || pass=="" || passconfirm==""){
     alert("必須項目が入力されていません");
   }else if(!reg.test(mail) || !reg.test(mailconfirm)){
     alert("メールアドレスを正しく入力してください");
@@ -1580,7 +1599,94 @@ $(function() {
         return "";
     }
 
-    $( "#new_mailadd")
+    $( "#new_mailadd")//新規登録メルアド一回目
+        // don't navigate away from the field on tab when selecting an item
+        .bind( "keydown", function( event ) {
+            if ( event.keyCode === $.ui.keyCode.TAB &&
+                    $( this ).data( "autocomplete" ).menu.active ) {
+                event.preventDefault();
+            }
+        })
+        .autocomplete({
+            minLength: 1,
+            source: function( request, response ) {
+                        var mail = extractLast(request.term);
+                        if(mail.length<1){return;}
+                        var matcher = new RegExp( "^" + mail, "i" );
+                        response( $.grep( availableTags, function( item ){
+                            return matcher.test( item );
+                        }));
+             },
+            focus: function() {
+                // prevent value inserted on focus
+                return false;
+            },
+
+            select: function( event, ui ) {
+    this.value = this.value.substring(0, this.value.indexOf('@') + 1) + ui.item.value;
+    return false;
+}
+        });
+
+    $( "#new_mailadd_test")//新規登録メルアド二回目
+        // don't navigate away from the field on tab when selecting an item
+        .bind( "keydown", function( event ) {
+            if ( event.keyCode === $.ui.keyCode.TAB &&
+                    $( this ).data( "autocomplete" ).menu.active ) {
+                event.preventDefault();
+            }
+        })
+        .autocomplete({
+            minLength: 1,
+            source: function( request, response ) {
+                        var mail = extractLast(request.term);
+                        if(mail.length<1){return;}
+                        var matcher = new RegExp( "^" + mail, "i" );
+                        response( $.grep( availableTags, function( item ){
+                            return matcher.test( item );
+                        }));
+             },
+            focus: function() {
+                // prevent value inserted on focus
+                return false;
+            },
+
+            select: function( event, ui ) {
+    this.value = this.value.substring(0, this.value.indexOf('@') + 1) + ui.item.value;
+    return false;
+}
+        });
+
+    $( "#new_staff_mailadd")//管理者新規登録メルアド一回目
+        // don't navigate away from the field on tab when selecting an item
+        .bind( "keydown", function( event ) {
+            if ( event.keyCode === $.ui.keyCode.TAB &&
+                    $( this ).data( "autocomplete" ).menu.active ) {
+                event.preventDefault();
+            }
+        })
+        .autocomplete({
+            minLength: 1,
+            source: function( request, response ) {
+                        var mail = extractLast(request.term);
+                        if(mail.length<1){return;}
+                        var matcher = new RegExp( "^" + mail, "i" );
+                        response( $.grep( availableTags, function( item ){
+                            return matcher.test( item );
+                        }));
+             },
+            focus: function() {
+                // prevent value inserted on focus
+                return false;
+            },
+
+            select: function( event, ui ) {
+    this.value = this.value.substring(0, this.value.indexOf('@') + 1) + ui.item.value;
+    return false;
+}
+        });
+
+    $( "#new_staff_mailadd_test")//管理者新規登録メルアド二回目
         // don't navigate away from the field on tab when selecting an item
         .bind( "keydown", function( event ) {
             if ( event.keyCode === $.ui.keyCode.TAB &&
@@ -1637,23 +1743,19 @@ $(function() {
 function staffonRegisterBtn()
 {
   //個人情報１の入力フォームの取得
-  var staffusername = $("#new_staffusername").val();
-  var mailaddress = $("#new_mailadd").val();
-  var password = $("#new_password").val();
+  var companyname = $("#new_companyname").val();
+  var companycode = $("#new_companycode").val();
+  var mail = $("#new_staff_mailadd").val();
+  var pass = $("#new_staff_password").val();
   //個人情報２の入力フォームの取得
-  var higth = $("#my_higthbox").val();
-  var bmw_B = $("#bmw_b").val();
-  var bmw_W = $("#bmw_w").val();
-  var bmw_H = $("#bmw_h").val(); 
+  var staffname = $("#new_staffname").val();
   let user = new ncmb.User();
   // 新規登録
-  user.set("staffuserName", staffusername)
-      .set("mailAddress", mailaddress)
-      .set("password", password)
-      .set("higth", higth)
-      .set("bust", bmw_B)
-      .set("hips", bmw_W)
-      .set("waist", bmw_H)
+  user.set("companyName", companyname)
+      .set("companyCode", companycode)
+      .set("mailaddress", mail)
+      .set("password", pass)
+      .set("staffName", staffname)
         .signUpByAccount()
         .then(function(user) {
             /* 処理成功 */
@@ -1666,13 +1768,15 @@ function staffonRegisterBtn()
                          // [NCMB] ログイン中の会員情報の取得
                          staffCurrentLoginUser = ncmb.User.getCurrentUser();
                          // フィールドを空に
-                         $("#new_staffusername").val("");
-                         $("#new_mailadd").val("");
-                         $("#new_password").val("");
+                         $("#new_companyname").val("");
+                         $("#new_companycode").val("");
+                         $("#new_staff_mailadd").val("");
+                         $("#new_staff_password").val("");
+                         $("#new_staffname").val("");
 
                          // 詳細ページへ移動
                         //  $.mobile.changePage('#DetailPage');
-                        //新規登録後おすすめに遷移
+                        //新規登録後マイページに遷移
                         location.href='admin_my-page.html';
                      })
 
@@ -1681,9 +1785,11 @@ function staffonRegisterBtn()
                          alert("【ID / PW 認証】ログインに失敗しました: " + error);
                          alert("【ID / PW 認証】ログインに失敗しました: " + error);
                          // フィールドを空に
-                          $("#new_staffusername").val("");
-                          $("#new_mailadd").val("");
-                          $("#new_password").val("");
+                          $("#new_companyname").val("");
+                          $("#new_companycode").val("");
+                          $("#new_staff_mailadd").val("");
+                          $("#new_staff_password").val("");
+                          $("#new_staffname").val("");
                         //  // loading の表示
                         //  $.mobile.loading('hide');
                      });
@@ -1692,9 +1798,11 @@ function staffonRegisterBtn()
             /* 処理失敗 */
             alert("【ID / PW 認証】新規登録に失敗しました：" + error);
             // フィールドを空に
-            $("#new_staffusername").val("");
-            $("#new_mailadd").val("");
-            $("#new_password").val("");
+                         $("#new_companyname").val("");
+                         $("#new_companycode").val("");
+                         $("#new_staff_mailadd").val("");
+                         $("#new_staff_password").val("");
+                         $("#new_staffname").val("");
             // // loading の表示
             // $.mobile.loading('hide');
         });
