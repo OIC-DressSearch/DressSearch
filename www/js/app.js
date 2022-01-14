@@ -60,6 +60,9 @@ $(document).ready(function(){
   else if(current_file==="/www/info.html" || current_file==="/info.html"){
     info();
   }
+  else if(current_file==="/www/user_list.html" || current_file==="/user_list.html"){
+    user_list();
+  }
 });
 
   $(".back").click(function(){
@@ -1356,6 +1359,17 @@ function sort(array_1,array_2,array_3){
   });
 
 /***ここまで退会画面*****************************************************/
+
+/**********************予約管理*****************/
+function user_list(){
+  var currentLoginUser = ncmb.User.getCurrentUser();
+
+  var reserve = ncmb.DataStore("Reserve");
+  
+
+}
+
+/**********************ここまで予約管理*****************/
  
  
 /* ニフクラメモ
@@ -1421,7 +1435,12 @@ $("#login_with").click(function(){
       .then(function(user){
         alert("ログイン成功");
         currentLoginUser = ncmb.User.getCurrentUser();
+        if(currentLoginUser.user_flag!=1){
          window.location.href = "recommend.html"; 
+        }
+        else{
+          window.location.href = "admin_my-page.html"; 
+        }
     })
     .catch(function(error) {
         alert("ログイン失敗！次のエラー発生: " + error);
@@ -1482,6 +1501,7 @@ function onRegisterBtn()
       .set("bust", bmw_B)
       .set("hips", bmw_W)
       .set("waist", bmw_H)
+      .set("user_flag", "0")
         .signUpByAccount()
         .then(function(user) {
             /* 処理成功 */
@@ -1722,7 +1742,7 @@ $(function() {
 
   /**/var staffCurrentLoginUser; //現在ログイン中ユーザー
 
-  function staffFinalcheckBtn()
+  $("#next_page_2").click(function()
   {
     //個人情報１の入力フォームの取得
     var companyname = $("#new_companyname").val();  //店舗名
@@ -1738,10 +1758,12 @@ alert(companyname);
     $(".staffpasswordSet").text(staff_password);
     $(".staff_nameSet").text(staff_name);
 
-  }
+  });
 
 //会員登録
-function staffonRegisterBtn()
+
+
+$("#next_page_3").click(function()
 {
   //個人情報１の入力フォームの取得
   var companyname = $("#new_companyname").val();
@@ -1752,11 +1774,12 @@ function staffonRegisterBtn()
   var staffname = $("#new_staffname").val();
   let user = new ncmb.User();
   // 新規登録
-  user.set("companyName", companyname)
+  user.set("userName", companyname)
       .set("companyCode", companycode)
-      .set("mailaddress", mail)
+      .set("mailAddress", mail)
       .set("password", pass)
       .set("staffName", staffname)
+      .set("user_flag", "1")
         .signUpByAccount()
         .then(function(user) {
             /* 処理成功 */
@@ -1808,4 +1831,5 @@ function staffonRegisterBtn()
             // $.mobile.loading('hide');
         });
 
-}
+});
+
