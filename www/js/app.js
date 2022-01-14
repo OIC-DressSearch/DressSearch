@@ -1,3 +1,4 @@
+
 /**********変数 ************/
 var apikey="7672355577f11839b1a72bce66af03d2a68e6f119b00178a4ecc8bc08daaaf68";
 var clientkey="a35cc47c9dc52261c4590dae8f7d466eb3cdf83aa729c0443933ae8cb1d95b13";
@@ -58,6 +59,9 @@ $(document).ready(function(){
   }
   else if(current_file==="/www/info.html" || current_file==="/info.html"){
     info();
+  }
+  else if(current_file==="/www/user_list.html" || current_file==="/user_list.html"){
+    user_list();
   }
 });
 
@@ -1355,6 +1359,17 @@ function sort(array_1,array_2,array_3){
   });
 
 /***ここまで退会画面*****************************************************/
+
+/**********************予約管理*****************/
+function user_list(){
+  var currentLoginUser = ncmb.User.getCurrentUser();
+
+  var reserve = ncmb.DataStore("Reserve");
+  
+
+}
+
+/**********************ここまで予約管理*****************/
  
  
 /* ニフクラメモ
@@ -1420,7 +1435,12 @@ $("#login_with").click(function(){
       .then(function(user){
         alert("ログイン成功");
         currentLoginUser = ncmb.User.getCurrentUser();
+        if(currentLoginUser.user_flag!=1){
          window.location.href = "recommend.html"; 
+        }
+        else{
+          window.location.href = "admin_my-page.html"; 
+        }
     })
     .catch(function(error) {
         alert("ログイン失敗！次のエラー発生: " + error);
@@ -1481,6 +1501,7 @@ function onRegisterBtn()
       .set("bust", bmw_B)
       .set("hips", bmw_W)
       .set("waist", bmw_H)
+      .set("user_flag", "0")
         .signUpByAccount()
         .then(function(user) {
             /* 処理成功 */
@@ -1730,7 +1751,7 @@ $(function() {
     var staff_password = $("#new_staff_password").val();
     //個人情報２の入力フォームの取得
     var staff_name = $("#new_staffname").val();
-
+alert(companyname);
     $(".companynameSet").text(companyname);
     $(".companycodeSet").text(companyCode);
     $(".staffmailaddSet").text(staff_mailaddress);
@@ -1755,9 +1776,10 @@ $("#next_page_3").click(function()
   // 新規登録
   user.set("userName", companyname)
       .set("companyCode", companycode)
-      .set("mailaddress", mail)
+      .set("mailAddress", mail)
       .set("password", pass)
       .set("staffName", staffname)
+      .set("user_flag", "1")
         .signUpByAccount()
         .then(function(user) {
             /* 処理成功 */
@@ -1808,4 +1830,6 @@ $("#next_page_3").click(function()
             // // loading の表示
             // $.mobile.loading('hide');
         });
+
 });
+
