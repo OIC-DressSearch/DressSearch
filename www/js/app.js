@@ -1721,7 +1721,7 @@ $(function() {
 
   /**/var staffCurrentLoginUser; //現在ログイン中ユーザー
 
-  function staffFinalcheckBtn()
+  $("#next_page_2").click(function()
   {
     //個人情報１の入力フォームの取得
     var companyname = $("#new_companyname").val();  //店舗名
@@ -1737,10 +1737,12 @@ $(function() {
     $(".staffpasswordSet").text(staff_password);
     $(".staff_nameSet").text(staff_name);
 
-  }
+  });
 
 //会員登録
-function staffonRegisterBtn()
+
+
+$("#next_page_3").click(function()
 {
   //個人情報１の入力フォームの取得
   var companyname = $("#new_companyname").val();
@@ -1751,7 +1753,7 @@ function staffonRegisterBtn()
   var staffname = $("#new_staffname").val();
   let user = new ncmb.User();
   // 新規登録
-  user.set("companyName", companyname)
+  user.set("userName", companyname)
       .set("companyCode", companycode)
       .set("mailaddress", mail)
       .set("password", pass)
@@ -1806,4 +1808,4 @@ function staffonRegisterBtn()
             // // loading の表示
             // $.mobile.loading('hide');
         });
-}
+});
