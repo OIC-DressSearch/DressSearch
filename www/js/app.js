@@ -1,3 +1,4 @@
+
 /**********変数 ************/
 var apikey="7672355577f11839b1a72bce66af03d2a68e6f119b00178a4ecc8bc08daaaf68";
 var clientkey="a35cc47c9dc52261c4590dae8f7d466eb3cdf83aa729c0443933ae8cb1d95b13";
@@ -879,93 +880,7 @@ function sort(array_1,array_2,array_3){
       $(".content_1").css("display","block");
       $(".content_2").css("display","none");
       reserve_index=0;
-      create_shop_box();
-    }
-    else{
-      $(".content_1").css("display","none");
-      $(".content_2").css("display","block");  
-      var currentLoginUser = ncmb.User.getCurrentUser();
-      var reserve = ncmb.DataStore("Reserve");
-      reserve.equalTo("user_name",currentLoginUser.userName).fetchAll().then(function(results){
-        var obj = results[0];
-        $("#re_shop_con").text(obj.store);
-        $("#con_day_1").text(obj.day_1);
-        $("#con_day_2").text(obj.day_2);
-        $("#con_day_3").text(obj.day_3);
-        $("#reserve_name_a").text(obj.name);
-        $("#reserve_tel_a").text(obj.tel);
-      }).catch(function(err) {
-        alert(err);
-      })
-    }
-    $('.modal_reserve').fadeIn();
-  });
-  $(".reserve_close").click(function(){
-    $('.modal_reserve').fadeOut();
-  });
-  $("#reserve_button").click(function(){
-    var re_shop_name=$('[name=reserve_shop] option:selected').text();
-    var re_day_1=$('#reserve_day_1').val();
-    var re_day_2=$('#reserve_day_2').val();
-    var re_day_3=$('#reserve_day_3').val();
-    var re_name=$('#reserve_name').val();
-    var re_tel=$('#reserve_tel').val();
-    var tel=re_tel.replace(/[━.*‐.*―.*－.*\-.*ー.*\-]/gi,'');
-    if(re_day_1 === "" || re_day_2 === "" || re_day_3 === "" || re_name==="" || re_tel===""){
-      alert("必須項目が未入力です");
-    }
-    else if(!tel.match(/^(0[5-9]0[0-9]{8}|0[1-9][1-9][0-9]{7})$/)){
-      alert("電話番号を正しく入力してください");
-    }
-    else{
-      var currentLoginUser = ncmb.User.getCurrentUser();
-      if(confirm("この内容で予約しますか？")){
-        var reserve = ncmb.DataStore("Reserve");
-        reserve.equalTo("user_name",currentLoginUser.userName).fetchAll().then(function(results){
-        var Reserve = results[0];
-        Reserve.set("user_name",currentLoginUser.userName).set("store",re_shop_name).set("day_1",re_day_1).set("day_2",re_day_2).set("day_3",re_day_3).set("name",re_name).set("tel",re_tel);
-        Reserve.update();
-        $('.modal_reserve').fadeOut();
-        }).catch(function(err) {
-          var Reserve = new reserve();
-          Reserve.set("user_name",currentLoginUser.userName).set("store",re_shop_name).set("day_1",re_day_1).set("day_2",re_day_2).set("day_3",re_day_3).set("name",re_name).set("tel",re_tel).save();
-          $('.modal_reserve').fadeOut();
-          })
-      }
-    }
-  });
-  $("#reserve_change").click(function(){
-    $(".content_1").css("display","block");
-    $(".content_2").css("display","none");
-      reserve_index=0;
-      create_shop_box();
-  });
-
-  $("#change_push").click(function(){
-    if(menu_flag){
-      $("#"+tab_name+"_color").attr("id",tab_name);
-      tab_name="favorite_tab_o_n";
-      $("#"+tab_name).attr("id",tab_name+"_color");
-      $("#change_push").text("式場を表示");
-      $('#dress_store_n').attr('id', 'dress_store_tab');
-      $('#rental_shop_tab').attr('id', 'rental_shop_n');
-      all_favorite();
-      menu_flag=false;
-    }
-    else{
-      $("#"+tab_name+"_color").attr("id",tab_name);
-      tab_name="favorite_tab_0_n";
-      $("#"+tab_name).attr("id",tab_name+"_color");
-      $("#change_push").text("レンタルを表示");
-      $('#dress_store_tab').attr('id', 'dress_store_n');
-      $('#rental_shop_n').attr('id', 'rental_shop_tab');
-      all_favorite();
-      menu_flag=true;
-    }
-  });
-
-  function create_shop_box(){
-          if($('#favorite_tab_1_n').text()){
+      if($('#favorite_tab_1_n').text()){
         reserve_shop[reserve_index++]=$('#favorite_tab_1_n').text();
       }
       if($('#favorite_tab_2_n').text()){
@@ -996,7 +911,74 @@ function sort(array_1,array_2,array_3){
       }  
       add_text+='</select>';
       $("#re_shop_select").append(add_text);
-  }
+    }
+    else{
+      $(".content_1").css("display","none");
+      $(".content_2").css("display","block");  
+      var currentLoginUser = ncmb.User.getCurrentUser();
+      var reserve = ncmb.DataStore("Reserve");
+      reserve.equalTo("user_name",currentLoginUser.userName).fetchAll().then(function(results){
+        var obj = results[0];
+        $("#re_shop_con").text(obj.store);
+        $("#con_day_1").text(obj.day_1);
+        $("#con_day_2").text(obj.day_2);
+        $("#con_day_3").text(obj.day_3);
+      }).catch(function(err) {
+        alert(err);
+      })
+    }
+    $('.modal_reserve').fadeIn();
+  });
+  $(".reserve_close").click(function(){
+    $('.modal_reserve').fadeOut();
+  });
+  $("#reserve_button").click(function(){
+    var re_shop_name=$('[name=reserve_shop] option:selected').text();
+    var re_day_1=$('#reserve_day_1').val();
+    var re_day_2=$('#reserve_day_2').val();
+    var re_day_3=$('#reserve_day_3').val();
+    var currentLoginUser = ncmb.User.getCurrentUser();
+    if(confirm("この内容で予約しますか？")){
+      var reserve = ncmb.DataStore("Reserve");
+      reserve.equalTo("user_name",currentLoginUser.userName).fetchAll().then(function(results){
+      var Reserve = results[0];
+      Reserve.set("user_name",currentLoginUser.userName).set("store",re_shop_name).set("day_1",re_day_1).set("day_2",re_day_2).set("day_3",re_day_3);
+      Reserve.update();
+      $('.modal_reserve').fadeOut();
+      }).catch(function(err) {
+        var Reserve = new reserve();
+        Reserve.set("user_name",currentLoginUser.userName).set("store",re_shop_name).set("day_1",re_day_1).set("day_2",re_day_2).set("day_3",re_day_3).save();
+        $('.modal_reserve').fadeOut();
+        })
+    }
+  });
+  $("#reserve_change").click(function(){
+    $(".content_1").css("display","block");
+    $(".content_2").css("display","none");
+  });
+
+  $("#change_push").click(function(){
+    if(menu_flag){
+      $("#"+tab_name+"_color").attr("id",tab_name);
+      tab_name="favorite_tab_o_n";
+      $("#"+tab_name).attr("id",tab_name+"_color");
+      $("#change_push").text("式場を表示");
+      $('#dress_store_n').attr('id', 'dress_store_tab');
+      $('#rental_shop_tab').attr('id', 'rental_shop_n');
+      all_favorite();
+      menu_flag=false;
+    }
+    else{
+      $("#"+tab_name+"_color").attr("id",tab_name);
+      tab_name="favorite_tab_0_n";
+      $("#"+tab_name).attr("id",tab_name+"_color");
+      $("#change_push").text("レンタルを表示");
+      $('#dress_store_tab').attr('id', 'dress_store_n');
+      $('#rental_shop_n').attr('id', 'rental_shop_tab');
+      all_favorite();
+      menu_flag=true;
+    }
+  });
 
   function all_favorite(){
     $('.item').remove();
@@ -1546,12 +1528,7 @@ function onRegisterBtn()
         });
 }
 
-
-
-
 //画面遷移　必須項目が入力されているか・一致するか・メルアドが正しいか
-// いまここ！！！！！！！！！！！！！！！！！！！！！！！！！！！
-//次へボタン押しても遷移しない
 $("#next_page_1").click(function(){
   var name = $("#new_username").val();
   var mail = $("#new_mailadd").val();
@@ -1561,6 +1538,30 @@ $("#next_page_1").click(function(){
   var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/;
 
   if(name=="" || mail=="" || mailconfirm=="" || pass=="" || passconfirm==""){
+    alert("必須項目が入力されていません");
+  }else if(!reg.test(mail) || !reg.test(mailconfirm)){
+    alert("メールアドレスを正しく入力してください");
+  }else if(pass != passconfirm){
+    alert("入力したパスワードが一致していません");
+  }else if(mail != mailconfirm){
+    alert("入力したメールアドレスが一致していません");
+  }else if(mail == mailconfirm && pass == passconfirm){
+    alert("遷移成功");
+    $("#page_1").css("display","none");
+    $("#page_2").css("display","block");
+  }
+});
+//管理者画面の
+$("#next_page_1_staff").click(function(){
+  var name = $("#new_companynamew_username").val();
+  var code = $("#new_companycode").val();
+  var mail = $("#new_staff_mailadd").val();
+  var mailconfirm = $("#new_staff_mailadd_test").val();
+  var pass = $("#new_staff_password").val();
+  var passconfirm = $("#new_staff_password_test").val();
+  var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/;
+
+  if(name=="" || code=="" || mail=="" || mailconfirm=="" || pass=="" || passconfirm==""){
     alert("必須項目が入力されていません");
   }else if(!reg.test(mail) || !reg.test(mailconfirm)){
     alert("メールアドレスを正しく入力してください");
@@ -1599,7 +1600,94 @@ $(function() {
         return "";
     }
 
-    $( "#new_mailadd")
+    $( "#new_mailadd")//新規登録メルアド一回目
+        // don't navigate away from the field on tab when selecting an item
+        .bind( "keydown", function( event ) {
+            if ( event.keyCode === $.ui.keyCode.TAB &&
+                    $( this ).data( "autocomplete" ).menu.active ) {
+                event.preventDefault();
+            }
+        })
+        .autocomplete({
+            minLength: 1,
+            source: function( request, response ) {
+                        var mail = extractLast(request.term);
+                        if(mail.length<1){return;}
+                        var matcher = new RegExp( "^" + mail, "i" );
+                        response( $.grep( availableTags, function( item ){
+                            return matcher.test( item );
+                        }));
+             },
+            focus: function() {
+                // prevent value inserted on focus
+                return false;
+            },
+
+            select: function( event, ui ) {
+    this.value = this.value.substring(0, this.value.indexOf('@') + 1) + ui.item.value;
+    return false;
+}
+        });
+
+    $( "#new_mailadd_test")//新規登録メルアド二回目
+        // don't navigate away from the field on tab when selecting an item
+        .bind( "keydown", function( event ) {
+            if ( event.keyCode === $.ui.keyCode.TAB &&
+                    $( this ).data( "autocomplete" ).menu.active ) {
+                event.preventDefault();
+            }
+        })
+        .autocomplete({
+            minLength: 1,
+            source: function( request, response ) {
+                        var mail = extractLast(request.term);
+                        if(mail.length<1){return;}
+                        var matcher = new RegExp( "^" + mail, "i" );
+                        response( $.grep( availableTags, function( item ){
+                            return matcher.test( item );
+                        }));
+             },
+            focus: function() {
+                // prevent value inserted on focus
+                return false;
+            },
+
+            select: function( event, ui ) {
+    this.value = this.value.substring(0, this.value.indexOf('@') + 1) + ui.item.value;
+    return false;
+}
+        });
+
+    $( "#new_staff_mailadd")//管理者新規登録メルアド一回目
+        // don't navigate away from the field on tab when selecting an item
+        .bind( "keydown", function( event ) {
+            if ( event.keyCode === $.ui.keyCode.TAB &&
+                    $( this ).data( "autocomplete" ).menu.active ) {
+                event.preventDefault();
+            }
+        })
+        .autocomplete({
+            minLength: 1,
+            source: function( request, response ) {
+                        var mail = extractLast(request.term);
+                        if(mail.length<1){return;}
+                        var matcher = new RegExp( "^" + mail, "i" );
+                        response( $.grep( availableTags, function( item ){
+                            return matcher.test( item );
+                        }));
+             },
+            focus: function() {
+                // prevent value inserted on focus
+                return false;
+            },
+
+            select: function( event, ui ) {
+    this.value = this.value.substring(0, this.value.indexOf('@') + 1) + ui.item.value;
+    return false;
+}
+        });
+
+    $( "#new_staff_mailadd_test")//管理者新規登録メルアド二回目
         // don't navigate away from the field on tab when selecting an item
         .bind( "keydown", function( event ) {
             if ( event.keyCode === $.ui.keyCode.TAB &&
@@ -1643,7 +1731,7 @@ $(function() {
     var staff_password = $("#new_staff_password").val();
     //個人情報２の入力フォームの取得
     var staff_name = $("#new_staffname").val();
-
+alert(companyname);
     $(".companynameSet").text(companyname);
     $(".companycodeSet").text(companyCode);
     $(".staffmailaddSet").text(staff_mailaddress);
@@ -1656,23 +1744,19 @@ $(function() {
 function staffonRegisterBtn()
 {
   //個人情報１の入力フォームの取得
-  var staffusername = $("#new_staffusername").val();
-  var mailaddress = $("#new_mailadd").val();
-  var password = $("#new_password").val();
+  var companyname = $("#new_companyname").val();
+  var companycode = $("#new_companycode").val();
+  var mail = $("#new_staff_mailadd").val();
+  var pass = $("#new_staff_password").val();
   //個人情報２の入力フォームの取得
-  var higth = $("#my_higthbox").val();
-  var bmw_B = $("#bmw_b").val();
-  var bmw_W = $("#bmw_w").val();
-  var bmw_H = $("#bmw_h").val(); 
+  var staffname = $("#new_staffname").val();
   let user = new ncmb.User();
   // 新規登録
-  user.set("staffuserName", staffusername)
-      .set("mailAddress", mailaddress)
-      .set("password", password)
-      .set("higth", higth)
-      .set("bust", bmw_B)
-      .set("hips", bmw_W)
-      .set("waist", bmw_H)
+  user.set("companyName", companyname)
+      .set("companyCode", companycode)
+      .set("mailaddress", mail)
+      .set("password", pass)
+      .set("staffName", staffname)
         .signUpByAccount()
         .then(function(user) {
             /* 処理成功 */
@@ -1685,13 +1769,15 @@ function staffonRegisterBtn()
                          // [NCMB] ログイン中の会員情報の取得
                          staffCurrentLoginUser = ncmb.User.getCurrentUser();
                          // フィールドを空に
-                         $("#new_staffusername").val("");
-                         $("#new_mailadd").val("");
-                         $("#new_password").val("");
+                         $("#new_companyname").val("");
+                         $("#new_companycode").val("");
+                         $("#new_staff_mailadd").val("");
+                         $("#new_staff_password").val("");
+                         $("#new_staffname").val("");
 
                          // 詳細ページへ移動
                         //  $.mobile.changePage('#DetailPage');
-                        //新規登録後おすすめに遷移
+                        //新規登録後マイページに遷移
                         location.href='admin_my-page.html';
                      })
 
@@ -1700,9 +1786,11 @@ function staffonRegisterBtn()
                          alert("【ID / PW 認証】ログインに失敗しました: " + error);
                          alert("【ID / PW 認証】ログインに失敗しました: " + error);
                          // フィールドを空に
-                          $("#new_staffusername").val("");
-                          $("#new_mailadd").val("");
-                          $("#new_password").val("");
+                          $("#new_companyname").val("");
+                          $("#new_companycode").val("");
+                          $("#new_staff_mailadd").val("");
+                          $("#new_staff_password").val("");
+                          $("#new_staffname").val("");
                         //  // loading の表示
                         //  $.mobile.loading('hide');
                      });
@@ -1711,10 +1799,13 @@ function staffonRegisterBtn()
             /* 処理失敗 */
             alert("【ID / PW 認証】新規登録に失敗しました：" + error);
             // フィールドを空に
-            $("#new_staffusername").val("");
-            $("#new_mailadd").val("");
-            $("#new_password").val("");
+                         $("#new_companyname").val("");
+                         $("#new_companycode").val("");
+                         $("#new_staff_mailadd").val("");
+                         $("#new_staff_password").val("");
+                         $("#new_staffname").val("");
             // // loading の表示
             // $.mobile.loading('hide');
         });
+
 }
