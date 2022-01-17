@@ -489,7 +489,6 @@
     margin-left: 3%;
     margin-right: 4%;
     margin-top: 20px;
-
     width:93%;
     height:40px;
     text-align: center;
@@ -515,6 +514,7 @@
       border: 1px solid rgb(238, 238, 238);
       color: #000000;
     }
+
     .footer_disply{
       display: block;
     }
@@ -1490,6 +1490,7 @@
 
 /***********ここまでスタッフ情報変更***************************/
 
+
 /***********予約管理***************************/
 #participant_table{
   text-align: center;
@@ -1544,3 +1545,4 @@
     border-bottom: 1px solid #ddd;
   }
   /********ここまで管理者トップページ********************/
+
