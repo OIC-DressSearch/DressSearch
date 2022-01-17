@@ -1527,3 +1527,20 @@
   }
 
 /***********予約管理***************************/
+
+/***********管理者トップページ *************************/
+ 
+ .display_admin_list{
+    margin-top: 40%;
+    margin-bottom: 76%; /*フッターを無理矢理下部に */
+  }
+    #top_list{
+    font-size: 20px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 13%;
+    margin-bottom: 10%;
+    list-style-type:none;
+    border-bottom: 1px solid #ddd;
+  }
+  /********ここまで管理者トップページ********************/
