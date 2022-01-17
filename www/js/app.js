@@ -928,6 +928,8 @@ function sort(array_1,array_2,array_3){
       var reserve = ncmb.DataStore("Reserve");
       reserve.equalTo("user_name",currentLoginUser.userName).fetchAll().then(function(results){
         var obj = results[0];
+        $("#reserve_name_a").text(obj.name);
+        $("#reserve_tel_a").text(obj.tel);
         $("#re_shop_con").text(obj.store);
         $("#con_day_1").text(obj.day_1);
         $("#con_day_2").text(obj.day_2);
@@ -942,6 +944,8 @@ function sort(array_1,array_2,array_3){
     $('.modal_reserve').fadeOut();
   });
   $("#reserve_button").click(function(){
+    var re_name = $("#reserve_name").val();
+    var re_tel = $("#reserve_name").val();
     var re_shop_name=$('[name=reserve_shop] option:selected').text();
     var re_day_1=$('#reserve_day_1').val();
     var re_day_2=$('#reserve_day_2').val();
@@ -951,12 +955,12 @@ function sort(array_1,array_2,array_3){
       var reserve = ncmb.DataStore("Reserve");
       reserve.equalTo("user_name",currentLoginUser.userName).fetchAll().then(function(results){
       var Reserve = results[0];
-      Reserve.set("user_name",currentLoginUser.userName).set("store",re_shop_name).set("day_1",re_day_1).set("day_2",re_day_2).set("day_3",re_day_3);
+      Reserve.set("user_name",currentLoginUser.userName).set("store",re_shop_name).set("day_1",re_day_1).set("day_2",re_day_2).set("day_3",re_day_3).set("name",re_name).set("tel",re_tel);
       Reserve.update();
       $('.modal_reserve').fadeOut();
       }).catch(function(err) {
         var Reserve = new reserve();
-        Reserve.set("user_name",currentLoginUser.userName).set("store",re_shop_name).set("day_1",re_day_1).set("day_2",re_day_2).set("day_3",re_day_3).save();
+        Reserve.set("user_name",currentLoginUser.userName).set("store",re_shop_name).set("day_1",re_day_1).set("day_2",re_day_2).set("day_3",re_day_3).set("name",re_name).set("tel",re_tel).save();
         $('.modal_reserve').fadeOut();
         })
     }
@@ -1842,7 +1846,7 @@ $(function() {
   $("#next_page_2").click(function()
   {
     //個人情報１の入力フォームの取得
-    var companyname = $("#new_companyname").val();  //店舗名
+    var companyname = $('[name=dress_store_name] option:selected').text();//店舗名
     var companyCode = $("#new_companycode").val();  //店舗コード
     var staff_mailaddress = $("#new_staff_mailadd").val();
     var staff_password = $("#new_staff_password").val();
@@ -1863,7 +1867,7 @@ alert(companyname);
 $("#next_page_3").click(function()
 {
   //個人情報１の入力フォームの取得
-  var companyname = $("#new_companyname").val();
+  var companyname = $('[name=dress_store_name] option:selected').text();
   var companycode = $("#new_companycode").val();
   var mail = $("#new_staff_mailadd").val();
   var pass = $("#new_staff_password").val();
