@@ -63,6 +63,12 @@ $(document).ready(function(){
   else if(current_file==="/www/user_list.html" || current_file==="/user_list.html"){
     user_list();
   }
+  else if(current_file==="/www/user_dress.html" || current_file==="/user_dress.html"){
+    user_dress();
+  }
+  else if(current_file==="/www/dress_list.html" || current_file==="/dress_list.html"){
+    dress_list();
+  }
 });
 
   $(".back").click(function(){
@@ -1363,14 +1369,105 @@ function sort(array_1,array_2,array_3){
 /**********************予約管理*****************/
 function user_list(){
   var currentLoginUser = ncmb.User.getCurrentUser();
-
   var reserve = ncmb.DataStore("Reserve");
-  
+  reserve.equalTo("store",currentLoginUser.userName) .fetchAll() 
+    .then(function(results){
+      for(var i=0;i<results.length;i++){
+        var user_inf=results[i];
+        var add_text='<tr class="td"><td>'+user_inf.name+'</td><td>'+user_inf.tel+'</td><td>'+user_inf.day_1+'</td><td>'+user_inf.day_2+'</td><td>'+user_inf.day_3+'</td><td><button class="re_dress_button" name="'+user_inf.user_name+'">詳細</button></td></tr>';
+        $("#participant_table").append(add_text);
+      }
+    })
+    $("body").on('click','.re_dress_button',function(){
+      var re_user_name=$(this).attr("name");
+      var user_save = ncmb.DataStore("user_save");
+      user_save.equalTo("id", "1").fetchAll().then(function(objects){
+        var object = objects[0];
+        object.set("user_name",re_user_name).set("store",currentLoginUser.userName);
+        object.update();
+      }).catch(function(err) {
+        alert(err);
+      })
+      setTimeout(function(){
+        window.location.href = "user_dress.html"; 
+      },500);
+    });
 
 }
 
 /**********************ここまで予約管理*****************/
- 
+ /**********************ここから予約ドレス画面*****************/
+ function user_dress(){
+    var img_text=mobile_check();
+   var save_data = ncmb.DataStore("user_save");
+  var favorite = ncmb.DataStore("favorite");
+  var dress = ncmb.DataStore("test");
+  save_data.fetchAll().then(function(results){
+    var a=results[0];
+    favorite
+      .equalTo("user_id", a.user_name)
+      .fetchAll() 
+      .then(function(results_2){
+        for(var i=0;i<results_2.length;i++){
+          var b=results_2[i];
+        dress
+        .equalTo("dress_id", b.dress_id)
+        .fetchAll() 
+        .then(function(results_3){
+          var c=results_3[0];
+          if(c.dress_store===a.store){
+              var add_text='<li class="item"><img src="'+img_text+c.path+'" id="item_'+item_count+'" class="item_img"></li>';
+              $("#result_list").append(add_text);
+
+          }
+        })
+          }
+      })
+  })
+ }
+
+  /**********************ここまで予約ドレス画面*****************/
+    /**********************ここからドレス一覧画面*****************/
+
+  function dress_list(){
+    var img_text=mobile_check();
+    var get_data = ncmb.DataStore("test");
+    get_data.order('dress_id',false).fetchAll().then(function(results){  
+        for(var i=0;i<results.length;i++){
+          var a=results[i]; 
+          path[i]=a.get("path");    // 画像ファイル名取得
+          dress_id[i]=a.get("dress_id"); // ドレスＩＤ取得
+        }
+        for(var i=0;i<results.length;i++){
+          if(i%2===0){
+          var add_text="";
+          }
+          if(i===0){
+              add_text='<img src="'+img_text+path[item_count]+'" id="item_'+item_count+'" class="re_img_1">';
+            item_count++;
+            $("#top-img").append(add_text);  
+            var add_text="";
+          }
+
+            add_text+='<th class="re_td"><img src="'+img_text+path[item_count]+'" id="item_'+item_count+'" class="re_img_2"></th>';
+          
+          item_count++;
+          if((i+1)%2===0){  
+            var tr_id=parseInt(i/2);
+            $("#tr_"+tr_id).append(add_text);
+          }
+          else if((i+1)%2===1 && (i+1)>=results.length){
+            var tr_id=parseInt(i/2);
+            $("#tr_"+tr_id).append(add_text);
+          }
+        }
+      })
+      .catch(function(error){
+          alert(error);
+      });            
+
+  }
+  /**********************ここまでドレス一覧画面*****************/
  
 /* ニフクラメモ
  
