@@ -127,7 +127,7 @@ $(document).ready(function(){
   function create_html(src,item_set){
     $(".modal_con").remove();
     var img_text=mobile_check();
-    var ele_text='<div class="modal_con"><img src="'+img_text+src+'" class="modal_img"><div>名前:'+item_set[0]+'<br>式場:'+item_set[1]+'<br>ドレス:'+item_set[2]+'</div><div class="js-modal-close_2">閉じる</div></div>';
+    var ele_text='<div class="modal_con"><img src="'+img_text+src+'" class="modal_img"><div>品番:'+item_set[0]+'<br>式場:'+item_set[1]+'<br>ドレス:'+item_set[2]+'</div><div class="js-modal-close_2">閉じる</div></div>';
             
     $(".modal__content").append(ele_text);
   }
@@ -191,7 +191,6 @@ $(document).ready(function(){
 /***新規作成画面******************************************/
 
   //画面遷移  
-
 
   $("#next_page_2").click(function(){
   $("#page_2").css("display","none");

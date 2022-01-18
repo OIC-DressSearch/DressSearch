@@ -57,7 +57,7 @@
       margin-right: 3%;
       position: fixed;
       background-color: #fff;
-      z-index: 999;
+      z-index: 990;
     }
     .sub_hedlist{
       max-width: 109%;
@@ -66,14 +66,14 @@
       margin-right: 3%;
       border-bottom: 1px solid #cccbcb;
       position: fixed;
-      z-index: 999;
+      z-index: 995;
     }
 
   /*フッター******************************************/
     .footer{
       bottom: 0;
       position: fixed;
-      z-index: 999;
+      z-index: 900;
     }
 
     ul.bottom-menu {
@@ -89,7 +89,7 @@
     background-color:rgb(250, 250, 250);/*背景色*/
     border-top:0.5px solid #808080;/*バーの上の線*/
     border-bottom:0.5px solid #808080;/*バーの下の線*/
-    z-index:999;}
+    z-index:900;}
 
     /*フッターのリスト*/
     ul.bottom-menu li {
@@ -99,19 +99,6 @@
       list-style-type:none;
       text-align:center;
       font-size:25px;/*アイコンのサイズ*/
-    }
-    
-    #recommend_footer{
-
-    }
-    #search_footer{
-
-    }
-    #favorite_footer{
-
-    }
-    #my-page_footer{
-
     }
 
     /*アイコン位置*/
@@ -176,24 +163,28 @@
     width: 100%;
   }
   .modal__content{
-    background: #fff;
+    background: rgb(240, 240, 240);
     left: 50%;
     padding: 40px;
     position: absolute;
-    top: 52%;
+    top: 55%;
     transform: translate(-50%,-50%);
     width: 60%;
   }
   .modal_img{
     width:250px;
-    height:300px;
-    margin-top: -8%;
-    margin-left: -9%;
-    margin-bottom: 8%;
+    height:200px;
+    margin-top: -10%;
+    margin-left: -8%;
+    margin-bottom: 6%;
   }
-  .js-modal-close_2{
+  .js-modal-close_2{/*閉じる*/
     margin-left:90px;
-    margin-top:20px
+    margin-top:5%; 
+    font-size: 13px;
+  }
+  .modal_con{
+    z-index: 999;
   }
    .reserve_close{
     background: rgba(0,0,0,0.8);
@@ -443,9 +434,6 @@
     top: 2px;
     left: 70%;
     margin-bottom: 0%;
-  }
-  #modal_img{
-
   }
   
 /***********ここまでおすすめのCSS**************************/
@@ -745,6 +733,7 @@
   .table-scroll {
     overflow: auto;
     width:90%;
+    z-index: 900;
   }
   .table-scroll table {
     width:500px;
@@ -965,7 +954,7 @@
 
   /*予約ポップアップ*/
   .modal_reserve_content{
-    background: #fff;
+    background: rgb(240, 240, 240);
     left: 50%;
     padding: 40px;
     position: absolute;
