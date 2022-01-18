@@ -1420,7 +1420,7 @@ function user_list(){
         .then(function(results_3){
           var c=results_3[0];
           if(c.dress_store===a.store){
-              var add_text='<li class="item"><img src="'+img_text+c.path+'" id="item_'+item_count+'" class="item_img"></li>';
+              var add_text='<li class="item"><img src="'+img_text+c.path+'" id="item_'+item_count+'" class="item_img"><br><div class="dress_num">'+c.name+' </div></li>';
               $("#result_list").append(add_text);
 
           }
@@ -1443,9 +1443,9 @@ function user_list(){
           dress_id[i]=a.get("dress_id"); // ドレスＩＤ取得
         }
         for(var i=0;i<results.length;i++){
-          if(i%2===0){
+          //if(i%2===0){
           var add_text="";
-          }
+          //}
           if(i===0){
               add_text='<img src="'+img_text+path[item_count]+'" id="item_'+item_count+'" class="re_img_1">';
             item_count++;
@@ -1456,14 +1456,10 @@ function user_list(){
             add_text+='<th class="re_td"><img src="'+img_text+path[item_count]+'" id="item_'+item_count+'" class="re_img_2"></th>';
           
           item_count++;
-          if((i+1)%2===0){  
+ 
             var tr_id=parseInt(i/2);
             $("#tr_"+tr_id).append(add_text);
-          }
-          else if((i+1)%2===1 && (i+1)>=results.length){
-            var tr_id=parseInt(i/2);
-            $("#tr_"+tr_id).append(add_text);
-          }
+          
         }
       })
       .catch(function(error){
