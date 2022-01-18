@@ -1049,10 +1049,10 @@ function sort(array_1,array_2,array_3){
     var update_address_2=$("#update_address_2").val();
     var update_pass=$("#update_pass").val();
     var update_pass_2=$("#update_pass_2").val();
-    var update_higth=$("#update_higth").val();
-    var update_b=$("#update_b").val();
-    var update_w=$("#update_w").val();
-    var update_h=$("#update_h").val();
+    var update_higth=$("#my_higthbox").val();
+    var update_b=$("#bmw_b").val();
+    var update_w=$("#bmw_w").val();
+    var update_h=$("#bmw_h").val();
     var check_1=address_check(update_address,update_address_2);
     var check_2=pass_check(update_pass,update_pass_2);
     var check_3=input_check(update_higth,1);
@@ -1060,6 +1060,7 @@ function sort(array_1,array_2,array_3){
     var check_5=input_check(update_w,2);
     var check_6=input_check(update_h,2);
     if(check_1 && check_2 && check_3 && check_4 && check_5 && check_6 ){
+
       $(".display_info1").css("display","none");
       $(".display_info2").css("display","block");
     }
@@ -1471,7 +1472,8 @@ function user_list(){
 
   }
   /**********************ここまでドレス一覧画面*****************/
- 
+
+
 /* ニフクラメモ
  
 var apikey    = "7672355577f11839b1a72bce66af03d2a68e6f119b00178a4ecc8bc08daaaf68";
@@ -1941,74 +1943,52 @@ $("#next_page_3").click(function()
 /***管理者情報変更画面*****************************************************/
  
   //画面遷移
-  $("#login_info").click(function(){
+  $("#login_admin_info").click(function(){
     var currentLoginUser = ncmb.User.getCurrentUser();
     var login_name=$("#info_login_name").val();
     var login_pass=$("#info_login_pass").val();
     if(currentLoginUser.userName===login_name && currentLoginUser.password===login_pass){
+    var pass=currentLoginUser.password;
+    var address=currentLoginUser.mailAddress;
+    var pass_rep=replace(pass,true);
+    var address_rep=replace(address,false)
       $(".display_login").css("display","none");
       $(".display_info1").css("display","block");
       $(".display_login").css("display","none");
       $(".display_admin_info1").css("display","block");
+      $("#my_admin_name").text(currentLoginUser.userName);
+      $("#my_admin_mailaddress").text(address_rep);
+      $("#my_admin_pass").text(pass_rep);
     }
     else{
       alert("入力されたアドレスまたはパスワードが違います");
     }
   });
-  $("#info_button").click(function(){
-    var update_address=$("#update_address").val();
-    var update_address_2=$("#update_address_2").val();
-    var update_pass=$("#update_pass").val();
-    var update_pass_2=$("#update_pass_2").val();
-    var update_higth=$("#update_higth").val();
-    var update_b=$("#update_b").val();
-    var update_w=$("#update_w").val();
-    var update_h=$("#update_h").val();
+  $("#info_admin_button").click(function(){
+    var update_address=$("#update_admin_address").val();
+    var update_address_2=$("#update_admin_address_2").val();
+    var update_pass=$("#update_admin_pass").val();
+    var update_pass_2=$("#update_admin_pass_2").val();
     var check_1=address_check(update_address,update_address_2);
     var check_2=pass_check(update_pass,update_pass_2);
-    var check_3=input_check(update_higth,1);
-    var check_4=input_check(update_b,2);
-    var check_5=input_check(update_w,2);
-    var check_6=input_check(update_h,2);
-    if(check_1 && check_2 && check_3 && check_4 && check_5 && check_6 ){
-      $(".display_info1").css("display","none");
-      $(".display_info2").css("display","block");
+
+    if(check_1 && check_2){
+      $(".display_admin_info1").css("display","none");
+      $(".display_admin_info2").css("display","block");
     }
   });
 
-  function info(){
-    var currentLoginUser = ncmb.User.getCurrentUser();
-    var pass=currentLoginUser.password;
-    var address=currentLoginUser.mailAddress;
-    var pass_rep=replace(pass,true);
-    var address_rep=replace(address,false);
 
-    $("#my_name").text(currentLoginUser.userName);
-    $("#my_higth").text(currentLoginUser.higth);
-    $("#my_bust").text(currentLoginUser.bust);
-    $("#my_waist").text(currentLoginUser.waist);
-    $("#my_hip").text(currentLoginUser.hips);
-    $("#my_pass").text(pass_rep);
-    $("#my_mailaddress").text(address_rep);
-  }
-  $("#info-update").click(function(){
+  $("#info-admin_update").click(function(){
     var currentLoginUser = ncmb.User.getCurrentUser();
-    var update_name=$("#update_name").val();
-    var update_address=$("#update_address").val();
-    var update_pass=$("#update_pass").val();
-    var update_higth=$("#update_higth").val();
-    var update_b=$("#update_b").val();
-    var update_w=$("#update_w").val();
-    var update_h=$("#update_h").val();
+    var update_name=$("#update_admin_name").val();
+    var update_address=$("#update_admin_address").val();
+    var update_pass=$("#update_admin_pass").val();
 
     currentLoginUser
     .set("userName", update_name)
     .set("mailAddress",update_address )
     .set("password", update_pass)
-    .set("higth",update_higth)
-    .set("bust",update_b)
-    .set("waist", update_w)
-    .set("hips",update_h)
     .update()
     .then(function(obj) {
         // 更新成功時
@@ -2019,8 +1999,8 @@ $("#next_page_3").click(function()
         alert("更新失敗" + error);
     });
     setTimeout(function(){
-        window.location.href = "my-page.html"; 
-      },500);
+        window.location.href = "admin_my-page.html"; 
+      },1000);
   });
 
   function address_check(str_1,str_2){ // メールアドレスチェック
