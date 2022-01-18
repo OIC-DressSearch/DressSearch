@@ -488,11 +488,9 @@
  .push-button_re{ 
     margin-left: 3%;
     margin-right: 4%;
-<<<<<<< HEAD
-    margin-top: 12%;
-=======
+
     margin-top: 20px;
->>>>>>> abbb4bd4c922f700123deebded9fa5090449e54f
+
 
     width:93%;
     height:40px;
@@ -519,12 +517,11 @@
       border: 1px solid rgb(238, 238, 238);
       color: #000000;
     }
-<<<<<<< HEAD
-=======
+
     .footer_disply{
       display: block;
     }
->>>>>>> abbb4bd4c922f700123deebded9fa5090449e54f
+
   /*セレクトボックスタイトル*/
     #search_title{
       margin-left: 3%;
@@ -982,11 +979,9 @@
     top: 50%;
     transform: translate(-50%,-50%);
     width: 60%;
-<<<<<<< HEAD
-    height: 45%;
-=======
+
     height: 55%;
->>>>>>> abbb4bd4c922f700123deebded9fa5090449e54f
+
     z-index: 100;
     margin-top: 13%;
   }
@@ -1027,11 +1022,10 @@
     width: 95%;
   }
   #reserve_button{
-<<<<<<< HEAD
+
     margin-top: -5%;
-=======
-    margin-top: 5%;
->>>>>>> abbb4bd4c922f700123deebded9fa5090449e54f
+
+
     margin-bottom: 3%;
   }
 
@@ -1505,9 +1499,7 @@
 
 /***********ここまでスタッフ情報変更***************************/
 
-<<<<<<< HEAD
 
-=======
 /***********予約管理***************************/
 #participant_table{
   text-align: center;
@@ -1545,4 +1537,3 @@
   }
 
 /***********予約管理***************************/
->>>>>>> abbb4bd4c922f700123deebded9fa5090449e54f
