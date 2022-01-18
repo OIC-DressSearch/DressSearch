@@ -1499,28 +1499,32 @@
 /***********ここまでスタッフ情報変更***************************/
 
 
-/***********予約管理***************************/
-#participant_table{
-  text-align: center;
-  z-index: 1;
-	width: 100%;
-	border-collapse:separate;
-	border-spacing: 0;
-  margin-top: 100px; 
-}
+/***********ここから予約管理***************************/
+  .display_user_list{
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+
+  #participant_table{
+    text-align: center;
+    z-index: 1;
+    width: 100%;
+    border-collapse:separate;
+    border-spacing: 0;
+    margin-left: -0.5%;
+    margin-top: 25%; 
+  }
   #participant_table th:first-child{
 	border-radius: 5px 0 0 0;
   }
   
   #participant_table th:last-child{
 	border-radius: 0 5px 0 0;
-	border-right: 1px solid #3c6690;
+	border-right: 1px solid #cccbcb;
   }
   
-
-  
   #participant_table td:last-child{
-	border-right: 1px solid #a8b7c5;
+	border-right: 1px solid #cccbcb;
   }
   
   #participant_table tr:last-child td:first-child {
@@ -1531,8 +1535,8 @@
 	border-radius: 0 0 5px 0;
   }
   #participant_table th{
-	  background-color: rgb(147, 188, 241);
+	  background-color: #abd8e0;
     font-size: 12px;
   }
 
-/***********予約管理***************************/
+/***********ここまで予約管理***************************/
