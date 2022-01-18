@@ -1019,6 +1019,16 @@
     margin-top: 3%;
   }
 
+  /*予約確認*/
+  #favo_re_text1{
+    font-size: 14px;
+    margin-left: 2%;
+  }
+  .favo_re_text2{
+    font-size: 16px;
+    margin-left: 4%;
+  }
+
   .content_1{
     margin-top:  -15px;
     display: block;
