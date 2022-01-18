@@ -1,4 +1,3 @@
-
 /**********変数 ************/
 var apikey="7672355577f11839b1a72bce66af03d2a68e6f119b00178a4ecc8bc08daaaf68";
 var clientkey="a35cc47c9dc52261c4590dae8f7d466eb3cdf83aa729c0443933ae8cb1d95b13";
@@ -1505,11 +1504,9 @@ var test = new Test();
       var dataUrl = reader.result; //リーダークラスが取得した結果を変数に格納
       document.getElementById("tes").src = dataUrl;
     }
-
         $("#test").click(function(){
       // ファイル名からファイルを取得
       var fileName = "icon.png";
-
       // ダウンロード（データ形式をblobを指定）
       ncmb.File.download(fileName, "blob")
            .then(function(blob) {
@@ -1933,4 +1930,3 @@ $("#next_page_3").click(function()
         });
 
 });
-
