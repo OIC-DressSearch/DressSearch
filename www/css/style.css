@@ -1517,20 +1517,16 @@
   #participant_table th:first-child{
 	border-radius: 5px 0 0 0;
   }
-  
   #participant_table th:last-child{
 	border-radius: 0 5px 0 0;
 	border-right: 1px solid #cccbcb;
   }
-  
   #participant_table td:last-child{
 	border-right: 1px solid #cccbcb;
   }
-  
   #participant_table tr:last-child td:first-child {
 	border-radius: 0 0 0 5px;
   }
-  
   #participant_table tr:last-child td:last-child {
 	border-radius: 0 0 5px 0;
   }
@@ -1539,10 +1535,12 @@
     font-size: 12px;
   }
 
+  .item{
+    margin-top: -28%;
+    margin-bottom: 60%;
+  }
 
-.dress_num{
+  .dress_num{
   margin-top:40px;
 }
-/***********予約管理***************************/
-
-
+/***********ここまで予約管理***************************/
