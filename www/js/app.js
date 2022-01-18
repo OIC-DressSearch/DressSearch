@@ -1035,6 +1035,10 @@ function sort(array_1,array_2,array_3){
     if(currentLoginUser.userName===login_name && currentLoginUser.password===login_pass){
       $(".display_login").css("display","none");
       $(".display_info1").css("display","block");
+      $(".display_login").css("display","none");
+      $(".display_admin_info1").css("display","block");
+            $(".display_login").css("display","none");
+      $(".display_admin_emp1").css("display","block");
     }
     else{
       alert("入力されたアドレスまたはパスワードが違います");
@@ -1537,7 +1541,7 @@ $("#login_with").click(function(){
          window.location.href = "recommend.html"; 
         }
         else{
-          window.location.href = "admin_my-page.html"; 
+          window.location.href = "user_list.html"; 
         }
     })
     .catch(function(error) {
@@ -1881,12 +1885,12 @@ $("#next_page_3").click(function()
         .signUpByAccount()
         .then(function(user) {
             /* 処理成功 */
-            alert("新規登録に成功しました");
+            alert("新規登録に成功しました");//ここは残す
             // [NCMB] userインスタンスでログイン
             ncmb.User.login(user)
                      .then(function(user) {
                          /* 処理成功 */
-                         alert("ログインに成功しました");
+                         alert("ログインに成功しました");//行ごと消す
                          // [NCMB] ログイン中の会員情報の取得
                          staffCurrentLoginUser = ncmb.User.getCurrentUser();
                          // フィールドを空に
@@ -1898,8 +1902,8 @@ $("#next_page_3").click(function()
 
                          // 詳細ページへ移動
                         //  $.mobile.changePage('#DetailPage');
-                        //新規登録後マイページに遷移
-                        location.href='admin_my-page.html';
+                        //新規登録後予約管理に遷移
+                        location.href='user_list.html';
                      })
 
                      .catch(function(error) {
@@ -1918,7 +1922,7 @@ $("#next_page_3").click(function()
         })
         .catch(function(error) {
             /* 処理失敗 */
-            alert("【ID / PW 認証】新規登録に失敗しました：" + error);
+            alert("【ID / PW 認証】新規登録に失敗しました：" + error);//【】
             // フィールドを空に
                          $("#new_companyname").val("");
                          $("#new_companycode").val("");
@@ -1930,3 +1934,173 @@ $("#next_page_3").click(function()
         });
 
 });
+
+
+/***ここまで管理者用新規登録画面*****************************************************/
+
+
+
+/***管理者情報変更画面*****************************************************/
+ 
+  //画面遷移
+  $("#login_info").click(function(){
+    var currentLoginUser = ncmb.User.getCurrentUser();
+    var login_name=$("#info_login_name").val();
+    var login_pass=$("#info_login_pass").val();
+    if(currentLoginUser.userName===login_name && currentLoginUser.password===login_pass){
+      $(".display_login").css("display","none");
+      $(".display_info1").css("display","block");
+      $(".display_login").css("display","none");
+      $(".display_admin_info1").css("display","block");
+    }
+    else{
+      alert("入力されたアドレスまたはパスワードが違います");
+    }
+  });
+  $("#info_button").click(function(){
+    var update_address=$("#update_address").val();
+    var update_address_2=$("#update_address_2").val();
+    var update_pass=$("#update_pass").val();
+    var update_pass_2=$("#update_pass_2").val();
+    var update_higth=$("#update_higth").val();
+    var update_b=$("#update_b").val();
+    var update_w=$("#update_w").val();
+    var update_h=$("#update_h").val();
+    var check_1=address_check(update_address,update_address_2);
+    var check_2=pass_check(update_pass,update_pass_2);
+    var check_3=input_check(update_higth,1);
+    var check_4=input_check(update_b,2);
+    var check_5=input_check(update_w,2);
+    var check_6=input_check(update_h,2);
+    if(check_1 && check_2 && check_3 && check_4 && check_5 && check_6 ){
+      $(".display_info1").css("display","none");
+      $(".display_info2").css("display","block");
+    }
+  });
+
+  function info(){
+    var currentLoginUser = ncmb.User.getCurrentUser();
+    var pass=currentLoginUser.password;
+    var address=currentLoginUser.mailAddress;
+    var pass_rep=replace(pass,true);
+    var address_rep=replace(address,false);
+
+    $("#my_name").text(currentLoginUser.userName);
+    $("#my_higth").text(currentLoginUser.higth);
+    $("#my_bust").text(currentLoginUser.bust);
+    $("#my_waist").text(currentLoginUser.waist);
+    $("#my_hip").text(currentLoginUser.hips);
+    $("#my_pass").text(pass_rep);
+    $("#my_mailaddress").text(address_rep);
+  }
+  $("#info-update").click(function(){
+    var currentLoginUser = ncmb.User.getCurrentUser();
+    var update_name=$("#update_name").val();
+    var update_address=$("#update_address").val();
+    var update_pass=$("#update_pass").val();
+    var update_higth=$("#update_higth").val();
+    var update_b=$("#update_b").val();
+    var update_w=$("#update_w").val();
+    var update_h=$("#update_h").val();
+
+    currentLoginUser
+    .set("userName", update_name)
+    .set("mailAddress",update_address )
+    .set("password", update_pass)
+    .set("higth",update_higth)
+    .set("bust",update_b)
+    .set("waist", update_w)
+    .set("hips",update_h)
+    .update()
+    .then(function(obj) {
+        // 更新成功時
+      alert("更新成功");
+    })
+    .catch(function(error) {
+        // 更新失敗時
+        alert("更新失敗" + error);
+    });
+    setTimeout(function(){
+        window.location.href = "my-page.html"; 
+      },500);
+  });
+
+  function address_check(str_1,str_2){ // メールアドレスチェック
+    var reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
+    if(str_1!=str_2){
+      alert("再入力されたアドレスが違います");
+    }
+    else{
+      if(reg.test(str_1)){
+        return true;
+      }
+      else{
+        alert("入力されたメールアドレスが正しくないです");
+      }
+    }
+  }
+  function pass_check(str_1,str_2){ // パスワードcheck
+    var reg =/^[a-z\d]{8,100}$/i;
+    if(str_1!=str_2){
+      alert("再入力されたパスワードが違います");
+    }
+    else{
+      if(reg.test(str_1)){
+        return true;
+      }
+      else{
+        alert("入力されたパスワードが正しくないです");
+      }
+    }
+  }
+
+  function input_check(input,f){
+    if(isNaN(input)){
+      alert("身長、BWHは数字で入力してください");
+    }
+    if(f===1){
+      if(input>300){
+        alert("身長の数値が正しくありません");
+      }
+      else{
+        return true;
+      }
+    }
+    else{
+      if(input>200){
+        alert("BWHの数値が正しくありません");
+      }
+      else{
+        return true;
+      }
+    
+          
+    }
+  }
+
+  function replace(str,f){  // パスワードとメールアドレスを＊に置き換え
+    var rep="";
+    if(f){
+      for(var i=0;i<str.length;i++){
+        rep+="*";
+      }
+      return rep;
+    }
+    else{
+      var address_2=str.split(/[@.]/);
+      for(var i=0;i<address_2.length;i++){
+        for(var j=0;j<address_2[i].length;j++){
+          rep+="*"
+        }
+        if(i===0){
+          rep+="@";
+        }
+        else if(i===1){
+          rep+="."
+        }
+      }
+      return rep;
+    }
+  }
+ 
+/***ここまで管理者情報変更画面*****************************************************/
