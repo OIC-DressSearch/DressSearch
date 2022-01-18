@@ -57,7 +57,7 @@
       margin-right: 3%;
       position: fixed;
       background-color: #fff;
-      z-index: 990;
+      z-index: 999;
     }
     .sub_hedlist{
       max-width: 109%;
@@ -66,14 +66,14 @@
       margin-right: 3%;
       border-bottom: 1px solid #cccbcb;
       position: fixed;
-      z-index: 995;
+      z-index: 999;
     }
 
   /*フッター******************************************/
     .footer{
       bottom: 0;
       position: fixed;
-      z-index: 900;
+      z-index: 999;
     }
 
     ul.bottom-menu {
@@ -89,7 +89,7 @@
     background-color:rgb(250, 250, 250);/*背景色*/
     border-top:0.5px solid #808080;/*バーの上の線*/
     border-bottom:0.5px solid #808080;/*バーの下の線*/
-    z-index:900;}
+    z-index:999;}
 
     /*フッターのリスト*/
     ul.bottom-menu li {
@@ -99,6 +99,19 @@
       list-style-type:none;
       text-align:center;
       font-size:25px;/*アイコンのサイズ*/
+    }
+    
+    #recommend_footer{
+
+    }
+    #search_footer{
+
+    }
+    #favorite_footer{
+
+    }
+    #my-page_footer{
+
     }
 
     /*アイコン位置*/
@@ -163,28 +176,24 @@
     width: 100%;
   }
   .modal__content{
-    background: rgb(240, 240, 240);
+    background: #fff;
     left: 50%;
     padding: 40px;
     position: absolute;
-    top: 55%;
+    top: 52%;
     transform: translate(-50%,-50%);
     width: 60%;
   }
   .modal_img{
     width:250px;
-    height:200px;
-    margin-top: -10%;
-    margin-left: -8%;
-    margin-bottom: 6%;
+    height:300px;
+    margin-top: -8%;
+    margin-left: -9%;
+    margin-bottom: 8%;
   }
-  .js-modal-close_2{/*閉じる*/
+  .js-modal-close_2{
     margin-left:90px;
-    margin-top:5%; 
-    font-size: 13px;
-  }
-  .modal_con{
-    z-index: 999;
+    margin-top:20px
   }
    .reserve_close{
     background: rgba(0,0,0,0.8);
@@ -435,6 +444,9 @@
     left: 70%;
     margin-bottom: 0%;
   }
+  #modal_img{
+
+  }
   
 /***********ここまでおすすめのCSS**************************/
 
@@ -476,7 +488,9 @@
  .push-button_re{ 
     margin-left: 3%;
     margin-right: 4%;
-    margin-top: 12%;
+
+    margin-top: 20px;
+
 
     width:93%;
     height:40px;
@@ -503,6 +517,11 @@
       border: 1px solid rgb(238, 238, 238);
       color: #000000;
     }
+
+    .footer_disply{
+      display: block;
+    }
+
   /*セレクトボックスタイトル*/
     #search_title{
       margin-left: 3%;
@@ -733,7 +752,6 @@
   .table-scroll {
     overflow: auto;
     width:90%;
-    z-index: 900;
   }
   .table-scroll table {
     width:500px;
@@ -954,14 +972,16 @@
 
   /*予約ポップアップ*/
   .modal_reserve_content{
-    background: rgb(240, 240, 240);
+    background: #fff;
     left: 50%;
     padding: 40px;
     position: absolute;
     top: 50%;
     transform: translate(-50%,-50%);
     width: 60%;
-    height: 45%;
+
+    height: 55%;
+
     z-index: 100;
     margin-top: 13%;
   }
@@ -1002,7 +1022,10 @@
     width: 95%;
   }
   #reserve_button{
+
     margin-top: -5%;
+
+
     margin-bottom: 3%;
   }
 
@@ -1397,7 +1420,6 @@
     background-color: #68c3c5;
   }
 
-  #display_admin_
 /***********ここまで新規登録***************************/
 /***********ここから管理者管理画面***************************/
  .display_admin_my-page{
@@ -1477,3 +1499,40 @@
 /***********ここまでスタッフ情報変更***************************/
 
 
+/***********予約管理***************************/
+#participant_table{
+  text-align: center;
+  z-index: 1;
+	width: 100%;
+	border-collapse:separate;
+	border-spacing: 0;
+  margin-top: 100px; 
+}
+  #participant_table th:first-child{
+	border-radius: 5px 0 0 0;
+  }
+  
+  #participant_table th:last-child{
+	border-radius: 0 5px 0 0;
+	border-right: 1px solid #3c6690;
+  }
+  
+
+  
+  #participant_table td:last-child{
+	border-right: 1px solid #a8b7c5;
+  }
+  
+  #participant_table tr:last-child td:first-child {
+	border-radius: 0 0 0 5px;
+  }
+  
+  #participant_table tr:last-child td:last-child {
+	border-radius: 0 0 5px 0;
+  }
+  #participant_table th{
+	  background-color: rgb(147, 188, 241);
+    font-size: 12px;
+  }
+
+/***********予約管理***************************/
