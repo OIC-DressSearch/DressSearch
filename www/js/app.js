@@ -1037,6 +1037,8 @@ function sort(array_1,array_2,array_3){
       $(".display_info1").css("display","block");
       $(".display_login").css("display","none");
       $(".display_admin_info1").css("display","block");
+            $(".display_login").css("display","none");
+      $(".display_admin_emp1").css("display","block");
     }
     else{
       alert("入力されたアドレスまたはパスワードが違います");
@@ -1885,12 +1887,12 @@ $("#next_page_3").click(function()
         .signUpByAccount()
         .then(function(user) {
             /* 処理成功 */
-            alert("新規登録に成功しました");
+            alert("新規登録に成功しました");//ここは残す
             // [NCMB] userインスタンスでログイン
             ncmb.User.login(user)
                      .then(function(user) {
                          /* 処理成功 */
-                         alert("ログインに成功しました");
+                         alert("ログインに成功しました");//行ごと消す
                          // [NCMB] ログイン中の会員情報の取得
                          staffCurrentLoginUser = ncmb.User.getCurrentUser();
                          // フィールドを空に
@@ -1922,7 +1924,7 @@ $("#next_page_3").click(function()
         })
         .catch(function(error) {
             /* 処理失敗 */
-            alert("【ID / PW 認証】新規登録に失敗しました：" + error);
+            alert("【ID / PW 認証】新規登録に失敗しました：" + error);//【】
             // フィールドを空に
                          $("#new_companyname").val("");
                          $("#new_companycode").val("");
