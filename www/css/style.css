@@ -698,12 +698,11 @@
     color: #68c3c5;
     border-bottom: 3px solid #68c3c5;
   } 
- .test1 li {
-  display: inline-block;
-  height: 3em;           /*ここのCSSで２行に*/
-   line-height: 25px;     /*縦３文字横６文字*/
-   width: 6em;
-  
+  .test1 li {
+    display: inline-block;
+    height: 3em;           /*ここのCSSで２行に*/
+    line-height: 25px;     /*縦３文字横６文字*/
+    width: 6em;
   } 
   .t1 {
     width: 100px;
@@ -835,11 +834,14 @@
     border-bottom: none;/*線を消す*/
   }
 
-  /*画像*/
-  .display_favo{ /*スマホＯＫ*/
+  /*メイン*/
+  .display_favo{
     padding-top:  70%;
     margin-left: -3%;
     margin-right: -3%;
+  }
+  .favo_list{
+    margin-bottom: 10%;
   }
 
   /*ハート*/
@@ -1021,16 +1023,21 @@
 
   /*予約確認*/
   #favo_re_text1{
-    font-size: 14px;
-    margin-left: 2%;
+    font-size: 13px;
+    margin-top: 2%;
+    margin-left: 3%;
   }
   .favo_re_text2{
     font-size: 16px;
-    margin-left: 4%;
+    margin-top: 1%;
+    margin-left: 5%;
+  }
+  #reserve_change{
+    margin-top: 5%;
   }
 
   .content_1{
-    margin-top:  -15px;
+    margin-top: -15px;
     display: block;
   }
   .content_2{
