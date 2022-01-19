@@ -944,7 +944,7 @@ function sort(array_1,array_2,array_3){
   });
   $("#reserve_button").click(function(){
     var re_name = $("#reserve_name").val();
-    var re_tel = $("#reserve_name").val();
+    var re_tel = $("#reserve_tel").val();
     var re_shop_name=$('[name=reserve_shop] option:selected').text();
     var re_day_1=$('#reserve_day_1').val();
     var re_day_2=$('#reserve_day_2').val();
