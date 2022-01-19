@@ -63,72 +63,73 @@
           <ul class="list" id="result_list"> 
           </ul>
         </div>
-      </div>
-
-       <div class="modal js-modal">
-        <div class="modal__bg js-modal-close"></div>
-        <div class="modal__content"></div>
-      </div>
+        <div class="modal js-modal">
+          <div class="modal__bg js-modal-close"></div>
+          <div class="modal__content"></div>
+        </div>
 
       <!-- 予約ポップアップ -->
       <div class="modal modal_reserve">
         <div class="reserve_close"></div>
         <div class="modal_reserve_content">
           <div class="content_1">
-            <div>名前(必須)</div>
-            <input type="text" id="reserve_name">
-            <div>電話番号(必須)</div>
-            <input type="text" id="reserve_tel">
-            <div>場所選択(必須)</div><div id="re_shop_select"><select name="reserve_shop" class="search_box" id="new_companyname">
-          <option id="search_option" value="1">ーーー</option>
-          <option id="search_option" value="2">ラヴィール岡山</option>
-          <option id="search_option" value="3">クラブハウスセフィロト</option>
-          <option id="search_option" value="4">ANAクラウンプラザホテル岡山</option>
-          <option id="search_option" value="5">	THE MAGRITTE</option>
-          <option id="search_option" value="6">THE STYLE</option>
-          <option id="search_option"value="7">ブライダル三松岡山店</option>
-          <option id="search_option" value="8">ブライダルサロンNISHIKIYA</option>
-          <option id="search_option" value="9">チュチュ岡山</option>
-        </select></div>
-            <div>予約日時(必須)</div>
-            <div class="reserve_content_1">
-              <div>第一希望</div>
-              <input type="datetime-local" id="reserve_day_1" class="re_pop_favo">
-            </div>
-            <div class="reserve_content_2">
-              <div>第二希望</div>
-              <input type="datetime-local" id="reserve_day_2" class="re_pop_favo">
-            </div>
-            <div class="reserve_content_3">
-              <div>第三希望</div>
-              <input type="datetime-local" id="reserve_day_3" class="re_pop_favo">
-            </div>
+            <div id="favo_text1">名前(必須)</div>
+              <input type="text" id="reserve_name" class="favo_box">
+            <div id="favo_text1">電話番号(必須)</div>
+              <input type="text" id="reserve_tel" class="favo_box">
+            <div id="favo_text1">場所選択(必須)</div>
+              <select name="reserve_shop" class="search_box" id="new_companyname">
+                <option id="search_option" value="1">ーーー</option>
+                <option id="search_option" value="2">ラヴィール岡山</option>
+                <option id="search_option" value="3">クラブハウスセフィロト</option>
+                <option id="search_option" value="4">ANAクラウンプラザホテル岡山</option>
+                <option id="search_option" value="5">	THE MAGRITTE</option>
+                <option id="search_option" value="6">THE STYLE</option>
+                <option id="search_option"value="7">ブライダル三松岡山店</option>
+                <option id="search_option" value="8">ブライダルサロンNISHIKIYA</option>
+                <option id="search_option" value="9">チュチュ岡山</option>
+              </select>
+            <div id="favo_text1">予約日時(必須)</div>
+              <div class="reserve_content_1">
+                <div id="favo_text2">第一希望</div>
+                <input type="datetime-local" id="reserve_day_1" class="re_popbox">
+              </div>
+              <div class="reserve_content_2">
+                <div id="favo_text2">第二希望</div>
+                <input type="datetime-local" id="reserve_day_2" class="re_popbox">
+              </div>
+              <div class="reserve_content_3">
+                <div id="favo_text2">第三希望</div>
+                <input type="datetime-local" id="reserve_day_3" class="re_popbox">
+              </div>
             <button class="push-button_re" id="reserve_button">予約</button>
           </div>
+
           <div class="content_2">
             <div>予約内容</div>
-            <div>名前</div>
-            <div id="reserve_name_a"></div>
-            <div>電話番号</div>
-            <div id="reserve_tel_a"></div>
-            <div>予約場所</div>
-            <div id="re_shop_con"></div>
+            <div id="favo_re_text1">名前</div>
+            <div id="reserve_name_a" class="favo_re_text2"></div>
+            <div id="favo_re_text1">電話番号</div>
+            <div id="reserve_tel_a" class="favo_re_text2"></div>
+            <div id="favo_re_text1">予約場所</div>
+            <div id="re_shop_con" class="favo_re_text2"></div>
             <div class="reserve_content_a">
-              <div>第一希望</div>
-              <div id="con_day_1"></div>
+              <div id="favo_re_text1">第一希望</div>
+              <div id="con_day_1" class="favo_re_text2"></div>
             </div>
             <div class="reserve_content_b">
-              <div>第二希望</div>
-               <div id="con_day_2"></div>
+              <div id="favo_re_text1">第二希望</div>
+               <div id="con_day_2" class="favo_re_text2"></div>
             </div>
             <div class="reserve_content_c">
-              <div>第三希望</div>
-               <div id="con_day_3"></div>
+              <div id="favo_re_text1">第三希望</div>
+               <div id="con_day_3" class="favo_re_text2"></div>
             </div>
             <button class="push-button_re" id="reserve_change">予約変更</button>
           </div>
           <div id="none"></div>
         </div>
+      </div>
     </div>
 
 
