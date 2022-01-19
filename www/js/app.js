@@ -1533,7 +1533,6 @@ $("#login_with").click(function(){
   var password = $("#my_passbox").val();
   ncmb.User.login(user_name,password)
       .then(function(user){
-        alert("ログイン成功");
         currentLoginUser = ncmb.User.getCurrentUser();
         if(currentLoginUser.user_flag!=1){
          window.location.href = "recommend.html"; 
@@ -1552,7 +1551,6 @@ $("#login_with").click(function(){
 
 function logout(){
   ncmb.User.logout();
-  alert('ログアウト成功');
   currentLoginUser = null;
   window.location.href = "login.html";
 }
@@ -1688,7 +1686,6 @@ $("#next_page_1_staff").click(function(){
   }else if(mail != mailconfirm){
     alert("入力したメールアドレスが一致していません");
   }else if(mail == mailconfirm && pass == passconfirm){
-    alert("遷移成功");
     $("#page_1").css("display","none");
     $("#page_2").css("display","block");
   }
