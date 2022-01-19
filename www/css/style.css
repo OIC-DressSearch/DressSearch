@@ -678,7 +678,7 @@
       height:200px;
     }
 
-/***********ここまで一覧画面のCSS**********************/      
+/***********ここまで一覧画面のCSS**********************/     
 
 /***********お気に入りのCSS******************************/
  .test1 {
@@ -1453,10 +1453,6 @@
     margin-bottom:  2%;
   }
  
-  /* .display_login{
-    display: none;
-    margin-top: 35%;
-  }  */
   .display_admin_info1{
     display: none;
     margin-top: 35%;
@@ -1465,7 +1461,6 @@
     display: none;
     margin-top: 35%;
   }
-
 
 /***********ここまで管理者情報変更***************************/
 /***********ここからスタッフ情報変更***************************/
@@ -1477,10 +1472,6 @@
     margin-bottom:  2%;
   }
 
-/* .display_login{
-    display: none;
-    margin-top: 35%;
-  }  */
   .display_admin_emp1{
     display: none;
     margin-top: 35%;  
@@ -1513,13 +1504,11 @@
 
 /***********ここまでスタッフ情報変更***************************/
 
-
 /***********ここから予約管理***************************/
   .display_user_list{
-    margin-left: 2%;
-    margin-right: 2%;
+    margin-left: 1%;
+    margin-right: 1%;
   }
-  
 
   #participant_table{
     text-align: center;
@@ -1551,12 +1540,18 @@
     font-size: 12px;
   }
 
-  /*.item{
-    margin-top: -28%;
-    margin-bottom: 40%;
-  }*/
-
   .dress_num{
-  margin-top:40px;
-}
+    margin-top:40px;
+  }
 /***********ここまで予約管理***************************/
+
+/***********ここから予約ドレス***************************/
+  .favo_list{
+    margin-top: -20%;
+    margin-left: 25%;
+  }
+  #userli_re{
+    font-size: 16px;
+    color: #68c3c5;
+  }
+/***********ここまで予約ドレス***************************/
