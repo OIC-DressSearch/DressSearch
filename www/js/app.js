@@ -1612,7 +1612,6 @@ function onRegisterBtn()
             ncmb.User.login(user)
                      .then(function(user) {
                          /* 処理成功 */
-                         alert("ログインに成功しました");
                          // [NCMB] ログイン中の会員情報の取得
                          currentLoginUser = ncmb.User.getCurrentUser();
                          // フィールドを空に
@@ -1628,8 +1627,8 @@ function onRegisterBtn()
 
                      .catch(function(error) {
                          /* 処理失敗 */
-                         alert("【ID / PW 認証】ログインに失敗しました: " + error);
-                         alert("【ID / PW 認証】ログインに失敗しました: " + error);
+                         alert("ログインに失敗しました: " + error);
+                         alert("ログインに失敗しました: " + error);
                          // フィールドを空に
                           $("#new_username").val("");
                           $("#new_mailadd").val("");
@@ -1640,7 +1639,7 @@ function onRegisterBtn()
         })
         .catch(function(error) {
             /* 処理失敗 */
-            alert("【ID / PW 認証】新規登録に失敗しました：" + error);
+            alert("新規登録に失敗しました：" + error);
             // フィールドを空に
             $("#new_username").val("");
             $("#new_mailadd").val("");
@@ -1890,7 +1889,6 @@ $("#next_page_3").click(function()
             ncmb.User.login(user)
                      .then(function(user) {
                          /* 処理成功 */
-                         alert("ログインに成功しました");//行ごと消す
                          // [NCMB] ログイン中の会員情報の取得
                          staffCurrentLoginUser = ncmb.User.getCurrentUser();
                          // フィールドを空に
@@ -1908,8 +1906,8 @@ $("#next_page_3").click(function()
 
                      .catch(function(error) {
                          /* 処理失敗 */
-                         alert("【ID / PW 認証】ログインに失敗しました: " + error);
-                         alert("【ID / PW 認証】ログインに失敗しました: " + error);
+                         alert("ログインに失敗しました: " + error);
+                         alert("ログインに失敗しました: " + error);
                          // フィールドを空に
                           $("#new_companyname").val("");
                           $("#new_companycode").val("");
@@ -1922,7 +1920,7 @@ $("#next_page_3").click(function()
         })
         .catch(function(error) {
             /* 処理失敗 */
-            alert("【ID / PW 認証】新規登録に失敗しました：" + error);//【】
+            alert("新規登録に失敗しました：" + error);
             // フィールドを空に
                          $("#new_companyname").val("");
                          $("#new_companycode").val("");
