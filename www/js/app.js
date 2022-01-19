@@ -1665,7 +1665,6 @@ $("#next_page_1").click(function(){
   }else if(mail != mailconfirm){
     alert("入力したメールアドレスが一致していません");
   }else if(mail == mailconfirm && pass == passconfirm){
-    alert("遷移成功");
     $("#page_1").css("display","none");
     $("#page_2").css("display","block");
   }
