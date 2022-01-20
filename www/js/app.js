@@ -1424,7 +1424,7 @@ function user_list(){
         .then(function(results_3){
           var c=results_3[0];
           if(c.dress_store===a.store){
-              var add_text='<li class="item"><img src="'+img_text+c.path+'" id="item_'+item_count+'" class="item_img"><br><div class="dress_num">'+c.name+' </div></li>';
+              var add_text='<li class="item" id="dress_item"><img src="'+img_text+c.path+'" id="item_'+item_count+'" class="item_img"><br><div class="dress_num">'+c.name+' </div></li>';
               $("#result_list").append(add_text);
 
           }
